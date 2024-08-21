@@ -1,0 +1,39 @@
+.flex{
+    display:flex;
+}
+.sideBar{
+    background: #2A3647;
+    width:232px;
+    height:100vh;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    padding:64px 0;
+    color:white;
+}
+.sideBarList{
+    justify-content:center;
+    align-items: center;
+    flex-direction:column;
+}
+.sideBar a{
+    width:100%;
+    gap:20px;
+    padding:8px 53px;
+    text-align: center;
+    place-items: center;
+    text-decoration: none;
+    color: white;
+}
+.sideBar .icon{
+    height:30px;
+    width:30px;
+}
+.policyAndNotice{
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    /*padding: 100px 0 0 52px;*/
+    gap:4px;
+    width:232px;
+}
