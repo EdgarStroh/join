@@ -33,6 +33,7 @@ p {
     padding: 96px 114px 96px 96px;
     width: 100%;
     flex-direction: column;
+    background-color: #F6F7F8;
 }
 .join {
     color: #29ABE2;
