@@ -3,6 +3,8 @@
 }
 
 .sideBar{
+    position: relative;
+    z-index: 1;
     background: #2A3647;
     /* width:10%; */
     height:100vh;
