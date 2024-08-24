@@ -9,7 +9,7 @@
     justify-content:space-between;
     align-items:center;
     padding:64px 0;
-    color:white;
+    color: #CDCDCD;
 }
 .sideBarList{
     justify-content:center;
@@ -23,7 +23,7 @@
     text-align: center;
     place-items: center;
     text-decoration: none;
-    color: white;
+    color: #CDCDCD;
 }
 .sideBar .icon{
     height:30px;
