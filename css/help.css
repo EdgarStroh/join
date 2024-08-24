@@ -6,7 +6,11 @@
 }
 .arrow_left {
     height: 32px;
+    width: 32px;
     cursor: pointer;
+    position: sticky;
+    top: 22.1%;
+    left: 90%;
 }
 .arrow_left:hover {
     background-color: #EEEEEE;

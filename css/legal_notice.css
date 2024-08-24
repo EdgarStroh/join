@@ -8,7 +8,6 @@ ul{
 }
 .arrow_left {
     cursor: pointer;
-    position: fixed;
     height: 32px;
 }
 .arrow_left:hover {
