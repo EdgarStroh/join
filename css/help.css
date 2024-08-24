@@ -25,6 +25,13 @@ p {
 }
 .arrow_left {
     height: 32px;
+    cursor: pointer;
+}
+.arrow_left:hover {
+    background-color: #EEEEEE;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
 }
 .container {
     flex-direction: row;
