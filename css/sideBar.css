@@ -1,6 +1,7 @@
 .flex{
     display:flex;
 }
+
 .sideBar{
     background: #2A3647;
     /* width:10%; */
@@ -11,12 +12,14 @@
     padding:64px 0;
     color: #CDCDCD;
 }
+
 .sideBarList{
     justify-content:center;
     align-items: center;
     flex-direction:column;
 }
-.sideBar a{
+
+a{
     width:100%;
     gap:20px;
     padding:8px 53px;
@@ -25,15 +28,34 @@
     text-decoration: none;
     color: #CDCDCD;
 }
+a:hover {
+    background-color: #2A3D59;
+}
+
 .sideBar .icon{
     height:30px;
     width:30px;
 }
+
 .policyAndNotice{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    /*padding: 100px 0 0 52px;*/
+    /* padding: 100px 0 0 52px;
     gap:4px;
-    width:232px;
+    width:232px; */
+}
+
+.policyAndNotice span {
+    cursor: pointer;
+    width:100%;
+    padding: 8px;
+    text-align: left;
+    font-weight: 400;
+    color: #A8A8A8;
+} 
+
+.policyAndNotice span:hover {
+    color:  #29ABE2;
+    font-weight: 700;
 }
