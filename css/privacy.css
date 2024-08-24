@@ -9,3 +9,9 @@ ul{
 .arrow_left {
     height: 32px;
 }
+.arrow_left:hover {
+    background-color: #EEEEEE;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}

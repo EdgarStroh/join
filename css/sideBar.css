@@ -22,7 +22,7 @@
 }
 
 a{
-    width:100%;
+    width:235px;
     gap:20px;
     padding:8px 53px;
     text-align: center;
@@ -30,7 +30,7 @@ a{
     text-decoration: none;
     color: #CDCDCD;
 }
-a:hover {
+.sideBar a:hover {
     background-color: #2A3D59;
 }
 
