@@ -1,23 +1,4 @@
-h1 {
-    font-size: 61px;
-    font-weight: 700;
-    line-height: 73.2px;
-}
-h2 {
-    font-size: 27px;
-    font-weight: 700;
-    line-height: 32.4px;
-}
-h3 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-}
-p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.2px;
-}
+
 .headline {
     width: 100%;
     justify-content: space-between;
@@ -35,12 +16,6 @@ p {
 }
 .container {
     flex-direction: row;
-}
-.help_container {
-    padding: 96px 114px 96px 96px;
-    width: 100%;
-    flex-direction: column;
-    background-color: #F6F7F8;
 }
 .join {
     color: #29ABE2;

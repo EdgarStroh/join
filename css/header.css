@@ -1,6 +1,6 @@
 header{
     padding: 20px 40px 20px 348px;
-    position: absolute;
+    position: fixed;
     height: 100px;
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
     width: 100%;

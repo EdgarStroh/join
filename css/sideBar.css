@@ -3,7 +3,7 @@
 }
 
 .sideBar{
-    position: relative;
+    position: fixed;
     z-index: 1;
     background: #2A3647;
     /* width:10%; */
