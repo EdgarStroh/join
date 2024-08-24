@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +11,30 @@
     <link rel="stylesheet" href="../css/sideBar.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/board.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
+
 <body>
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
     <div class="text_container">
-        
+        <div class="headlineBoard">
+            <h1>Board</h1>
+            <div class="searchButtonContainer">
+                <div class="search-container">
+                    <input type="text" class="searchBar" placeholder="Find Task">
+                    <img src="../assets/icons/I.svg" alt="Divider Icon" class="divider-icon">
+                    <img src="../assets/icons/search.svg" alt="Search Icon" class="search-icon">
+                </div>
+                <button class="addTaskButton">Add task 
+                    <img src="../assets/icons/plus.svg">
+                </button>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>
