@@ -12,6 +12,7 @@
     top: 22.1%;
     left: 90%;
 }
+/* arrow mit JS fixen */
 .arrow_left:hover {
     background-color: #EEEEEE;
     height: 35px;
