@@ -64,6 +64,11 @@ p {
     border-radius: 30px;
     background-color: white;
 }
+.small_box:hover {
+    background-color: #2A3647;
+    height: 184px;
+    width: 184px;
+}
 .medium_box {
     flex-direction: row;
     justify-content: space-evenly;
