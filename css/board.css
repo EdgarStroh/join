@@ -28,10 +28,12 @@
     font-size: 20px;
     cursor: pointer;
 }
+
 .searchBar:focus {
     outline: none !important;
-    border:1px solid #29ABE2;
+    border: 1px solid #29ABE2;
 }
+
 .divider-icon {
     position: absolute;
     right: 50px;
@@ -50,6 +52,10 @@
     width: 20px;
     height: 20px;
     pointer-events: none;
+}
+
+.search-icon:hover {
+    color: red;
 }
 
 .addTaskButton {
@@ -108,8 +114,10 @@
 
 .plusButton:hover {
     background-image: url('../assets/icons/plus button-hover.svg');
-    background-size: contain;  /* Bildgröße an den Container anpassen */
-    background-position: center;  /* Bild mittig positionieren */
+    background-size: contain;
+    /* Bildgröße an den Container anpassen */
+    background-position: center;
+    /* Bild mittig positionieren */
 }
 
 .dragAndDropContent {
