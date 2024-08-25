@@ -31,7 +31,6 @@ p {
 .headline_summary {
     align-items: center;
     gap: 30px;
-    padding-left: 10%;
     height: 20%;
 }
 .main_container_summary {
