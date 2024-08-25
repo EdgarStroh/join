@@ -62,3 +62,58 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.addTaskButton:hover {
+    background-color: #29ABE2;
+}
+
+.headlineBoardSmall {
+    /* display: flex;
+    justify-content: space-between; */
+    /* Padding: 0px 64px 0px 64px; */
+    width: 200px;
+}
+
+.headlineAndPlusButton {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    color: #42526E;
+}
+
+.plusButton {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    padding: 0;
+    background-color: white;
+    border-style: none;
+    background-image: url('../assets/icons/plus button.svg');
+}
+
+
+.plusButton:hover img {
+
+    opacity: 0;
+    /* visibility: hidden; Bild verstecken */
+}
+
+.plusButton:hover {
+    background-image: url('../assets/icons/plus button-hover.svg');
+    background-size: contain;  /* Bildgröße an den Container anpassen */
+    background-position: center;  /* Bild mittig positionieren */
+}
+
+.dragAndDropContent {
+    display: flex;
+    justify-content: center;
+}
+
+.boardContent {
+    display: flex;
+    justify-content: space-between;
+}
