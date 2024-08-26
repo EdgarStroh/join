@@ -10,32 +10,49 @@ let todos = [{
     'id': 2,
     'title': 'Einkaufen',
     'category': 'done'
+},{
+    'id': 3,
+    'title': 'Duschen',
+    'category': 'awaitFeedback'
 }];
 
 let currentDraggedElement;
 
-function updateHTML() {
+function updateAll() {
+    updateToDo();
+    updateInProgress();
+    updateAwaitFeedback();
+    updateDone();
+}
+
+function updateToDo() {
     let toDo = todos.filter(t => t['category'] == 'toDo');
     document.getElementById('toDo').innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
         const element = toDo[index];
         document.getElementById('toDo').innerHTML += generateTodoHTML(element);
     }
+}
 
+function updateInProgress() {
     let inProgress = todos.filter(t => t['category'] == 'inProgress');
     document.getElementById('inProgress').innerHTML = '';
     for (let index = 0; index < inProgress.length; index++) {
         const element = inProgress[index];
         document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
     }
+}
 
+function updateAwaitFeedback() {
     let awaitFeedback = todos.filter(t => t['category'] == 'awaitFeedback');
     document.getElementById('awaitFeedback').innerHTML = '';
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
         document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element);
     }
+}
 
+function updateDone() {
     let done = todos.filter(t => t['category'] == 'done');
     document.getElementById('done').innerHTML = '';
     for (let index = 0; index < done.length; index++) {
@@ -58,7 +75,7 @@ function allowDrop(ev) {
 
 function moveTo(category) {
     todos[currentDraggedElement]['category'] = category;
-    updateHTML();
+    updateAll();
 }
 
 function highlight(id) {
@@ -68,3 +85,4 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
+
