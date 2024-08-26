@@ -1,0 +1,9 @@
+.sign_up_container {
+    width: 100%;
+    justify-content: space-between;
+    padding: 80px;
+}
+.sign_up_container h3 {
+    font-weight: 400;
+    line-height: 24px;
+}
