@@ -79,3 +79,19 @@ body {
     flex-direction: row;
     gap: 35px;
 }
+.input_login {
+    gap: 32px;
+}
+.email, .password {
+    width: 422px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    padding-left:12px;
+}
+::placeholder{
+    color:#D1D1D1;
+    font-size: 20px;
+    font-weight: 400;
+}
+
