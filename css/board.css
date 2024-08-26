@@ -85,6 +85,7 @@
 
 .headlineAndPlusButton {
     padding-top: 50px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,6 +132,7 @@
 }
 
 .drag-area {
+    min-height: 65px;
     width: 220px;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px dashed black;
