@@ -44,9 +44,9 @@
                     <br>
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
-                        <button>Urgent<img src="../assets/icons/prioUrgent.svg"></button>
-                        <button class="activePrio">Medium<img src="../assets/icons/prioMedium.svg"></button>
-                        <button>Low<img src="../assets/icons/prioLow.svg"></button>
+                        <button type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
+                        <button type="button" class="activePrio">Medium<img src="../assets/icons/prioMedium.svg"></button>
+                        <button type="button">Low<img src="../assets/icons/prioLow.svg"></button>
                     </section>
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>
@@ -66,11 +66,12 @@
             <div class="taskFormButtons flex">
                 <p><span class="requiredStar">*</span>This field is required</p>
                 <div class="flex">
-                    <button class="button clearBtn">Clear</button>
-                    <button class="button">Create Task</button>
+                    <button type="reset" class="button clearBtn">Clear</button>
+                    <button type="submit" class="button">Create Task</button>
                 </div>
             </div>
         </form>
+        <script src="../js/add_task.js"></script>
     </div>
 </body>
 </html>
