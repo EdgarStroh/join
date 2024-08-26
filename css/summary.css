@@ -84,7 +84,33 @@ p {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     background-color: white;
+    transition: background-color 0.3s ease;
 }
+.medium_box:hover {
+    transform: scale(1.05);
+    background-color: #2A3647;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+.medium_box:hover .info .amount,
+.medium_box:hover .info .title {
+    color: white;
+}
+
+.medium_box:hover svg circle,
+.large_box:hover svg circle,
+.medium_box:hover svg circle  {
+    fill: white; 
+}
+
+.medium_box:hover svg path,
+.large_box:hover svg path {
+    fill: #2A3647; 
+}
+
+.medium_box:hover svg path {
+    stroke: #2A3647; 
+}
+
 .large_box {
     flex-direction: row;
     justify-content: space-evenly;
@@ -95,6 +121,19 @@ p {
     border-radius: 30px;
     background-color: white;
 }
+.large_box:hover {
+    transform: scale(1.05);
+    background-color: #2A3647;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+.large_box:hover .info .amount ,
+.large_box:hover .info .title,
+.large_box:hover .info #date,
+.large_box:hover .date #date, 
+.large_box:hover .date span {
+    color: white !important;
+}
+
 .info {
     flex-direction: column;
 }
