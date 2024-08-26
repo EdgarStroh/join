@@ -74,6 +74,7 @@
 
 .addTaskButton:hover {
     background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .headlineBoardSmall {
@@ -106,7 +107,6 @@
     background-image: url('../assets/icons/plus button.svg');
 }
 
-
 .plusButton:hover img {
 
     opacity: 0;
@@ -116,6 +116,7 @@
 .plusButton:hover {
     background-image: url('../assets/icons/plus button-hover.svg');
     background-size: contain;
+    
     /* Bildgröße an den Container anpassen */
     background-position: center;
     /* Bild mittig positionieren */
