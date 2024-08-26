@@ -1,6 +1,6 @@
 .text_container {
     border-radius:10px;
-    border: 1px solid #D1D1D1;
+    /*border: 1px solid #D1D1D1;*/
     width:100%;
     display:flex;
     align-items:center;
@@ -14,7 +14,6 @@ form{
     gap:75px;
     padding-top: 50px;
 }
-
 ::placeholder{
     color:#D1D1D1;
 }
@@ -73,14 +72,31 @@ input{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    cursor:pointer;
 }
-#prio button.active{
-    background:#FFA800;
+.activePrio{
+    background:#FFA800 !important;
 }
 #date {
     outline: none !important;
     border: 1px solid #29ABE2;
 }
+#addSubTask{
+    width:100%;
+}
+#addSubTask input{
+    border-right:0;
+    border-radius:10px 0 0 10px;
+    width:calc(100%-48px);
+    width:100%;
+}
+#addSubTask img{
+    background:white;
+    border-radius:0 10px 10px 0;
+    border:1px solid #D1D1D1;
+    border-left:0;
+}
+
 .button {
     display: flex;
     align-items: center;

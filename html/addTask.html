@@ -45,7 +45,7 @@
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
                         <button>Urgent<img src="../assets/icons/prioUrgent.svg"></button>
-                        <button class="active">Medium<img src="../assets/icons/prioMedium.svg"></button>
+                        <button class="activePrio">Medium<img src="../assets/icons/prioMedium.svg"></button>
                         <button>Low<img src="../assets/icons/prioLow.svg"></button>
                     </section>
                     <br>
@@ -57,7 +57,10 @@
                     </select>
                     <br>
                     <label for="Subtasks">Subtasks</label>
-                    <input type="text" value="+">
+                    <div id="addSubTask" class="flex">
+                        <input placeholder="Add new Subtask" type="text">
+                            <img src="../assets/icons/addSubtask.svg">
+                    </div>
                 </section>
             </div>
             <div class="taskFormButtons flex">
