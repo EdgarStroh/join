@@ -24,12 +24,23 @@ textarea {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
 }
+textarea::placeholder {
+    padding-top: 20px;
+}
 select{
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     line-height: 24px;
     padding-left: 12px;
+}
+input:focus {
+    outline: none !important;
+    border: 1px solid #29ABE2;
+}
+textarea:focus {
+    outline: none !important;
+    border: 1px solid #29ABE2;
 }
 .formPart{
     width:440px;
@@ -55,4 +66,8 @@ input{
 }
 #prio button.active{
     background:#FFA800;
+}
+#date {
+    outline: none !important;
+    border: 1px solid #29ABE2;
 }
