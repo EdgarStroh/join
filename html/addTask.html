@@ -22,42 +22,51 @@
         <div style="width:100%;">
             <h1 style="display: flex; margin-right: auto;">Add Task</h1>
         </div>
-        <form class="flex">
-            <section class="formPart flex">
-                <label for="title">Title<span class="requiredStar">*</span></label>
-                <input type="text" id="title" placeholder="Enter a title">
-                <br>
-                <label for="description">Description</label>
-                <textarea rows="5" placeholder="Enter a Description"></textarea>
-                <br>
-                <label for="contactSelection">Assigned to</label>
-                <select id="contactSelection">
-                    <option value="">Select contacts to assign</option>
-                    <option value="K2">Kontakt 2</option>
-                    <option value="K3">Kontakt 3</option>
-                </select>
-            </section>
-            <section class="formPart flex">
-                <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
-                <input type="date" id="date">
-                <br>
-                <label for="prio">Prio</label>
-                <section class="prio flex" id="prio">
-                    <button>Urgent<img src="../assets/icons/urgentPrio.png"></button>
-                    <button class="active">Medium<img src="../assets/icons/mediumPrio.png"></button>
-                    <button>Low<img src="../assets/icons/lowPrio.png"></button>
+        <form>
+            <div class="flex formParts">
+                <section class="formPart flex">
+                    <label for="title">Title<span class="requiredStar">*</span></label>
+                    <input type="text" id="title" placeholder="Enter a title">
+                    <br>
+                    <label for="description">Description</label>
+                    <textarea rows="5" placeholder="Enter a Description"></textarea>
+                    <br>
+                    <label for="contactSelection">Assigned to</label>
+                    <select id="contactSelection">
+                        <option value="">Select contacts to assign</option>
+                        <option value="K2">Kontakt 2</option>
+                        <option value="K3">Kontakt 3</option>
+                    </select>
                 </section>
-                <br>
-                <label for="category">Category<span class="requiredStar">*</span></label>
-                <select id="category">
-                    <option value="">Select Task Category</option>
-                    <option value="kat1">Kategorie 1</option>
-                    <option value="kat2">Kategorie 2</option>
-                </select>
-                <br>
-                <label for="Subtasks">Subtasks</label>
-                <input type="text" value="+">
-            </section>
+                <section class="formPart flex">
+                    <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
+                    <input type="date" id="date">
+                    <br>
+                    <label for="prio">Prio</label>
+                    <section id="prio" class="flex">
+                        <button>Urgent<img src="../assets/icons/prioUrgent.svg"></button>
+                        <button class="active">Medium<img src="../assets/icons/prioMedium.svg"></button>
+                        <button>Low<img src="../assets/icons/prioLow.svg"></button>
+                    </section>
+                    <br>
+                    <label for="category">Category<span class="requiredStar">*</span></label>
+                    <select id="category">
+                        <option value="">Select Task Category</option>
+                        <option value="kat1">Kategorie 1</option>
+                        <option value="kat2">Kategorie 2</option>
+                    </select>
+                    <br>
+                    <label for="Subtasks">Subtasks</label>
+                    <input type="text" value="+">
+                </section>
+            </div>
+            <div class="taskFormButtons flex">
+                <p><span class="requiredStar">*</span>This field is required</p>
+                <div class="flex">
+                    <button class="button clearBtn">Clear</button>
+                    <button class="button">Create Task</button>
+                </div>
+            </div>
         </form>
     </div>
 </body>
