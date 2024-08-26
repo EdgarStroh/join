@@ -19,13 +19,17 @@
         <script>w3.includeHTML();</script>
     </aside>
     <div class="flex text_container">
-        <div style="width:100%;"><h1>Add Task</h1></div>
+        <div style="width:100%;">
+            <h1 style="display: flex; margin-right: auto;">Add Task</h1>
+        </div>
         <form class="flex">
             <section class="formPart flex">
                 <label for="title">Title<span class="requiredStar">*</span></label>
                 <input type="text" id="title" placeholder="Enter a title">
+                <br>
                 <label for="description">Description</label>
-                <textarea placeholder="Enter a Description"></textarea>
+                <textarea rows="5" placeholder="Enter a Description"></textarea>
+                <br>
                 <label for="contactSelection">Assigned to</label>
                 <select id="contactSelection">
                     <option value="">Select contacts to assign</option>

@@ -7,6 +7,8 @@
 }
 form{
     gap:75px;
+    margin-right: auto;
+    padding-top: 50px;
 }
 
 ::placeholder{
@@ -15,15 +17,19 @@ form{
 label, input, textarea, #prio button, select{
     font-size:20px;
 }
-input, textarea, select{
+input, textarea{
     padding-left:12px;
 }
-select{
-    padding-left:8px;
+textarea {
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
 }
 select{
-    border:1px solid#D1D1D1;
-    border-radius:10px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    line-height: 24px;
+    padding-left: 12px;
 }
 .formPart{
     width:440px;
