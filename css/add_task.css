@@ -60,6 +60,9 @@ input{
     border: 1px solid #D1D1D1;
     line-height: 24px;
 }
+#prio {
+    gap: 18px;
+}
 #prio button{
     width: 136px;
     height: 56px;
@@ -67,6 +70,9 @@ input{
     border-radius:10px;
     background:white;
     border:none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 #prio button.active{
     background:#FFA800;

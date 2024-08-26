@@ -32,6 +32,9 @@ a{
 .sideBarList a:hover {
     background-color: #2A3D59;
 }
+.sideBarList a:active {
+    background-color: #091931;
+}
 
 .sideBar .icon{
     height:30px;
