@@ -10,15 +10,48 @@
     <link rel="stylesheet" href="../css/sideBar.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/add_task.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
-<body>
+<body class="flex">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
-    <div class="text_container">
-        
+    <div class="flex text_container">
+        <div style="width:100%;"><h1>Add Task</h1></div>
+        <form class="flex">
+            <section class="formPart flex">
+                <label for="title">Title<span class="requiredStar">*</span></label>
+                <input type="text" id="title" placeholder="Enter a title">
+                <label for="description">Description</label>
+                <textarea placeholder="Enter a Description"></textarea>
+                <label for="contactSelection">Assigned to</label>
+                <select id="contactSelection">
+                    <option value="">Select contacts to assign</option>
+                    <option value="K2">Kontakt 2</option>
+                    <option value="K3">Kontakt 3</option>
+                </select>
+            </section>
+            <section class="formPart flex">
+                <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
+                <input type="date" id="date">
+                <label for="prio">Prio</label>
+                <section id="prio">
+                    <button>Urgent<img src="../assets/icons/urgentPrio.png"></button>
+                    <button class="active">Medium<img src="../assets/icons/mediumPrio.png"></button>
+                    <button>Low<img src="../assets/icons/lowPrio.png"></button>
+                </section>
+                <label for="category">Category<span class="requiredStar">*</span></label>
+                <select id="category">
+                    <option value="">Select Task Category</option>
+                    <option value="kat1">Kategorie 1</option>
+                    <option value="kat2">Kategorie 2</option>
+                </select>
+                <label for="Subtasks">Subtasks</label>
+                <input type="text" value="+">
+            </section>
+        </form>
     </div>
 </body>
 </html>

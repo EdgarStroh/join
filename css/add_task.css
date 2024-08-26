@@ -1,0 +1,52 @@
+.text_container {
+    border-radius:10px;
+    border: 1px solid #D1D1D1;
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+form{
+    gap:75px;
+}
+
+::placeholder{
+    color:#D1D1D1;
+}
+label, input, textarea, #prio button, select{
+    font-size:20px;
+}
+input, textarea, select{
+    padding-left:12px;
+}
+select{
+    padding-left:8px;
+}
+select{
+    border:1px solid#D1D1D1;
+    border-radius:10px;
+}
+.formPart{
+    width:440px;
+    flex-direction:column;
+    gap:8px;
+}
+.requiredStar{
+    color: #FF8190;
+}
+input{
+    height:48px;
+    border-radius:10px;
+    border: 1px solid #D1D1D1;
+    line-height: 24px;
+}
+#prio button{
+    width: 136px;
+    height: 56px;
+    padding: 16px 10px 16px 10px;
+    border-radius:10px;
+    background:white;
+    border:none;
+}
+#prio button.active{
+    background:#FFA800;
+}
