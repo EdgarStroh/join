@@ -6,7 +6,6 @@
     position: fixed;
     z-index: 1;
     background: #2A3647;
-    /* width:10%; */
     height:100vh;
     flex-direction:column;
     justify-content:space-between;
@@ -43,9 +42,6 @@ a{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    /* padding: 100px 0 0 52px;
-    gap:4px;
-    width:232px; */
 }
 
 .policyAndNotice span {
