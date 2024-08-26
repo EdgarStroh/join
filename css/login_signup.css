@@ -4,10 +4,11 @@
     padding: 80px;
 }
 .sign_up_container h3 {
-    font-weight: 400;
-    line-height: 24px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 80px;
+    align-items: flex-start;
 }
-
 .button {
     display: flex;
     align-items: center;
@@ -20,4 +21,12 @@
     font-weight: 700;
     font-size: 20px;
     cursor: pointer;
+    height: 45px;
+}
+.sign_up_button {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+    align-items: center;
 }
