@@ -100,12 +100,27 @@ input:focus {
 .input_login {
     gap: 32px;
 }
+.name {
+    padding-right: 30px; /* Platz für das Icon */
+    background: url(../assets/icons/person.svg) no-repeat right 21px center;
+    background-size: 20px 20px; /* Größe des Icons */
+}
+.email {
+    padding-right: 30px; /* Platz für das Icon */
+    background: url(../assets/icons/mail.svg) no-repeat right 21px center;
+    background-size: 20px 20px; /* Größe des Icons */
+}
+.password {
+    padding-right: 30px; /* Platz für das Icon */
+    background: url(../assets/icons/lock.svg) no-repeat right 21px center;
+    background-size: 20px 20px; /* Größe des Icons */
+}
 .email, .password, .name {
     width: 422px;
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    padding: 12px 21px 12px 21px;
+    padding: 12px 21px;
     font-size: 20px;
 }
 ::placeholder{
@@ -118,11 +133,8 @@ input:focus {
     gap: 8px;
     padding-left: 34px;
 }
-.checkbox_login input:hover {
-    background-color: #EEEEEE;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
+.checkbox_login input {
+    cursor: pointer;
 }
 .checkbox_login a {
     padding: 0;
