@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/pop_up.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="../js/board.js"></script>
 </head>
@@ -41,7 +42,7 @@
         <div class="boardContent">
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">To do
-                    <button class="plusButton">
+                    <button class="plusButton"  onclick="openPopup()">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
@@ -73,8 +74,60 @@
                 <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
             </div>
 
-
-        </div>
+            <!-- Pop up -->
+            <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
+            <div id="popupModal" class="popup-modal">
+                <h1>Add Task</h1>
+                <form>
+                    <div class="flex formParts">
+                        <section class="formPart flex">
+                            <label for="title">Title<span class="requiredStar">*</span></label>
+                            <input type="text" id="title" placeholder="Enter a title">
+                            <br>
+                            <label for="description">Description</label>
+                            <textarea rows="5" placeholder="Enter a Description"></textarea>
+                            <br>
+                            <label for="contactSelection">Assigned to</label>
+                            <select id="contactSelection">
+                                <option value="">Select contacts to assign</option>
+                                <option value="K2">Kontakt 2</option>
+                                <option value="K3">Kontakt 3</option>
+                            </select>
+                        </section>
+                        <section class="formPart flex">
+                            <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
+                            <input type="date" id="date">
+                            <br>
+                            <label for="prio">Prio</label>
+                            <section id="prio" class="flex">
+                                <button type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
+                                <button type="button" class="activePrio">Medium<img src="../assets/icons/prioMedium.svg"></button>
+                                <button type="button">Low<img src="../assets/icons/prioLow.svg"></button>
+                            </section>
+                            <br>
+                            <label for="category">Category<span class="requiredStar">*</span></label>
+                            <select id="category">
+                                <option value="">Select Task Category</option>
+                                <option value="kat1">Kategorie 1</option>
+                                <option value="kat2">Kategorie 2</option>
+                            </select>
+                            <br>
+                            <label for="Subtasks">Subtasks</label>
+                            <div id="addSubTask" class="flex">
+                                <input placeholder="Add new Subtask" type="text">
+                                    <img src="../assets/icons/addSubtask.svg">
+                            </div>
+                        </section>
+                    </div>
+                    <div class="taskFormButtons flex">
+                        <p><span class="requiredStar">*</span>This field is required</p>
+                        <div class="flex">
+                            <button type="reset" class="button clearBtn">Clear</button>
+                            <button type="submit" class="button">Create Task</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
     </div>
 </body>
 
