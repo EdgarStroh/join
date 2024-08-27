@@ -118,6 +118,12 @@ input{
     border:1px solid #2A3647;
     font-weight:400;
 }
+.clearBtn:hover {
+    border: 1px solid #29ABE2;
+    background-color: white;
+    color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
 .taskFormButtons{
     padding:75px 0;
     width:100%;
