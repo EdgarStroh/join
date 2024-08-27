@@ -112,17 +112,29 @@ input{
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
-.clearBtn{
-    background:white;
-    color:#2A3647;
-    border:1px solid #2A3647;
-    font-weight:400;
+.clearBtn {
+    background: white;
+    color: #2A3647;
+    border: 1px solid #2A3647;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+.clearBtn img {
+    transition: filter 0.3s ease; 
 }
 .clearBtn:hover {
     border: 1px solid #29ABE2;
-    background-color: white;
+    background-color: white; 
     color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
+}
+.clearBtn:hover img {
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
 .taskFormButtons{
     padding:75px 0;
