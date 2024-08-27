@@ -24,15 +24,16 @@
     <div class="log_in_container flex">
         <h1>Log in</h1>
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
-        <div class="input_login flex">
-            <input class="email" type="email" id="" placeholder="Email">
-            <input class="password" type="password" id="" placeholder="Password">
-            <div class="checkbox_login flex">
-                <input type="checkbox" id="" style="height:16px; width:16px;">
-                <span>Remember me</span>
+        <form>
+            <div class="input_login flex">
+                <input class="email" type="email" id="" placeholder="Email">
+                <input class="password" type="password" id="" placeholder="Password">
+                <div class="checkbox_login flex">
+                    <input type="checkbox" id="" style="height:16px; width:16px;">
+                    <span>Remember me</span>
+                </div>
             </div>
-            
-        </div>
+         </form> 
         <div class="button_login flex">
             <button class="button">Log in</button>
             <button class="guest_login">Guest Log in</button>
@@ -45,10 +46,25 @@
 
     <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
     <div id="popupModal" class="popup-modal">
-
-
-
-        ABC
+        <div class="log_in_container flex">
+        <h1>Sign up</h1>
+        <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
+        <form>
+            <div class="input_login flex no_border">
+                <input class="name" type="text" id="" placeholder="Name">
+                <input class="email" type="email" id="" placeholder="Email">
+                <input class="password" type="password" id="" placeholder="Password">
+                <input class="password" type="password" id="" placeholder="Confirm Password">
+                <div class="checkbox_login flex">
+                    <input type="checkbox" id="" style="height:16px; width:16px;">
+                    <span>I accept the <a href="privacy.html">privacy policy</a></span>
+                </div>
+            </div>
+        </form>
+        <div class="button_login flex">
+            <button class="button">Sign up</button>
+        </div>
+    </div>
     </div>
 </body>
 </html>

@@ -171,3 +171,7 @@ color:#29ABE2;
     z-index: 1001;
     display: none; /* Versteckt standardmäßig */
 }
+
+.no_border {
+    border-style:none;
+}
