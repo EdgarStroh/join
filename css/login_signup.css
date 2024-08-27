@@ -73,6 +73,9 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.log_in_container h1 {
+    margin-bottom: -20px;
+}
 .underline {
     width: 150px;
     height: 3px;

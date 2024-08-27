@@ -65,6 +65,11 @@ input{
     align-items: center;
     justify-content: space-evenly;
     cursor:pointer;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+}
+#prio button:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+
 }
 .activePrio{
     background:#FFA800 !important;
