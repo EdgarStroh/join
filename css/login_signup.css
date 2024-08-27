@@ -93,7 +93,9 @@ input:focus {
 }
 .button_login {
     flex-direction: row;
+    justify-content: center;
     gap: 35px;
+    padding-top: 30px;
 }
 .input_login {
     gap: 32px;
@@ -110,12 +112,17 @@ input:focus {
     color:#D1D1D1;
     font-size: 20px;
     font-weight: 400;
-    /* align-self: center; */
 }
 .checkbox_login {
     align-items: center;
     gap: 8px;
     padding-left: 34px;
+}
+.checkbox_login input:hover {
+    background-color: #EEEEEE;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
 }
 .checkbox_login a {
     padding: 0;
@@ -163,8 +170,8 @@ color:#29ABE2;
 
 /* Popup Modal */
 .popup-modal {
-    width: 715px;
-    height: 695px;
+    width: 652px;
+    height: 625px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -182,9 +189,16 @@ color:#29ABE2;
     justify-content: center;
 }
 .arrow_left_signup {
+    cursor: pointer;
     width: 32px;
     height: 32px;
     position: absolute;
     top: 9%;
     left: 7%;
+}
+.arrow_left_signup:hover {
+    background-color: #EEEEEE;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
 }
