@@ -98,7 +98,7 @@ input:focus {
 .input_login {
     gap: 32px;
 }
-.email, .password {
+.email, .password, .name {
     width: 422px;
     height: 48px;
     border-radius: 10px;
@@ -149,7 +149,6 @@ color:#29ABE2;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     display: none; /* Versteckt standardmäßig */
     justify-content: center;
     align-items: center;
@@ -158,8 +157,8 @@ color:#29ABE2;
 
 /* Popup Modal */
 .popup-modal {
-    width: 1050px;
-    height: 800px;
+    width: 715px;
+    height: 695px;
     background-color: white;
     padding: 65px 60px;
     border-radius: 30px;
@@ -171,7 +170,6 @@ color:#29ABE2;
     z-index: 1001;
     display: none; /* Versteckt standardmäßig */
 }
-
-.no_border {
-    border-style:none;
+.no_shadow {
+    box-shadow: none;
 }
