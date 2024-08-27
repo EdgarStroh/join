@@ -4,21 +4,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.arrow_left {
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-    position: sticky;
-    top: 22.1%;
-    left: 90%;
-}
-/* arrow mit JS fixen */
-.arrow_left:hover {
-    background-color: #EEEEEE;
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-}
+
 .container {
     flex-direction: row;
 }

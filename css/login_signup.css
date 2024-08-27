@@ -117,7 +117,13 @@ input:focus {
     gap: 8px;
     padding-left: 34px;
 }
-
+.checkbox_login a {
+    padding: 0;
+    color: #29ABE2;
+}
+.checkbox_login a:hover {
+    text-decoration: underline;
+}
 .checkbox_login span {
     font-size: 16px;
     font-weight: 400;
@@ -160,7 +166,6 @@ color:#29ABE2;
     width: 715px;
     height: 695px;
     background-color: white;
-    padding: 65px 60px;
     border-radius: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -172,4 +177,7 @@ color:#29ABE2;
 }
 .no_shadow {
     box-shadow: none;
+}
+.center {
+    justify-content: center;
 }

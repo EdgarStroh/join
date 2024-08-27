@@ -4,7 +4,7 @@ function openPopup() {
 }
 
 // Schließe das Pop-up, wenn man auf das Overlay klickt
-// function closePopup() {
+function closePopup() {
 //   document.getElementById("popupOverlay").style.display = "none";
-//   document.getElementById("popupModal").style.display = "none";
-// }
+  document.getElementById("popupModal").style.display = "none";
+}
