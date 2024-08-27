@@ -184,5 +184,7 @@ color:#29ABE2;
 .arrow_left_signup {
     width: 32px;
     height: 32px;
-    position: sticky;
+    position: absolute;
+    top: 9%;
+    left: 7%;
 }
