@@ -42,7 +42,7 @@ p {
 /* arrow mit JS fixen */
 .arrow_left:hover {
     background-color: #EEEEEE;
-    height: 35px;
-    width: 35px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
 }
