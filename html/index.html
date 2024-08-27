@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/login_signup.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="../js/login.js"></script>
 </head>
 <body>
     <div class="sign_up_container flex">
         <img src="../assets/icons/logo_black.svg" alt="Logo Join">
         <div class="sign_up_button">
             <h3>Not a Join user?</h3>
-            <button class="button">Sign up</button>
+            <button onclick="openPopup()" class="button">Sign up</button>
         </div>
     </div>
     <div class="log_in_container flex">
@@ -40,6 +41,14 @@
     <div class="footer">
         <a href="privacy.html">Privacy Policy</a>
         <a href="legalNotice.html">Legal notice</a>
+    </div>
+
+    <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
+    <div id="popupModal" class="popup-modal">
+
+
+
+        ABC
     </div>
 </body>
 </html>
