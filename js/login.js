@@ -10,21 +10,14 @@ function closePopup() {
 }
 
 
+// Toggle-Funktion für die Checkbox
+function toggleCheckbox(labelId) {
 
-// Variable, um den aktuellen Zustand zu speichern
-let isChecked = false;
+    const label = document.getElementById(labelId);
 
-// Toggle-Funktion zum Umschalten des Checkbox-Zustands
-function toggleCheckbox() {
-    const checkboxLabel = document.getElementById('checkboxLabel');
-
-    // Zustand umschalten
-    isChecked = !isChecked;
-
-    // Je nach Zustand das passende Bild setzen
-    if (isChecked) {
-        checkboxLabel.style.backgroundImage = "url('../assets/icons/checkbox_checked.svg')"; // Angekreuzte Checkbox
+    if (label.style.backgroundImage.includes('checkbox_checked.svg')) {
+        label.style.backgroundImage = "url('../assets/icons/checkbox.svg')";
     } else {
-        checkboxLabel.style.backgroundImage = "url('../assets/icons/checkbox.svg')"; // Nicht angekreuzte Checkbox
+        label.style.backgroundImage = "url('../assets/icons/checkbox_checked.svg')";
     }
 }
