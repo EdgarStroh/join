@@ -1,6 +1,5 @@
 .text_container {
     border-radius:10px;
-    /*border: 1px solid #D1D1D1;*/
     width:100%;
     display:flex;
     align-items:center;
@@ -86,18 +85,20 @@ input{
     width:100%;
 }
 #addSubTask input{
-    border-right:0;
-    border-radius:10px 0 0 10px;
-    width:calc(100%-48px);
-    width:100%;
+    width: 100%;
+    background-color: white;
 }
-#addSubTask img{
+/* #addSubTask img{
     background:white;
     border-radius:0 10px 10px 0;
     border:1px solid #D1D1D1;
     border-left:0;
+} */
+.addSubTask {
+    padding-right: 30px; 
+    background: url(../assets/icons/addSubtask.svg) no-repeat right 10px center;
+    background-size: 20px 20px; 
 }
-
 .button {
     display: flex;
     align-items: center;
