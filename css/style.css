@@ -24,6 +24,9 @@ p {
     font-weight: 400;
     line-height: 19.2px;
 }
+.hidden {
+    display: none;
+}
 .text_container {
     padding: 206px 114px 96px 330px;
     width: 100%;

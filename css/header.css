@@ -10,3 +10,11 @@ header{
     align-items: center;
     justify-content: space-between;
 }
+.help_icon {
+    height: 30px;
+    width: 30px;
+}
+.help_icon:hover {
+    height: 34px;
+    width: 34px;
+}

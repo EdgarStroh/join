@@ -101,19 +101,19 @@ input:focus {
     gap: 32px;
 }
 .name {
-    padding-right: 30px; /* Platz für das Icon */
+    padding-right: 30px; 
     background: url(../assets/icons/person.svg) no-repeat right 21px center;
-    background-size: 20px 20px; /* Größe des Icons */
+    background-size: 20px 20px; 
 }
 .email {
-    padding-right: 30px; /* Platz für das Icon */
+    padding-right: 30px; 
     background: url(../assets/icons/mail.svg) no-repeat right 21px center;
-    background-size: 20px 20px; /* Größe des Icons */
+    background-size: 20px 20px; 
 }
 .password {
-    padding-right: 30px; /* Platz für das Icon */
+    padding-right: 30px; 
     background: url(../assets/icons/lock.svg) no-repeat right 21px center;
-    background-size: 20px 20px; /* Größe des Icons */
+    background-size: 20px 20px; 
 }
 .email, .password, .name {
     width: 422px;
@@ -158,29 +158,24 @@ input:focus {
     text-align: left;
     padding:0px 10px !important;
 }
-
 .footer a:hover {
-font-size: 16px;
-font-weight: 700;
-line-height: 19.2px;
-text-align: left;
-color:#29ABE2;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.2px;
+    text-align: left;
+    color:#29ABE2;
 }
-
-/* Popup Overlay */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: none; /* Versteckt standardmäßig */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
-
-/* Popup Modal */
 .popup-modal {
     width: 652px;
     height: 625px;
@@ -192,7 +187,7 @@ color:#29ABE2;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
-    display: none; /* Versteckt standardmäßig */
+    display: none;
 }
 .no_shadow {
     box-shadow: none;

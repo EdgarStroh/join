@@ -72,19 +72,19 @@
 .medium_box:hover .info .title {
     color: white;
 }
-.medium_box:hover svg circle,
-.large_box:hover svg circle,
-.medium_box:hover svg circle  {
-    fill: white; 
+.medium_box.pencil:hover svg circle {
+    fill: white;
 }
-.medium_box:hover svg path,
-.large_box:hover svg path {
-    fill: #2A3647; 
+.medium_box.pencil:hover svg path {
+    stroke: #2A3647;
+    fill: #2A3647;
 }
-.medium_box:hover svg path {
-    stroke: #2A3647; 
-    fill: none; 
-    stroke-width: 7; 
+.medium_box.check:hover svg circle {
+    fill: white;
+}
+.medium_box.check:hover svg path {
+    stroke: #2A3647;
+    fill: none;
 }
 .large_box {
     flex-direction: row;
