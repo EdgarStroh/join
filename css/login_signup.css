@@ -209,3 +209,13 @@ input:focus {
     width: 32px;
     border-radius: 50%;
 }
+
+
+.checkbox_label {
+   display: inline-block;
+    width: 17px;
+    height: 18px;
+    background-image: url(../assets/icons/checkbox.svg);
+    background-size: cover;
+    cursor: pointer;
+}
