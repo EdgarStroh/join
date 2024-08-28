@@ -86,14 +86,32 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-
 function openPopup() {
-    document.getElementById('popupOverlay').style.display = 'flex';
-    document.getElementById('popupModal').style.display = 'block';
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupModal = document.getElementById('popupModal');
+    
+    // Zeige das Overlay und das Popup an
+    popupOverlay.style.display = 'flex';
+    popupModal.style.display = 'block';
+    
+    // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
+    popupModal.classList.remove('hide');
+    popupModal.classList.add('show');
 }
 
-// Schließe das Pop-up, wenn man auf das Overlay klickt
 function closePopup() {
-    document.getElementById('popupOverlay').style.display = 'none';
-    document.getElementById('popupModal').style.display = 'none';
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupModal = document.getElementById('popupModal');
+    
+    // Verstecke das Overlay sofort
+    popupOverlay.style.display = 'none';
+    
+    // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
+    popupModal.classList.remove('show');
+    popupModal.classList.add('hide');
+    
+    // Verstecke das Popup nach der Animation (120ms)
+    setTimeout(() => {
+        popupModal.style.display = 'none';
+    }, 120); // 120ms entspricht der Dauer der Animation
 }
