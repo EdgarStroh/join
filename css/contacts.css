@@ -1,0 +1,12 @@
+.contact_content {
+    display: flex;
+    flex-direction: row;
+}
+.contacts {
+    width: 456px;
+    height: 100vh;
+    box-shadow: 5px 0px 4px 0px #0000001a;
+    background-color: palevioletred;
+    margin: 100px 0 0 235px;
+    z-index: -1;
+}
