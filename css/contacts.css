@@ -3,10 +3,31 @@
     flex-direction: row;
 }
 .contacts {
+    justify-content: center;
     width: 456px;
     height: 100vh;
-    box-shadow: 5px 0px 4px 0px #0000001a;
-    background-color: palevioletred;
+    background-color: white;
     margin: 100px 0 0 235px;
-    z-index: -1;
+    box-shadow: 4px 0px 6px 0px #00000014;
+
+}
+.add_contact {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 255px;
+    height: 56px;
+    padding: 12px 16px;
+    margin-top: 20px;
+    gap: 16px;
+    border-radius: 10px;
+    border: 1px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+}
+.add_contact:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
