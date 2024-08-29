@@ -19,11 +19,25 @@
         <script>w3.includeHTML();</script>
     </aside>
     <div class="contact_content">
-        <div class="contacts flex">
+        <div class="contact_list flex">
             <button class="add_contact flex">Add new contact <img src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
+            <div class="contacts"> <!-- dieses div wird dynamisch erzeugt, hier nur für Anschauungszwecke -->
+                <h3>A</h3> <!-- Buchstabe wird gerendert -->
+                <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
+                <div class="single_contact flex">
+                    <div class="profil_badge">
+                        <img src="../assets/icons/profil_badge.svg" alt="profil badge" style="height: 42px; width:42px;">
+                        <!-- <span>AM</span> -->
+                    </div>
+                    <div class="contact_info flex">
+                        <h3>Anton Mayer</h3>
+                        <p>antom@gmail.com</p>
+                    </div>
+                </div> 
+            </div>
         </div>
             <div class="headline_contacts">
-
+                
             </div>    
     </div>
 </body>
