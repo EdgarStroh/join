@@ -54,5 +54,9 @@
     gap: 8px;
 }
 .contact_info h3{
-    padding:0
+    padding:0;
+    font-weight: 400;
+}
+.contact_info p {
+    color: #007CEE;
 }
