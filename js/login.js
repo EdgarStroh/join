@@ -10,14 +10,12 @@ function closePopup() {
 }
 
 
-// Toggle-Funktion für die Checkbox
 function toggleCheckbox(labelId) {
+  const label = document.getElementById(labelId);
 
-    const label = document.getElementById(labelId);
-
-    if (label.style.backgroundImage.includes('checkbox_checked.svg')) {
-        label.style.backgroundImage = "url('../assets/icons/checkbox.svg')";
-    } else {
-        label.style.backgroundImage = "url('../assets/icons/checkbox_checked.svg')";
-    }
+  if (label.classList.contains("checked")) {
+    label.classList.remove("checked");
+  } else {
+    label.classList.add("checked");
+  }
 }
