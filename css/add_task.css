@@ -88,12 +88,7 @@ input{
     width: 100%;
     background-color: white;
 }
-/* #addSubTask img{
-    background:white;
-    border-radius:0 10px 10px 0;
-    border:1px solid #D1D1D1;
-    border-left:0;
-} */
+
 .addSubTask {
     padding-right: 30px; 
     background: url(../assets/icons/addSubtask.svg) no-repeat right 10px center;
@@ -149,4 +144,8 @@ input{
 }
 .taskFormButtons div{
     gap:16px;
+}
+
+input, .addSubTask, select, textarea{
+    cursor:pointer;
 }
