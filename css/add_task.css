@@ -69,11 +69,22 @@ input{
     border:none;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     cursor:pointer;
+    gap:8px;
+    box-shadow: 0px 0px 4px 0px #0000001A;
 }
-.activePrio{
+.prioUrgentActive{
+    background: #FF3D00 !important;
+    color:white;
+}
+.prioMediumActive{
     background:#FFA800 !important;
+    color:white;
+}
+.prioLowActive{
+    background: #7AE229 !important;
+    color:white;
 }
 #date {
     outline: none !important;
