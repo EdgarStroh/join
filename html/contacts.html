@@ -48,8 +48,18 @@
                     </div>
                     <div class="contact_info flex">
                         <h3>Anton Mayer</h3>
-                        <p>antom@gmail.com</p> <!-- Name und Email werden reingerendert -->
+                        <div class="contact_tools flex">
+                            <div onclick="openEditContact()" class="edit flex"> <!-- openEditContact() als PopUp einfügen! -->
+                                <img src="../assets/icons/edit.svg" alt="Icon edit">
+                                <span>Edit</span>
+                            </div>
+                            <div onclick="deleteContact()" class="delete flex"> <!-- deleteContact() löscht den Kontakt aus firebase(?) -->
+                                <img src="../assets/icons/delete.svg" alt="Icon delete">
+                                <span>Delete</span>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <p>antom@gmail.com</p>  -->
             </div>
              </div>
              <script src="../js/contacts.js"></script>

@@ -82,10 +82,6 @@
     margin-top: 150px;
 }
 
-/* .extended_contact {
-    flex-direction: column;
-} */
-
 .slideIn.show {
     animation: slideInFromRight .12s ease-out forwards;
 }
@@ -100,4 +96,25 @@
         /* transform: translateX(-50%) translateY(-50%); */
         opacity: 1;
     }
+}
+.extended_contact {
+    display:flex;
+    flex-direction: column;
+}
+.contact_tools {
+    gap: 13px;
+}
+.edit,
+.delete {
+    cursor: pointer;
+    gap: 8px;
+}
+.edit:hover img,
+.delete:hover img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(3361%) hue-rotate(190deg) brightness(100%) contrast(103%);
+}
+
+.edit:hover,
+.delete:hover {
+    color: #007CEE;
 }
