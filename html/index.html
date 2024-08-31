@@ -27,8 +27,12 @@
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
         <form>
             <div class="input_login flex">
-                <input class="email" type="email" id="" placeholder="Email">
-                <input class="password" type="password" id="" placeholder="Password">
+                <input class="email" type="email" id="" placeholder="Email" required
+                oninput="setCustomValidity('')" 
+                oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
+                <input class="password" type="password" id="" placeholder="Password" required
+                oninput="setCustomValidity('')" 
+                oninvalid="setCustomValidity('Gib dein Passwort ein!')">
                 <!-- <div class="error_login">Check your email and password. Please try again.</div> <----- Diese Nachricht soll angezeigt werden, wenn ein Feld nicht ausgefüllt wurde--> 
                 <div class="checkbox_login flex">
                     <input type="checkbox" id="checkboxLogin" style="display:none;">
@@ -36,11 +40,11 @@
                     <span>Remember me</span>
                 </div>
             </div>
+            <div class="button_login flex">
+                <button onsubmit="" class="button">Log in</button>
+                <button class="guest_login">Guest Log in</button>
+            </div>
         </form> 
-        <div class="button_login flex">
-            <button class="button">Log in</button>
-            <button class="guest_login">Guest Log in</button>
-        </div>
     </div>
     <div class="footer">
         <a href="privacy.html">Privacy Policy</a>
@@ -56,12 +60,12 @@
             <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
             <form>
                 <div class="input_login flex">
-                    <input class="name" type="text" id="" placeholder="Name">
-                    <input class="email" type="email" id="" placeholder="Email">
-                    <input class="password" type="password" id="" placeholder="Password">
-                    <input class="password" type="password" id="" placeholder="Confirm Password">
+                    <input class="name" type="text" id="" placeholder="Name" required>
+                    <input class="email" type="email" id="" placeholder="Email" required>
+                    <input class="password" type="password" id="" placeholder="Password" required>
+                    <input class="password" type="password" id="" placeholder="Confirm Password" required>
                     <div class="checkbox_login flex center">
-                        <input type="checkbox" id="checkboxSignUp" style="display:none;">
+                        <input type="checkbox" id="checkboxSignUp" style="display:none;" required>
                         <label class="checkbox_label" id="checkboxLabelSignUp" onclick="toggleCheckbox('checkboxLabelSignUp')"></label>
                         <span>I accept the <a href="privacy.html">Privacy policy</a></span>
                     </div>
