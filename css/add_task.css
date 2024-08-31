@@ -25,7 +25,7 @@ textarea {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
 }
-textarea::placeholder {
+textarea {
     padding-top: 20px;
 }
 select{
