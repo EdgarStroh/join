@@ -81,3 +81,23 @@
     margin-left: 770px;
     margin-top: 150px;
 }
+
+/* .extended_contact {
+    flex-direction: column;
+} */
+
+.slideIn.show {
+    animation: slideInFromRight .12s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%) translateY(285%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-405%) translateY(285%);
+        /* transform: translateX(-50%) translateY(-50%); */
+        opacity: 1;
+    }
+}

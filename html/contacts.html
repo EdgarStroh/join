@@ -24,7 +24,7 @@
             <div class="contacts"> <!-- dieses div wird dynamisch erzeugt, hier nur für Anschauungszwecke -->
                 <h3>A</h3> <!-- Buchstabe wird gerendert -->
                 <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
-                <div onclick="XY" class="single_contact flex"> <!-- hier muss noch das onclick eingefügt werden, um ein pop up zu öfnnen mit den Kontaktdetails -->
+                <div onclick="openContact()" class="single_contact flex"> <!-- hier muss noch das onclick eingefügt werden, um ein pop up zu öfnnen mit den Kontaktdetails -->
                     <div class="profil_badge flex">
                         <span>AM</span> <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
                     </div>
@@ -42,7 +42,17 @@
             </svg>
             <h2>Better with a team</h2>
         </div>  
+        <div id="extended_contact" class="extended_contact hidden">
+                <div class="profil_badge flex">
+                        <span>AM</span> <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
+                    </div>
+                    <div class="contact_info flex">
+                        <h3>Anton Mayer</h3>
+                        <p>antom@gmail.com</p> <!-- Name und Email werden reingerendert -->
+                    </div>
+            </div>
              </div>
+             <script src="../js/contacts.js"></script>
 <script src="../js/edgar.js"></script>
 </body>
 </html>
