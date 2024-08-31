@@ -38,15 +38,16 @@
                         <option value="K3">Kontakt 3</option>
                     </select>
                 </section>
+                <hr id="seperationLine"></hr>
                 <section class="formPart flex">
                     <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
                     <input type="date" id="date" required>
                     <br>
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
-                        <button type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
-                        <button type="button" class="activePrio">Medium<img src="../assets/icons/prioMedium.svg"></button>
-                        <button type="button">Low<img src="../assets/icons/prioLow.svg"></button>
+                        <button id="lowPrio" type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
+                        <button id="mediumPrio" type="button" class="activePrio">Medium<img src="../assets/icons/prioMediumSelected.svg"></button>
+                        <button id="highPrio" low" type="button">Low<img src="../assets/icons/prioLow.svg"></button>
                     </section>
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>
