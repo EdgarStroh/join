@@ -1,4 +1,4 @@
-function onloadFunctionContacts(){
+function onloadFunctionData(){
     loadDataContacts("");
     loadDataBoards("");
     loadDataUsers("");
