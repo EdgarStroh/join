@@ -33,3 +33,24 @@ function closePopup() {
         popupModal.style.display = 'none';
     }, 120); // 120ms entspricht der Dauer der Animation
 }
+
+function addContact(){
+    // Get input values from the form
+    let name = document.getElementById("inputName");
+    let email = document.getElementById("inputEmail");
+    let phone = document.getElementById("inputPhone");
+
+    // Prepare the data to be sent
+    let contactData = {
+        "name": name.value,
+        "email": email.value,
+        "phone": phone.value
+    };
+
+    // Call the function to post data
+    postDataContacts("", contactData); 
+    name.value=""; 
+    email.value="";
+    phone.value="";
+    closePopup();
+}
