@@ -22,8 +22,8 @@
     </aside>
     <div class="contact_content">
         <div class="contact_list flex">
-            <button class="add_contact flex" onclick="openPopup()">Add new contact <img src="../assets/icons/add_contact.svg"
-                    alt="Icon add contact"></button>
+            <button class="add_contact flex" onclick="openPopup()">Add new contact <img
+                    src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
             <div class="contacts"> <!-- dieses div wird dynamisch erzeugt, hier nur für Anschauungszwecke -->
                 <h3>A</h3> <!-- Buchstabe wird gerendert -->
                 <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
@@ -69,9 +69,23 @@
             <!-- <p>antom@gmail.com</p>  -->
         </div>
     </div>
+
+    <!-- Pop up Content -->
+
     <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
     <div id="popupModal" class="popup-modal">
+        <div class="flex">
+            <div class="popup-bg">
+                <img class="popupLogo" src="../assets/img/logo.svg">
+                <h1 class="white">Add contact</h1>
+                <h4 class="white">Task are better with a team!</h4>
+                <img class="underline" src="../assets/icons/vector_login.svg">
+            </div>
 
+            <div>
+                <img src="../assets/img/profileImg.svg">
+            </div>
+        </div>
     </div>
     <script src="../js/contacts.js"></script>
     <script src="../js/edgar.js"></script>

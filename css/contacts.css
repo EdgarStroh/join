@@ -119,6 +119,7 @@
     color: #007CEE;
 }
 
+/* START POP UP */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -132,12 +133,11 @@
     z-index: 1000;
 }
 
-/* START POP UP */
 .popup-modal {
     width: 1050px;
-    height: 800px;
+    height: 600px;
     background-color: white;
-    padding: 65px 60px;
+    /* padding: 65px 60px; */
     border-radius: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -181,3 +181,27 @@
     }
 }
 /* ENDE POP UP */
+
+.popup-bg{
+    background-color: #2A3647;
+    width: 460px;
+    height: 600px;
+    border-top-left-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+    padding:  0 48px ;
+    align-content: center;
+}
+.white{
+    color: white;
+}
+.popupLogo{
+    width: 55.6px;
+    height: 66.48px;
+    gap: 0px;
+    opacity: 0px;
+}
+.underline {
+    width: 90px;
+    height: 4px;
+    color: #29ABE2;
+}
