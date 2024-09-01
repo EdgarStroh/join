@@ -67,6 +67,7 @@
 }
 .contact_info_extended h3 {
     font-size: 47px;
+    font-weight: 500;
     line-height: 56.4px;
 }
 .contact_info p {
@@ -104,17 +105,17 @@
 .slideIn.show {
     animation: slideIn.12s ease-out forwards;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     gap: 54px;
+    width: 100%;
 }
 @keyframes slideIn{
     0% {
-        transform: translateX(100%) translateY(285%);
+        transform: translateX(83%) translateY(90%);
         opacity: 0;
     }
     100% {
-        transform: translateX(-100%) translateY(539%);
+        transform: translateX(-80%) translateY(90%);
         opacity: 1;
     }
 }
@@ -125,6 +126,9 @@
 .delete {
     cursor: pointer;
     gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
 }
 .edit:hover img,
 .delete:hover img {
@@ -132,6 +136,26 @@
 }
 .edit:hover,
 .delete:hover {
+    color: #007CEE;
+}
+.contact_headline {
+    flex-direction: row;
+    gap: 54px;
+    align-items: center;
+}
+.contact_headline h4 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.contact_details {
+    flex-direction: column;
+    gap: 15px;
+}
+.contact_details p:nth-child(odd) {
+    font-weight: 700;
+}
+.contact_details p:nth-child(2) {
     color: #007CEE;
 }
 
