@@ -46,9 +46,14 @@ const BASE_URL_Contact = "https://join-b197b-default-rtdb.europe-west1.firebased
 // load for contacts
 async function loadDataContacts(path = "") {
     let response = await fetch(BASE_URL_Contact + path + ".json");
-    let responseToJson = await response.json();
-    console.log("Contacts:");
-    console.log(responseToJson);
+    let contactsData = await response.json();
+    console.log("Contacts:", contactsData);
+
+    // Convert the Firebase object to an array of contacts
+    let contactsObject = Object.keys(contactsData).map(key => contactsData[key]);
+
+    // Pass the contacts object to the render function
+    render(contactsObject);
 }
 
 // post for contacts

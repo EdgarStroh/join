@@ -51,24 +51,37 @@ function addContact() {
     email.value = "";
     phone.value = "";
     closePopup();
+    loadDataContacts("");
+   
 }
 
 // diese function wird im edgar.js function onloadFunctionData() aufgerufen
-function render() {
+function render(contactsObject) {
     let contacts = document.getElementById("contacts");
-    contacts.innerHTML = "";
-    contacts.innerHTML += htmlTemplateContactContent();
+    contacts.innerHTML = ""; // Clear existing content
+
+    contactsObject.forEach(contact => {
+        contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email);
+    });
+
+    
 }
 
-function htmlTemplateContactContent(){
+function htmlTemplateContactContent(name, email) {
     return `
-            <div onclick="openContact()" class="single_contact flex">
-                <div class="contact_info flex">
-                    <h3>Anton Mayer</h3>
-                    <p>antom@gmail.com</p>
-                </div>
+        <div onclick="openContact()" class="single_contact flex">
+            <div class="profil_badge flex">
+                <span>${getInitials(name)}</span> <!-- Initials -->
             </div>
+            <div class="contact_info flex">
+                <h3>${name}</h3> <!-- Rendered Name -->
+                <p>${email}</p> <!-- Rendered Email -->
+            </div>
+        </div>
     `;
+}
+function getInitials(name) {
+    return name.split(" ").map(n => n[0]).join("");
 }
 
 
