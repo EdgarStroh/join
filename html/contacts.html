@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="../css/contacts.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
+
 <body onload="onloadFunctionData()">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
@@ -20,49 +22,59 @@
     </aside>
     <div class="contact_content">
         <div class="contact_list flex">
-            <button class="add_contact flex">Add new contact <img src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
+            <button class="add_contact flex" onclick="openPopup()">Add new contact <img src="../assets/icons/add_contact.svg"
+                    alt="Icon add contact"></button>
             <div class="contacts"> <!-- dieses div wird dynamisch erzeugt, hier nur für Anschauungszwecke -->
                 <h3>A</h3> <!-- Buchstabe wird gerendert -->
                 <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
-                <div onclick="openContact()" class="single_contact flex"> <!-- hier muss noch das onclick eingefügt werden, um ein pop up zu öfnnen mit den Kontaktdetails -->
+                <div onclick="openContact()" class="single_contact flex">
+                    <!-- hier muss noch das onclick eingefügt werden, um ein pop up zu öfnnen mit den Kontaktdetails -->
                     <div class="profil_badge flex">
-                        <span>AM</span> <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
+                        <span>AM</span>
+                        <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
                     </div>
                     <div class="contact_info flex">
                         <h3>Anton Mayer</h3>
                         <p>antom@gmail.com</p> <!-- Name und Email werden reingerendert -->
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
         <div class="headline_contacts flex">
             <h1>Contacts</h1>
             <svg width="4" height="59" viewBox="0 0 4 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round"/>
+                <path d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
             </svg>
             <h2>Better with a team</h2>
-        </div>  
+        </div>
         <div id="extended_contact" class="extended_contact hidden">
-                <div class="profil_badge flex">
-                        <span>AM</span> <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
-                    </div>
-                    <div class="contact_info flex">
-                        <h3>Anton Mayer</h3>
-                        <div class="contact_tools flex">
-                            <div onclick="openEditContact()" class="edit flex"> <!-- openEditContact() als PopUp einfügen! -->
-                                <img src="../assets/icons/edit.svg" alt="Icon edit">
-                                <span>Edit</span>
-                            </div>
-                            <div onclick="deleteContact()" class="delete flex"> <!-- deleteContact() löscht den Kontakt aus firebase(?) -->
-                                <img src="../assets/icons/delete.svg" alt="Icon delete">
-                                <span>Delete</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <p>antom@gmail.com</p>  -->
+            <div class="profil_badge flex">
+                <span>AM</span>
+                <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
             </div>
-             </div>
-             <script src="../js/contacts.js"></script>
-<script src="../js/edgar.js"></script>
+            <div class="contact_info flex">
+                <h3>Anton Mayer</h3>
+                <div class="contact_tools flex">
+                    <div onclick="openEditContact()" class="edit flex"> <!-- openEditContact() als PopUp einfügen! -->
+                        <img src="../assets/icons/edit.svg" alt="Icon edit">
+                        <span>Edit</span>
+                    </div>
+                    <div onclick="deleteContact()" class="delete flex">
+                        <!-- deleteContact() löscht den Kontakt aus firebase(?) -->
+                        <img src="../assets/icons/delete.svg" alt="Icon delete">
+                        <span>Delete</span>
+                    </div>
+                </div>
+            </div>
+            <!-- <p>antom@gmail.com</p>  -->
+        </div>
+    </div>
+    <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
+    <div id="popupModal" class="popup-modal">
+
+    </div>
+    <script src="../js/contacts.js"></script>
+    <script src="../js/edgar.js"></script>
 </body>
+
 </html>
