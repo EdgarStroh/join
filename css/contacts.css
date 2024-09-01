@@ -53,13 +53,21 @@
     cursor: pointer;
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
-.contact_info {
+.contact_info,
+.contact_info_extended {
     flex-direction: column;
     gap: 8px;
 }
+/* .contact_info_extended {
+    width:100%;
+} */
 .contact_info h3{
     padding:0;
     font-weight: 400;
+}
+.contact_info_extended h3 {
+    font-size: 47px;
+    line-height: 56.4px;
 }
 .contact_info p {
     color: #007CEE;
@@ -75,31 +83,40 @@
     border-radius: 50%;
     text-align: center; 
 }
+.profil_badge_extended span {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 120px;
+    width: 120px;
+    background-color: orange; /* die Farbe muss über JS reingerendert werden, jeder User hat seine eigene Farbe */
+    color: white;
+    border-radius: 50%;
+    font-size: 47px;
+    text-align: center; 
+}
 .headline_contacts {
     align-items: center;
     gap: 30px;
     margin-left: 770px;
     margin-top: 150px;
 }
-
 .slideIn.show {
-    animation: slideInFromRight .12s ease-out forwards;
+    animation: slideIn.12s ease-out forwards;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 54px;
 }
-
-@keyframes slideInFromRight {
+@keyframes slideIn{
     0% {
         transform: translateX(100%) translateY(285%);
         opacity: 0;
     }
     100% {
-        transform: translateX(-405%) translateY(285%);
-        /* transform: translateX(-50%) translateY(-50%); */
+        transform: translateX(-100%) translateY(539%);
         opacity: 1;
     }
-}
-.extended_contact {
-    display:flex;
-    flex-direction: column;
 }
 .contact_tools {
     gap: 13px;
@@ -113,7 +130,6 @@
 .delete:hover img {
     filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(3361%) hue-rotate(190deg) brightness(100%) contrast(103%);
 }
-
 .edit:hover,
 .delete:hover {
     color: #007CEE;
@@ -236,7 +252,6 @@ input:focus {
     padding: 12px 21px;
     font-size: 20px;
 }
-
 .popup-Right-Side{
     display: flex;
     height: 100%;
@@ -251,7 +266,6 @@ input:focus {
     /* align-self: center; */
     align-self: center;
     margin-bottom: 50px;
-   
 }
 .button-DB {
     display: flex;
@@ -271,7 +285,6 @@ input:focus {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
-
 .button-white {
     display: flex;
     align-items: center;
@@ -295,9 +308,7 @@ input:focus {
     gap: 24px;
     margin-right: auto;
     padding-top: 50px;
-
 }
-
 .popup-Right-Side-Content{
     display: flex;
     align-self: center;
