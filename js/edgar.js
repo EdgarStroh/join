@@ -3,7 +3,7 @@ function onloadFunctionData() {
     loadDataContacts("");
     loadDataBoards("");
     loadDataUsers("");
-
+    render();
     // + POST +
 
     // postDataContacts("", {

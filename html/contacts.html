@@ -24,20 +24,12 @@
         <div class="contact_list flex">
             <button class="add_contact flex" onclick="openPopup()">Add new contact <img
                     src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
-            <div class="contacts"> <!-- dieses div wird dynamisch erzeugt, hier nur für Anschauungszwecke -->
-                <h3>A</h3> <!-- Buchstabe wird gerendert -->
-                <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
-                <div onclick="openContact()" class="single_contact flex">
-                    <!-- hier muss noch das onclick eingefügt werden, um ein pop up zu öfnnen mit den Kontaktdetails -->
-                    <div class="profil_badge flex">
-                        <span>AM</span>
-                        <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
-                    </div>
-                    <div class="contact_info flex">
-                        <h3>Anton Mayer</h3>
-                        <p>antom@gmail.com</p> <!-- Name und Email werden reingerendert -->
-                    </div>
-                </div>
+            <div class="contacts" id="contacts"> 
+                <!-- <h3>A</h3> Buchstabe wird gerendert -->
+                <!-- <img src="../assets/icons/seperator_contacts.svg" alt="Seperator"> -->
+                                            <!-- ++++ -->
+                <!-- dieser Inhalt wird dynamisch im contact.js erzeugt, hier nur für Anschauungszwecke -->
+                                            <!-- ++++ -->
             </div>
         </div>
         <div class="headline_contacts flex">
@@ -56,7 +48,8 @@
                 <div class="contact_info_extended flex">
                     <h3>Anton Mayer</h3>
                     <div class="contact_tools flex">
-                        <div onclick="openEditContact()" class="edit flex"> <!-- openEditContact() als PopUp einfügen! -->
+                        <div onclick="openEditContact()" class="edit flex">
+                            <!-- openEditContact() als PopUp einfügen! -->
                             <img src="../assets/icons/edit.svg" alt="Icon edit">
                             <span>Edit</span>
                         </div>
@@ -89,7 +82,7 @@
                 <h4 class="white">Task are better with a team!</h4>
                 <img class="underline" src="../assets/icons/vector_login.svg">
             </div>
-            <div class ="popup-Right-Side-Content">
+            <div class="popup-Right-Side-Content">
                 <img class="profileImg" src="../assets/img/profileImg.svg">
                 <div class="popup-Right-Side">
 
