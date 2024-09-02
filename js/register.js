@@ -1,6 +1,6 @@
 function signUpUser() {
     // Verhindert das Standard-Formularabsendeverhalten
-    event.preventDefault();
+
 
     // Eingabewerte aus dem Formular abrufen
     let userColor = getRandomColor();
@@ -29,7 +29,7 @@ function signUpUser() {
     closePopup();
 
     // Gibt true zurück, damit das Formular nicht erneut abgesendet wird
-    return false;
+    
 }
 
 function check() {
