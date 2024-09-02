@@ -2,6 +2,7 @@ function openContact() {
     document.getElementById("extended_contact").classList.remove('hidden');
     document.getElementById("extended_contact").classList.add("slideIn");
     document.getElementById("extended_contact").classList.add("show");
+    renderExtendedContact();
 }
 
 function openPopup() {
@@ -66,7 +67,6 @@ function render(contactsObject) {
             contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email);
         }
     }
-    // loadDataContacts("");
 }
 
 function htmlTemplateContactContent(name, email) {
@@ -86,18 +86,34 @@ function getInitials(name) {
     return name.split(" ").map(n => n[0]).join("");
 }
 
+function renderExtendedContact() {
+  let extendedContact = document.getElementById("extended_contact");
+  extendedContact.innerHTML = ""; // Clear existing content
+  extendedContact.innerHTML +=
 
-
-// reste vom aufbau der contact liste im html
-
-// <div onclick="openContact()" class="single_contact flex">
-// <!-- hier muss noch das onclick eingefügt werden, um ein pop up zu öfnnen mit den Kontaktdetails -->
-// <div class="profil_badge flex">
-//     <span>AM</span>
-//     <!-- Initialien werden gerendert, background-color (im CSS) muss auch gerendert werden -->
-// </div>
-// <div class="contact_info flex">
-//     <h3>Anton Mayer</h3>
-//     <p>antom@gmail.com</p> <!-- Name und Email werden reingerendert -->
-// </div>
-// </div>
+  `<div class="contact_headline flex">
+    <div class="profil_badge_extended flex">
+        <span>AM</span>
+    </div>
+    <div class="contact_info_extended flex">
+        <h3>Anton Mayer</h3>
+        <div class="contact_tools flex">
+            <div onclick="openEditContact()" class="edit flex">
+                <img src="../assets/icons/edit.svg" alt="Icon edit">
+                <span>Edit</span>
+            </div>
+            <div onclick="deleteContact()" class="delete flex">
+                <img src="../assets/icons/delete.svg" alt="Icon delete">
+                <span>Delete</span>
+            </div>
+        </div>
+    </div>
+    <h4>Contact Information</h4>
+            <div class="contact_details flex">
+                <p>Email</p>
+                <p>antom@gmail.com</p>
+                <p>Phone</p>
+                <p>+49 1111 11 111 1</p>
+            </div>
+</div>`;
+}

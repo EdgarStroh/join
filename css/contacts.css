@@ -140,6 +140,7 @@
     flex-direction: row;
     gap: 54px;
     align-items: center;
+        margin-top: 200px; 
 }
 .contact_headline h4 {
     font-size: 20px;
