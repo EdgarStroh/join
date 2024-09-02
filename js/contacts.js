@@ -54,6 +54,7 @@ function addContact() {
     phone.value = "";
     closePopup();
     loadDataContacts("");
+    renderContactList();
 }
 
 // diese function wird im edgar.js function onloadFunctionData() aufgerufen
@@ -138,11 +139,11 @@ function renderContactList() {
   let html = "";
 
   // Sortiere die Kontakte alphabetisch nach Namen
-  let sortedContacts = Object.values(allContacts).sort((a, b) =>
+  allContacts = Object.values(allContacts).sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
-  sortedContacts.forEach((contact, id) => {
+  allContacts.forEach((contact, id) => {
     const firstLetter = contact.name.charAt(0).toUpperCase();
 
     // Wenn der Buchstabe anders ist als der aktuelle Abschnittsbuchstabe, erstelle einen neuen Abschnitt
