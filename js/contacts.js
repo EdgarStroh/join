@@ -66,7 +66,7 @@ function render(contactsObject) {
             contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email);
         }
     }
-    loadDataContacts("");
+    // loadDataContacts("");
 }
 
 function htmlTemplateContactContent(name, email) {
