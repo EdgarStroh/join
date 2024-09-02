@@ -60,15 +60,21 @@
             <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
             <form>
                 <div class="input_login flex">
-                    <input class="name" type="text" id="inputName" placeholder="Name" required>
-                    <input class="email" type="email" id="inputEmail" placeholder="Email" required>
-                    <input class="password" type="password" id="inputPassword" placeholder="Password" required>
-                    <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required>
-                    <!-- <div class="checkbox_login flex center">
-                        <input type="checkbox" id="checkboxSignUp" style="display:none;" required>
-                        <label class="checkbox_label" id="checkboxLabelSignUp" onclick="toggleCheckbox('checkboxLabelSignUp')"></label>
-                        <span>I accept the <a href="privacy.html">Privacy policy</a></span>
-                    </div> -->
+                    <input class="name" type="text" id="inputName" placeholder="Name" required
+                    oninput="setCustomValidity('')" 
+                    oninvalid="setCustomValidity('Bitte gib einen Namen ein!')">
+                    
+                    <input class="email" type="email" id="inputEmail" placeholder="Email" required
+                    oninput="setCustomValidity('')" 
+                    oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
+            
+                    <input class="password" type="password" id="inputPassword" placeholder="Password" required
+                    oninput="check()"
+                    oninvalid="setCustomValidity('Bitte gib ein Password ein!')">
+                    
+                    <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required
+                    oninput="check()"
+                    oninvalid="setCustomValidity('Bitte gib ein Password ein!')">
                 </div>
                 <div class="button_login flex">
                     <button onclick="signUpUser()" class="button">Sign up</button>
