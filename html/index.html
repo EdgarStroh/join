@@ -58,7 +58,7 @@
                 <h1>Sign up</h1>
             </div>
             <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
-            <form>
+            <form id="signupForm" onsubmit="return signUpUser();">
                 <div class="input_login flex">
                     <input class="name" type="text" id="inputName" placeholder="Name" required
                     oninput="setCustomValidity('')" 
@@ -74,10 +74,10 @@
                     
                     <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required
                     oninput="check()"
-                    oninvalid="setCustomValidity('Bitte gib ein Password ein!')">
+                    oninvalid="setCustomValidity('Bitte gib bestätige dein Password!')">
                 </div>
                 <div class="button_login flex">
-                    <button onclick="signUpUser()" class="button">Sign up</button>
+                    <button type="submit" class="button">Sign up</button>
                 </div>
             </form>
         </div>
