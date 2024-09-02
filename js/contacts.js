@@ -57,15 +57,22 @@ function addContact() {
 
 // diese function wird im edgar.js function onloadFunctionData() aufgerufen
 function render(contactsObject) {
-    let contacts = document.getElementById("contacts");
-    contacts.innerHTML = ""; // Clear existing content
+  let contacts = document.getElementById("contacts");
+  contacts.innerHTML = ""; // Clear existing content
 
-    contactsObject.forEach(contact => {
-        contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email);
-    });
-
-    
+  // Iterate over each key in the contactsObject
+  for (let key in contactsObject) {
+    if (contactsObject.hasOwnProperty(key)) {
+      let contact = contactsObject[key];
+      contacts.innerHTML += htmlTemplateContactContent(
+        contact.name,
+        contact.email
+      );
+    }
+  }
+  loadDataContacts("");
 }
+
 
 function htmlTemplateContactContent(name, email) {
     return `
