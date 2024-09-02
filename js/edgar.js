@@ -53,6 +53,7 @@ async function loadDataContacts(path = "") {
 
     // Pass the contacts object to the render function
     render(contactsObject);
+    renderExtendedContact(contactsObject);
 }
 
 // post for contacts

@@ -2,7 +2,7 @@ function openContact() {
     document.getElementById("extended_contact").classList.remove('hidden');
     document.getElementById("extended_contact").classList.add("slideIn");
     document.getElementById("extended_contact").classList.add("show");
-    renderExtendedContact();
+    renderExtendedContact(name, email, phone);
 }
 
 function openPopup() {
@@ -86,17 +86,31 @@ function getInitials(name) {
     return name.split(" ").map(n => n[0]).join("");
 }
 
-function renderExtendedContact() {
+function renderExtendedContact(contactsObject) {
   let extendedContact = document.getElementById("extended_contact");
   extendedContact.innerHTML = ""; // Clear existing content
-  extendedContact.innerHTML +=
 
-  `<div class="contact_headline flex">
+  // Iterate over each key in the contactsObject
+  for (let key in contactsObject) {
+    if (contactsObject.hasOwnProperty(key)) {
+      let extendedContacts = contactsObject[key];
+      extendedContact.innerHTML += htmlTemplateExtendedContact(
+        extendedContacts.name,
+        extendedContacts.email,
+        extendedContacts.phone
+      );
+    }
+  }
+}  
+  
+function htmlTemplateExtendedContact(name,email,phone) {
+    return `
+    <div class="contact_headline flex">
     <div class="profil_badge_extended flex">
-        <span>AM</span>
+        <span>${getInitials(name)}</span>
     </div>
     <div class="contact_info_extended flex">
-        <h3>Anton Mayer</h3>
+        <h3>${name}</h3>
         <div class="contact_tools flex">
             <div onclick="openEditContact()" class="edit flex">
                 <img src="../assets/icons/edit.svg" alt="Icon edit">
@@ -111,9 +125,10 @@ function renderExtendedContact() {
     <h4>Contact Information</h4>
             <div class="contact_details flex">
                 <p>Email</p>
-                <p>antom@gmail.com</p>
+                <p>${email}</p>
                 <p>Phone</p>
-                <p>+49 1111 11 111 1</p>
+                <p>${phone}</p>
             </div>
 </div>`;
-}
+
+};
