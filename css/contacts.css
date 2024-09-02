@@ -147,7 +147,7 @@
 .contact_headline {
     flex-direction: column;
     gap: 54px;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 200px; 
 }
 .contact_headline h4 {
@@ -353,16 +353,17 @@ input:focus {
     align-self: center;
     padding: 0px 0 0 40px;
 }
-
-
 .close {
-    position: absolute;
-    top: 48px;
-    right: 32px;
+    position: fixed;
+    top: 53px;
+    right: 37px;
     cursor: pointer;
     height: 20px;
 }
-.close:hover {
+.close_container:hover {
+    position: fixed;
+    top: 48px;
+    right: 32px;
     background-color: #EEEEEE;
     height: 30px;
     width: 30px;
