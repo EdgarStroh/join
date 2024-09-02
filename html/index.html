@@ -27,10 +27,10 @@
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
         <form>
             <div class="input_login flex">
-                <input class="email" type="email" id="" placeholder="Email" required
+                <input class="email" type="email"  placeholder="Email" required
                 oninput="setCustomValidity('')" 
                 oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
-                <input class="password" type="password" id="" placeholder="Password" required
+                <input class="password" type="password"  placeholder="Password" required
                 oninput="setCustomValidity('')" 
                 oninvalid="setCustomValidity('Gib dein Passwort ein!')">
                 <!-- <div class="error_login">Check your email and password. Please try again.</div> <----- Diese Nachricht soll angezeigt werden, wenn ein Feld nicht ausgefüllt wurde--> 
@@ -58,7 +58,7 @@
                 <h1>Sign up</h1>
             </div>
             <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
-            <form id="signupForm" onsubmit="return signUpUser();">
+            <form onsubmit="return signUpUser();">
                 <div class="input_login flex">
                     <input class="name" type="text" id="inputName" placeholder="Name" required
                     oninput="setCustomValidity('')" 

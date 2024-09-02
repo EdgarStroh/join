@@ -25,11 +25,7 @@ function signUpUser() {
     document.getElementById("inputPassword").value = "";
     document.getElementById("inputConfirmPassword").value = "";
 
-    // Popup schließen (falls vorhanden)
-    closePopup();
-
-    // Gibt true zurück, damit das Formular nicht erneut abgesendet wird
-    
+    // window.location.reload();
 }
 
 function check() {
