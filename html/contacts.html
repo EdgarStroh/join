@@ -79,22 +79,23 @@
             <div class="popup-bg">
                 <img class="popupLogo" src="../assets/img/logo.svg">
                 <h1 class="white">Add contact</h1>
-                <h4 class="white">Task are better with a team!</h4>
+                <h4 class="white">Tasks are better with a team!</h4>
                 <img class="underline" src="../assets/icons/vector_login.svg">
             </div>
             <div class="popup-Right-Side-Content">
                 <img class="profileImg" src="../assets/img/profileImg.svg">
                 <div class="popup-Right-Side">
-
-                    <div class="input_login flex">
-                        <input class="name" type="text" id="inputName" placeholder="Name" required>
-                        <input class="email" type="email" id="inputEmail" placeholder="Email" required>
-                        <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required>
-                    </div>
-                    <div class="button-line flex">
-                        <button class="button-white" onclick="closePopup()">Cancel <img src="../assets/icons/cancelTask.svg" alt="Icon cancel"></button>
-                        <button class="button-DB" onclick="addContact()">Create contact <img src="../assets/icons/createTask.svg" alt="Icon create"></button>
-                    </div>
+                    <form>
+                        <div class="input_login flex">
+                            <input class="name" type="text" id="inputName" placeholder="Name" required>
+                            <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required>
+                        </div>
+                        <div class="button-line flex">
+                            <button class="button-white" onclick="closePopup()">Cancel <img src="../assets/icons/cancelTask.svg" alt="Icon cancel"></button>
+                            <button class="button-DB" onsubmit="addContact()">Create contact <img src="../assets/icons/createTask.svg" alt="Icon create"></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

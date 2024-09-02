@@ -222,7 +222,7 @@
 
 .popup-bg{
     background-color: #2A3647;
-    width: 460px;
+    width: 465px;
     height: 600px;
     border-top-left-radius: 30px; 
     border-bottom-left-radius: 30px; 
@@ -263,6 +263,11 @@ input:focus {
 .email {
     padding-right: 30px; 
     background: url(../assets/icons/mail.svg) no-repeat right 21px center;
+    background-size: 20px 20px; 
+}
+.phone {
+    padding-right: 30px; 
+    background: url(../assets/icons/call.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
 }
 
