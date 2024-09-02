@@ -1,9 +1,13 @@
 .contact_content {
-    display: flex;
     flex-direction: row;
     background-color: #F6F7F8;
     height: 100vh;
     align-items: flex-start;
+}
+.contact_content_extended {
+    flex-direction: row;
+    align-items: center;
+    gap: 54px;
 }
 .contact_list {
     flex-direction: column;
@@ -70,6 +74,10 @@
 .contact_info p {
     color: #007CEE;
 }
+.extended_contact {
+    margin-top: 123px;
+    margin-left: -570px;
+}
 .profil_badge span {
     display: flex;
     justify-content: center; 
@@ -81,7 +89,7 @@
     border-radius: 50%;
     text-align: center; 
 }
-.profil_badge_extended span {
+.profil_badge_extended {
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -137,10 +145,10 @@
     color: #007CEE;
 }
 .contact_headline {
-    flex-direction: row;
+    flex-direction: column;
     gap: 54px;
     align-items: center;
-        margin-top: 200px; 
+    margin-top: 200px; 
 }
 .contact_headline h4 {
     font-size: 20px;

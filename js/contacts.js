@@ -102,10 +102,9 @@ extendedContact.innerHTML += htmlTemplateExtendedContact(
 function htmlTemplateExtendedContact(name,email,phone) {
     return `
     <div class="contact_headline flex">
-    <div class="profil_badge_extended flex">
-        <span>${getInitials(name)}</span>
-    </div>
-    <div class="contact_info_extended flex">
+    <div class="contact_content_extended flex">
+        <span class="profil_badge_extended flex">${getInitials(name)}</span>
+        <div class="contact_info_extended flex">
         <h3>${name}</h3>
         <div class="contact_tools flex">
             <div onclick="openEditContact()" class="edit flex">
@@ -118,6 +117,8 @@ function htmlTemplateExtendedContact(name,email,phone) {
             </div>
         </div>
     </div>
+    </div>
+
     <h4>Contact Information</h4>
             <div class="contact_details flex">
                 <p>Email</p>
