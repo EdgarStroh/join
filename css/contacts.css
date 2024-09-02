@@ -326,6 +326,9 @@ input:focus {
     color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
+.button-white:hover img {
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(100%) contrast(100%);
+}
 .button-line{
     gap: 24px;
     margin-right: auto;
