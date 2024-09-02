@@ -60,10 +60,10 @@
             <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
             <form>
                 <div class="input_login flex">
-                    <input class="name" type="text" id="" placeholder="Name" required>
-                    <input class="email" type="email" id="" placeholder="Email" required>
-                    <input class="password" type="password" id="" placeholder="Password" required>
-                    <input class="password" type="password" id="" placeholder="Confirm Password" required>
+                    <input class="name" type="text" id="inputName" placeholder="Name" required>
+                    <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                    <input class="password" type="password" id="inputPassword" placeholder="Password" required>
+                    <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required>
                     <div class="checkbox_login flex center">
                         <input type="checkbox" id="checkboxSignUp" style="display:none;" required>
                         <label class="checkbox_label" id="checkboxLabelSignUp" onclick="toggleCheckbox('checkboxLabelSignUp')"></label>
@@ -71,11 +71,14 @@
                     </div>
                 </div>
                 <div class="button_login flex">
-                    <button onsubmit="" class="button">Sign up</button>
+                    <button onclick="signUpUser()" class="button">Sign up</button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="../js/edgar.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
 

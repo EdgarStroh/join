@@ -102,6 +102,7 @@ const BASE_URL_USERS = "https://join-b197b-default-rtdb.europe-west1.firebasedat
 async function loadDataUsers(path = "") {
     let response = await fetch(BASE_URL_USERS + path + ".json");
     let responseToJson = await response.json();
+    
 }
 // post users
 async function postDataUsers(path = "", data = {}) {
