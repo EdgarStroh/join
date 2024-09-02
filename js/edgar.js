@@ -5,7 +5,7 @@ function onloadFunctionData() {
     loadDataContacts("");
     loadDataBoards("");
     loadDataUsers("");
-    render();
+    renderContactList();
     // + POST +
 
     // postDataContacts("", {
@@ -54,7 +54,7 @@ async function loadDataContacts(path = "") {
     allContacts = Object.keys(contactsData).map(key => contactsData[key]);
 
     // Pass the contacts object to the render function
-    render(allContacts);
+    renderContactList(allContacts);
     // renderExtendedContact(contactsObject);
 }
 

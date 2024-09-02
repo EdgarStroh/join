@@ -129,3 +129,41 @@ function htmlTemplateExtendedContact(name,email,phone) {
 </div>`;
 
 };
+
+function renderContactList() {
+  let contactsContainer = document.getElementById("contacts");
+  contactsContainer.innerHTML = ""; // Clear existing content
+
+  let currentLetter = "";
+  let html = "";
+
+  // Sortiere die Kontakte alphabetisch nach Namen
+  let sortedContacts = Object.values(allContacts).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+  sortedContacts.forEach((contact, id) => {
+    const firstLetter = contact.name.charAt(0).toUpperCase();
+
+    // Wenn der Buchstabe anders ist als der aktuelle Abschnittsbuchstabe, erstelle einen neuen Abschnitt
+    if (firstLetter !== currentLetter) {
+      currentLetter = firstLetter;
+      html += generateLetterSectionHTML(currentLetter);
+    }
+
+    // Füge den Kontakt dem HTML hinzu
+    html += htmlTemplateContactContent(contact.name, contact.email, id);
+  });
+
+  // Füge den generierten HTML-Inhalt in das Kontaktelement ein
+  contactsContainer.innerHTML = html;
+}
+
+// Funktion zur Erstellung des Buchstabenabschnitts
+function generateLetterSectionHTML(letter) {
+  return `
+        <div class="letter_section">
+            <h2>${letter}</h2>
+        </div>
+    `;
+}
