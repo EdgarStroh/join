@@ -1,3 +1,5 @@
+let allContacts = [];
+
 function onloadFunctionData() {
     // + LOAD +
     loadDataContacts("");
@@ -49,11 +51,11 @@ async function loadDataContacts(path = "") {
     let contactsData = await response.json();
 
     // Convert the Firebase object to an array of contacts
-    let contactsObject = Object.keys(contactsData).map(key => contactsData[key]);
+    allContacts = Object.keys(contactsData).map(key => contactsData[key]);
 
     // Pass the contacts object to the render function
-    render(contactsObject);
-    renderExtendedContact(contactsObject);
+    render(allContacts);
+    // renderExtendedContact(contactsObject);
 }
 
 // post for contacts

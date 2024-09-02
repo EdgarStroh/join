@@ -1,9 +1,10 @@
-function openContact() {
-    document.getElementById("extended_contact").classList.remove('hidden');
-    document.getElementById("extended_contact").classList.add("slideIn");
-    document.getElementById("extended_contact").classList.add("show");
-    renderExtendedContact(email, phone);
+function openContact(id) {
+    // document.getElementById("extended_contact").classList.remove('hidden');
+    // document.getElementById("extended_contact").classList.add("slideIn");
+    // document.getElementById("extended_contact").classList.add("show");
+    renderExtendedContact(allContacts[id]);
 }
+// bei Bedarf rendern
 
 function openPopup() {
     const popupOverlay = document.getElementById('popupOverlay');
@@ -64,14 +65,14 @@ function render(contactsObject) {
     for (let key in contactsObject) {
         if (contactsObject.hasOwnProperty(key)) {
             let contact = contactsObject[key];
-            contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email);
+            contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email, key);
         }
     }
 }
 
-function htmlTemplateContactContent(name, email) {
+function htmlTemplateContactContent(name, email, id) {
     return `
-        <div onclick="openContact()" class="single_contact flex">
+        <div onclick="openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
                 <span>${getInitials(name)}</span> <!-- Initials -->
             </div>
@@ -90,18 +91,13 @@ function renderExtendedContact(contactsObject) {
   let extendedContact = document.getElementById("extended_contact");
   extendedContact.innerHTML = ""; // Clear existing content
 
-  // Iterate over each key in the contactsObject
-  for (let key in contactsObject) {
-    if (contactsObject.hasOwnProperty(key)) {
-      let extendedContacts = contactsObject[key];
-      extendedContact.innerHTML += htmlTemplateExtendedContact(
-        extendedContacts.name,
-        extendedContacts.email,
-        extendedContacts.phone
+extendedContact.innerHTML += htmlTemplateExtendedContact(
+        contactsObject.name,
+        contactsObject.email,
+        contactsObject.phone
       );
-    }
-  }
-}  
+}
+ 
   
 function htmlTemplateExtendedContact(name,email,phone) {
     return `
