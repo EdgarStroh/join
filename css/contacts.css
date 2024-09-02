@@ -345,3 +345,18 @@ input:focus {
     align-self: center;
     padding: 0px 0 0 40px;
 }
+
+
+.close {
+    position: absolute;
+    top: 48px;
+    right: 32px;
+    cursor: pointer;
+    height: 20px;
+}
+.close:hover {
+    background-color: #EEEEEE;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
