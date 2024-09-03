@@ -1,6 +1,6 @@
-function signUpUser() {
+function signUpUser(event) {
     // Verhindert das Standard-Formularabsendeverhalten
-
+    event.preventDefault();
 
     // Eingabewerte aus dem Formular abrufen
     let userColor = getRandomColor();
@@ -24,8 +24,7 @@ function signUpUser() {
     document.getElementById("inputEmail").value = "";
     document.getElementById("inputPassword").value = "";
     document.getElementById("inputConfirmPassword").value = "";
-
-    // window.location.reload();
+    closePopup();
 }
 
 function check() {
