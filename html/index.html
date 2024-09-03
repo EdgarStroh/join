@@ -27,7 +27,7 @@
     <div class="log_in_container flex">
         <h1>Log in</h1>
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
-        <form action="summary.html" >
+        <form action="summary.html">
             <div class="input_login flex">
                 <input class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
@@ -71,7 +71,7 @@
                         <input type="checkbox" id="checkboxLogin1" for="checkboxSubmit" name="checkboxPrivacyPolicy"
                             required>
                         <label class="checkbox_label loginText" for="checkboxSubmit">
-                            I accept the 
+                            I accept the
                             <a href="privacy.html">Privacy Policy</a>
                         </label>
 
@@ -83,6 +83,18 @@
             </form>
         </div>
     </div>
+
+    <div id="popupOverlay" class="popup-overlay flex"></div>
+    <!-- Success Message -->
+    <div id="popupSuccess" class="success flex">
+        <p>You Signed Up successfully</p>
+    </div>
+
+    <!-- Das Pop-up mit der Klasse "success" -->
+    <!-- <div id="popupSuccess" class="success">
+        
+    </div> -->
+
     <script src="../js/edgar.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/script.js"></script>
