@@ -1,7 +1,6 @@
 function signUpUser(event) {
     const checkbox = document.getElementById('checkboxLogin1');
     if (!checkbox.checked) {
-        alert('Please accept the Privacy policy to sign up.');
         event.preventDefault();
         return false;
     }
@@ -27,6 +26,7 @@ function signUpUser(event) {
     document.getElementById("inputPassword").value = "";
     document.getElementById("inputConfirmPassword").value = "";
     document.getElementById("sign_up_button_div").classList.remove("displayNone");
+    checkbox.checked = false;
     closePopup();
     showPopup();
 }
@@ -41,8 +41,17 @@ function check() {
 }
 
 function showPopup() {
-    document.getElementById('popupOverlay').style.display = 'flex';
-    document.getElementById('popupSuccess').style.display = 'flex';
+    const overlay = document.getElementById('popupOverlay');
+    const success = document.getElementById('popupSuccess');
+
+    overlay.style.display = 'flex';
+    success.style.display = 'flex';
+    success.style.opacity = '0'; // Setze die Sichtbarkeit auf 0, bevor die Animation startet
+
+    // Füge eine kurze Verzögerung hinzu, um die Animation zu starten
+    setTimeout(() => {
+        success.style.opacity = '1'; // Zeige die Animation
+    }, 1);
 
     setTimeout(function() {
         closePopupSuccess();

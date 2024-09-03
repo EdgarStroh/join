@@ -238,19 +238,21 @@ input[type="checkbox"] {
 
 .success {
     width: 312px;
-    height:65px;
+    height: 65px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color:  #2A3647;
+    background-color: #2A3647;
     color: white;
-    padding:0px 25px, 0px 25px;
+    padding: 0px 25px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-     display: none; 
+    display: none; 
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
 }
 
 .popup-overlay {
@@ -262,4 +264,14 @@ input[type="checkbox"] {
     background-color: rgba(0, 0, 0, 0.1);
     display: none; 
     z-index: 1;
+}
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
 }
