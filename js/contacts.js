@@ -1,5 +1,5 @@
 function openContact(id) {
-    renderExtendedContact(allContacts[id]);
+    renderExtendedContact(id);
 }
 
 function togglePopup(popupOverlayId, popupModalId, show = true) {
@@ -30,8 +30,9 @@ function closePopup() {
   togglePopup("popupOverlay", "popupModal", false);
 }
 
-function openEditContact() {
-  togglePopup("popupEditOverlay", "popupEditModal", true);
+function openEditContact(id) {
+    renderEditContact(id);
+    togglePopup("popupEditOverlay", "popupEditModal", true);
 }
 
 function closeEditContact() {
@@ -57,6 +58,27 @@ function addContact() {
     closePopup();
     loadDataContacts("");
     renderContactList();
+}
+
+function editContact() {
+  // Get input values from the form
+  let name = document.getElementById("inputEditName");
+  let email = document.getElementById("inputEditEmail");
+  let phone = document.getElementById("inputEditPhone");
+  // Prepare the data to be sent
+  let contactData = {
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+  };
+  // Call the function to post data
+//   postDataContacts("", contactData);    ---> hier muss PUT eingesetzt werden!!!
+//   name.value = "";
+//   email.value = "";
+//   phone.value = "";
+  closePopup();
+  loadDataContacts("");
+  renderContactList();
 }
 
 // diese function wird im edgar.js function onloadFunctionData() aufgerufen
@@ -90,19 +112,20 @@ function getInitials(name) {
     return name.split(" ").map(n => n[0]).join("");
 }
 
-function renderExtendedContact(contactsObject) {
+function renderExtendedContact(id) {
   let extendedContact = document.getElementById("extended_contact");
   extendedContact.innerHTML = ""; // Clear existing content
 
 extendedContact.innerHTML += htmlTemplateExtendedContact(
-        contactsObject.name,
-        contactsObject.email,
-        contactsObject.phone
+        allContacts[id].name,
+        allContacts[id].email,
+        allContacts[id].phone,
+        id // evtl muss das noch in die firebase id geändert werden!!!
       );
 }
  
   
-function htmlTemplateExtendedContact(name,email,phone) {
+function htmlTemplateExtendedContact(name,email,phone,id) {
     return `
     <div class="contact_headline flex">
     <div class="contact_content_extended flex">
@@ -110,7 +133,7 @@ function htmlTemplateExtendedContact(name,email,phone) {
         <div class="contact_info_extended flex">
         <h3>${name}</h3>
         <div class="contact_tools flex">
-            <div onclick="openEditContact()" class="edit flex">
+            <div onclick="openEditContact(${id})" class="edit flex">
                 <img src="../assets/icons/edit.svg" alt="Icon edit">
                 <span>Edit</span>
             </div>
@@ -172,3 +195,38 @@ function generateLetterSectionHTML(letter) {
     `;
 }
 
+function renderEditContact(id) {
+    let editContainer = document.getElementById('popupEditModal');
+    editContainer.innerHTML = generateEditContact(id);
+}
+
+function generateEditContact(id){
+    return `<div class="flex">
+            <div class="popup-bg">
+                <img class="popupLogo" src="../assets/img/logo.svg">
+                <h1 class="white">Edit contact</h1>
+                <img class="underline" src="../assets/icons/vector_login.svg">
+            </div>
+            <div class="popup-Right-Side-Content">
+                <div class="close_container">
+                    <img class="close" onclick="closeEditContact()" src="../assets/icons/close.svg" alt="Icon close">
+                </div>
+                <img class="profileImg" src="../assets/img/profileImg.svg">
+                <div class="popup-Right-Side">
+                    <form>
+                        <div class="input_login flex">
+                            <input class="name" type="text" id="inputEditName" placeholder="Name" value="${allContacts[id].name}" required>
+                            <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${allContacts[id].email}" required>
+                            <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${allContacts[id].phone}" required>
+                        </div>
+                        <div class="button-line flex">
+                            <button class="button-white" onclick="closePopup()">Delete <img src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
+                            <button class="button-DB" onclick="editContact()">Save <img src="../assets/icons/create.svg" alt="Icon create"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+
+}
