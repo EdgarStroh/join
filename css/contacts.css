@@ -16,7 +16,7 @@
     align-items: center;
     position: fixed;
     width: 456px;
-    height: 100vh;
+    height: calc(100svh - 96px);
     background-color: white;
     margin: 100px 0 0 235px;
     box-shadow: 4px 0px 6px 0px #00000014;
