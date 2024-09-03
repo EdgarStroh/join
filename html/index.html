@@ -75,6 +75,12 @@
                     <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required
                     oninput="check()"
                     oninvalid="setCustomValidity('Passwort stimmt nicht überein!')">
+
+                    <div class="checkbox_login flex" >
+                        <input type="checkbox" id="checkboxLogin1" style="display:none;">
+                        <label class="checkbox_label" id="checkboxLabelLogin1" onclick="toggleCheckbox('checkboxLabelLogin1')"></label>
+                        <span>I accept the Privacy policy</span>
+                    </div>
                 </div>
                 <div class="button_login flex">
                     <button type="submit" class="button">Sign up</button>
