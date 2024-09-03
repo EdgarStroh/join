@@ -1,39 +1,41 @@
 function openContact(id) {
-    // document.getElementById("extended_contact").classList.remove('hidden');
-    // document.getElementById("extended_contact").classList.add("slideIn");
-    // document.getElementById("extended_contact").classList.add("show");
     renderExtendedContact(allContacts[id]);
 }
-// bei Bedarf rendern
+
+function togglePopup(popupOverlayId, popupModalId, show = true) {
+  const popupOverlay = document.getElementById(popupOverlayId);
+  const popupModal = document.getElementById(popupModalId);
+
+  if (show) {
+    popupOverlay.style.display = "flex";
+    popupModal.style.display = "block";
+    popupModal.classList.remove("hide");
+    popupModal.classList.add("show");
+  } else {
+    popupOverlay.style.display = "none";
+    popupModal.classList.remove("show");
+    popupModal.classList.add("hide");
+
+    setTimeout(() => {
+      popupModal.style.display = "none";
+    }, 120);
+  }
+}
 
 function openPopup() {
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupModal = document.getElementById('popupModal');
-
-    // Zeige das Overlay und das Popup an
-    popupOverlay.style.display = 'flex';
-    popupModal.style.display = 'block';
-
-    // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
-    popupModal.classList.remove('hide');
-    popupModal.classList.add('show');
+  togglePopup("popupOverlay", "popupModal", true);
 }
 
 function closePopup() {
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupModal = document.getElementById('popupModal');
+  togglePopup("popupOverlay", "popupModal", false);
+}
 
-    // Verstecke das Overlay sofort
-    popupOverlay.style.display = 'none';
+function openEditContact() {
+  togglePopup("popupEditOverlay", "popupEditModal", true);
+}
 
-    // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
-    popupModal.classList.remove('show');
-    popupModal.classList.add('hide');
-
-    // Verstecke das Popup nach der Animation (120ms)
-    setTimeout(() => {
-        popupModal.style.display = 'none';
-    }, 120); // 120ms entspricht der Dauer der Animation
+function closeEditContact() {
+  togglePopup("popupEditOverlay", "popupEditModal", false);
 }
 
 function addContact() {
@@ -170,29 +172,3 @@ function generateLetterSectionHTML(letter) {
     `;
 }
 
-function openEditContact(){
-    const popupEditOverlay = document.getElementById("popupEditOverlay");
-    const popupEditModal = document.getElementById("popupEditModal");
-
-    popupEditOverlay.style.display = "flex";
-    popupEditModal.style.display = "block";
-
-    popupEditModal.classList.remove("hide");
-    popupEditModal.classList.add("show");
-}
-function closeEditContact() {
-  const popupEditOverlay = document.getElementById("popupEditOverlay");
-  const popupEditModal = document.getElementById("popupEditModal");
-
-  // Verstecke das Overlay sofort
-  popupEditOverlay.style.display = "none";
-
-  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
-  popupEditModal.classList.remove("show");
-  popupEditModal.classList.add("hide");
-
-  // Verstecke das Popup nach der Animation (120ms)
-  setTimeout(() => {
-    popupModal.style.display = "none";
-  }, 120); // 120ms entspricht der Dauer der Animation
-}
