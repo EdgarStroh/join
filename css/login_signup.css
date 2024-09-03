@@ -128,10 +128,13 @@ input:focus {
     font-size: 20px;
     font-weight: 400;
 }
+.padding-left{
+ padding-left: 35px;
+}
 .checkbox_login {
     align-items: center;
     gap: 8px;
-    padding-left: 34px;
+   
 }
 .checkbox_login input {
     cursor: pointer;
@@ -149,6 +152,11 @@ input:focus {
 }
 .footer{
     height: 55px;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    height: 65px;
+    width: 265px;
 }
 .footer a {
     
@@ -209,15 +217,18 @@ input:focus {
     width: 32px;
     border-radius: 50%;
 }
-.checkbox_label {
+input[type="checkbox"] {
     display: inline-block;
     width: 17px;
     height: 18px;
-    background-image: url(../assets/icons/checkbox.svg);
+    background-image: url('../assets/icons/checkbox.svg');
     background-size: cover;
     cursor: pointer;
-}
-.checkbox_label.checked {
+    -webkit-appearance: none; /* Entfernt die Standard-Styling für Webkit-Browser */
+    appearance: none; /* Entfernt die Standard-Styling für andere Browser */
+    /* Weitere Stile können hier hinzugefügt werden */
+  }
+  input[type="checkbox"]:checked {
     background-image: url(../assets/icons/checkbox_checked.svg);
 }
 .error_login {
@@ -225,6 +236,9 @@ input:focus {
     display: flex;
     justify-content: center;
 }
-.align-self{
-    align-self: center;
+.margin-width-auto{
+    margin: 0 auto;
+}
+.checkbox_login .checkbox_label a:hover {
+    font-size: 16.3px;
 }

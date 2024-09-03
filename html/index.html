@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <script src="../js/login.js"></script>
     <script src="../js/register.js"></script>
 </head>
+
 <body>
     <div class="sign_up_container flex">
         <img src="../assets/icons/logo_black.svg" alt="Logo Join">
@@ -24,27 +26,23 @@
     </div>
     <div class="log_in_container flex">
         <h1>Log in</h1>
-        <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
+        <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
         <form>
             <div class="input_login flex">
-                <input class="email" type="email"  placeholder="Email" required
-                oninput="setCustomValidity('')" 
-                oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
-                <input class="password" type="password"  placeholder="Password" required
-                oninput="setCustomValidity('')" 
-                oninvalid="setCustomValidity('Gib dein Passwort ein!')">
-                <!-- <div class="error_login">Check your email and password. Please try again.</div> <----- Diese Nachricht soll angezeigt werden, wenn ein Feld nicht ausgefüllt wurde--> 
-                <div class="checkbox_login flex">
-                    <input type="checkbox" id="checkboxLogin" style="display:none;">
-                    <label class="checkbox_label" id="checkboxLabelLogin" onclick="toggleCheckbox('checkboxLabelLogin')"></label>
-                    <span>Remember me</span>
+                <input class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
+                    oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
+                <input class="password" type="password" placeholder="Password" required oninput="setCustomValidity('')"
+                    oninvalid="setCustomValidity('Gib dein Passwort ein!')">
+                <!-- <div class="error_login">Check your email and password. Please try again.</div> <----- Diese Nachricht soll angezeigt werden, wenn ein Feld nicht ausgefüllt wurde-->
+                <div class="checkbox_login flex padding-left">
+                    <input type="checkbox" id="checkboxLogin" for="checkboxLogin" name="checkboxLogin" required>
+                    <label class="checkbox_label " for="checkboxLogin">Remember me</label>
                 </div>
-            </div>
-            <div class="button_login flex">
-                <button onsubmit="" class="button">Log in</button>
-                <button class="guest_login">Guest Log in</button>
-            </div>
-        </form> 
+                <div class="button_login flex ">
+                    <button onsubmit="" class="button">Log in</button>
+                    <button class="guest_login">Guest Log in</button>
+                </div>
+        </form>
     </div>
     <div class="footer">
         <a href="privacy.html">Privacy Policy</a>
@@ -52,34 +50,31 @@
     </div>
     <!-- <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div> -->
     <div id="popupModal" class="popup-modal">
-        <img onclick="closePopup()" class="arrow_left_signup" src="../assets/icons/arrow_left.svg" alt="Icon arrow left">
+        <img onclick="closePopup()" class="arrow_left_signup" src="../assets/icons/arrow_left.svg"
+            alt="Icon arrow left">
         <div class="log_in_container flex no_shadow">
             <div>
                 <h1>Sign up</h1>
             </div>
-            <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline"> 
+            <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
             <form onsubmit="return signUpUser(event);">
                 <div class="input_login flex">
                     <input class="name" type="text" id="inputName" placeholder="Name" required
-                    oninput="setCustomValidity('')" >
-                 
-                    
+                        oninput="setCustomValidity('')">
                     <input class="email" type="email" id="inputEmail" placeholder="Email" required
-                    oninput="setCustomValidity('')">
-                  
-            
+                        oninput="setCustomValidity('')">
                     <input class="password" type="password" id="inputPassword" placeholder="Password" required
-                    oninput="check()">
-                   
-                    
-                    <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required
-                    oninput="check()">
-                    
+                        oninput="check()">
+                    <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password"
+                        required oninput="check()">
+                    <div class="checkbox_login flex margin-width-auto">
+                        <input type="checkbox" id="checkboxLogin1" for="checkboxSubmit" name="checkboxPrivacyPolicy"
+                            required>
+                        <label class="checkbox_label loginText" for="checkboxSubmit">
+                            I accept the 
+                            <a href="privacy.html">Privacy Policy</a>
+                        </label>
 
-                    <div class="checkbox_login flex">
-                        <input type="checkbox" id="checkboxLogin1" required >
-                        <label class="checkbox_label" id="checkboxLabelLogin1" onclick="toggleCheckbox('checkboxLabelLogin1')"></label>
-                        <span>I accept the Privacy policy</span>
                     </div>
                 </div>
                 <div class="button_login flex">
@@ -92,5 +87,5 @@
     <script src="../js/register.js"></script>
     <script src="../js/script.js"></script>
 </body>
-</html>
 
+</html>
