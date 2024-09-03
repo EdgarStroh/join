@@ -164,7 +164,8 @@ function renderContactList() {
 function generateLetterSectionHTML(letter) {
   return `
         <div class="letter_section">
-            <h2>${letter}</h2>
+            <h3>${letter}</h3> 
+            <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
         </div>
     `;
 }
