@@ -75,7 +75,7 @@ function editContact() {
     phone: phone.value,
   };
   // Call the function to post data
-//   postDataContacts("", contactData);    ---> hier muss PUT eingesetzt werden!!!
+//   postDataContacts("", contactData);               ---> hier muss PUT eingesetzt werden!!!
 //   name.value = "";
 //   email.value = "";
 //   phone.value = "";
@@ -84,7 +84,8 @@ function editContact() {
   renderContactList();
 }
 
-// diese function wird im edgar.js function onloadFunctionData() aufgerufen
+// diese function wird im edgar.js function onloadFunctionData() aufgerufen   --> Diese Funktion wird nicht mehr aufgerufen, haben wir auskommentiert!!!!
+
 // function render(contactsObject) {
 //     let contacts = document.getElementById("contacts");
 //     contacts.innerHTML = ""; 
