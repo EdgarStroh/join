@@ -30,7 +30,7 @@ function signUpUser(event) {
 function check() {
     var input = document.getElementById('inputConfirmPassword');
     if (input.value !== document.getElementById('inputPassword').value) {
-        input.setCustomValidity('Password Must be Matching.');
+        input.setCustomValidity('Passwort muss übereinstimmen');
     } else {
         input.setCustomValidity('');  // Korrekt: Nachricht wird entfernt, wenn Passwörter übereinstimmen
     }

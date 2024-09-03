@@ -61,20 +61,20 @@
             <form onsubmit="signUpUser(event);">
                 <div class="input_login flex">
                     <input class="name" type="text" id="inputName" placeholder="Name" required
-                    oninput="setCustomValidity('')" 
-                    oninvalid="setCustomValidity('Bitte gib einen Namen ein!')">
+                    oninput="setCustomValidity('')" >
+                 
                     
                     <input class="email" type="email" id="inputEmail" placeholder="Email" required
-                    oninput="setCustomValidity('')" 
-                    oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
+                    oninput="setCustomValidity('')">
+                  
             
                     <input class="password" type="password" id="inputPassword" placeholder="Password" required
-                    oninput="check()"
-                    oninvalid="setCustomValidity('Bitte gib ein Password ein!')">
+                    oninput="check()">
+                   
                     
                     <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password" required
-                    oninput="check()"
-                    oninvalid="setCustomValidity('Passwort stimmt nicht überein!')">
+                    oninput="check()">
+                    
 
                     <div class="checkbox_login flex" >
                         <input type="checkbox" id="checkboxLogin1" style="display:none;">
