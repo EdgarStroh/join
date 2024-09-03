@@ -22,10 +22,7 @@
     box-shadow: 4px 0px 6px 0px #00000014;
     gap:8px;
 }
-/* .letter_section {
-    padding: 17px 36px;
-    gap: 8px;
-} */
+
 .add_contact {
     cursor: pointer;
     align-items: center;

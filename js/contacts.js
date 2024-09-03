@@ -105,8 +105,8 @@ function htmlTemplateContactContent(name, email, id, color) {
                 <span style="background-color: ${color}">${getInitials(name)}</span> 
             </div>
             <div class="contact_info flex">
-                <h3>${name}</h3> <!-- Rendered Name -->
-                <p>${email}</p> <!-- Rendered Email -->
+                <h3>${name}</h3> 
+                <p>${email}</p> 
             </div>
         </div>
     `;
