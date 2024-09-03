@@ -242,3 +242,6 @@ input[type="checkbox"] {
 .checkbox_login .checkbox_label a:hover {
     font-size: 16.3px;
 }
+.displayNone{
+    display: none;
+}

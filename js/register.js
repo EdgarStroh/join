@@ -30,6 +30,7 @@ function signUpUser(event) {
     document.getElementById("inputEmail").value = "";
     document.getElementById("inputPassword").value = "";
     document.getElementById("inputConfirmPassword").value = "";
+    document.getElementById("sign_up_button_div").classList.remove("displayNone");
     closePopup();
 }
 
