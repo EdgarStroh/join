@@ -41,31 +41,31 @@ body {
   --sb-size: 8px;
 }
 
-body::-webkit-scrollbar {
-  width: var(--sb-size);
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 5px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 5px;
-}
-
-@supports not selector(::-webkit-scrollbar) {
-  body {
-      scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #a8a8a8 #ffffff;
   }
-}
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
 
 .hidden {
     display: none;
 }
-
 .text_container {
     padding: 206px 114px 96px 330px;
     width: 100%;
@@ -73,7 +73,6 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     background-color: #F6F7F8;
 }
-
 .arrow_left {
     height: 32px;
     width: 32px;
@@ -82,8 +81,6 @@ body::-webkit-scrollbar-thumb {
     top: 22.1%;
     left: 90%;
 }
-
-/* arrow mit JS fixen */
 .arrow_left:hover {
     background-color: #EEEEEE;
     height: 32px;

@@ -22,6 +22,10 @@
     box-shadow: 4px 0px 6px 0px #00000014;
     gap:8px;
 }
+/* .letter_section {
+    padding: 17px 36px;
+    gap: 8px;
+} */
 .add_contact {
     cursor: pointer;
     align-items: center;
@@ -89,7 +93,6 @@
     align-items: center;
     height: 42px;
     width: 42px;
-    background-color: orange; /* die Farbe muss über JS reingerendert werden, jeder User hat seine eigene Farbe */
     color: white;
     border-radius: 50%;
     text-align: center; 
@@ -100,7 +103,6 @@
     align-items: center;
     height: 120px;
     width: 120px;
-    background-color: orange; /* die Farbe muss über JS reingerendert werden, jeder User hat seine eigene Farbe */
     color: white;
     border-radius: 50%;
     font-size: 47px;
