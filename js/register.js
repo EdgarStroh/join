@@ -1,4 +1,10 @@
 function signUpUser(event) {
+    const checkbox = document.getElementById('checkboxLogin1');
+    if (!checkbox.checked) {
+        alert('Please accept the Privacy policy to sign up.');
+        event.preventDefault(); // Prevent form submission
+        return false; // Return false to prevent form submission
+    }
     // Verhindert das Standard-Formularabsendeverhalten
     event.preventDefault();
 
