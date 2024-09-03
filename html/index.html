@@ -27,21 +27,21 @@
     <div class="log_in_container flex">
         <h1>Log in</h1>
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
-        <form>
+        <form id="loginForm" action="summary.html" method="GET">
             <div class="input_login flex">
                 <input class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
                 <input class="password" type="password" placeholder="Password" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Gib dein Passwort ein!')">
-                <!-- <div class="error_login">Check your email and password. Please try again.</div> <----- Diese Nachricht soll angezeigt werden, wenn ein Feld nicht ausgefüllt wurde-->
                 <div class="checkbox_login flex padding-left">
-                    <input type="checkbox" id="checkboxLogin" for="checkboxLogin" name="checkboxLogin" required>
-                    <label class="checkbox_label " for="checkboxLogin">Remember me</label>
+                    <input type="checkbox" id="checkboxLogin" name="checkboxLogin" required>
+                    <label class="checkbox_label" for="checkboxLogin">Remember me</label>
                 </div>
-                <div class="button_login flex ">
-                    <button onsubmit="" class="button">Log in</button>
-                    <button class="guest_login">Guest Log in</button>
+                <div class="button_login flex">
+                    <button type="submit" class="button">Log in</button>
+                    <button type="button" class="guest_login" onclick="guestLogin()">Guest Log in</button>
                 </div>
+            </div>
         </form>
     </div>
     <div class="footer">

@@ -21,3 +21,7 @@ function toggleCheckbox(labelId) {
     label.classList.add("checked");
   }
 }
+function guestLogin() {
+  // Weiterleitung zur summary.html ohne Validierung der Eingabefelder
+  window.location.href = "summary.html";
+}
