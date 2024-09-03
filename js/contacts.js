@@ -44,11 +44,14 @@ function addContact() {
     let name = document.getElementById("inputName");
     let email = document.getElementById("inputEmail");
     let phone = document.getElementById("inputPhone");
+    let newColor = getRandomColor();
+
     // Prepare the data to be sent
     let contactData = {
         "name": name.value,
         "email": email.value,
-        "phone": phone.value
+        "phone": phone.value,
+        "color": newColor
     };
     // Call the function to post data
     postDataContacts("", contactData);
@@ -82,24 +85,23 @@ function editContact() {
 }
 
 // diese function wird im edgar.js function onloadFunctionData() aufgerufen
-function render(contactsObject) {
-    let contacts = document.getElementById("contacts");
-    contacts.innerHTML = ""; // Clear existing content
+// function render(contactsObject) {
+//     let contacts = document.getElementById("contacts");
+//     contacts.innerHTML = ""; 
 
-    // Iterate over each key in the contactsObject
-    for (let key in contactsObject) {
-        if (contactsObject.hasOwnProperty(key)) {
-            let contact = contactsObject[key];
-            contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email, key);
-        }
-    }
-}
+//     for (let key in contactsObject) {
+//         if (contactsObject.hasOwnProperty(key)) {
+//             let contact = contactsObject[key];
+//             contacts.innerHTML += htmlTemplateContactContent(contact.name, contact.email, key, contact.color);
+//         }
+//     }
+// }
 
-function htmlTemplateContactContent(name, email, id) {
+function htmlTemplateContactContent(name, email, id, color) {
     return `
         <div onclick="openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
-                <span>${getInitials(name)}</span> <!-- Initials -->
+                <span style="background-color: ${color}">${getInitials(name)}</span> 
             </div>
             <div class="contact_info flex">
                 <h3>${name}</h3> <!-- Rendered Name -->
@@ -120,16 +122,17 @@ extendedContact.innerHTML += htmlTemplateExtendedContact(
         allContacts[id].name,
         allContacts[id].email,
         allContacts[id].phone,
+        allContacts[id].color,
         id // evtl muss das noch in die firebase id geändert werden!!!
       );
 }
  
   
-function htmlTemplateExtendedContact(name,email,phone,id) {
+function htmlTemplateExtendedContact(name,email,phone,color,id) {
     return `
     <div class="contact_headline flex">
     <div class="contact_content_extended flex">
-        <span class="profil_badge_extended flex">${getInitials(name)}</span>
+        <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(name)}</span>
         <div class="contact_info_extended flex">
         <h3>${name}</h3>
         <div class="contact_tools flex">
@@ -178,7 +181,7 @@ function renderContactList() {
     }
 
     // Füge den Kontakt dem HTML hinzu
-    html += htmlTemplateContactContent(contact.name, contact.email, id);
+    html += htmlTemplateContactContent(contact.name, contact.email, id, contact.color);
   });
 
   // Füge den generierten HTML-Inhalt in das Kontaktelement ein
