@@ -169,3 +169,30 @@ function generateLetterSectionHTML(letter) {
         </div>
     `;
 }
+
+function openEditContact(){
+    const popupEditOverlay = document.getElementById("popupEditOverlay");
+    const popupEditModal = document.getElementById("popupEditModal");
+
+    popupEditOverlay.style.display = "flex";
+    popupEditModal.style.display = "block";
+
+    popupEditModal.classList.remove("hide");
+    popupEditModal.classList.add("show");
+}
+function closeEditContact() {
+  const popupEditOverlay = document.getElementById("popupEditOverlay");
+  const popupEditModal = document.getElementById("popupEditModal");
+
+  // Verstecke das Overlay sofort
+  popupEditOverlay.style.display = "none";
+
+  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
+  popupEditModal.classList.remove("show");
+  popupEditModal.classList.add("hide");
+
+  // Verstecke das Popup nach der Animation (120ms)
+  setTimeout(() => {
+    popupModal.style.display = "none";
+  }, 120); // 120ms entspricht der Dauer der Animation
+}

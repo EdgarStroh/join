@@ -59,6 +59,9 @@
     cursor: pointer;
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
+.single_contact:focus {
+    background-color: red;
+}
 .contact_info,
 .contact_info_extended {
     flex-direction: column;
@@ -169,7 +172,8 @@
 }
 
 /* START POP UP */
-.popup-overlay {
+.popup-overlay,
+.popup-edit-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -182,7 +186,8 @@
     z-index: 1000;
 }
 
-.popup-modal {
+.popup-modal,
+.popup-edit-modal {
     width: 1110px;
     height: 600px;
     background-color: white;
@@ -198,12 +203,14 @@
     opacity: 0;
 }
 
-.popup-modal.show {
+.popup-modal.show,
+.popup-edit-modal.show {
     display: block;
     animation: slideInFromRight 0.12s ease-out forwards;
 }
 
-.popup-modal.hide {
+.popup-modal.hide,
+.popup-edit-modal.hide {
     animation: slideOutToRight 0.12s ease-out forwards;
     opacity: 0;
 }
