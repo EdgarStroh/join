@@ -1,3 +1,6 @@
+.hidden{
+    display:none;
+}
 .text_container {
     border-radius:10px;
     width:100%;
@@ -163,4 +166,52 @@ input, .addSubTask, select, textarea{
 
 #seperationLine{
     border:1px solid #D1D1D1;
+}
+
+#contactSelection{
+    background: url(../assets/icons/dropdownIcon.svg) no-repeat right 10px center;
+    font-size:20px;
+    width:100%;
+    border:1px solid #D1D1D1;
+    border-radius:10px;
+    padding:12px 16px 12px 16px;
+    cursor:pointer;
+}
+
+#contactList{
+    height:200px;
+    overflow-y:scroll;
+    flex-direction:column;
+    gap:5px;
+}
+
+.circle{
+    width:42px;
+    height:42px;
+    border-radius:45px;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+.contact{
+    padding-right:15px;
+    padding-left:15px;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-radius:10px;
+}
+.contact:hover{
+    background:#D1D1D1;
+    cursor:pointer;
+}
+.contact div{
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+.selectedContact{
+    background:#2A3647;
+    color:white;
 }

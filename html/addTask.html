@@ -22,21 +22,21 @@
         <div style="width:100%;">
             <h1 style="display: flex; margin-right: auto;">Add Task</h1>
         </div>
-        <form>
+        <form id="addTaskForm" method="post" action="board.html">
             <div class="flex formParts">
                 <section class="formPart flex">
                     <label for="title">Title<span class="requiredStar">*</span></label>
                     <input type="text" id="title" placeholder="Enter a title" required>
                     <br>
                     <label for="description">Description</label>
-                    <textarea rows="5" placeholder="Enter a Description"></textarea>
+                    <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
                     <br>
                     <label for="contactSelection">Assigned to</label>
-                    <select id="contactSelection">
-                        <option value="">Select contacts to assign</option>
-                        <option value="K2">Kontakt 2</option>
-                        <option value="K3">Kontakt 3</option>
-                    </select>
+                    <div id="contactSelection" onclick="toggleContactListView()">
+                        Select contacts to assign
+                    </div>
+                    <div id="contactList" class="hidden flex">
+                    </div>
                 </section>
                 <hr id="seperationLine"></hr>
                 <section class="formPart flex">
@@ -45,16 +45,16 @@
                     <br>
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
-                        <button id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
-                        <button id="prioMedium" type="button" class="prioMediumActive">Medium<img id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
-                        <button id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
+                        <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
+                        <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
+                        <button value="low" id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
                     </section>                    
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>
                     <select id="category" required>
-                        <option value="">Select Task Category</option>
-                        <option value="kat1">Kategorie 1</option>
-                        <option value="kat2">Kategorie 2</option>
+                        <option>Select Task Category</option>
+                        <option value="technical task">Technical Task</option>
+                        <option value="userstory">Userstory</option>
                     </select>
                     <br>
                     <label for="Subtasks">Subtasks</label>
