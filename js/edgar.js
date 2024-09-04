@@ -5,6 +5,7 @@ function onloadFunctionData() {
     loadDataContacts("");
     loadDataBoards("");
     loadDataUsers("");
+    // deleteDataContact("/-O5wmsL7LtqwE6w0Yypm")
     // renderContactList();
     //render()
 
@@ -70,6 +71,14 @@ async function postDataContacts(path = "", data = {}) {
         },
         body: JSON.stringify(data)
 
+    });
+    return responseToJSon = await response.json();
+}
+
+async function deleteDataContact(path = "") {
+    let response = await fetch(BASE_URL_Contact + path + ".json", {
+        method: "DELETE",
+       
     });
     return responseToJSon = await response.json();
 }

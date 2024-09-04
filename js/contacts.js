@@ -75,7 +75,7 @@ function editContact() {
     phone: phone.value,
   };
   // Call the function to post data
-//   postDataContacts("", contactData);               ---> hier muss PUT eingesetzt werden!!!
+//   postDataContacts("", contactData); ---> hier muss PUT eingesetzt werden!!!
 //   name.value = "";
 //   email.value = "";
 //   phone.value = "";
@@ -155,7 +155,7 @@ function htmlTemplateExtendedContact(name,email,phone,color,id) {
                 <img src="../assets/icons/edit.svg" alt="Icon edit">
                 <span>Edit</span>
             </div>
-            <div onclick="deleteContact()" class="delete flex">
+            <div onclick="deleteDataContact(${id})" class="delete flex">
                 <img src="../assets/icons/delete.svg" alt="Icon delete">
                 <span>Delete</span>
             </div>
