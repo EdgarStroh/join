@@ -8,7 +8,7 @@ body {
 }
 .sign_up_container {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 64px 63px 0 68px;
     position: fixed;
 }
@@ -90,15 +90,13 @@ input:focus {
 }
 .input_login {
     flex-direction: column;
+    gap: 32px;
 }
 .button_login {
     flex-direction: row;
     justify-content: center;
     gap: 35px;
     padding-top: 30px;
-}
-.input_login {
-    gap: 32px;
 }
 .name {
     padding-right: 30px; 
@@ -134,7 +132,6 @@ input:focus {
 .checkbox_login {
     align-items: center;
     gap: 8px;
-   
 }
 .checkbox_login input {
     cursor: pointer;
@@ -159,7 +156,6 @@ input:focus {
     width: 265px;
 }
 .footer a {
-    
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
@@ -173,7 +169,6 @@ input:focus {
     text-align: left;
     color:#29ABE2;
 }
-
 .popup-modal {
     width: 652px;
     height: 625px;
@@ -218,8 +213,8 @@ input[type="checkbox"] {
     -webkit-appearance: none; /* Entfernt die Standard-Styling für Webkit-Browser */
     appearance: none; /* Entfernt die Standard-Styling für andere Browser */
     /* Weitere Stile können hier hinzugefügt werden */
-  }
-  input[type="checkbox"]:checked {
+}
+input[type="checkbox"]:checked {
     background-image: url(../assets/icons/checkbox_checked.svg);
 }
 .error_login {
@@ -236,7 +231,6 @@ input[type="checkbox"] {
 .displayNone{
     display: none;
 }
-
 .success {
     width: 312px;
     height: 65px;
@@ -255,7 +249,6 @@ input[type="checkbox"] {
     opacity: 0;
     animation: slideIn 0.5s forwards;
 }
-
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -275,4 +268,72 @@ input[type="checkbox"] {
         transform: translate(-50%, -50%);
         opacity: 1;
     }
+}
+
+/*   LOGO ANIMATION    */
+
+.animation_logo {
+  background-image: url(../assets/icons/logo_black.svg);
+  height: 335px;
+  width: 274px;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: moveLogo 1.5s forwards; 
+}
+.animation_bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-color: #f6f7f8;
+  animation: fadeOut 1.75s forwards, changeZIndex 0s 1.5s forwards;
+}
+@keyframes moveLogo {
+  0% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 274px;
+    height: 335px;
+  }
+  40% { 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 274px;
+    height: 335px;
+  }
+  100% { 
+    top: 80px;
+    left: 70px;
+    transform: translate(0, 0);
+    width: 100px;
+    height: 122px;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    background-color: #f6f7f8;
+    opacity: 1;
+  }
+  40% {
+    background-color: #f6f7f8;
+    opacity: 1;
+  }
+  100% {
+    background-color: transparent;
+    opacity: 0;
+  }
+}
+@keyframes changeZIndex {
+  0% {
+    z-index: 1;
+  }
+  100% {
+    z-index: -1;
+  }
 }
