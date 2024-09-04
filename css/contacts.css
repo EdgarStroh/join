@@ -60,8 +60,15 @@
     cursor: pointer;
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
-.single_contact:focus {
-    background-color: red;
+/* Entferne den Hover-Effekt, wenn die Klasse 'active' vorhanden ist */
+.single_contact.active:hover {
+    background: none;
+}
+
+/* Setze die Hintergrundfarbe auf #2A3647, wenn die Klasse 'active' hinzugefügt wird */
+.single_contact.active {
+    background-color: #2A3647 !important;
+    color:white;
 }
 .contact_info,
 .contact_info_extended {

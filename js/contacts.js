@@ -99,10 +99,12 @@ function editContact() {
 // }
 
 function htmlTemplateContactContent(name, email, id, color) {
-    return `
-        <div onclick="openContact(${id})" class="single_contact flex">
+  return `
+        <div onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
-                <span style="background-color: ${color}">${getInitials(name)}</span> 
+                <span style="background-color: ${color}">${getInitials(
+    name
+  )}</span> 
             </div>
             <div class="contact_info flex">
                 <h3>${name}</h3> 
@@ -111,6 +113,18 @@ function htmlTemplateContactContent(name, email, id, color) {
         </div>
     `;
 }
+
+function toggleBackground(element) {
+  // Entferne die 'active' Klasse von allen Elementen
+  let contacts = document.querySelectorAll(".single_contact");
+  contacts.forEach(function (contact) {
+    contact.classList.remove("active");
+  });
+
+  // Füge die 'active' Klasse nur zum angeklickten Element hinzu
+  element.classList.add("active");
+}
+
 function getInitials(name) {
     return name.split(" ").map(n => n[0]).join("");
 }
