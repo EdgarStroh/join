@@ -54,8 +54,22 @@ async function loadDataContacts(path = "") {
     let response = await fetch(BASE_URL_Contact + path + ".json");
     let contactsData = await response.json();
 
-    // Convert the Firebase object to an array of contacts
-    allContacts = Object.keys(contactsData).map(key => contactsData[key]);
+    // Convert the Firebase object to an array of contacts, including IDs
+    allContacts = Object.keys(contactsData).map(key => ({
+        Uid: key,
+        ...contactsData[key]
+    }));
+
+    // Log all IDs
+    allContacts.forEach(contact => console.log(contact.Uid));
+
+    // Suppose you have some logic to determine which ID to log
+    // Example: Log the ID of the first contact in the array
+    if (allContacts.length > 0) {
+        console.log("First contact ID:", allContacts[0].Uid);
+    } else {
+        console.log('No contacts available');
+    }
 
     // Pass the contacts object to the render function
     renderContactList(); // render()
