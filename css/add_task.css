@@ -22,41 +22,34 @@ label, input, textarea, #prio button, select{
     font-size:20px;
 }
 input, textarea{
-    padding-left:12px;
-}
-textarea {
-    border: 1px solid #D1D1D1;
+    padding-left: 12px;
     border-radius: 10px;
 }
 textarea {
+    border: 1px solid #D1D1D1;
     padding-top: 20px;
 }
-select{
+select {
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     line-height: 24px;
     padding-left: 12px;
 }
-input:focus {
+input:focus, textarea:focus {
     outline: none !important;
     border: 1px solid #29ABE2;
 }
-textarea:focus {
-    outline: none !important;
-    border: 1px solid #29ABE2;
-}
-.formPart{
+.formPart {
     width:440px;
     flex-direction:column;
     gap:8px;
 }
-.requiredStar{
+.requiredStar {
     color: #FF8190;
 }
 input{
     height:48px;
-    border-radius:10px;
     border: 1px solid #D1D1D1;
     line-height: 24px;
 }
@@ -170,19 +163,29 @@ input, .addSubTask, select, textarea{
 
 #contactSelection{
     background: url(../assets/icons/dropdownIcon.svg) no-repeat right 10px center;
-    font-size:20px;
-    width:100%;
-    border:1px solid #D1D1D1;
-    border-radius:10px;
-    padding:12px 16px 12px 16px;
-    cursor:pointer;
+    background-color: white;
+    font-size: 20px;
+    width: 100%;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    z-index: 1;
 }
+#contactSelection:focus {
+    outline: none !important;
+    border: 1px solid #29ABE2 !important;
+}
+/* der Focus funktioniert hier noch nicht!!!! */
 
 #contactList{
     height:200px;
     overflow-y:scroll;
     flex-direction:column;
     gap:5px;
+    padding-top: 10px;
+    margin-top: -10px;
+    background-color: white;
 }
 
 .circle{
