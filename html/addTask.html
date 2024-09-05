@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <style>
+        #subTasksList{
+            display:block;
+        }
+        #subTasksList li{
+            justify-content:space-between;
+        }
+    </style>
 </head>
 <body class="flex">
     <aside>
@@ -59,8 +67,12 @@
                     <br>
                     <label for="Subtasks">Subtasks</label>
                     <div id="addSubTask" class="flex">
-                        <input class="addSubTask" placeholder="Add new Subtask" type="text">
+                        <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
+                        <!--Benötigt für onclick Event!-->
+                        <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
                     </div>
+                    <ul id="subTasksList">
+                    </ul>
                 </section>
             </div>
             <div class="taskFormButtons flex">

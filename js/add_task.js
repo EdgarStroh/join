@@ -61,9 +61,9 @@ async function renderContactList(){
                 <div class='contact flex' onclick='addTaskContact(event)'>
                     <div class='flex'>
                         <span class='circle flex' style='background:${contacts[i]['color']}'>${firstLetter+firstLetterAfterSpace}</span>
-                        <span>${contacts[i]['name']}</span>
+                        <span>${contacts[i].name}</span>
                     </div>
-                    <input type="checkbox" value="${contacts[i]}">
+                    <input type="checkbox" value="${contacts[i].name}">
                 </div>
         `;
     }
@@ -95,17 +95,79 @@ let title = document.getElementById('title');
 let date = document.getElementById('date');
 let description = document.getElementById('description');
 let category = document.getElementById('category');
+let subtask = document.getElementById('subtask');
+let subtasks = [];
+let subtasksList = document.getElementById('subTasksList');
+let addSubtaskButton = document.getElementById('addSubtaskButton');
+
+function renderSubtaskList(){
+    subtasksList.innerHTML = "";
+    for(i=0; i<subtasks.length; i++){
+        subtasksList.innerHTML += `<li class="flex"><span>${subtasks[i]}</span></li>`;
+    }
+}
+
+function addSubtask(){
+    subtasks.push(subtask.value);
+    renderSubtaskList();
+};
+
+function deleteSubtask(index){
+    subtasks.splice(index, 1);
+}
+
+
+//edgar.js - tasks from firebase
+
+const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
+
+// post task's for board
+async function postDataBoards(path = "", data = {}) {
+    let response = await fetch(BASE_URL_Board + path + ".json", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+
+    });
+    return responseToJSon = await response.json();
+}
 
 
 addTaskForm.addEventListener('submit', (event)=>{
     event.preventDefault();
     let selectedContacts = document.querySelectorAll('#contactList .contact input[type="checkbox"]:checked');
+    /*
     console.log(title.value);
     console.log(date.value);
     console.log(description.value);
     console.log(category.value);
     console.log(priority);
-    for(i=0; i<selectedContacts.length; i++){
-        console.log(selectedContacts[i].value);
+    */
+    let contactNames = [];
+    for (let i = 0; i < selectedContacts.length; i++) {
+        let name = selectedContacts[i].value;
+        contactNames.push(name);
     }
+    
+    //prepare the data to be sent
+    let data = {
+        'asigned' : contactNames,
+        'category' : category.value,
+        'date' : date.value,
+        'description' : description.value,
+        'prio' : priority,
+        'status' : 'in progress',
+        'subtasks' : subtasks,
+        'title' : title.value,
+    }
+    console.log(priority);
+    console.log(data);
+    try {
+        postDataBoards("", data);
+    } catch (error) {
+        console.log(error);
+    }
+
 });
