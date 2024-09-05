@@ -308,8 +308,8 @@ input[type="checkbox"]:checked {
     height: 335px;
   }
   100% { 
-    top: 80px;
-    left: 70px;
+    top: 64px;
+    left: 64px;
     transform: translate(0, 0);
     width: 100px;
     height: 122px;
