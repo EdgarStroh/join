@@ -40,20 +40,19 @@ function closeEditContact() {
 }
 
 function addContact() {
-    // Get input values from the form
+
     let name = document.getElementById("inputName");
     let email = document.getElementById("inputEmail");
     let phone = document.getElementById("inputPhone");
     let newColor = getRandomColor();
 
-    // Prepare the data to be sent
     let contactData = {
         "name": name.value,
         "email": email.value,
         "phone": phone.value,
         "color": newColor
     };
-    // Call the function to post data
+
     postDataContacts("", contactData);
     name.value = "";
     email.value = "";
@@ -64,11 +63,11 @@ function addContact() {
 }
 
 function editContact() {
-  // Get input values from the form
+
   let name = document.getElementById("inputEditName");
   let email = document.getElementById("inputEditEmail");
   let phone = document.getElementById("inputEditPhone");
-  // Prepare the data to be sent
+
   let contactData = {
     name: name.value,
     email: email.value,
@@ -115,13 +114,12 @@ function htmlTemplateContactContent(name, email, id, color) {
 }
 
 function toggleBackground(element) {
-  // Entferne die 'active' Klasse von allen Elementen
+
   let contacts = document.querySelectorAll(".single_contact");
   contacts.forEach(function (contact) {
     contact.classList.remove("active");
   });
 
-  // Füge die 'active' Klasse nur zum angeklickten Element hinzu
   element.classList.add("active");
 }
 
@@ -131,7 +129,7 @@ function getInitials(name) {
 
 function renderExtendedContact(id) {
   let extendedContact = document.getElementById("extended_contact");
-  extendedContact.innerHTML = ""; // Clear existing content
+  extendedContact.innerHTML = ""; 
 
 extendedContact.innerHTML += htmlTemplateExtendedContact(
         allContacts[id].name,
@@ -176,12 +174,11 @@ function htmlTemplateExtendedContact(name,email,phone,color,id) {
 
 function renderContactList() {
   let contactsContainer = document.getElementById("contacts");
-  contactsContainer.innerHTML = ""; // Clear existing content
+  contactsContainer.innerHTML = ""; 
 
   let currentLetter = "";
   let html = "";
 
-  // Sortiere die Kontakte alphabetisch nach Namen
   allContacts = Object.values(allContacts).sort((a, b) =>
     a.name.localeCompare(b.name)
   );
@@ -189,21 +186,17 @@ function renderContactList() {
   allContacts.forEach((contact, id) => {
     const firstLetter = contact.name.charAt(0).toUpperCase();
 
-    // Wenn der Buchstabe anders ist als der aktuelle Abschnittsbuchstabe, erstelle einen neuen Abschnitt
     if (firstLetter !== currentLetter) {
       currentLetter = firstLetter;
       html += generateLetterSectionHTML(currentLetter);
     }
 
-    // Füge den Kontakt dem HTML hinzu
     html += htmlTemplateContactContent(contact.name, contact.email, id, contact.color);
   });
 
-  // Füge den generierten HTML-Inhalt in das Kontaktelement ein
   contactsContainer.innerHTML = html;
 }
 
-// Funktion zur Erstellung des Buchstabenabschnitts
 function generateLetterSectionHTML(letter) {
   return `
         <div class="letter_section">
