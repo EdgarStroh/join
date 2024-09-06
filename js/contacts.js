@@ -57,7 +57,8 @@ function addContact() {
   email.value = "";
   phone.value = "";
   closePopup();
-  loadDataContacts("");
+  // loadDataContacts("");
+  loadDataContacts();
   renderContactList();
 }
 
