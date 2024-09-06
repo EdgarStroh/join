@@ -89,14 +89,6 @@ async function postDataContacts(path = "", data = {}) {
     return responseToJSon = await response.json();
 }
 
-async function deleteDataContact(path = "") {
-    let response = await fetch(BASE_URL_Contact + path + ".json", {
-        method: "DELETE",
-       
-    });
-    return responseToJSon = await response.json();
-}
-
 //                              +++ BOARD +++
 // link for task for board
 const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";

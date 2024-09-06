@@ -40,26 +40,25 @@ function closeEditContact() {
 }
 
 function addContact() {
+  let name = document.getElementById("inputName");
+  let email = document.getElementById("inputEmail");
+  let phone = document.getElementById("inputPhone");
+  let newColor = getRandomColor();
 
-    let name = document.getElementById("inputName");
-    let email = document.getElementById("inputEmail");
-    let phone = document.getElementById("inputPhone");
-    let newColor = getRandomColor();
+  let contactData = {
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+    color: newColor,
+  };
 
-    let contactData = {
-        "name": name.value,
-        "email": email.value,
-        "phone": phone.value,
-        "color": newColor
-    };
-
-    postDataContacts("", contactData);
-    name.value = "";
-    email.value = "";
-    phone.value = "";
-    closePopup();
-    loadDataContacts("");
-    renderContactList();
+  postDataContacts("", contactData);
+  name.value = "";
+  email.value = "";
+  phone.value = "";
+  closePopup();
+  loadDataContacts("");
+  renderContactList();
 }
 
 function editContact() {
@@ -97,9 +96,9 @@ function editContact() {
 //     }
 // }
 
-function htmlTemplateContactContent(name, email, id, color) {
+function htmlTemplateContactContent(name, email, id, color, uid) {
   return `
-        <div onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
+        <div id="${uid}" onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
                 <span style="background-color: ${color}">${getInitials(
     name
@@ -136,16 +135,18 @@ extendedContact.innerHTML += htmlTemplateExtendedContact(
         allContacts[id].email,
         allContacts[id].phone,
         allContacts[id].color,
+        allContacts[id].Uid,
         id // evtl muss das noch in die firebase id geändert werden!!!
       );
 }
  
-  
-function htmlTemplateExtendedContact(name,email,phone,color,id) {
-    return `
+function htmlTemplateExtendedContact(name, email, phone, color, Uid, id) {
+  return `
     <div class="contact_headline flex">
     <div class="contact_content_extended flex">
-        <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(name)}</span>
+        <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(
+    name
+  )}</span>
         <div class="contact_info_extended flex">
         <h3>${name}</h3>
         <div class="contact_tools flex">
@@ -153,7 +154,7 @@ function htmlTemplateExtendedContact(name,email,phone,color,id) {
                 <img src="../assets/icons/edit.svg" alt="Icon edit">
                 <span>Edit</span>
             </div>
-            <div onclick="deleteDataContact(${id})" class="delete flex">
+            <div onclick="deleteDataContact('${Uid}')" class="delete flex">
                 <img src="../assets/icons/delete.svg" alt="Icon delete">
                 <span>Delete</span>
             </div>
@@ -169,7 +170,6 @@ function htmlTemplateExtendedContact(name,email,phone,color,id) {
                 <p>${phone}</p>
             </div>
 </div>`;
-
 };
 
 function renderContactList() {
