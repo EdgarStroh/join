@@ -22,6 +22,8 @@ async function deleteDataContact(uid) {
 
       // Kontakt aus der Benutzeroberfläche entfernen
       removeContactFromUI(uid);
+      // Leere den extended_contact Bereich
+      clearExtendedContact();
       // Kontaktliste neu laden und rendern
       loadDataContacts(); // Sicherstellen, dass diese Funktion die gesamte Kontaktliste neu lädt
     } catch (error) {
@@ -38,6 +40,13 @@ function removeContactFromUI(uid) {
     console.log("Kontakt wurde aus der UI entfernt.");
   } else {
     console.log(`Kein Element mit der ID '${uid}' gefunden.`);
+  }
+}
+
+function clearExtendedContact() {
+  const extendedContact = document.getElementById("extended_contact");
+  if (extendedContact) {
+    extendedContact.innerHTML = "";
   }
 }
 
