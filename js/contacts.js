@@ -30,15 +30,6 @@ function closePopup() {
   togglePopup("popupOverlay", "popupModal", false);
 }
 
-function openEditContact(id) {
-    renderEditContact(id);
-    togglePopup("popupEditOverlay", "popupEditModal", true);
-}
-
-function closeEditContact() {
-  togglePopup("popupEditOverlay", "popupEditModal", false);
-}
-
 function addContact() {
   let name = document.getElementById("inputName");
   let email = document.getElementById("inputEmail");
@@ -57,29 +48,7 @@ function addContact() {
   email.value = "";
   phone.value = "";
   closePopup();
-  // loadDataContacts("");
   loadDataContacts();
-  renderContactList();
-}
-
-function editContact() {
-
-  let name = document.getElementById("inputEditName");
-  let email = document.getElementById("inputEditEmail");
-  let phone = document.getElementById("inputEditPhone");
-
-  let contactData = {
-    name: name.value,
-    email: email.value,
-    phone: phone.value,
-  };
-  // Call the function to post data
-//   postDataContacts("", contactData); ---> hier muss PUT eingesetzt werden!!!
-//   name.value = "";
-//   email.value = "";
-//   phone.value = "";
-  closePopup();
-  loadDataContacts("");
   renderContactList();
 }
 
@@ -205,40 +174,4 @@ function generateLetterSectionHTML(letter) {
             <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
         </div>
     `;
-}
-
-function renderEditContact(id) {
-    let editContainer = document.getElementById('popupEditModal');
-    editContainer.innerHTML = generateEditContact(id);
-}
-
-function generateEditContact(id){
-    return `<div class="flex">
-            <div class="popup-bg">
-                <img class="popupLogo" src="../assets/img/logo.svg">
-                <h1 class="white">Edit contact</h1>
-                <img class="underline" src="../assets/icons/vector_login.svg">
-            </div>
-            <div class="popup-Right-Side-Content">
-                <div class="close_container">
-                    <img class="close" onclick="closeEditContact()" src="../assets/icons/close.svg" alt="Icon close">
-                </div>
-                <img class="profileImg" src="../assets/img/profileImg.svg">
-                <div class="popup-Right-Side">
-                    <form>
-                        <div class="input_login flex">
-                            <input class="name" type="text" id="inputEditName" placeholder="Name" value="${allContacts[id].name}" required>
-                            <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${allContacts[id].email}" required>
-                            <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${allContacts[id].phone}" required>
-                        </div>
-                        <div class="button-line flex">
-                            <button class="button-white" onclick="closePopup()">Delete <img src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
-                            <button class="button-DB" onclick="editContact()">Save <img src="../assets/icons/create.svg" alt="Icon create"></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    `;
-
 }
