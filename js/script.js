@@ -10,3 +10,44 @@ function getRandomColor() {
     let randomIndex = Math.floor(Math.random() * differentColors.length);
     return differentColors[randomIndex];
 }
+
+function getInitials(name) {
+  return name.split(" ").map((n) => n[0]).join("");
+}
+
+function toggleBackground(element) {
+  let contacts = document.querySelectorAll(".single_contact");
+  contacts.forEach(function (contact) {
+    contact.classList.remove("active");
+  });
+
+  element.classList.add("active");
+}
+
+function togglePopup(popupOverlayId, popupModalId, show = true) {
+  const popupOverlay = document.getElementById(popupOverlayId);
+  const popupModal = document.getElementById(popupModalId);
+
+  if (show) {
+    popupOverlay.style.display = "flex";
+    popupModal.style.display = "block";
+    popupModal.classList.remove("hide");
+    popupModal.classList.add("show");
+  } else {
+    popupOverlay.style.display = "none";
+    popupModal.classList.remove("show");
+    popupModal.classList.add("hide");
+
+    setTimeout(() => {
+      popupModal.style.display = "none";
+    }, 120);
+  }
+}
+
+function openPopup() {
+  togglePopup("popupOverlay", "popupModal", true);
+}
+
+function closePopup() {
+  togglePopup("popupOverlay", "popupModal", false);
+}

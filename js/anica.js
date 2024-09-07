@@ -99,38 +99,6 @@ function renderEditContact(id) {
     document.getElementById('popupEditModal').innerHTML = editContactHTML;
 }
 
-// Funktion zur Erstellung des HTMLs für das Editierformular
-function generateEditContact(contact) {
-  return `
-        <div class="flex">
-            <div class="popup-bg">
-                <img class="popupLogo" src="../assets/img/logo.svg">
-                <h1 class="white">Edit contact</h1>
-                <img class="underline" src="../assets/icons/vector_login.svg">
-            </div>
-            <div class="popup-Right-Side-Content">
-                <div class="close_container">
-                    <img class="close" onclick="closeEditContact()" src="../assets/icons/close.svg" alt="Icon close">
-                </div>
-                <img class="profileImg" src="../assets/img/profileImg.svg">
-                <div class="popup-Right-Side">
-                    <form>
-                        <div class="input_login flex">
-                            <input class="name" type="text" id="inputEditName" placeholder="Name" value="${contact.name}" required>
-                            <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${contact.email}" required>
-                            <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${contact.phone}" required>
-                        </div>
-                        <div class="button-line flex">
-                            <button type="button" class="button-white" onclick="closeEditContact()">Cancel <img src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
-                            <button type="button" class="button-DB" onclick="editContact('${contact.Uid}')">Save <img src="../assets/icons/create.svg" alt="Icon create"></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
 
 // Funktion zur Aktualisierung eines Kontakts in Firebase
 async function updateContactInFirebase(id, updatedContact) {
