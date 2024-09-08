@@ -90,8 +90,6 @@ function generateEditContact(contact) {
             </div>
             <div>
                ${board.subtasks}
-            </div>
-            <div>
                 <!-- Placeholder for users and icon -->
                 <span>Users and Icon</span>
             </div>
