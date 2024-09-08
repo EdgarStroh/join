@@ -81,26 +81,15 @@ function generateEditContact(contact) {
         </div>
     `;
 }function generateBoardContent(board, index) {
-    // Capitalize the first letter of the category
-    const capitalizedCategory = board.category ? board.category.charAt(0).toUpperCase() + board.category.slice(1) : '';
-
-    // Check if subtasks exist and if they are an array
-    let subtasksHtml = "";
-    if (Array.isArray(board.subtasks)) {
-        subtasksHtml = board.subtasks.map(subtask => `<li>${subtask}</li>`).join('');
-    } else {
-        subtasksHtml = "<li>No subtasks available</li>";
-    }
-
-    return `
+  return `
         <div class="boardCard flex" draggable="true" ondragstart="startDragging(${index})">
-            <span class="boardCategory bc1">${capitalizedCategory}</span>
+            <span class="boardCategory bc1">${board.category}</span>
             <div class="boardText flex">
                 <span class="bc2">${board.title}</span>
                 <span class="bc3">${board.description}</span>
             </div>
             <div>
-               ${subtasksHtml}
+               ${board.subtasks}
             </div>
             <div>
                 <!-- Placeholder for users and icon -->
