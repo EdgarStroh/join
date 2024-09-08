@@ -23,6 +23,7 @@ function updateAll() {
     updateInProgress();
     updateAwaitFeedback();
     updateDone();
+    renderBoardList();
 }
 
 function updateToDo() {
@@ -114,4 +115,14 @@ function closePopup() {
     setTimeout(() => {
         popupModal.style.display = 'none';
     }, 120); // 120ms entspricht der Dauer der Animation
+}
+
+function renderBoardList() {
+    let boardContainer = document.getElementById("toDo");
+    boardContainer.innerHTML = ""; // Clear any existing content
+
+    // Generate and insert the board content into the container
+    allBoardContent.forEach(board => {
+        boardContainer.innerHTML += generateBoardContent(board); // Append content for each board
+    });
 }

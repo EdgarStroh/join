@@ -1,5 +1,6 @@
 let allContacts = [];
 let allBoardContent = [];
+
 function onloadFunctionData() {
     // + LOAD +
     loadDataContacts("");
@@ -96,7 +97,7 @@ const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedat
 // load task's for board
 async function loadDataBoards(path = "") {
     let response = await fetch(BASE_URL_Board + path + ".json");
-    allBoardContent = await response.json(); // Use allBoardContent directly
+    allBoardContent = await response.json();
 
     // Convert the Firebase object to an array of boards, including IDs
     allBoardContent = Object.keys(allBoardContent).map(key => ({
@@ -104,11 +105,10 @@ async function loadDataBoards(path = "") {
         ...allBoardContent[key]
     }));
 
-    // Log each board individually
-    allBoardContent.forEach(board => console.log(board));
-    
-  
+    // Render the board list after loading data
+    renderBoardList();
 }
+
 
 // post task's for board
 async function postDataBoards(path = "", data = {}) {

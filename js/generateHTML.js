@@ -1,5 +1,5 @@
 function generateLetterSectionHTML(letter) {
-  return `
+    return `
         <div class="letter_section">
             <h3>${letter}</h3> 
             <img src="../assets/icons/seperator_contacts.svg" alt="Seperator">
@@ -8,7 +8,7 @@ function generateLetterSectionHTML(letter) {
 }
 
 function generateContactContent(name, email, id, color, uid) {
-  return `
+    return `
         <div id="${uid}" onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
                 <span style="background-color: ${color}">${getInitials(name)}</span> 
@@ -22,7 +22,7 @@ function generateContactContent(name, email, id, color, uid) {
 }
 
 function generateExtendedContact(name, email, phone, color, Uid, id) {
-  return `
+    return `
     <div class="contact_headline flex">
     <div class="contact_content_extended flex">
         <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(name)}</span>
@@ -52,7 +52,7 @@ function generateExtendedContact(name, email, phone, color, Uid, id) {
 }
 
 function generateEditContact(contact) {
-  return `
+    return `
         <div class="flex">
             <div class="popup-bg">
                 <img class="popupLogo" src="../assets/img/logo.svg">
@@ -77,6 +77,27 @@ function generateEditContact(contact) {
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    `;
+}
+function generateBoardContent(board) {
+    let subtasksHtml = "";
+    if (Array.isArray(board.subtasks)) {
+        subtasksHtml = board.subtasks.map(subtask => `<li>${subtask}</li>`).join('');
+    } else {
+        subtasksHtml = "<li>No subtasks available</li>";
+    }
+    // Assuming 'category' is one of the properties in the board object
+    return `
+        <div class="boardCard flex">
+            <span class="boardCategory bc1">${board.category}</span>
+            <div class="boardText flex">
+                <span class="bc2">${board.title}</span>
+                <span class="bc3">${board.description}</span
+            </div>
+            <div>
+                <span>${subtasksHtml}</span>
             </div>
         </div>
     `;
