@@ -99,6 +99,9 @@ function generateBoardContent(board) {
             <div>
                 <span>${subtasksHtml}</span>
             </div>
+            <div>
+                users and icon
+            </div>
         </div>
     `;
 }

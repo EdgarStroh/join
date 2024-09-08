@@ -239,12 +239,14 @@
 .boardCard {
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    height: 263px;
+    /* height: 263px; */
+    min-height: 220px;
     padding: 16px 16px 0px 16px;
     gap: 10px;
     border-radius: 24px;
     width: 220px;
     flex-direction: column;
+    margin-bottom: 6px;
 }
 
 .boardCategory {
