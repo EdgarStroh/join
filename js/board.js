@@ -32,7 +32,7 @@ function updateToDo() {
     document.getElementById('toDo').innerHTML = '';
     for (let index = 0; index < toDo.length; index++) {
         const element = toDo[index];
-        document.getElementById('toDo').innerHTML += generateTodoHTML(element);
+        document.getElementById('toDo').innerHTML += generateBoardContent(element);
     }
 }
 
@@ -41,7 +41,7 @@ function updateInProgress() {
     document.getElementById('inProgress').innerHTML = '';
     for (let index = 0; index < inProgress.length; index++) {
         const element = inProgress[index];
-        document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
+        document.getElementById('inProgress').innerHTML += generateBoardContent(element);
     }
 }
 
@@ -50,7 +50,7 @@ function updateAwaitFeedback() {
     document.getElementById('awaitFeedback').innerHTML = '';
     for (let index = 0; index < awaitFeedback.length; index++) {
         const element = awaitFeedback[index];
-        document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element);
+        document.getElementById('awaitFeedback').innerHTML += generateBoardContent(element);
     }
 }
 
@@ -59,7 +59,7 @@ function updateDone() {
     document.getElementById('done').innerHTML = '';
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
-        document.getElementById('done').innerHTML += generateTodoHTML(element);
+        document.getElementById('done').innerHTML += generateBoardContent(element);
     }
 }
 
@@ -68,9 +68,9 @@ function startDragging(id) {
 }
 
 
-function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
-}
+// function generateTodoHTML(element) {
+//     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+// }
 
 function allowDrop(ev) {
     ev.preventDefault();

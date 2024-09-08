@@ -80,9 +80,9 @@ function generateEditContact(contact) {
             </div>
         </div>
     `;
-}function generateBoardContent(board, index) {
+}function generateBoardContent(board, element) {
   return `
-        <div class="boardCard flex" draggable="true" ondragstart="startDragging(${index})">
+        <div class="boardCard flex" draggable="true" ondragstart="startDragging(${element})">
             <span class="boardCategory bc1">${board.category}</span>
             <div class="boardText flex">
                 <span class="bc2">${board.title}</span>
