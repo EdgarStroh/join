@@ -1,5 +1,5 @@
 let allContacts = [];
-
+let allBoardContent = [];
 function onloadFunctionData() {
     // + LOAD +
     loadDataContacts("");
@@ -61,15 +61,15 @@ async function loadDataContacts(path = "") {
     }));
 
     // Log all IDs
-    allContacts.forEach(contact => console.log(contact.Uid));
+    // allContacts.forEach(contact => console.log(contact.Uid));
 
     // Suppose you have some logic to determine which ID to log
     // Example: Log the ID of the first contact in the array
-    if (allContacts.length > 0) {
-        console.log("First contact ID:", allContacts[0].Uid);
-    } else {
-        console.log('No contacts available');
-    }
+    // if (allContacts.length > 0) {
+    //     console.log("First contact ID:", allContacts[0].Uid);
+    // } else {
+    //     console.log('No contacts available');
+    // }
 
     // Pass the contacts object to the render function
     renderContactList(); // render()
@@ -96,7 +96,18 @@ const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedat
 // load task's for board
 async function loadDataBoards(path = "") {
     let response = await fetch(BASE_URL_Board + path + ".json");
-    let responseToJson = await response.json();
+    allBoardContent = await response.json(); // Use allBoardContent directly
+
+    // Convert the Firebase object to an array of boards, including IDs
+    allBoardContent = Object.keys(allBoardContent).map(key => ({
+        Uid: key,
+        ...allBoardContent[key]
+    }));
+
+    // Log each board individually
+    allBoardContent.forEach(board => console.log(board));
+    
+  
 }
 
 // post task's for board
@@ -110,6 +121,7 @@ async function postDataBoards(path = "", data = {}) {
 
     });
     return responseToJSon = await response.json();
+    
 }
 
 //                              +++ USER +++
