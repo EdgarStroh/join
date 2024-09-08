@@ -17,6 +17,7 @@ let todos = [{
 }];
 
 let currentDraggedElement;
+let currentDraggedElementIndex;
 
 function updateAll() {
     updateToDo();
@@ -65,6 +66,7 @@ function updateDone() {
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
 
 function generateTodoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
@@ -122,7 +124,7 @@ function renderBoardList() {
     boardContainer.innerHTML = ""; // Clear any existing content
 
     // Generate and insert the board content into the container
-    allBoardContent.forEach(board => {
-        boardContainer.innerHTML += generateBoardContent(board); // Append content for each board
+    allBoardContent.forEach((board, index) => {
+        boardContainer.innerHTML += generateBoardContent(board, index); // Pass index as argument
     });
 }

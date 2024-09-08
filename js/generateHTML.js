@@ -80,27 +80,31 @@ function generateEditContact(contact) {
             </div>
         </div>
     `;
-}
-function generateBoardContent(board) {
+}function generateBoardContent(board, index) {
+    // Capitalize the first letter of the category
+    const capitalizedCategory = board.category ? board.category.charAt(0).toUpperCase() + board.category.slice(1) : '';
+
+    // Check if subtasks exist and if they are an array
     let subtasksHtml = "";
     if (Array.isArray(board.subtasks)) {
         subtasksHtml = board.subtasks.map(subtask => `<li>${subtask}</li>`).join('');
     } else {
         subtasksHtml = "<li>No subtasks available</li>";
     }
-    // Assuming 'category' is one of the properties in the board object
+
     return `
-        <div class="boardCard flex">
-            <span class="boardCategory bc1">${board.category}</span>
+        <div class="boardCard flex" draggable="true" ondragstart="startDragging(${index})">
+            <span class="boardCategory bc1">${capitalizedCategory}</span>
             <div class="boardText flex">
                 <span class="bc2">${board.title}</span>
-                <span class="bc3">${board.description}</span
+                <span class="bc3">${board.description}</span>
             </div>
             <div>
-                <span>${subtasksHtml}</span>
+               ${subtasksHtml}
             </div>
             <div>
-                users and icon
+                <!-- Placeholder for users and icon -->
+                <span>Users and Icon</span>
             </div>
         </div>
     `;
