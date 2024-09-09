@@ -4,18 +4,17 @@ function updateAll() {
 
 function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
   
-  function drag(ev) {
+function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-  }
+}
   
-  function drop(ev) {
+function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
+    let data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-  }
-
+}
 
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
@@ -26,20 +25,15 @@ function removeHighlight(id) {
 }
 
 function renderBoardList() {
-  let toDoContainer = document.getElementById("toDo");
-  let progressContainer = document.getElementById("inProgress");
-  let awaitContainer = document.getElementById("awaitFeedback");
-  let doneContainer = document.getElementById("done");
-  toDoContainer.innerHTML = ""; // Clear any existing content
-  progressContainer.innerHTML = ""; // Clear any existing content
-  awaitContainer.innerHTML = ""; // Clear any existing content
-  doneContainer.innerHTML = ""; // Clear any existing content
-  //loadDataBoards("");
-
-  // Generate and insert the board content into the container
-//   allBoardContent.forEach((board, index) => {
-//     boardContainer.innerHTML += generateBoardContent(board, index); 
-//   });
+    let toDoContainer = document.getElementById("toDo");
+    let progressContainer = document.getElementById("inProgress");
+    let awaitContainer = document.getElementById("awaitFeedback");
+    let doneContainer = document.getElementById("done");
+    toDoContainer.innerHTML = ""; 
+    progressContainer.innerHTML = ""; 
+    awaitContainer.innerHTML = "";
+    doneContainer.innerHTML = ""; 
+  
     for (let index = 0; index < allBoardContent.length; index++) {
         if (allBoardContent[index].status == "toDo") {
             toDoContainer.innerHTML += generateBoardContent(index);
@@ -51,7 +45,6 @@ function renderBoardList() {
             doneContainer.innerHTML += generateBoardContent(index);
         }
     }
-
 }
 
 function openPopup() {
