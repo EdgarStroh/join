@@ -40,7 +40,7 @@
                     <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
                     <br>
                     <label for="contactSelection">Assigned to</label>
-                    <div id="contactSelection" onclick="toggleContactListView()">
+                    <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
                         Select contacts to assign
                     </div>
                     <div id="contactList" class="hidden flex">
@@ -59,7 +59,7 @@
                     </section>                    
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>
-                    <select id="category" required>
+                    <select id="category" required tabindex="0">
                         <option>Select Task Category</option>
                         <option value="technical task">Technical Task</option>
                         <option value="userstory">Userstory</option>
