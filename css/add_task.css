@@ -84,10 +84,43 @@ input{
 }
 #date {
     outline: none !important;
+    padding-right: 30px;
+    background: url(../assets/icons/date.svg) no-repeat right 10px center;
+    background-size: 20px 20px;
+    position: relative;
+    cursor: pointer; /* Zeigt den Zeiger, wenn der Nutzer auf das Feld fährt */
 }
-#date:focus {
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0; /* Versteckt den Standard-Indikator, ohne dessen Funktionalität zu beeinträchtigen */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    padding-right: 30px; /* Platz für das Icon */
+    cursor: pointer;
+}
+
+input[type="date"]:focus {
+    outline: none;
+}
+
+
+
+/* #date:focus {
     border: 1px solid #29ABE2;
-}
+} */
 #addSubTask{
     width:100%;
 }
