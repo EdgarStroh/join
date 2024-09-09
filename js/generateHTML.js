@@ -80,19 +80,21 @@ function generateEditContact(contact) {
             </div>
         </div>
     `;
-}function generateBoardContent(board, element) {
-  return `
-        <div class="boardCard flex" draggable="true" ondragstart="startDragging(${element})">
-            <span class="boardCategory bc1">${board.category}</span>
-            <div class="boardText flex">
-                <span class="bc2">${board.title}</span>
-                <span class="bc3">${board.description}</span>
-            </div>
-            <div>
-               ${board.subtasks}
-                <!-- Placeholder for users and icon -->
-                <span>Users and Icon</span>
-            </div>
-        </div>
-    `;
 }
+
+function generateBoardContent(board, index) {
+    return `
+      <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
+          <span class="boardCategory bc1">${board.category}</span>
+          <div class="boardText flex">
+              <span class="bc2">${board.title}</span>
+              <span class="bc3">${board.description}</span>
+          </div>
+          <div>
+              ${board.subtasks || ''} 
+              <!-- Placeholder for users and icon -->
+              <span>Users and Icon</span>
+          </div>
+      </div>
+    `;
+  }
