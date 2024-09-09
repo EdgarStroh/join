@@ -48,9 +48,10 @@
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
+                <div class="drag-area" id="toDo" ondrop="drop(event)" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
             </div>
 
+            <img id="drag1" src="../assets/icons/contacts.svg" draggable="true" ondragstart="drag(event)" width="336" height="69">
 
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">In progress
@@ -58,7 +59,7 @@
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
+                <div class="drag-area" id="inProgress" ondrop="drop(event)" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
             </div>
 
 
@@ -68,12 +69,12 @@
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
+                <div class="drag-area" id="awaitFeedback" ondrop="drop(event)" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
             </div>
 
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Done</div>
-                <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
+                <div class="drag-area" id="done" ondrop="drop(event)" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
             </div>
 
             <!-- Pop up -->
