@@ -14,6 +14,10 @@ function drop(ev) {
     ev.preventDefault();
     let data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    let index = parseInt(data.split("-")[1]);
+    let currentTask = allBoardContent[index];
+    currentTask.status = "done";
+    updateTask(currentTask.Uid, currentTask);
 }
 
 function highlight(id) {
@@ -75,4 +79,38 @@ function closePopup() {
     setTimeout(() => {
         popupModal.style.display = 'none';
     }, 120); // 120ms entspricht der Dauer der Animation
+}
+
+
+
+async function updateTask(id, data) {
+  try {
+    let response = await fetch(`${BASE_URL_Board}/${id}.json`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Fehler beim Aktualisieren der Task: ${response.statusText}`
+      );
+    }
+
+    console.log("Task erfolgreich aktualisiert:", await response.json());
+
+    // Lokale Kontakte aktualisieren
+    const index = allBoardContent.findIndex((task) => task.Uid === id);
+    if (index !== -1) {
+      allBoardContent[index] = { ...allBoardContent[index], ...data };
+    }
+
+    // UI aktualisieren
+    renderBoardList();
+  } catch (error) {
+    console.error("Fehler beim Aktualisieren der Task:", error);
+    alert("Es gab ein Problem beim Aktualisieren der Task.");
+  }
 }
