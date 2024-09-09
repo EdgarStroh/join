@@ -87,6 +87,7 @@ input{
     padding-right: 30px;
     background: url(../assets/icons/date.svg) no-repeat right 10px center;
     background-size: 20px 20px;
+    background-color: white;
     position: relative;
     cursor: pointer; /* Zeigt den Zeiger, wenn der Nutzer auf das Feld fährt */
 }
@@ -116,11 +117,6 @@ input[type="date"]:focus {
     outline: none;
 }
 
-
-
-/* #date:focus {
-    border: 1px solid #29ABE2;
-} */
 #addSubTask{
     width:100%;
 }
