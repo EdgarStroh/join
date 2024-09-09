@@ -52,21 +52,31 @@ let contact = document.querySelectorAll('.contact');
 
 //render contacts
 async function renderContactList(){
-    const contacts = await loadDataContacts();
-    for(i = 0; i < contacts.length; i++){
-        const firstLetter = contacts[i]['name'][0];
-        const spaceIndex = contacts[i]['name'].indexOf(' ');
-        const firstLetterAfterSpace = contacts[i]['name'][spaceIndex+1];
-        contactList.innerHTML += `
+  const contacts = await loadDataContacts();
+
+  // Sortieren der Kontakte alphabetisch nach dem Namen
+  contacts.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
+
+  for (i = 0; i < contacts.length; i++) {
+    const firstLetter = contacts[i]["name"][0];
+    const spaceIndex = contacts[i]["name"].indexOf(" ");
+    const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1];
+    contactList.innerHTML += `
                 <div class='contact flex' onclick='addTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circle flex' style='background:${contacts[i]['color']}'>${firstLetter+firstLetterAfterSpace}</span>
+                        <span class='circle flex' style='background:${
+                          contacts[i]["color"]
+                        }'>${firstLetter + firstLetterAfterSpace}</span>
                         <span>${contacts[i].name}</span>
                     </div>
                     <input type="checkbox" value="${contacts[i].name}">
                 </div>
         `;
-    }
+  }
 }
 
 renderContactList();
