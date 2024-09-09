@@ -1,4 +1,4 @@
-.hidden{
+.hidden {
     display:none;
 }
 .text_container {
@@ -7,21 +7,21 @@
     display:flex;
     align-items:center;
 }
-form{
+form {
     margin-right:auto;
 }
-.formParts{
+.formParts {
     width:100%;
     gap:75px;
     padding-top: 50px;
 }
-::placeholder{
+::placeholder {
     color:#D1D1D1;
 }
-label, input, textarea, #prio button, select{
+label, input, textarea, #prio button, select {
     font-size:20px;
 }
-input, textarea{
+input, textarea {
     padding-left: 12px;
     border-radius: 10px;
 }
@@ -56,7 +56,7 @@ input{
 #prio {
     gap: 18px;
 }
-#prio button{
+#prio button {
     width: 136px;
     height: 56px;
     padding: 16px 10px 16px 10px;
@@ -70,15 +70,18 @@ input{
     gap:8px;
     box-shadow: 0px 0px 4px 0px #0000001A;
 }
-.prioUrgentActive{
+#prio button:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+.prioUrgentActive { 
     background: #FF3D00 !important;
     color:white;
 }
-.prioMediumActive{
+.prioMediumActive {
     background:#FFA800 !important;
     color:white;
 }
-.prioLowActive{
+.prioLowActive {
     background: #7AE229 !important;
     color:white;
 }
@@ -117,10 +120,10 @@ input[type="date"]:focus {
     outline: none;
 }
 
-#addSubTask{
+#addSubTask {
     width:100%;
 }
-#addSubTask input{
+#addSubTask input {
     width: 100%;
     background-color: white;
 }
@@ -172,7 +175,7 @@ input[type="date"]:focus {
 .clearBtn:hover img {
     filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
-.taskFormButtons{
+.taskFormButtons {
     padding:75px 0;
     width:100%;
     justify-content: space-between;
@@ -182,15 +185,15 @@ input[type="date"]:focus {
     gap:16px;
 }
 
-input, .addSubTask, select, textarea{
+input, .addSubTask, select, textarea {
     cursor:pointer;
 }
 
-#seperationLine{
+#seperationLine {
     border:1px solid #D1D1D1;
 }
 
-#contactSelection{
+#contactSelection {
     background: url(../assets/icons/dropdownIcon.svg) no-repeat right 10px center;
     background-color: white;
     font-size: 20px;
@@ -207,7 +210,7 @@ input, .addSubTask, select, textarea{
 }
 /* der Focus funktioniert hier noch nicht!!!! */
 
-#contactList{
+#contactList {
     height:200px;
     overflow-y:scroll;
     flex-direction:column;
@@ -217,7 +220,7 @@ input, .addSubTask, select, textarea{
     background-color: white;
 }
 
-.circle{
+.circle {
     width:42px;
     height:42px;
     border-radius:45px;
@@ -225,7 +228,7 @@ input, .addSubTask, select, textarea{
     align-items:center;
     color:white;
 }
-.contact{
+.contact {
     padding-right:15px;
     padding-left:15px;
     width:100%;
@@ -234,16 +237,16 @@ input, .addSubTask, select, textarea{
     align-items:center;
     border-radius:10px;
 }
-.contact:hover{
+.contact:hover {
     background:#D1D1D1;
     cursor:pointer;
 }
-.contact div{
+.contact div {
     justify-content:center;
     align-items:center;
     gap:10px;
 }
-.selectedContact{
+.selectedContact {
     background:#2A3647;
     color:white;
 }
