@@ -73,7 +73,7 @@ async function loadDataContacts(path = "") {
     // }
 
     // Pass the contacts object to the render function
-    renderContactList(); // render()
+    //renderContactList(); // render()
     // renderExtendedContact(contactsObject);
 }
 
@@ -97,12 +97,12 @@ const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedat
 // load task's for board
 async function loadDataBoards(path = "") {
     let response = await fetch(BASE_URL_Board + path + ".json");
-    allBoardContent = await response.json();
+    let localBoardContent = await response.json();
 
     // Convert the Firebase object to an array of boards, including IDs
-    allBoardContent = Object.keys(allBoardContent).map(key => ({
+    allBoardContent = Object.keys(localBoardContent).map(key => ({
         Uid: key,
-        ...allBoardContent[key]
+        ...localBoardContent[key]
     }));
 
     // Render the board list after loading data

@@ -1,34 +1,36 @@
 function signUpUser(event) {
-    const checkbox = document.getElementById('checkboxLogin1');
-    if (!checkbox.checked) {
-        event.preventDefault();
-        return false;
-    }
-    
+  const checkbox = document.getElementById("checkboxLogin1");
+  if (!checkbox.checked) {
     event.preventDefault();
+    return false;
+  }
 
-    let userColor = getRandomColor();
-    let email = document.getElementById("inputEmail").value;
-    let name = document.getElementById("inputName").value;
-    let password = document.getElementById("inputPassword").value;
+  event.preventDefault();
 
-    let UserData = {
-        "color": userColor,
-        "email": email,
-        "name": name,
-        "password": password
-    };
+  let userColor = getRandomColor();
+  let email = document.getElementById("inputEmail").value;
+  let name = document.getElementById("inputName").value;
+  let password = document.getElementById("inputPassword").value;
 
-    postDataUsers("", UserData);
+  let UserData = {
+    color: userColor,
+    email: email,
+    name: name,
+    password: password,
+  };
+  // Speichern des Benutzernamens in localStorage
+  // localStorage.setItem("inputName", name);
 
-    document.getElementById("inputName").value = "";
-    document.getElementById("inputEmail").value = "";
-    document.getElementById("inputPassword").value = "";
-    document.getElementById("inputConfirmPassword").value = "";
-    document.getElementById("sign_up_button_div").classList.remove("displayNone");
-    checkbox.checked = false;
-    closePopup();
-    showPopup();
+  postDataUsers("", UserData);
+
+  document.getElementById("inputName").value = "";
+  document.getElementById("inputEmail").value = "";
+  document.getElementById("inputPassword").value = "";
+  document.getElementById("inputConfirmPassword").value = "";
+  document.getElementById("sign_up_button_div").classList.remove("displayNone");
+  checkbox.checked = false;
+  closePopup();
+  showPopup();
 }
 
 function check() {

@@ -3,16 +3,17 @@ function greetUser() {
   let greeting = "";
 
   if (currentHour >= 5 && currentHour < 11) {
-    greeting = "Good Morning, ";
+    greeting = "Good morning, ";
   } else if (currentHour >= 11 && currentHour < 15) {
     greeting = "Hello, ";
   } else if (currentHour >= 15 && currentHour < 18) {
-    greeting = "Good Afternoon, ";
+    greeting = "Good afternoon, ";
   } else {
-    greeting = "Good Evening, ";
+    greeting = "Good evening, ";
   }
 
-  let userName = "Sofia Müller" // hier muss der richtige User reingerendert werden
+// Abrufen des Benutzernamens aus localStorage
+//  let userName = localStorage.getItem('inputName') || "Guest";
 
   document.querySelector("#greetings h2").textContent = greeting;
   document.querySelector("#greetings span").textContent = userName;

@@ -82,16 +82,18 @@ function generateEditContact(contact) {
     `;
 }
 
-function generateBoardContent(board, index) {
+function generateBoardContent(index) {
     return `
       <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
-          <span class="boardCategory bc1">${board.category}</span>
+          <span class="boardCategory bc1">${
+            allBoardContent[index].category
+          }</span>
           <div class="boardText flex">
-              <span class="bc2">${board.title}</span>
-              <span class="bc3">${board.description}</span>
+              <span class="bc2">${allBoardContent[index].title}</span>
+              <span class="bc3">${allBoardContent[index].description}</span>
           </div>
           <div>
-              ${board.subtasks || ''} 
+              ${allBoardContent[index].subtasks || ""} 
               <!-- Placeholder for users and icon -->
               <span>Users and Icon</span>
           </div>

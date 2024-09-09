@@ -1,5 +1,5 @@
 function updateAll() {
-    renderBoardList();
+    loadDataBoards();
 }
 
 function allowDrop(ev) {
@@ -26,13 +26,32 @@ function removeHighlight(id) {
 }
 
 function renderBoardList() {
-    let boardContainer = document.getElementById("toDo");
-    boardContainer.innerHTML = ""; // Clear any existing content
+  let toDoContainer = document.getElementById("toDo");
+  let progressContainer = document.getElementById("inProgress");
+  let awaitContainer = document.getElementById("awaitFeedback");
+  let doneContainer = document.getElementById("done");
+  toDoContainer.innerHTML = ""; // Clear any existing content
+  progressContainer.innerHTML = ""; // Clear any existing content
+  awaitContainer.innerHTML = ""; // Clear any existing content
+  doneContainer.innerHTML = ""; // Clear any existing content
+  //loadDataBoards("");
 
-    // Generate and insert the board content into the container
-    allBoardContent.forEach((board, index) => {
-        boardContainer.innerHTML += generateBoardContent(board, index); // Pass index as argument
-    });
+  // Generate and insert the board content into the container
+//   allBoardContent.forEach((board, index) => {
+//     boardContainer.innerHTML += generateBoardContent(board, index); 
+//   });
+    for (let index = 0; index < allBoardContent.length; index++) {
+        if (allBoardContent[index].status == "toDo") {
+            toDoContainer.innerHTML += generateBoardContent(index);
+        } else if (allBoardContent[index].status == "in progress") {
+            progressContainer.innerHTML += generateBoardContent(index);
+        } else if (allBoardContent[index].status == "await") {
+            awaitContainer.innerHTML += generateBoardContent(index);
+        } else {
+            doneContainer.innerHTML += generateBoardContent(index);
+        }
+    }
+
 }
 
 function openPopup() {
