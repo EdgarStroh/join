@@ -53,3 +53,6 @@ a {
     color:  #29ABE2;
     font-weight: 700;
 }
+.activeNavigationPoint{
+    background:#091931;
+}
