@@ -83,9 +83,17 @@ function generateEditContact(contact) {
 }
 
 function generateBoardContent(index) {
+    // Bestimme die Textfarbe des span basierend auf der Kategorie
+    let categoryColor = '';
+    if (allBoardContent[index].category === 'Technical Task') {
+        categoryColor = '#1FD7C1'; // Farbe für "Technical Task"
+    } else  {
+        categoryColor = '#0038FF'; // Farbe für "User Story"
+    }
+
     return `
       <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
-          <span class="boardCategory bc1">${
+          <span class="boardCategory bc1" style="background-color: ${categoryColor};">${
             allBoardContent[index].category
           }</span>
           <div class="boardText flex">
@@ -99,4 +107,4 @@ function generateBoardContent(index) {
           </div>
       </div>
     `;
-  }
+}

@@ -250,13 +250,11 @@
 }
 
 .boardCategory {
-    background-color: #1FD7C1;
     color: white;
-    width: 144px;
+    width: fit-content;
     height: 27px;
-    padding: 4px 12px 4px 12px;
+    padding: 4px 16px 4px 16px;
     border-radius: 8px ;
-    /* margin-left: 12px; */
     text-align: center;
 }
 .boardText{
