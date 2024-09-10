@@ -141,6 +141,7 @@ async function postDataBoards(path = "", data = {}) {
         body: JSON.stringify(data)
 
     });
+   
     return responseToJSon = await response.json();
 }
 
@@ -172,12 +173,27 @@ addTaskForm.addEventListener('submit', (event)=>{
         'subtasks' : subtasks,
         'title' : title.value,
     }
-    console.log(priority);
-    console.log(data);
+    //reset
+    title.value = "";
+    date.value = "";
+    description.value = "";
+    category.value = "";
+    subtask.value = "";
+    subtasks = []; // Clear subtasks array
+    renderSubtaskList(); // Re-render the empty subtask list
+
+    let checkboxes = document.querySelectorAll('#contactList .contact input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+        checkbox.closest('.contact').classList.remove('selectedContact');
+    });
+
     try {
         postDataBoards("", data);
     } catch (error) {
         console.log(error);
     }
+
+   window.location.href = "board.html";
 
 });
