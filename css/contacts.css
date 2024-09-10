@@ -113,6 +113,7 @@
     text-align: center; 
 }
 .headline_contacts {
+    width: 100%;
     align-items: center;
     gap: 30px;
     margin-left: 770px;
@@ -133,7 +134,7 @@
         opacity: 0;
     }
     100% {
-        transform: translateX(17%); /* Im Bild sichtbar */
+        transform: translateX(-20%); /* Im Bild sichtbar */
         opacity: 1;
     }
 }
