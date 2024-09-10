@@ -126,10 +126,11 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             </div>
             <div>
                 ${getSubtaskDisplay(subtasks)}  
-            <div>
+            </div>
         </div>
-        <!-- Placeholder for users and icon -->
-             <!--<span>Users and Icon</span>-->
+            <div class="contactsAndPrio">
+                ${allBoardContent[index].asigned}
+            </div>
     </div>
   `;
 }

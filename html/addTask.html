@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +14,16 @@
     <link rel="stylesheet" href="../css/add_task.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <style>
-        #subTasksList{
-            display:block;
+        #subTasksList {
+            display: block;
         }
-        #subTasksList li{
-            justify-content:space-between;
+
+        #subTasksList li {
+            justify-content: space-between;
         }
     </style>
 </head>
+
 <body class="flex">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
@@ -30,7 +33,7 @@
         <div style="width:100%;">
             <h1 style="display: flex; margin-right: auto;">Add Task</h1>
         </div>
-        <form id="addTaskForm" method="post" action="board.html">
+        <form id="addTaskForm" method="post">
             <div class="flex formParts">
                 <section class="formPart flex">
                     <label for="title">Title<span class="requiredStar">*</span></label>
@@ -43,20 +46,24 @@
                     <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
                         Select contacts to assign
                     </div>
-                    <div id="contactList" class="hidden flex">
-                    </div>
+                    <div id="contactList" class="hidden flex"></div>
+
                 </section>
-                <hr id="seperationLine"></hr>
+                <hr id="seperationLine">
+                </hr>
                 <section class="formPart flex">
                     <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
-                    <input type="date" id="date" >
+                    <input type="date" id="date">
                     <br>
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
-                        <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
-                        <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
-                        <button value="low" id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
-                    </section>                    
+                        <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg"
+                                src="../assets/icons/prioUrgent.svg"></button>
+                        <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img
+                                id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
+                        <button value="low" id="prioLow" type="button">Low<img id="prioLowImg"
+                                src="../assets/icons/prioLow.svg"></button>
+                    </section>
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>
                     <select id="category" required tabindex="0">
@@ -78,12 +85,15 @@
             <div class="taskFormButtons flex">
                 <p><span class="requiredStar">*</span>This field is required</p>
                 <div class="flex">
-                    <button type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg" alt="Icon clear task"></button>
-                    <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg" alt="Icon create task"></button>
+                    <button type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
+                            alt="Icon clear task"></button>
+                    <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
+                            alt="Icon create task"></button>
                 </div>
             </div>
         </form>
         <script src="../js/add_task.js"></script>
     </div>
 </body>
+
 </html>
