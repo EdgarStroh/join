@@ -113,7 +113,6 @@ function getSubtaskDisplay(subtasks) {
 
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
-    let subtasks = allBoardContent[index].subtasks;
     let showContacts = allBoardContent[index].asigned;  // make sure you are using the correct field name
     let contactsHTML = '';
 
@@ -139,7 +138,7 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
                 progressLine
             </div>
             <div>
-                ${getSubtaskDisplay(subtasks)}  
+                ${getSubtaskDisplay(allBoardContent[index].subtasks)}  
             </div>
         </div>
             <div class="contactsAndPrio">
