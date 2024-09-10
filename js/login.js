@@ -23,6 +23,7 @@ function toggleCheckbox(labelId) {
 }
 function guestLogin() {
   // Weiterleitung zur summary.html ohne Validierung der Eingabefelder
+  localStorage.setItem("loggedInUser", "Guest");
   window.location.href = "summary.html";
 }
 
