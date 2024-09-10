@@ -133,15 +133,15 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             <span class="bc2">${allBoardContent[index].title}</span>
             <span class="bc3">${allBoardContent[index].description}</span>
         </div>
-        <div class="progressSubTask flex">
-            <div>
-                progressLine
+<div class="progressSubTask flex">
+        <div>
+            progressLine
             </div>
             <div>
-                ${getSubtaskDisplay(allBoardContent[index].subtasks)}  
+                ${getSubtaskDisplay(allBoardContent[index].subtasks)} 
             </div>
         </div>
-            <div class="contactsAndPrio">
+        <div class="contactsAndPrio">
                 ${contactsHTML}
             </div>
     </div>
