@@ -121,6 +121,7 @@
 
 .slideIn.show {
     animation: slideIn.12s ease-out forwards;
+    animation-fill-mode: forwards; /* Halte das Endergebnis */
     display: flex;
     flex-direction: column;
     gap: 54px;
@@ -128,11 +129,11 @@
 }
 @keyframes slideIn{
     0% {
-        transform: translateX(83%) translateY(90%);
+        transform: translateX(100%); /* Start außerhalb des Bildschirms */
         opacity: 0;
     }
     100% {
-        transform: translateX(-80%) translateY(90%);
+        transform: translateX(17%); /* Im Bild sichtbar */
         opacity: 1;
     }
 }

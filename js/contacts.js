@@ -40,17 +40,22 @@ function addContact() {
 
 function renderExtendedContact(id) {
   let extendedContact = document.getElementById("extended_contact");
-  extendedContact.innerHTML = ""; 
 
-extendedContact.innerHTML += generateExtendedContact(
-        allContacts[id].name,
-        allContacts[id].email,
-        allContacts[id].phone,
-        allContacts[id].color,
-        allContacts[id].Uid,
-        id // evtl muss das noch in die firebase id geändert werden!!!
-      );
+  extendedContact.innerHTML = "";
+  extendedContact.classList.remove("slideIn", "show");
+
+  extendedContact.innerHTML += generateExtendedContact(
+    allContacts[id].name,
+    allContacts[id].email,
+    allContacts[id].phone,
+    allContacts[id].color,
+    allContacts[id].Uid,
+    id // evtl muss das noch in die firebase id geändert werden
+  );
+
+  setTimeout(() => {extendedContact.classList.add("slideIn", "show");}, 10); 
 }
+
 
 function renderContactList() {
   let contactsContainer = document.getElementById("contacts");
