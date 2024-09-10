@@ -259,4 +259,5 @@
 }
 .boardText{
     flex-direction: column;
+    word-wrap: break-word;
 }

@@ -87,24 +87,29 @@ function generateBoardContent(index) {
     let categoryColor = '';
     if (allBoardContent[index].category === 'Technical Task') {
         categoryColor = '#1FD7C1'; // Farbe für "Technical Task"
-    } else  {
+    } else {
         categoryColor = '#0038FF'; // Farbe für "User Story"
     }
 
+    // Aufruf der Template-Funktion mit Übergabe der Farbe
+    return htmlTemplateGenerateBoardContent(index, categoryColor);
+}
+
+function htmlTemplateGenerateBoardContent(index, categoryColor) {
     return `
-      <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
-          <span class="boardCategory bc1" style="background-color: ${categoryColor};">${
-            allBoardContent[index].category
-          }</span>
-          <div class="boardText flex">
-              <span class="bc2">${allBoardContent[index].title}</span>
-              <span class="bc3">${allBoardContent[index].description}</span>
-          </div>
-          <div>
-              ${allBoardContent[index].subtasks || ""} 
-              <!-- Placeholder for users and icon -->
-              <span>Users and Icon</span>
-          </div>
-      </div>
-    `;
+    <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
+        <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+            ${allBoardContent[index].category}
+        </span>
+        <div class="boardText flex">
+            <span class="bc2">${allBoardContent[index].title}</span>
+            <span class="bc3">${allBoardContent[index].description}</span>
+        </div>
+        <div>
+            ${allBoardContent[index].subtasks || ""} 
+            <!-- Placeholder for users and icon -->
+            <span>Users and Icon</span>
+        </div>
+    </div>
+  `;
 }
