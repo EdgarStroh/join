@@ -12,8 +12,8 @@ function greetUser() {
     greeting = "Good evening, ";
   }
 
-  document.querySelector("#greetings h2").textContent = greeting;
-  document.querySelector("#greetings span").textContent = localStorage.getItem("loggedInUser");
+  document.querySelector("#greetings span").textContent = greeting;
+  document.querySelector("#greetings h2").textContent = localStorage.getItem("loggedInUser");
 }
 
 greetUser();
