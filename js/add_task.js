@@ -179,3 +179,4 @@ addTaskForm.addEventListener('submit', async (event) => {
         console.log("Error posting data to Firebase:", error);
     }
 });
+

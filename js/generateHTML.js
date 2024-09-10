@@ -95,7 +95,22 @@ function generateBoardContent(index) {
     return htmlTemplateGenerateBoardContent(index, categoryColor);
 }
 
+// Funktion, um die Subtask-Anzeige zu generieren (z.B. 0/2)
+function getSubtaskDisplay(subtasks) {
+    // Anzahl der Subtasks und wie viele abgeschlossen sind
+    let subtaskCount = subtasks ? subtasks.length : 0;
+    let completedSubtasks = subtasks
+        ? subtasks.filter(subtask => subtask.completed).length
+        : 0;
+
+    // Wenn keine Subtasks vorhanden sind, zeige nichts an
+    return subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount}` : '';
+}
+
+// Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
+    let subtasks = allBoardContent[index].subtasks;
+
     return `
     <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
         <span class="boardCategory bc1" style="background-color: ${categoryColor};">
@@ -106,10 +121,11 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             <span class="bc3">${allBoardContent[index].description}</span>
         </div>
         <div>
-            ${allBoardContent[index].subtasks || ""} 
-            <!-- Placeholder for users and icon -->
-            <span>Users and Icon</span>
+            ${getSubtaskDisplay(subtasks)} 
+            
         </div>
+        <!-- Placeholder for users and icon -->
+             <!--<span>Users and Icon</span>-->
     </div>
   `;
 }
