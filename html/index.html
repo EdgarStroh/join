@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/login_signup.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script src="../js/login.js"></script>
-    <script src="../js/register.js"></script>
+
 </head>
 
-<body>
+<body onload="loadDataUsers()">
     <div id="animationBg" class="animation_bg"></div>
     <div id="animatedLogo" class="animation_logo"></div>
     <div class="sign_up_container flex">
@@ -31,16 +30,16 @@
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
         <form action="summary.html">
             <div class="input_login flex">
-                <input class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
+                <input id="loginEmail" class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
-                <input class="password" type="password" placeholder="Password" required oninput="setCustomValidity('')"
+                <input id="loginPassword" class="password" type="password" placeholder="Password" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Gib dein Passwort ein!')">
                 <div class="checkbox_login flex padding-left">
                     <input type="checkbox" id="checkboxLogin" name="checkboxLogin" required>
                     <label class="checkbox_label" for="checkboxLogin">Remember me</label>
                 </div>
                 <div class="button_login flex">
-                    <button type="submit" class="button">Log in</button>
+                    <button type="button" class="button" onclick="checkLogin()">Log in</button>
                     <button type="button" class="guest_login" onclick="guestLogin()">Guest Log in</button>
                 </div>
             </div>
@@ -95,6 +94,8 @@
     <script src="../js/edgar.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/register.js"></script>
 </body>
 
 </html>

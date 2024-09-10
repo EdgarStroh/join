@@ -1,5 +1,6 @@
 let allContacts = [];
 let allBoardContent = [];
+let allUsers = [];
 
 function onloadFunctionData() {
     // + LOAD +
@@ -133,6 +134,10 @@ async function loadDataUsers(path = "") {
     let response = await fetch(BASE_URL_USERS + path + ".json");
     let responseToJson = await response.json();
     
+    allUsers = Object.keys(responseToJson).map((key) => ({
+      Uid: key,
+      ...responseToJson[key],
+    }));
 }
 // post users
 async function postDataUsers(path = "", data = {}) {
