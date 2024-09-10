@@ -12,7 +12,6 @@
 .contact_list {
     overflow: auto;
     scroll-behavior: smooth;
-    flex-direction: column;
     align-items: center;
     position: fixed;
     width: 456px;
@@ -22,7 +21,6 @@
     box-shadow: 4px 0px 6px 0px #00000014;
     gap:8px;
 }
-
 .add_contact {
     cursor: pointer;
     align-items: center;
@@ -60,19 +58,15 @@
     cursor: pointer;
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
-/* Entferne den Hover-Effekt, wenn die Klasse 'active' vorhanden ist */
 .single_contact.active:hover {
     background: none;
 }
-
-/* Setze die Hintergrundfarbe auf #2A3647, wenn die Klasse 'active' hinzugefügt wird */
 .single_contact.active {
     background-color: #2A3647 !important;
     color:white;
 }
 .contact_info,
 .contact_info_extended {
-    flex-direction: column;
     gap: 8px;
 }
 .contact_info h3{
@@ -119,7 +113,6 @@
     margin-left: 770px;
     margin-top: 150px;
 }
-
 .slideIn.show {
     animation: slideIn.12s ease-out forwards;
     animation-fill-mode: forwards; /* Halte das Endergebnis */
@@ -158,7 +151,6 @@
     color: #007CEE;
 }
 .contact_headline {
-    flex-direction: column;
     gap: 54px;
     align-items: flex-start;
     margin-top: 200px; 
@@ -169,7 +161,6 @@
     line-height: 24px;
 }
 .contact_details {
-    flex-direction: column;
     gap: 15px;
 }
 .contact_details p:nth-child(odd) {
@@ -178,7 +169,6 @@
 .contact_details p:nth-child(2) {
     color: #007CEE;
 }
-
 /* START POP UP */
 .popup-overlay,
 .popup-edit-overlay {
@@ -188,18 +178,16 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    display: none; /* Versteckt standardmäßig */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
-
 .popup-modal,
 .popup-edit-modal {
     width: 1110px;
     height: 600px;
     background-color: white;
-    /* padding: 65px 60px; */
     border-radius: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -207,22 +195,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
-    display: none; /* Versteckt standardmäßig */
+    display: none;
     opacity: 0;
 }
-
 .popup-modal.show,
 .popup-edit-modal.show {
     display: block;
     animation: slideInFromRight 0.12s ease-out forwards;
 }
-
 .popup-modal.hide,
 .popup-edit-modal.hide {
     animation: slideOutToRight 0.12s ease-out forwards;
     opacity: 0;
 }
-
 @keyframes slideInFromRight {
     0% {
         transform: translateX(100%) translateY(-50%);
@@ -233,7 +218,6 @@
         opacity: 1;
     }
 }
-
 @keyframes slideOutToRight {
     0% {
         transform: translateX(-50%) translateY(-50%);
@@ -245,8 +229,7 @@
     }
 }
 /* ENDE POP UP */
-
-.popup-bg{
+.popup-bg {
     background-color: #2A3647;
     width: 465px;
     height: 600px;
@@ -255,10 +238,10 @@
     padding:  0 48px ;
     align-content: center;
 }
-.white{
+.white {
     color: white;
 }
-.popupLogo{
+.popupLogo {
     width: 55.6px;
     height: 66.48px;
     gap: 0px;
@@ -277,9 +260,7 @@ input:focus {
     border: 1px solid #29ABE2;
 }
 .input_login {
-    flex-direction: column;
     gap: 32px;
-    /* padding-left: 35px; */
 }
 .name {
     padding-right: 30px; 
@@ -296,7 +277,6 @@ input:focus {
     background: url(../assets/icons/call.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
 }
-
 .email, .phone, .name {
     width: 422px;
     height: 48px;
@@ -305,18 +285,16 @@ input:focus {
     padding: 12px 21px;
     font-size: 20px;
 }
-.popup-Right-Side{
+.popup-Right-Side {
     display: flex;
     height: 100%;
     align-items: center;
     align-self: center;
-     padding: 0 0 0 30px; 
-    flex-direction: column;
+    padding: 0 0 0 30px; 
 }
 .profileImg {
     height: 120px;
     width: 120px;
-    /* align-self: center; */
     align-self: center;
     margin-bottom: 50px;
 }
@@ -360,12 +338,12 @@ input:focus {
 .button-white:hover img {
     filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
-.button-line{
+.button-line {
     gap: 24px;
     margin-right: auto;
     padding-top: 50px;
 }
-.popup-Right-Side-Content{
+.popup-Right-Side-Content {
     display: flex;
     align-self: center;
     padding: 0px 0 0 40px;
