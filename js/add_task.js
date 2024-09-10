@@ -146,23 +146,18 @@ async function postDataBoards(path = "", data = {}) {
 }
 
 
-addTaskForm.addEventListener('submit', (event)=>{
+addTaskForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    
     let selectedContacts = document.querySelectorAll('#contactList .contact input[type="checkbox"]:checked');
-    /*
-    console.log(title.value);
-    console.log(date.value);
-    console.log(description.value);
-    console.log(category.value);
-    console.log(priority);
-    */
+    
     let contactNames = [];
     for (let i = 0; i < selectedContacts.length; i++) {
         let name = selectedContacts[i].value;
         contactNames.push(name);
     }
     
-    //prepare the data to be sent
+    // Bereite die Daten vor, die gesendet werden sollen
     let data = {
         'asigned' : contactNames,
         'category' : category.value,
@@ -172,28 +167,15 @@ addTaskForm.addEventListener('submit', (event)=>{
         'status' : 'toDo',
         'subtasks' : subtasks,
         'title' : title.value,
-    }
-    //reset
-    title.value = "";
-    date.value = "";
-    description.value = "";
-    category.value = "";
-    subtask.value = "";
-    subtasks = []; // Clear subtasks array
-    renderSubtaskList(); // Re-render the empty subtask list
-
-    let checkboxes = document.querySelectorAll('#contactList .contact input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-        checkbox.closest('.contact').classList.remove('selectedContact');
-    });
+    };
 
     try {
-        postDataBoards("", data);
+        // Warten, bis die Daten erfolgreich gepostet wurden
+        await postDataBoards("", data);
+        
+        // Nach erfolgreichem Posten zur board.html weiterleiten
+        window.location.href = "board.html";
     } catch (error) {
-        console.log(error);
+        console.log("Error posting data to Firebase:", error);
     }
-
-   window.location.href = "board.html";
-
 });
