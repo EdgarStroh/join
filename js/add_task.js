@@ -168,7 +168,7 @@ addTaskForm.addEventListener('submit', (event)=>{
         'date' : date.value,
         'description' : description.value,
         'prio' : priority,
-        'status' : 'in progress',
+        'status' : 'toDo',
         'subtasks' : subtasks,
         'title' : title.value,
     }
