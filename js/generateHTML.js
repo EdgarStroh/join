@@ -114,6 +114,16 @@ function getSubtaskDisplay(subtasks) {
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
     let subtasks = allBoardContent[index].subtasks;
+    let showContacts = allBoardContent[index].asigned;  // make sure you are using the correct field name
+    let contactsHTML = '';
+
+    // Check if showContacts is defined and contains contacts
+       if (showContacts && showContacts.length > 0) {
+        // Create HTML for the assigned contacts 
+        contactsHTML = showContacts;
+    }else{
+        contactsHTML = '' ;
+    }
 
     return `
     <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
@@ -133,8 +143,10 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             </div>
         </div>
             <div class="contactsAndPrio">
-                ${allBoardContent[index].asigned}
+                ${contactsHTML}
             </div>
     </div>
   `;
+
+ 
 }

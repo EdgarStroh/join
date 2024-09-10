@@ -212,7 +212,7 @@ input, .addSubTask, select, textarea {
 
 #contactList {
     height:200px;
-    overflow-y:scroll;
+    overflow:auto;
     flex-direction:column;
     gap:5px;
     padding-top: 10px;
