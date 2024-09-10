@@ -11,9 +11,11 @@ function generateContactContent(name, email, id, color, uid) {
     return `
         <div id="${uid}" onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
-                <span style="background-color: ${color}">${getInitials(name)}</span> 
+                <span style="background-color: ${color}">${getInitials(
+      name
+    )}</span> 
             </div>
-            <div class="contact_info flex">
+            <div class="contact_info flex flex-column">
                 <h3>${name}</h3> 
                 <p>${email}</p> 
             </div>
@@ -23,10 +25,12 @@ function generateContactContent(name, email, id, color, uid) {
 
 function generateExtendedContact(name, email, phone, color, Uid, id) {
     return `
-    <div class="contact_headline flex">
+    <div class="contact_headline flex flex-column">
     <div class="contact_content_extended flex">
-        <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(name)}</span>
-        <div class="contact_info_extended flex">
+        <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(
+      name
+    )}</span>
+        <div class="contact_info_extended flex flex-column">
         <h3>${name}</h3>
         <div class="contact_tools flex">
             <div onclick="openEditContact(${id})" class="edit flex">
@@ -42,7 +46,7 @@ function generateExtendedContact(name, email, phone, color, Uid, id) {
     </div>
 
     <h4>Contact Information</h4>
-            <div class="contact_details flex">
+            <div class="contact_details flex flex-column">
                 <p>Email</p>
                 <p>${email}</p>
                 <p>Phone</p>
@@ -64,9 +68,9 @@ function generateEditContact(contact) {
                     <img class="close" onclick="closeEditContact()" src="../assets/icons/close.svg" alt="Icon close">
                 </div>
                 <img class="profileImg" src="../assets/img/profileImg.svg">
-                <div class="popup-Right-Side">
+                <div class="popup-Right-Side flex-column">
                     <form>
-                        <div class="input_login flex">
+                        <div class="input_login flex flex-column">
                             <input class="name" type="text" id="inputEditName" placeholder="Name" value="${contact.name}" required>
                             <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${contact.email}" required>
                             <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${contact.phone}" required>

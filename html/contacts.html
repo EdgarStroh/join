@@ -21,7 +21,7 @@
         <script>w3.includeHTML();</script>
     </aside>
     <div class="contact_content flex">
-        <div class="contact_list flex">
+        <div class="contact_list flex flex-column">
             <button class="add_contact flex" onclick="openPopup()">Add new contact <img
                     src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
             <div class="contacts" id="contacts"> 
@@ -56,7 +56,7 @@
                 <img class="profileImg" src="../assets/img/profileImg.svg">
                 <div class="popup-Right-Side">
                     <form>
-                        <div class="input_login flex">
+                        <div class="input_login flex flex-column">
                             <input class="name" type="text" id="inputName" placeholder="Name" required>
                             <input class="email" type="email" id="inputEmail" placeholder="Email" required>
                             <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required>
