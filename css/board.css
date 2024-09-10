@@ -261,3 +261,6 @@
     flex-direction: column;
     word-wrap: break-word;
 }
+.progressSubTask{
+    justify-content: space-between;
+}

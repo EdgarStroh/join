@@ -120,9 +120,13 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             <span class="bc2">${allBoardContent[index].title}</span>
             <span class="bc3">${allBoardContent[index].description}</span>
         </div>
-        <div>
-            ${getSubtaskDisplay(subtasks)} 
-            
+        <div class="progressSubTask flex">
+            <div>
+                progressLine
+            </div>
+            <div>
+                ${getSubtaskDisplay(subtasks)}  
+            <div>
         </div>
         <!-- Placeholder for users and icon -->
              <!--<span>Users and Icon</span>-->
