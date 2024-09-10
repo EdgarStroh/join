@@ -53,28 +53,31 @@ function clearExtendedContact() {
 //    EDIT CONTACT   //
 
 function editContact(id) {
-  console.log(`editContact aufgerufen mit ID: ${id}`);
+    console.log(`editContact aufgerufen mit ID: ${id}`);
 
-  const name = document.getElementById("inputEditName").value;
-  const email = document.getElementById("inputEditEmail").value;
-  const phone = document.getElementById("inputEditPhone").value;
+    const name = document.getElementById("inputEditName").value;
+    const email = document.getElementById("inputEditEmail").value;
+    const phone = document.getElementById("inputEditPhone").value;
 
-  const originalContact = allContacts.find((contact) => contact.Uid === id);
+    const originalContact = allContacts.find((contact) => contact.Uid === id);
+    const originalIndex = allContacts.findIndex((contact) => contact.Uid === id);
 
-  if (!originalContact) {
-    console.error("Kontakt mit ID", id, "nicht gefunden!");
-    return;
-  }
+    if (!originalContact) {
+        console.error("Kontakt mit ID", id, "nicht gefunden!");
+        return;
+    }
 
-  const updatedContact = {
-    ...originalContact,
-    name: name,
-    email: email,
-    phone: phone,
-  };
+    const updatedContact = {
+        ...originalContact,
+        name: name,
+        email: email,
+        phone: phone,
+    };
 
-  updateDataContact(id, updatedContact);
-  closeEditContact();
+    allContacts[originalIndex] = updatedContact;
+    updateDataContact(id, updatedContact);
+    closeEditContact();
+    renderExtendedContact(originalIndex);
 }
 
 // Funktion, um den Kontakt zu bearbeiten und das Formular anzuzeigen
