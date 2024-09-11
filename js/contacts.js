@@ -1,7 +1,5 @@
 async function updateContacts() {
   await loadDataContacts("");
-  // await loadDataBoards("");
-  // await loadDataUsers("");
   renderContactList();
 }
 
@@ -31,20 +29,6 @@ function addContact() {
   updateContacts();
 }
 
-// diese function wird im edgar.js function onloadFunctionData() aufgerufen   --> Diese Funktion wird nicht mehr aufgerufen, haben wir auskommentiert!!!!
-
-// function render(contactsObject) {
-//     let contacts = document.getElementById("contacts");
-//     contacts.innerHTML = "";
-
-//     for (let key in contactsObject) {
-//         if (contactsObject.hasOwnProperty(key)) {
-//             let contact = contactsObject[key];
-//             contacts.innerHTML += generateContactContent(contact.name, contact.email, key, contact.color);
-//         }
-//     }
-// }
-
 function renderExtendedContact(id) {
   let extendedContact = document.getElementById("extended_contact");
 
@@ -57,7 +41,7 @@ function renderExtendedContact(id) {
     allContacts[id].phone,
     allContacts[id].color,
     allContacts[id].Uid,
-    id // evtl muss das noch in die firebase id geändert werden
+    id 
   );
 
   setTimeout(() => {
@@ -101,11 +85,10 @@ function showPopupContact() {
 
   overlay.style.display = "flex";
   success.style.display = "flex";
-  success.style.opacity = "0"; // Setze die Sichtbarkeit auf 0, bevor die Animation startet
+  success.style.opacity = "0"; 
 
-  // Füge eine kurze Verzögerung hinzu, um die Animation zu starten
   setTimeout(() => {
-    success.style.opacity = "1"; // Zeige die Animation
+    success.style.opacity = "1";
   }, 1);
 
   setTimeout(function () {
