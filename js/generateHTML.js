@@ -126,7 +126,11 @@ function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
 
     // Iterate through showContacts and check against allContacts
     showContacts.forEach(contactName => {
-        const contactFound = allContacts.find(contact => {if(contact.name === contactName){contactsHTML += `<span style="background-color: ${contact.color}" class="contact-initials">${getInitials(contact.name)}</span>`;}});
+        const contactFound = allContacts.find(contact => {
+            if(contact.name === contactName){
+                contactsHTML += `
+                <span style="border-radius: 50%; height: 30px; width:30px; background-color: ${contact.color}" class="contact-initials">${getInitials(contact.name)}</span>`;
+            }});
         if (contactFound) {
             // contactsHTML += `<span style="background-color: ${contact.color}" class="contact-initials">${getInitials(contact.name)}</span>`;
             console.log("Gefunden:", contactName);
