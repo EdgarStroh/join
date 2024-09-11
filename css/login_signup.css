@@ -83,6 +83,21 @@ body {
 .log_in_container h1 {
     margin-bottom: -20px;
 }
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#loginPassword {
+    padding-right: 30px;
+    background-size: 20px 20px; 
+    background: no-repeat right 21px center;
+}
+#togglePasswordIcon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
 .underline {
     width: 150px;
     height: 3px;
@@ -110,14 +125,9 @@ input:focus {
     background: url(../assets/icons/person.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
 }
-.email {
+.email, #loginEmail {
     padding-right: 30px; 
     background: url(../assets/icons/mail.svg) no-repeat right 21px center;
-    background-size: 20px 20px; 
-}
-.password {
-    padding-right: 30px; 
-    background: url(../assets/icons/lock.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
 }
 .email, .password, .name {

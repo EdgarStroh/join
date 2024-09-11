@@ -32,8 +32,14 @@
             <div class="input_login flex">
                 <input id="loginEmail" class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
-                <input id="loginPassword" class="password" type="password" placeholder="Password" required oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('Gib dein Passwort ein!')">
+                <!-- Passwortfeld -->
+<div class="password-container">
+  <input id="loginPassword" class="password" type="password" placeholder="Password" required 
+    oninput="setCustomValidity('')" oninvalid="setCustomValidity('Gib dein Passwort ein!')" 
+    onfocus="updateIcon()">
+  <img id="togglePasswordIcon" src="../assets/icons/lock.svg" alt="Toggle Password Visibility" onclick="togglePasswordVisibility()">
+</div>
+
                  <div id="loginError" class="login_error flex">
                      
                 </div>
