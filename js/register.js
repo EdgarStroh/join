@@ -18,8 +18,6 @@ function signUpUser(event) {
     name: name,
     password: password,
   };
-  // Speichern des Benutzernamens in localStorage
-  // localStorage.setItem("inputName", name);
 
   postDataUsers("", UserData);
 
@@ -34,7 +32,7 @@ function signUpUser(event) {
 }
 
 function check() {
-    var input = document.getElementById('inputConfirmPassword');
+    let input = document.getElementById('inputConfirmPassword');
     if (input.value !== document.getElementById('inputPassword').value) {
         input.setCustomValidity('Passwort muss übereinstimmen');
     } else {
@@ -63,4 +61,5 @@ function showPopup() {
 function closePopupSuccess() {
     document.getElementById('popupOverlay').style.display = 'none';
     document.getElementById('popupSuccess').style.display = 'none';
+    loadDataUsers("");
 }

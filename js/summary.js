@@ -12,11 +12,8 @@ function greetUser() {
     greeting = "Good evening, ";
   }
 
-// Abrufen des Benutzernamens aus localStorage
- let userName = localStorage.getItem('inputName') || "Guest";
-
-  document.querySelector("#greetings h2").textContent = greeting;
-  document.querySelector("#greetings span").textContent = userName;
+  document.querySelector("#greetings span").textContent = greeting;
+  document.querySelector("#greetings h2").textContent = localStorage.getItem("loggedInUser");
 }
 
 greetUser();

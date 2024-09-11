@@ -73,8 +73,30 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.login_error {
+    justify-content: center;
+    color: red;
+    font-size: 12px;
+    margin: -15px;
+    height: 20px;
+}
 .log_in_container h1 {
     margin-bottom: -20px;
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#loginPassword {
+    padding-right: 30px;
+    background-size: 20px 20px; 
+    /* background: no-repeat right 21px center; */
+}
+#togglePasswordIcon {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
 }
 .underline {
     width: 150px;
@@ -96,21 +118,16 @@ input:focus {
     flex-direction: row;
     justify-content: center;
     gap: 35px;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 .name {
     padding-right: 30px; 
     background: url(../assets/icons/person.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
 }
-.email {
+.email, #loginEmail {
     padding-right: 30px; 
     background: url(../assets/icons/mail.svg) no-repeat right 21px center;
-    background-size: 20px 20px; 
-}
-.password {
-    padding-right: 30px; 
-    background: url(../assets/icons/lock.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
 }
 .email, .password, .name {
@@ -204,8 +221,8 @@ input:focus {
 }
 input[type="checkbox"] {
     display: inline-block;
-    width: 18px;
-    height: 19px;
+    width: 19px;
+    height: 20px;
     border: 0px !important;
     background-image: url('../assets/icons/checkbox.svg');
     background-size: cover;
