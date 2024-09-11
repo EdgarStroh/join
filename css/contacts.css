@@ -380,7 +380,7 @@ input:focus {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    animation: slideIn 0.5s forwards;
+    animation: slideInBottom 0.5s forwards;
 }
 .popup-overlay {
     position: fixed;
@@ -392,7 +392,7 @@ input:focus {
     display: none; 
     z-index: 1;
 }
-@keyframes slideIn {
+@keyframes slideInBottom {
     from {
         transform: translate(-50%, 100%);
         opacity: 0;
