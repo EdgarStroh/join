@@ -1,5 +1,8 @@
-function updateAll() {
-  // loadDataBoards();
+async function updateBoard() {
+    await loadDataContacts("");
+    await loadDataBoards("");
+    await loadDataUsers("");
+    renderBoardList();
 }
 
 function allowDrop(ev) {

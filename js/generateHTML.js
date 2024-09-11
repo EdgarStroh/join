@@ -126,20 +126,21 @@ function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
 
     // Iterate through showContacts and check against allContacts
     showContacts.forEach(contactName => {
-        const contactFound = allContacts.find(contact => contact.name === contactName);
+        const contactFound = allContacts.find(contact => {if(contact.name === contactName){contactsHTML += `<span style="background-color: ${contact.color}" class="contact-initials">${getInitials(contact.name)}</span>`;}});
         if (contactFound) {
+            // contactsHTML += `<span style="background-color: ${contact.color}" class="contact-initials">${getInitials(contact.name)}</span>`;
             console.log("Gefunden:", contactName);
         } else {
             console.log("Nicht gefunden:", contactName);
         }
     });
     // Check if showContacts is defined and contains contacts
-    if (showContacts && showContacts.length > 0) {
-        // Create HTML for the assigned contacts and display only the initials
-        contactsHTML = showContacts.map(contact => `<span class="contact-initials">${getInitials(contact)}</span>`).join(" ");
-    } else {
-        contactsHTML = '';
-    }
+    // if (showContacts && showContacts.length > 0) {
+  
+    //     contactsHTML = showContacts.map(contact => `<span class="contact-initials">${getInitials(contact)}</span>`).join(" ");
+    // } else {
+    //     contactsHTML = '';
+    // }
 
     return `
     <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
@@ -159,7 +160,7 @@ function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
             </div>
         </div>
         <div class="contactsAndPrio">
-        <span style="background-color: ">${contactsHTML}</span>
+        <span>${contactsHTML}</span> 
                 
             </div>
     </div>

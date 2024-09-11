@@ -2,11 +2,11 @@ let allContacts = [];
 let allBoardContent = [];
 let allUsers = [];
 
-function onloadFunctionData() {
-    // + LOAD +
-    loadDataContacts("");
-    loadDataBoards("");
-    loadDataUsers("");
+async function onloadFunctionData() {
+    await loadDataContacts("");
+    await loadDataBoards("");
+    await loadDataUsers("");
+    // renderBoardList();
     // deleteDataContact("/-O5wmsL7LtqwE6w0Yypm")
     // renderContactList();
     //render()
@@ -74,7 +74,7 @@ async function loadDataContacts(path = "") {
     // }
 
     // Pass the contacts object to the render function
-    renderContactList(); // render()
+    // renderContactList(); // render()
     // renderExtendedContact(contactsObject);
 }
 

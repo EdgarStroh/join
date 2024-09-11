@@ -1,5 +1,12 @@
+async function updateContacts() {
+  await loadDataContacts("");
+  // await loadDataBoards("");
+  // await loadDataUsers("");
+  renderContactList();
+}
+
 function openContact(id) {
-    renderExtendedContact(id);
+  renderExtendedContact(id);
 }
 
 function addContact() {
@@ -21,15 +28,14 @@ function addContact() {
   phone.value = "";
   closePopup();
   showPopupContact();
-  loadDataContacts();
-  renderContactList();
+  updateContacts();
 }
 
 // diese function wird im edgar.js function onloadFunctionData() aufgerufen   --> Diese Funktion wird nicht mehr aufgerufen, haben wir auskommentiert!!!!
 
 // function render(contactsObject) {
 //     let contacts = document.getElementById("contacts");
-//     contacts.innerHTML = ""; 
+//     contacts.innerHTML = "";
 
 //     for (let key in contactsObject) {
 //         if (contactsObject.hasOwnProperty(key)) {
@@ -54,13 +60,14 @@ function renderExtendedContact(id) {
     id // evtl muss das noch in die firebase id geändert werden
   );
 
-  setTimeout(() => {extendedContact.classList.add("slideIn", "show");}, 10); 
+  setTimeout(() => {
+    extendedContact.classList.add("slideIn", "show");
+  }, 10);
 }
-
 
 function renderContactList() {
   let contactsContainer = document.getElementById("contacts");
-  contactsContainer.innerHTML = ""; 
+  contactsContainer.innerHTML = "";
 
   let currentLetter = "";
   let html = "";
@@ -77,13 +84,16 @@ function renderContactList() {
       html += generateLetterSectionHTML(currentLetter);
     }
 
-    html += generateContactContent(contact.name, contact.email, id, contact.color);
+    html += generateContactContent(
+      contact.name,
+      contact.email,
+      id,
+      contact.color
+    );
   });
 
   contactsContainer.innerHTML = html;
 }
-
-
 
 function showPopupContact() {
   const overlay = document.getElementById("popupOverlay");

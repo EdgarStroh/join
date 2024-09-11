@@ -12,7 +12,7 @@ async function deleteDataContact(uid) {
 
     removeContactFromUI(uid);
     clearExtendedContact();
-    loadDataContacts(); 
+    updateContacts();
 
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
@@ -89,8 +89,8 @@ async function updateContactInFirebase(id, updatedContact) {
     if (!response.ok) {throw new Error(`Fehler beim Aktualisieren des Kontakts: ${response.statusText}`);
     }
 
-    await loadDataContacts(); // Annahme: Dies lädt alle Kontakte erneut
-    renderContactList(); // UI neu rendern
+    await updateContacts();
+
   } catch (error) {
     console.error("Fehler beim Aktualisieren des Kontakts:", error);
     alert("Es gab ein Problem beim Aktualisieren des Kontakts.");
