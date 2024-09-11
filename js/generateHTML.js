@@ -111,10 +111,10 @@ function getSubtaskDisplay(subtasks) {
     let subtaskCount = subtasks ? subtasks.length : 0;
     let completedSubtasks = subtasks
         ? subtasks.filter(subtask => subtask.completed).length
-        : 0;
+        :  0 ;
 
     // Wenn keine Subtasks vorhanden sind, zeige nichts an
-    return subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount}` : '';
+    return subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount} Subtasks ` : '';
 }
 
 // Funktion, die das HTML-Template generiert
@@ -141,7 +141,7 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
         </div>
 <div class="progressSubTask flex">
         <div>
-            progressLine
+            PLine
             </div>
             <div>
                 ${getSubtaskDisplay(allBoardContent[index].subtasks)} 
