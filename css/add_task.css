@@ -7,6 +7,10 @@
     display:flex;
     align-items:center;
 }
+#h1Div{
+    display: flex;
+    margin-right: auto;
+}
 form {
     margin-right:auto;
 }
@@ -249,4 +253,49 @@ input, .addSubTask, select, textarea {
 .selectedContact {
     background:#2A3647;
     color:white;
+}
+
+/*Responsive*/
+
+@media screen and (max-width: 860px) {
+    aside div div{
+        display:flex;
+        flex-direction: column;
+    }
+    header{
+        padding:0;
+        top:0;
+        z-index:-999;
+    }
+    #kanbanFont{
+        position:fixed;
+        display:none;
+    }
+    body{
+        justify-content:center;
+        align-items:center;
+    }
+    .text_container{
+        padding:0;
+        display:flex;
+        align-items: center;
+    }
+    #h1Div{
+        display:inline-flex;
+        justify-content: center;
+        align-items:center;
+        position: sticky;
+    }
+    form{
+        margin:0;
+    }
+    form .formParts{
+        flex-direction:column;
+    }
+    form hr{
+        display:none;
+    }
+    .sideBar{
+        display: none;
+    }
 }
