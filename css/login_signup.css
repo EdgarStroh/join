@@ -78,6 +78,7 @@ body {
     color: red;
     font-size: 12px;
     margin: -15px;
+    height: 20px;
 }
 .log_in_container h1 {
     margin-bottom: -20px;
@@ -210,8 +211,8 @@ input:focus {
 }
 input[type="checkbox"] {
     display: inline-block;
-    width: 18px;
-    height: 19px;
+    width: 19px;
+    height: 20px;
     border: 0px !important;
     background-image: url('../assets/icons/checkbox.svg');
     background-size: cover;
