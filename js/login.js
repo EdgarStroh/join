@@ -52,3 +52,31 @@ function checkLogin(){
     // alert("ACHTUNG FEHLER");
   }
 }
+// Ändert das Icon beim Fokussieren des Passwortfelds
+function updateIcon() {
+  let inputField = document.getElementById("loginPassword");
+  let icon = document.getElementById("togglePasswordIcon");
+
+  if (icon.src.includes("lock.svg")) {
+    icon.src = "../assets/icons/visibility_off.svg"; // Wechsel zu visibility_off
+  }
+}
+
+// Funktion zum Toggeln der Passwortsichtbarkeit
+function togglePasswordVisibility() {
+  let inputField = document.getElementById("loginPassword");
+  let icon = document.getElementById("togglePasswordIcon");
+
+  if (inputField.type === "password") {
+    inputField.type = "text"; // Passwort sichtbar machen
+    icon.src = "../assets/icons/visibility.svg"; // Icon zu "sichtbar" wechseln
+  } else {
+    inputField.type = "password"; // Passwort unsichtbar machen
+    icon.src = "../assets/icons/visibility_off.svg"; // Icon zu "nicht sichtbar" wechseln
+  }
+}
+
+
+
+
+
