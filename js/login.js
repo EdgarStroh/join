@@ -1,16 +1,12 @@
 function openPopup() {
-//   document.getElementById("popupOverlay").style.display = "flex";
   document.getElementById("popupModal").style.display = "block";
   document.getElementById("sign_up_button_div").classList.add("displayNone");
 }
 
-// Schließe das Pop-up, wenn man auf das Overlay klickt
 function closePopup() {
-//   document.getElementById("popupOverlay").style.display = "none";
   document.getElementById("popupModal").style.display = "none";
   document.getElementById("sign_up_button_div").classList.remove("displayNone");
 }
-
 
 function toggleCheckbox(labelId) {
   const label = document.getElementById(labelId);
@@ -22,7 +18,6 @@ function toggleCheckbox(labelId) {
   }
 }
 function guestLogin() {
-  // Weiterleitung zur summary.html ohne Validierung der Eingabefelder
   localStorage.setItem("loggedInUser", "Guest");
   window.location.href = "summary.html";
 }
@@ -59,9 +54,7 @@ function checkLogin() {
   }
 }
 
-
 function updateIcon() {
-  // let inputField = document.getElementById("loginPassword");
   let icon = document.getElementById("togglePasswordIcon");
 
   if (icon.src.includes("lock.svg")) {
