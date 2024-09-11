@@ -41,38 +41,44 @@ function checkUser(email, password){
   return false;
 }
 
-function checkLogin(){
-  let email = document.getElementById('loginEmail').value;
-  let password = document.getElementById("loginPassword").value;
+function checkLogin() {
+  let emailInput = document.getElementById("loginEmail");
+  let passwordInput = document.getElementById("loginPassword");
+  let email = emailInput.value;
+  let password = passwordInput.value;
 
-  if (checkUser(email, password)){
+  emailInput.classList.remove("input-error");
+  passwordInput.classList.remove("input-error");
+
+  if (checkUser(email, password)) {
     window.location.href = "summary.html";
   } else {
-    document.getElementById('loginError').innerHTML = generateErrorLogin();
-    // alert("ACHTUNG FEHLER");
+    document.getElementById("loginError").innerHTML = generateErrorLogin();
+    emailInput.classList.add("input-error");
+    passwordInput.classList.add("input-error");
   }
 }
-// Ändert das Icon beim Fokussieren des Passwortfelds
+
+
 function updateIcon() {
-  let inputField = document.getElementById("loginPassword");
+  // let inputField = document.getElementById("loginPassword");
   let icon = document.getElementById("togglePasswordIcon");
 
   if (icon.src.includes("lock.svg")) {
-    icon.src = "../assets/icons/visibility_off.svg"; // Wechsel zu visibility_off
+    icon.src = "../assets/icons/visibility_off.svg";
   }
 }
 
-// Funktion zum Toggeln der Passwortsichtbarkeit
 function togglePasswordVisibility() {
   let inputField = document.getElementById("loginPassword");
   let icon = document.getElementById("togglePasswordIcon");
 
   if (inputField.type === "password") {
-    inputField.type = "text"; // Passwort sichtbar machen
-    icon.src = "../assets/icons/visibility.svg"; // Icon zu "sichtbar" wechseln
+    inputField.type = "text"; 
+    icon.src = "../assets/icons/visibility.svg"; 
   } else {
-    inputField.type = "password"; // Passwort unsichtbar machen
-    icon.src = "../assets/icons/visibility_off.svg"; // Icon zu "nicht sichtbar" wechseln
+    inputField.type = "password";
+    icon.src = "../assets/icons/visibility_off.svg"; 
   }
 }
 
