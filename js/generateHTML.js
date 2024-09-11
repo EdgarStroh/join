@@ -11,9 +11,7 @@ function generateContactContent(name, email, id, color, uid) {
     return `
         <div id="${uid}" onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
             <div class="profil_badge flex">
-                <span style="background-color: ${color}">${getInitials(
-      name
-    )}</span> 
+                <span style="background-color: ${color}">${getInitials(name)}</span> 
             </div>
             <div class="contact_info flex flex-column">
                 <h3>${name}</h3> 
@@ -27,9 +25,9 @@ function generateExtendedContact(name, email, phone, color, Uid, id) {
     return `
     <div class="contact_headline flex flex-column">
     <div class="contact_content_extended flex">
-        <span class="profil_badge_extended flex" style="background-color:${color}">${getInitials(
-      name
-    )}</span>
+        <span class="profil_badge_extended flex" style="background-color:${color}">
+            ${getInitials(name)}
+        </span>
         <div class="contact_info_extended flex flex-column">
         <h3>${name}</h3>
         <div class="contact_tools flex">
@@ -117,17 +115,21 @@ function getSubtaskDisplay(subtasks) {
     return subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount} Subtasks ` : '';
 }
 
+function getInitials(name) {
+    return name.split(" ").map((n) => n[0]).join("");
+  }
+  
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
-    let showContacts = allBoardContent[index].asigned;  // make sure you are using the correct field name
+    let showContacts = allBoardContent[index].asigned; // make sure you are using the correct field name
     let contactsHTML = '';
 
     // Check if showContacts is defined and contains contacts
-       if (showContacts && showContacts.length > 0) {
-        // Create HTML for the assigned contacts 
-        contactsHTML = showContacts;
-    }else{
-        contactsHTML = '' ;
+    if (showContacts && showContacts.length > 0) {
+        // Create HTML for the assigned contacts and display only the initials
+        contactsHTML = showContacts.map(contact => `<span class="contact-initials">${getInitials(contact)}</span>`).join(" ");
+    } else {
+        contactsHTML = '';
     }
 
     return `
@@ -148,7 +150,8 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             </div>
         </div>
         <div class="contactsAndPrio">
-                ${contactsHTML}
+        <span style="background-color: ">${contactsHTML}</span>
+                
             </div>
     </div>
   `;
