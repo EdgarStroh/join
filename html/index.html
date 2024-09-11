@@ -34,6 +34,9 @@
                     oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
                 <input id="loginPassword" class="password" type="password" placeholder="Password" required oninput="setCustomValidity('')"
                     oninvalid="setCustomValidity('Gib dein Passwort ein!')">
+                 <div id="loginError" class="login_error flex">
+                     
+                </div>
                 <div class="checkbox_login flex padding-left">
                     <input type="checkbox" id="checkboxLogin" name="checkboxLogin" required>
                     <label class="checkbox_label" for="checkboxLogin">Remember me</label>
@@ -96,6 +99,7 @@
     <script src="../js/script.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/register.js"></script>
+    <script src="../js/generateHTML.js"></script>
 </body>
 
 </html>

@@ -73,6 +73,12 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.login_error {
+    justify-content: center;
+    color: red;
+    font-size: 12px;
+    margin: -15px;
+}
 .log_in_container h1 {
     margin-bottom: -20px;
 }
@@ -96,7 +102,7 @@ input:focus {
     flex-direction: row;
     justify-content: center;
     gap: 35px;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 .name {
     padding-right: 30px; 

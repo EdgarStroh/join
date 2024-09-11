@@ -86,6 +86,12 @@ function generateEditContact(contact) {
     `;
 }
 
+function generateErrorLogin(){
+    return `
+        <p>Email oder Passwort falsch!<p> 
+    `;
+}
+
 function generateBoardContent(index) {
     // Bestimme die Textfarbe des span basierend auf der Kategorie
     let categoryColor = '';

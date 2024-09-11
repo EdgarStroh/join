@@ -48,6 +48,7 @@ function checkLogin(){
   if (checkUser(email, password)){
     window.location.href = "summary.html";
   } else {
-    alert("ACHTUNG FEHLER");
+    document.getElementById('loginError').innerHTML = generateErrorLogin();
+    // alert("ACHTUNG FEHLER");
   }
 }
