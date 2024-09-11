@@ -91,11 +91,11 @@ body {
 #loginPassword {
     padding-right: 30px;
     background-size: 20px 20px; 
-    background: no-repeat right 21px center;
+    /* background: no-repeat right 21px center; */
 }
 #togglePasswordIcon {
     position: absolute;
-    right: 10px;
+    right: 20px;
     cursor: pointer;
 }
 .underline {
