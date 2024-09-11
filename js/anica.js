@@ -1,14 +1,6 @@
 async function deleteDataContact(uid) {
   try {
-    let response = await fetch(`${BASE_URL_Contact}/${uid}.json`, {
-      method: "DELETE",
-    });
-
-    if (!response.ok) {
-      throw new Error("Fehler beim Löschen des Kontakts: " + response.statusText);
-    }
-
-    let responseToJson = await response.json();
+    await handleDeleteRequest(`${BASE_URL_Contact}/${uid}.json`);
 
     removeContactFromUI(uid);
     clearExtendedContact();
@@ -20,8 +12,16 @@ async function deleteDataContact(uid) {
   }
 }
 
+async function handleDeleteRequest(url) {
+  let response = await fetch(url, { method: "DELETE" });
+
+  if (!response.ok)
+    throw new Error("Fehler beim Löschen des Kontakts: " + response.statusText);
+}
+
 function removeContactFromUI(uid) {
   const contactElement = document.getElementById(`${uid}`);
+
   if (contactElement) {
     contactElement.remove();
   }
@@ -29,6 +29,7 @@ function removeContactFromUI(uid) {
 
 function clearExtendedContact() {
   const extendedContact = document.getElementById("extended_contact");
+  
   if (extendedContact) {
     extendedContact.innerHTML = "";
   }
@@ -86,11 +87,13 @@ async function updateContactInFirebase(id, updatedContact) {
       },
     });
 
-    if (!response.ok) {throw new Error(`Fehler beim Aktualisieren des Kontakts: ${response.statusText}`);
+    if (!response.ok) {
+      throw new Error(
+        `Fehler beim Aktualisieren des Kontakts: ${response.statusText}`
+      );
     }
 
     await updateContacts();
-
   } catch (error) {
     console.error("Fehler beim Aktualisieren des Kontakts:", error);
     alert("Es gab ein Problem beim Aktualisieren des Kontakts.");
