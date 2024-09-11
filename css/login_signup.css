@@ -235,9 +235,12 @@ input[type="checkbox"]:checked {
     background-image: url(../assets/icons/checkbox_checked.svg);
 }
 .error_login {
-    color: red;
+    color: #FF001F;
     display: flex;
     justify-content: center;
+}
+.input-error {
+  border: 1px solid #FF001F;
 }
 .margin-width-auto{
     margin: 0 auto;

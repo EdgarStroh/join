@@ -86,7 +86,7 @@ function generateEditContact(contact) {
 
 function generateErrorLogin(){
     return `
-        <p>Something went wrong! Please try again...<p> 
+        <p>Check your email and password. Please try again.<p> 
     `;
 }
 

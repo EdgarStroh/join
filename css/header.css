@@ -10,6 +10,11 @@ header{
     align-items: center;
     justify-content: space-between;
 }
+header div{
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+}
 .help_icon {
     height: 30px;
     width: 30px;
@@ -17,4 +22,29 @@ header{
 .help_icon:hover {
     height: 34px;
     width: 34px;
+}
+#profileName {
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    width:48px;
+    height: 48px;
+    cursor:pointer;
+    color:#29ABE2;
+}
+#profileName:hover {
+    background-color: #D1D1D1;
+}
+#headerSubMenu{
+    list-style:none;
+    position:absolute;
+    z-index:999;
+    right:30px;
+    top:100px;
+    border-radius:10px 0 10px 10px;
+    background: #2A3647;
+}
+.hidden{
+    display:none;
 }
