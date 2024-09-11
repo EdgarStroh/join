@@ -20,6 +20,7 @@ function addContact() {
   email.value = "";
   phone.value = "";
   closePopup();
+  showPopupContact();
   loadDataContacts();
   renderContactList();
 }
@@ -80,4 +81,30 @@ function renderContactList() {
   });
 
   contactsContainer.innerHTML = html;
+}
+
+
+
+function showPopupContact() {
+  const overlay = document.getElementById("popupOverlay");
+  const success = document.getElementById("popupContactSuccess");
+
+  overlay.style.display = "flex";
+  success.style.display = "flex";
+  success.style.opacity = "0"; // Setze die Sichtbarkeit auf 0, bevor die Animation startet
+
+  // Füge eine kurze Verzögerung hinzu, um die Animation zu starten
+  setTimeout(() => {
+    success.style.opacity = "1"; // Zeige die Animation
+  }, 1);
+
+  setTimeout(function () {
+    closePopupSuccess();
+  }, 1000);
+}
+
+function closePopupSuccess() {
+  document.getElementById("popupOverlay").style.display = "none";
+  document.getElementById("popupContactSuccess").style.display = "none";
+  loadDataUsers("");
 }
