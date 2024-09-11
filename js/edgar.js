@@ -105,6 +105,7 @@ async function loadDataBoards(path = "") {
         Uid: key,
         ...localBoardContent[key]
     }));
+// console.log(allBoardContent);
 
     // Render the board list after loading data
     renderBoardList();

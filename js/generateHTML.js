@@ -120,10 +120,19 @@ function getInitials(name) {
   }
   
 // Funktion, die das HTML-Template generiert
-function htmlTemplateGenerateBoardContent(index, categoryColor) {
+function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
     let showContacts = allBoardContent[index].asigned; // make sure you are using the correct field name
     let contactsHTML = '';
 
+    // Iterate through showContacts and check against allContacts
+    showContacts.forEach(contactName => {
+        const contactFound = allContacts.find(contact => contact.name === contactName);
+        if (contactFound) {
+            console.log("Gefunden:", contactName);
+        } else {
+            console.log("Nicht gefunden:", contactName);
+        }
+    });
     // Check if showContacts is defined and contains contacts
     if (showContacts && showContacts.length > 0) {
         // Create HTML for the assigned contacts and display only the initials

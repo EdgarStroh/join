@@ -1,5 +1,5 @@
 function updateAll() {
-  loadDataBoards();
+  // loadDataBoards();
 }
 
 function allowDrop(ev) {
