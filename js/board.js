@@ -13,42 +13,64 @@ function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function dropDone(ev) {
+// function dropDone(ev) {
+//   ev.preventDefault();
+//   let data = ev.dataTransfer.getData("text");
+//   ev.target.appendChild(document.getElementById(data));
+//   let index = parseInt(data.split("-")[1]);
+//   let currentTask = allBoardContent[index];
+//   currentTask.status = "done";
+//   updateTask(currentTask.Uid, currentTask);
+// }
+// function dropAwait(ev) {
+//   ev.preventDefault();
+//   let data = ev.dataTransfer.getData("text");
+//   ev.target.appendChild(document.getElementById(data));
+//   let index = parseInt(data.split("-")[1]);
+//   let currentTask = allBoardContent[index];
+//   currentTask.status = "await";
+//   updateTask(currentTask.Uid, currentTask);
+// }
+// function dropInProgress(ev) {
+//   ev.preventDefault();
+//   let data = ev.dataTransfer.getData("text");
+//   ev.target.appendChild(document.getElementById(data));
+//   let index = parseInt(data.split("-")[1]);
+//   let currentTask = allBoardContent[index];
+//   currentTask.status = "in progress";
+//   updateTask(currentTask.Uid, currentTask);
+// }
+// function dropToDo(ev) {
+//   ev.preventDefault();
+//   let data = ev.dataTransfer.getData("text");
+//   ev.target.appendChild(document.getElementById(data));
+//   let index = parseInt(data.split("-")[1]);
+//   let currentTask = allBoardContent[index];
+//   currentTask.status = "toDo";
+//   updateTask(currentTask.Uid, currentTask);
+// }
+function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
   let index = parseInt(data.split("-")[1]);
   let currentTask = allBoardContent[index];
-  currentTask.status = "done";
+  currentTask.status = status;
   updateTask(currentTask.Uid, currentTask);
+}
+function dropDone(ev) {
+  handleDrop(ev, "done");
 }
 function dropAwait(ev) {
-  ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-  let index = parseInt(data.split("-")[1]);
-  let currentTask = allBoardContent[index];
-  currentTask.status = "await";
-  updateTask(currentTask.Uid, currentTask);
+  handleDrop(ev, "await");
 }
 function dropInProgress(ev) {
-  ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-  let index = parseInt(data.split("-")[1]);
-  let currentTask = allBoardContent[index];
-  currentTask.status = "in progress";
-  updateTask(currentTask.Uid, currentTask);
+  handleDrop(ev, "in progress");
 }
 function dropToDo(ev) {
-  ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-  let index = parseInt(data.split("-")[1]);
-  let currentTask = allBoardContent[index];
-  currentTask.status = "toDo";
-  updateTask(currentTask.Uid, currentTask);
+  handleDrop(ev, "toDo");
 }
+
 
 function highlight(id) {
   document.getElementById(id).classList.add('drag-area-highlight');
