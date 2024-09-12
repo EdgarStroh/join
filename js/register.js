@@ -55,7 +55,7 @@ function showPopup() {
 
     setTimeout(function() {
         closePopupSuccess();
-    }, 1000);
+    }, 1250);
 }
 
 function closePopupSuccess() {
