@@ -35,11 +35,12 @@ body {
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 .button:disabled {
-    color: white;
-    background-color: #091931;
+    border: 1px solid #2A3647;
+    color: #2A3647;
+    background-color: white;
     cursor: not-allowed;
     box-shadow: none; 
-    pointer-events: none; 
+
 }
 .guest_login {
     display: flex;
