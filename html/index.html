@@ -30,18 +30,12 @@
         <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
         <form action="summary.html">
             <div class="input_login flex">
-                <input id="loginEmail" class="email" type="email" placeholder="Email" required oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('Bitte gib eine gültige Email-Adresse ein!')">
-                <!-- Passwortfeld -->
-<div class="password-container">
-  <input id="loginPassword" class="password" type="password" placeholder="Password" required 
-    oninput="setCustomValidity('')" oninvalid="setCustomValidity('Gib dein Passwort ein!')" 
-    onfocus="updateIcon()">
-  <img id="togglePasswordIcon" src="../assets/icons/lock.svg" alt="Toggle Password Visibility" onclick="togglePasswordVisibility()">
-</div>
-
-                 <div id="loginError" class="login_error flex">
-                     
+                <input id="loginEmail" class="email" type="email" placeholder="Email" required>
+                <div class="password-container">
+                    <input id="loginPassword" class="password" type="password" placeholder="Password" required>
+                    <img id="togglePasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility()">
+                </div>
+                <div id="loginError" class="login_error flex">
                 </div>
                 <div class="checkbox_login flex padding-left">
                     <input type="checkbox" id="checkboxLogin" name="checkboxLogin" required>
@@ -69,14 +63,20 @@
             <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
             <form onsubmit="return signUpUser(event);">
                 <div class="input_login flex">
-                    <input class="name" type="text" id="inputName" placeholder="Name" required
-                        oninput="setCustomValidity('')">
-                    <input class="email" type="email" id="inputEmail" placeholder="Email" required
-                        oninput="setCustomValidity('')">
-                    <input class="password" type="password" id="inputPassword" placeholder="Password" required
+                    <input class="name" type="text" id="inputName" placeholder="Name" required>
+                    <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                    <div class="password-container">
+                        <input id="signupPassword" class="password" type="password" placeholder="Password" required oninput="check()">
+                        <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility()">
+                    </div>
+                    <div class="password-container">
+                        <input id="signupConfirmPassword" class="password" type="password" placeholder="Password" required oninput="check()">
+                        <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility()">
+                    </div>
+                    <!-- <input class="password" type="password" id="inputPassword" placeholder="Password" required
                         oninput="check()">
                     <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password"
-                        required oninput="check()">
+                        required oninput="check()"> -->
                     <div class="checkbox_login flex margin-width-auto">
                         <input type="checkbox" id="checkboxLogin1" for="checkboxSubmit" name="checkboxPrivacyPolicy"
                             required>

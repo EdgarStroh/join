@@ -10,7 +10,7 @@ function signUpUser(event) {
   let userColor = getRandomColor();
   let email = document.getElementById("inputEmail").value;
   let name = document.getElementById("inputName").value;
-  let password = document.getElementById("inputPassword").value;
+  let password = document.getElementById("signupPassword").value;
 
   let UserData = {
     color: userColor,
@@ -23,8 +23,8 @@ function signUpUser(event) {
 
   document.getElementById("inputName").value = "";
   document.getElementById("inputEmail").value = "";
-  document.getElementById("inputPassword").value = "";
-  document.getElementById("inputConfirmPassword").value = "";
+  document.getElementById("signupPassword").value = "";
+  document.getElementById("signupConfirmPassword").value = "";
   document.getElementById("sign_up_button_div").classList.remove("displayNone");
   checkbox.checked = false;
   closePopup();
@@ -32,8 +32,8 @@ function signUpUser(event) {
 }
 
 function check() {
-    let input = document.getElementById('inputConfirmPassword');
-    if (input.value !== document.getElementById('inputPassword').value) {
+    let input = document.getElementById('signupConfirmPassword');
+    if (input.value !== document.getElementById('signupPassword').value) {
         input.setCustomValidity('Passwort muss übereinstimmen');
     } else {
         input.setCustomValidity('');  // Korrekt: Nachricht wird entfernt, wenn Passwörter übereinstimmen
@@ -68,8 +68,8 @@ function closePopupSuccess() {
 function validateForm() {
     let name = document.getElementById("inputName").value.trim();
     let email = document.getElementById("inputEmail").value.trim();
-    let password = document.getElementById("inputPassword").value.trim();
-    let confirmPassword = document.getElementById("inputConfirmPassword").value.trim();
+    let password = document.getElementById("signupPassword").value.trim();
+    let confirmPassword = document.getElementById("signupConfirmPassword").value.trim();
     let checkbox = document.getElementById("checkboxLogin1").checked;
 
     // Bedingung: Alle Felder müssen ausgefüllt sein und das Passwort muss übereinstimmen
@@ -83,6 +83,6 @@ function validateForm() {
 // Füge das Event bei jeder Eingabe hinzu
 document.getElementById("inputName").addEventListener("input", validateForm);
 document.getElementById("inputEmail").addEventListener("input", validateForm);
-document.getElementById("inputPassword").addEventListener("input", validateForm);
-document.getElementById("inputConfirmPassword").addEventListener("input", validateForm);
+document.getElementById("signupPassword").addEventListener("input", validateForm);
+document.getElementById("signupConfirmPassword").addEventListener("input", validateForm);
 document.getElementById("checkboxLogin1").addEventListener("change", validateForm);
