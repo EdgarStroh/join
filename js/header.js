@@ -16,4 +16,4 @@ window.addEventListener('load', ()=>{
     profileName.addEventListener('click', ()=>{
         headerSubMenu.classList.toggle('hidden');
     })
-})
+});

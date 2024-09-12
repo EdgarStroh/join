@@ -10,10 +10,14 @@ header{
     align-items: center;
     justify-content: space-between;
 }
-header div{
+.headerNav {
     justify-content:center;
     align-items:center;
     gap:16px;
+}
+.headerHelp {
+    padding: 0;
+    width: 50px;
 }
 .help_icon {
     height: 30px;
@@ -26,7 +30,8 @@ header div{
 #profileName {
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    padding: 0;
+    border: 3px solid #2A3647;
     border-radius: 50%;
     width:48px;
     height: 48px;
