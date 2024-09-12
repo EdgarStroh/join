@@ -54,26 +54,32 @@ function checkLogin() {
   }
 }
 
-function updateIcon() {
-  let icon = document.getElementById("togglePasswordIcon");
+// Funktion zum Umschalten des Icons im Login-Bereich, wenn im Passwortfeld getippt wird
+function updateLoginIcon() {
+    let inputField = document.getElementById("loginPassword");
+    let icon = document.getElementById("toggleLoginPasswordIcon");
 
-  if (icon.src.includes("lock.svg")) {
-    icon.src = "../assets/icons/visibility_off.svg";
-  }
+    if (inputField.value.length > 0) {
+        icon.src = "../assets/icons/visibility_off.svg";
+    } else {
+        icon.src = "../assets/icons/lock.svg";
+    }
 }
 
-function togglePasswordVisibility() {
-  let inputField = document.getElementById("loginPassword");
-  let icon = document.getElementById("togglePasswordIcon");
+// Funktion zum Umschalten der Passwort-Sichtbarkeit im Login-Bereich
+function toggleLoginPasswordVisibility() {
+    let inputField = document.getElementById("loginPassword");
+    let icon = document.getElementById("toggleLoginPasswordIcon");
 
-  if (inputField.type === "password") {
-    inputField.type = "text"; 
-    icon.src = "../assets/icons/visibility.svg"; 
-  } else {
-    inputField.type = "password";
-    icon.src = "../assets/icons/visibility_off.svg"; 
-  }
+    if (inputField.type === "password") {
+        inputField.type = "text";
+        icon.src = "../assets/icons/visibility.svg";
+    } else {
+        inputField.type = "password";
+        icon.src = "../assets/icons/visibility_off.svg";
+    }
 }
+
 
 
 

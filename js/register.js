@@ -86,3 +86,41 @@ document.getElementById("inputEmail").addEventListener("input", validateForm);
 document.getElementById("signupPassword").addEventListener("input", validateForm);
 document.getElementById("signupConfirmPassword").addEventListener("input", validateForm);
 document.getElementById("checkboxLogin1").addEventListener("change", validateForm);
+
+
+
+// Funktion zum Umschalten des Icons, wenn der Benutzer im Passwortfeld tippt
+function toggleIcon(inputId, iconId) {
+    let inputField = document.getElementById(inputId);
+    let icon = document.getElementById(iconId);
+
+    if (inputField.value.length > 0) {
+        // Ändere das Symbol zu einem durchgestrichenen Auge, wenn Text eingetippt wird
+        icon.src = "../assets/icons/visibility_off.svg";
+    } else {
+        // Setze das Schloss-Symbol zurück, wenn das Feld leer ist
+        icon.src = "../assets/icons/lock.svg";
+    }
+}
+
+// Funktion zum Umschalten der Passwort-Sichtbarkeit
+function togglePasswordVisibility(inputId, iconId) {
+    let inputField = document.getElementById(inputId);
+    let icon = document.getElementById(iconId);
+
+    if (inputField && icon) {
+        if (inputField.type === "password") {
+            inputField.type = "text"; 
+            icon.src = "../assets/icons/visibility.svg"; // Icon zu "sichtbar" ändern (Auge)
+        } else {
+            inputField.type = "password";
+            icon.src = "../assets/icons/visibility_off.svg"; // Icon zu "nicht sichtbar" ändern (durchgestrichenes Auge)
+        }
+    } else {
+        console.error("Input field or icon not found. Check the IDs.");
+    }
+}
+
+
+
+

@@ -102,7 +102,9 @@ body {
     /* background: no-repeat right 21px center; */
 }
 #togglePasswordIcon,
-#toggleSignupPasswordIcon {
+#toggleLoginPasswordIcon,
+#toggleSignupPasswordIcon,
+#toggleSignupConfirmPasswordIcon{
     position: absolute;
     right: 20px;
     cursor: pointer;

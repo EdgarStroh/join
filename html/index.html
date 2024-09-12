@@ -32,11 +32,10 @@
             <div class="input_login flex">
                 <input id="loginEmail" class="email" type="email" placeholder="Email" required>
                 <div class="password-container">
-                    <input id="loginPassword" class="password" type="password" placeholder="Password" required>
-                    <img id="togglePasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility()">
+                    <input id="loginPassword" class="password" type="password" placeholder="Password" required oninput="updateLoginIcon()">
+                    <img id="toggleLoginPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="toggleLoginPasswordVisibility()">
                 </div>
-                <div id="loginError" class="login_error flex">
-                </div>
+                <div id="loginError" class="login_error flex"></div>
                 <div class="checkbox_login flex padding-left">
                     <input type="checkbox" id="checkboxLogin" name="checkboxLogin" required>
                     <label class="checkbox_label" for="checkboxLogin">Remember me</label>
@@ -46,6 +45,7 @@
                     <button type="button" class="guest_login" onclick="guestLogin()">Guest Log in</button>
                 </div>
             </div>
+
         </form>
     </div>
     <div class="footer">
@@ -66,17 +66,13 @@
                     <input class="name" type="text" id="inputName" placeholder="Name" required>
                     <input class="email" type="email" id="inputEmail" placeholder="Email" required>
                     <div class="password-container">
-                        <input id="signupPassword" class="password" type="password" placeholder="Password" required oninput="check()">
-                        <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility()">
+                        <input id="signupPassword" class="password" type="password" placeholder="Password" required oninput="check(); toggleIcon('signupPassword', 'toggleSignupPasswordIcon')">
+                        <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility('signupPassword', 'toggleSignupPasswordIcon')">
                     </div>
                     <div class="password-container">
-                        <input id="signupConfirmPassword" class="password" type="password" placeholder="Password" required oninput="check()">
-                        <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility()">
+                        <input id="signupConfirmPassword" class="password" type="password" placeholder="Confirm Password" required oninput="check(); toggleIcon('signupConfirmPassword', 'toggleSignupConfirmPasswordIcon')">
+                        <img id="toggleSignupConfirmPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility('signupConfirmPassword', 'toggleSignupConfirmPasswordIcon')">
                     </div>
-                    <!-- <input class="password" type="password" id="inputPassword" placeholder="Password" required
-                        oninput="check()">
-                    <input class="password" type="password" id="inputConfirmPassword" placeholder="Confirm Password"
-                        required oninput="check()"> -->
                     <div class="checkbox_login flex margin-width-auto">
                         <input type="checkbox" id="checkboxLogin1" for="checkboxSubmit" name="checkboxPrivacyPolicy"
                             required>
