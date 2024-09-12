@@ -63,3 +63,26 @@ function closePopupSuccess() {
     document.getElementById('popupSuccess').style.display = 'none';
     loadDataUsers("");
 }
+
+// Deaktivierung SignUp-Button: Funktion zum Überprüfen der Eingaben
+function validateForm() {
+    let name = document.getElementById("inputName").value.trim();
+    let email = document.getElementById("inputEmail").value.trim();
+    let password = document.getElementById("inputPassword").value.trim();
+    let confirmPassword = document.getElementById("inputConfirmPassword").value.trim();
+    let checkbox = document.getElementById("checkboxLogin1").checked;
+
+    // Bedingung: Alle Felder müssen ausgefüllt sein und das Passwort muss übereinstimmen
+    if (name !== "" && email !== "" && password !== "" && confirmPassword !== "" && password === confirmPassword && checkbox) {
+        document.getElementById("signUpButton").disabled = false; // Button aktivieren
+    } else {
+        document.getElementById("signUpButton").disabled = true; // Button deaktivieren
+    }
+}
+
+// Füge das Event bei jeder Eingabe hinzu
+document.getElementById("inputName").addEventListener("input", validateForm);
+document.getElementById("inputEmail").addEventListener("input", validateForm);
+document.getElementById("inputPassword").addEventListener("input", validateForm);
+document.getElementById("inputConfirmPassword").addEventListener("input", validateForm);
+document.getElementById("checkboxLogin1").addEventListener("change", validateForm);
