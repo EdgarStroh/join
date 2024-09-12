@@ -41,15 +41,27 @@ header{
 #profileName:hover {
     background-color: #D1D1D1;
 }
-#headerSubMenu{
-    list-style:none;
-    position:absolute;
-    z-index:999;
-    right:30px;
-    top:100px;
-    border-radius:10px 0 10px 10px;
+#headerSubMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    list-style: none;
+    position: absolute;
+    z-index: 999;
+    right: 30px;
+    top: 100px;
+    border-radius: 20px 0px 20px 20px;
     background: #2A3647;
 }
+#headerSubMenu a {
+    width: 150px;
+    padding: 10px;
+}
+#headerSubMenu a:hover {
+    background-color: #2A3D59;
+}
 .hidden{
-    display:none;
+    display:none !important;
 }
