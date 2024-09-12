@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
   if (profileName && headerSubMenu) {
     // Funktion zum Zurückgeben der Initialen
     function returnNameInitials() {
-      let userName = localStorage.getItem("inputName") || "Guest";
+      let userName = localStorage.getItem("loggedInUser") || "Guest";
       let initials = userName.substring(0, 1); // Standardmäßig den ersten Buchstaben
 
       let spacePosition = userName.indexOf(" ");
