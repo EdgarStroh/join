@@ -95,7 +95,7 @@ function showPopupContact() {
 
   setTimeout(function () {
     closePopupSuccess();
-  }, 1000);
+  }, 1250);
 }
 
 function closePopupSuccess() {
