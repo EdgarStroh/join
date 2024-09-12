@@ -8,25 +8,27 @@ function openContact(id) {
 }
 
 function addContact() {
-  let name = document.getElementById("inputName");
-  let email = document.getElementById("inputEmail");
-  let phone = document.getElementById("inputPhone");
-  let newColor = getRandomColor();
-
-  let contactData = {
-    name: name.value,
-    email: email.value,
-    phone: phone.value,
-    color: newColor,
-  };
-
+  let contactData = getContactFormData();
   postDataContacts("", contactData);
-  name.value = "";
-  email.value = "";
-  phone.value = "";
+  resetContactForm();
   closePopup();
   showPopupContact();
   updateContacts();
+}
+
+function getContactFormData() {
+  return {
+    name: document.getElementById("inputName").value,
+    email: document.getElementById("inputEmail").value,
+    phone: document.getElementById("inputPhone").value,
+    color: getRandomColor(),
+  };
+}
+
+function resetContactForm() {
+  document.getElementById("inputName").value = "";
+  document.getElementById("inputEmail").value = "";
+  document.getElementById("inputPhone").value = "";
 }
 
 function renderExtendedContact(id) {
