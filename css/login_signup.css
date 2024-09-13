@@ -6,6 +6,11 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .sign_up_container {
     width: 100%;
     justify-content: flex-end;
@@ -40,7 +45,6 @@ body {
     background-color: white;
     cursor: not-allowed;
     box-shadow: none; 
-
 }
 .guest_login {
     display: flex;
@@ -70,9 +74,10 @@ body {
     align-self: flex-start;
 }
 .log_in_container {
-    width: 652px;
+    width: 100%;
+    max-width: 652px;
     height: 493px;
-    padding: 48px 115px 48px 115px;
+    padding-top: 48px;
     gap: 32px;
     border-radius: 30px;
     background-color: white;
@@ -99,7 +104,6 @@ body {
 #loginPassword {
     padding-right: 30px;
     background-size: 20px 20px; 
-    /* background: no-repeat right 21px center; */
 }
 #togglePasswordIcon,
 #toggleLoginPasswordIcon,
@@ -121,9 +125,14 @@ input:focus {
     outline: none !important;
     border: 1px solid #29ABE2;
 }
+
 .input_login {
     flex-direction: column;
     gap: 32px;
+    width: 100%;
+    max-width: 500px; 
+    padding: 0 20px;
+    box-sizing: border-box; 
 }
 .button_login {
     flex-direction: row;
@@ -140,15 +149,19 @@ input:focus {
     padding-right: 30px; 
     background: url(../assets/icons/mail.svg) no-repeat right 21px center;
     background-size: 20px 20px; 
+    background-color: white;
 }
+
 .email, .password, .name {
-    width: 422px;
+    width: 100% !important; 
+    max-width: 600px; 
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     padding: 12px 21px;
     font-size: 20px;
-}
+    box-sizing: border-box;
+} 
 ::placeholder{
     color:#D1D1D1;
     font-size: 20px;
