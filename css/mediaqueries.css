@@ -80,7 +80,7 @@
         inset: 0;
         background-color: #2A3647; 
         z-index: 1;
-        animation: fadeBackground 2.5s forwards; 
+        animation: fadeBackground 1.5s forwards; 
     }
     .animation_logo {
         background-image: url('../assets/icons/logo_black.svg'); 
@@ -93,10 +93,18 @@
         background-size: contain;
         background-repeat: no-repeat;
         z-index: 2;
-        animation: moveLogoSmall 1.75s forwards; 
+        animation: moveLogoSmall 1.5s forwards; 
     }
     @keyframes moveLogoSmall {
         0% {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 274px;
+            height: 335px;
+            background-image: url('../assets/img/logo.svg'); 
+        }
+        40% {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -115,6 +123,10 @@
     }
     @keyframes fadeBackground {
         0% {
+            background-color: #2A3647;
+            opacity: 1;
+        }
+        40% {
             background-color: #2A3647;
             opacity: 1;
         }
