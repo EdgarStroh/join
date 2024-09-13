@@ -39,7 +39,7 @@
     .button_login {
         flex-direction: column;
         align-items: center;
-        gap: 21px;
+        gap: 12px;
         padding: 0;
     }
     .button_login button {
@@ -53,7 +53,7 @@
         font-weight: 400;
     }
     .input_login {
-        gap: 20px;
+        gap: 16px;
     }
     .input_login .checkbox_login {
         padding: 12px 0;
