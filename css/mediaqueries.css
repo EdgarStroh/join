@@ -77,30 +77,30 @@
     }
     @keyframes moveLogoSmall {
         0% {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 274px;
-        height: 335px;
-        background-image: url('../assets/img/logo.svg'); 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 274px;
+            height: 335px;
+            background-image: url('../assets/img/logo.svg'); 
         }
         100% {
-        top: 16px;
-        left: 16px;
-        transform: translate(0, 0);
-        width: 64px;
-        height: 78px;
-        background-image: url('../assets/icons/logo_black.svg');
+            top: 16px;
+            left: 16px;
+            transform: translate(0, 0);
+            width: 64px;
+            height: 78px;
+            background-image: url('../assets/icons/logo_black.svg');
         }
     }
     @keyframes fadeBackground {
         0% {
-        background-color: #2A3647;
-        opacity: 1;
+            background-color: #2A3647;
+            opacity: 1;
         }
         100% {
-        background-color: transparent; 
-        opacity: 0;
+            background-color: transparent; 
+            opacity: 0;
         }
     }
 }
