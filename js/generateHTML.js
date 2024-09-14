@@ -120,29 +120,24 @@ function getInitials(name) {
   }
   
 // Funktion, die das HTML-Template generiert
-function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
-    let showContacts = allBoardContent[index].asigned; // make sure you are using the correct field name
+function htmlTemplateGenerateBoardContent(index, categoryColor) {
+    let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
     let contactsHTML = '';
 
-    // Iterate through showContacts and check against allContacts
-    showContacts.forEach(contactName => {
-        allContacts.find(contact => {
-            if(contact.name === contactName){
-                contactsHTML += `
-                <span class="contactCard" style="background-color: ${contact.color}">
-                    ${getInitials(contact.name)}
-                </span>`;
-            }
+    if (Array.isArray(showContacts)) {
+        // Iterate through showContacts and check against allContacts
+        showContacts.forEach(contactName => {
+            allContacts.find(contact => {
+                if (contact.name === contactName) {
+                    contactsHTML += `
+                    <span class="contactCard" style="background-color: ${contact.color}">
+                        ${getInitials(contact.name)}
+                    </span>`;
+                }
+            });
         });
-    });
-    // Check if showContacts is defined and contains contacts
-    // if (showContacts && showContacts.length > 0) {
-  
-    //     contactsHTML = showContacts.map(contact => `<span class="contact-initials">${getInitials(contact)}</span>`).join(" ");
-    // } else {
-    //     contactsHTML = '';
-    // }
-
+    }
+    
     return `
     <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
         <span class="boardCategory bc1" style="background-color: ${categoryColor};">
@@ -152,19 +147,13 @@ function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
             <span class="bc2">${allBoardContent[index].title}</span>
             <span class="bc3">${allBoardContent[index].description}</span>
         </div>
-<div class="progressSubTask flex">
-        <div>
-            PLine
-            </div>
-            <div>
-                ${getSubtaskDisplay(allBoardContent[index].subtasks)} 
-            </div>
+        <div class="progressSubTask flex">
+            <div>PLine</div>
+            <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
         </div>
         <div class="contactsAndPrio">
-            <span>${contactsHTML}</span> 
+            <span>${contactsHTML}</span>
         </div>
     </div>
-  `;
-
- 
+    `;
 }
