@@ -120,6 +120,7 @@ function getInitials(name) {
   }
   
 // Funktion, die das HTML-Template generiert
+// Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
     let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
     let contactsHTML = '';
@@ -137,7 +138,23 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             });
         });
     }
-    
+
+    // Image source based on the status
+    let statusImage = '';
+    switch (allBoardContent[index].prio) {
+        case 'urgent':
+            statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+            break;
+        case 'medium':
+            statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+            break;
+        case 'low':
+            statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+            break;
+        default:
+            statusImage = ''; // No image if no status
+    }
+
     return `
     <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
         <span class="boardCategory bc1" style="background-color: ${categoryColor};">
@@ -152,7 +169,12 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
             <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
         </div>
         <div class="contactsAndPrio">
-            <span>${contactsHTML}</span>
+            <div>
+                ${contactsHTML}
+            </div>
+            <div class="prioBoardCard">
+                ${statusImage} 
+            </div>
         </div>
     </div>
     `;

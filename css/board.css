@@ -280,3 +280,11 @@
     color: white;
     font-size: 14px;
 }
+.contactsAndPrio{
+    display: flex;
+    width: 100%;
+}
+.prioBoardCard{
+    padding-top: 8px;
+    margin-left: auto;
+}
