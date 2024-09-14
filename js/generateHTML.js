@@ -129,7 +129,9 @@ function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
         allContacts.find(contact => {
             if(contact.name === contactName){
                 contactsHTML += `
-                <span style="border-radius: 50%; height: 30px; width:30px; background-color: ${contact.color}" class="contact-initials">${getInitials(contact.name)}</span>`;
+                <span class="contactCard" style="background-color: ${contact.color}">
+                    ${getInitials(contact.name)}
+                </span>`;
             }
         });
     });
@@ -159,9 +161,8 @@ function htmlTemplateGenerateBoardContent(index, categoryColor, id) {
             </div>
         </div>
         <div class="contactsAndPrio">
-        <span>${contactsHTML}</span> 
-                
-            </div>
+            <span>${contactsHTML}</span> 
+        </div>
     </div>
   `;
 
