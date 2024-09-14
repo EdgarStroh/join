@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/pop_up.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
-    
+
 </head>
 
 <body onload="updateBoard()">
@@ -44,7 +44,7 @@
         <div class="boardContent">
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">To do
-                    <button class="plusButton"  onclick="openPopup()">
+                    <button class="plusButton" onclick="openPopup()">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
@@ -55,90 +55,103 @@
 
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">In progress
-                    <button class="plusButton"  onclick="openPopup()">
+                    <button class="plusButton" onclick="openPopup()">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="inProgress" ondrop="dropInProgress(event)"  ondragover="allowDrop(event); "></div>
+                <div class="drag-area" id="inProgress" ondrop="dropInProgress(event)" ondragover="allowDrop(event); ">
+                </div>
             </div>
 
 
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Await feedback
-                    <button class="plusButton"  onclick="openPopup()">
+                    <button class="plusButton" onclick="openPopup()">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="awaitFeedback" ondrop="dropAwait(event)"  ondragover="allowDrop(event); "></div>
+                <div class="drag-area" id="awaitFeedback" ondrop="dropAwait(event)" ondragover="allowDrop(event); ">
+                </div>
             </div>
 
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Done</div>
-                <div class="drag-area" id="done" ondrop="dropDone(event)"  ondragover="allowDrop(event); "></div>
+                <div class="drag-area" id="done" ondrop="dropDone(event)" ondragover="allowDrop(event); "></div>
             </div>
 
-            <!-- Pop up -->
-            <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
-            <div id="popupModal" class="popup-modal">
-                <h1>Add Task</h1>
-                <!-- Start Kopie von Proton -->
-                <form>
-                    <div class="flex formParts">
-                        <section class="formPart flex">
-                            <label for="title">Title<span class="requiredStar">*</span></label>
-                            <input type="text" id="title" placeholder="Enter a title" required>
-                            <br>
-                            <label for="description">Description</label>
-                            <textarea rows="5" placeholder="Enter a Description"></textarea>
-                            <br>
-                            <label for="contactSelection">Assigned to</label>
-                            <select id="contactSelection">
-                                <option value="">Select contacts to assign</option>
-                                <option value="K2">Kontakt 2</option>
-                                <option value="K3">Kontakt 3</option>
-                            </select>
-                        </section>
-                        <section class="formPart flex">
-                            <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
-                            <input type="date" id="date" >
-                            <br>
-                            <label for="prio">Prio</label>
-                            <section id="prio" class="flex">
-                                <button type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
-                                <button type="button" class="activePrio">Medium<img src="../assets/icons/prioMedium.svg"></button>
-                                <button type="button">Low<img src="../assets/icons/prioLow.svg"></button>
+            <!-- Pop up for add Task Button-->
+            <section>
+                <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
+                <div id="popupModal" class="popup-modal">
+                    <h1>Add Task</h1>
+                    <!-- Start Kopie von Proton -->
+                    <form>
+                        <div class="flex formParts">
+                            <section class="formPart flex">
+                                <label for="title">Title<span class="requiredStar">*</span></label>
+                                <input type="text" id="title" placeholder="Enter a title" required>
+                                <br>
+                                <label for="description">Description</label>
+                                <textarea rows="5" placeholder="Enter a Description"></textarea>
+                                <br>
+                                <label for="contactSelection">Assigned to</label>
+                                <select id="contactSelection">
+                                    <option value="">Select contacts to assign</option>
+                                    <option value="K2">Kontakt 2</option>
+                                    <option value="K3">Kontakt 3</option>
+                                </select>
                             </section>
-                            <br>
-                            <label for="category">Category<span class="requiredStar">*</span></label>
-                            <select id="category" required>
-                                <option value="">Select Task Category</option>
-                                <option value="kat1">Kategorie 1</option>
-                                <option value="kat2">Kategorie 2</option>
-                            </select>
-                            <br>
-                            <label for="Subtasks">Subtasks</label>
-                            <div id="addSubTask" class="flex">
-                                <input placeholder="Add new Subtask" type="text">
+                            <section class="formPart flex">
+                                <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
+                                <input type="date" id="date">
+                                <br>
+                                <label for="prio">Prio</label>
+                                <section id="prio" class="flex">
+                                    <button type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
+                                    <button type="button" class="activePrio">Medium<img
+                                            src="../assets/icons/prioMedium.svg"></button>
+                                    <button type="button">Low<img src="../assets/icons/prioLow.svg"></button>
+                                </section>
+                                <br>
+                                <label for="category">Category<span class="requiredStar">*</span></label>
+                                <select id="category" required>
+                                    <option value="">Select Task Category</option>
+                                    <option value="kat1">Kategorie 1</option>
+                                    <option value="kat2">Kategorie 2</option>
+                                </select>
+                                <br>
+                                <label for="Subtasks">Subtasks</label>
+                                <div id="addSubTask" class="flex">
+                                    <input placeholder="Add new Subtask" type="text">
                                     <img src="../assets/icons/addSubtask.svg">
-                            </div>
-                        </section>
-                    </div>
-                    <div class="taskFormButtons flex">
-                        <p><span class="requiredStar">*</span>This field is required</p>
-                        <div class="flex">
-                            <button type="reset" class="button clearBtn">Clear<img src="../assets/icons/cancel.svg" alt="Icon clear task"></button>
-                            <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg" alt="Icon create task"></button>
+                                </div>
+                            </section>
                         </div>
-                    </div>
-                </form>
-                <!-- Ende Kopie von Proton -->
-            </div>
-    </div>
-    <script src="../js/edgar.js"></script>
-    <script src="../js/generateHTML.js"></script>
-    <script src="../js/board.js"></script>
-    <script src="../js/sideBar.js"></script>
-    <script src="..//js/header.js"></script>
+                        <div class="taskFormButtons flex">
+                            <p><span class="requiredStar">*</span>This field is required</p>
+                            <div class="flex">
+                                <button type="reset" class="button clearBtn">Clear<img src="../assets/icons/cancel.svg"
+                                        alt="Icon clear task"></button>
+                                <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
+                                        alt="Icon create task"></button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Ende Kopie von Proton -->
+                </div>
+            </section>
+
+            <!-- Pop up for boardCards-->
+            <section>
+                <div id="popupOverlayCard" class="popup-overlay" onclick="closePopupCard()"></div>
+                <div id="popupModalCard" class="popup-modal-card"></div>
+            </section>
+        </div>
+        <script src="../js/edgar.js"></script>
+        <script src="../js/generateHTML.js"></script>
+        <script src="../js/board.js"></script>
+        <script src="../js/sideBar.js"></script>
+        <script src="..//js/header.js"></script>
 </body>
 
 </html>

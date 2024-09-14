@@ -200,6 +200,30 @@
     /* Versteckt standardmäßig */
     opacity: 0;
 }
+.popup-modal-card {
+    width: 500px;
+    height: 800px;
+    background-color: white;
+    padding: 65px 60px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    display: none;
+    /* Versteckt standardmäßig */
+    opacity: 0;
+}
+.popup-modal-card.show {
+    display: block;
+    animation: slideInFromRight 0.12s ease-out forwards;
+}
+.popup-modal-card.hide {
+    animation: slideOutToRight 0.12s ease-out forwards;
+    opacity: 0;
+}
 
 .popup-modal.show {
     display: block;
@@ -247,6 +271,7 @@
     width: 220px;
     flex-direction: column;
     margin-bottom: 6px;
+    cursor: pointer;
 }
 
 .boardCategory {

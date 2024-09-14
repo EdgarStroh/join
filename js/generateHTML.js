@@ -84,7 +84,7 @@ function generateEditContact(contact) {
     `;
 }
 
-function generateErrorLogin(){
+function generateErrorLogin() {
     return `
         <p>Check your email and password. Please try again.<p> 
     `;
@@ -109,7 +109,7 @@ function getSubtaskDisplay(subtasks) {
     let subtaskCount = subtasks ? subtasks.length : 0;
     let completedSubtasks = subtasks
         ? subtasks.filter(subtask => subtask.completed).length
-        :  0 ;
+        : 0;
 
     // Wenn keine Subtasks vorhanden sind, zeige nichts an
     return subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount} Subtasks ` : '';
@@ -117,65 +117,79 @@ function getSubtaskDisplay(subtasks) {
 
 function getInitials(name) {
     return name.split(" ").map((n) => n[0]).join("");
-  }
-  
+}
+
 // Funktion, die das HTML-Template generiert
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
     let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
     let contactsHTML = '';
-
+  
     if (Array.isArray(showContacts)) {
-        // Iterate through showContacts and check against allContacts
-        showContacts.forEach(contactName => {
-            allContacts.find(contact => {
-                if (contact.name === contactName) {
-                    contactsHTML += `
-                    <span class="contactCard" style="background-color: ${contact.color}">
-                        ${getInitials(contact.name)}
-                    </span>`;
-                }
-            });
+      // Iterate through showContacts and check against allContacts
+      showContacts.forEach(contactName => {
+        allContacts.find(contact => {
+          if (contact.name === contactName) {
+            contactsHTML += `
+              <span class="contactCard" style="background-color: ${contact.color}">
+                ${getInitials(contact.name)}
+              </span>`;
+          }
         });
+      });
     }
-
+  
     // Image source based on the status
     let statusImage = '';
     switch (allBoardContent[index].prio) {
-        case 'urgent':
-            statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
-            break;
-        case 'medium':
-            statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
-            break;
-        case 'low':
-            statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
-            break;
-        default:
-            statusImage = ''; // No image if no status
+      case 'urgent':
+        statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+        break;
+      case 'medium':
+        statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+        break;
+      case 'low':
+        statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+        break;
+      default:
+        statusImage = ''; // No image if no status
     }
-
+  
     return `
-    <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)">
+      <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
         <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-            ${allBoardContent[index].category}
+          ${allBoardContent[index].category}
         </span>
         <div class="boardText flex">
-            <span class="bc2">${allBoardContent[index].title}</span>
-            <span class="bc3">${allBoardContent[index].description}</span>
+          <span class="bc2">${allBoardContent[index].title}</span>
+          <span class="bc3">${allBoardContent[index].description}</span>
         </div>
         <div class="progressSubTask flex">
-            <div>PLine</div>
-            <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
+          <div>PLine</div>
+          <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
         </div>
         <div class="contactsAndPrio">
-            <div>
-                ${contactsHTML}
-            </div>
-            <div class="prioBoardCard">
-                ${statusImage} 
-            </div>
+          <div>
+            ${contactsHTML}
+          </div>
+          <div class="prioBoardCard">
+            ${statusImage} 
+          </div>
         </div>
-    </div>
+      </div>
     `;
-}
+  }
+// function popUpBoard() {
+//     let popup = document.getElementById("popupModalCard");
+//     console.log(popup);  // Überprüfe, ob das Element existiert
+
+//     popup.innerHTML = "";  // Stelle sicher, dass der Inhalt zurückgesetzt wird
+
+//     popup.innerHTML += `
+//         dasassdasdnjiklnklsdfjklsdfjklsdfsdfkl
+//         sedfj<joldfsjosdfgjklsdgjklsdgjklsdgjkl
+//         sdfgjsdfgjklgsdjkldgs
+//     `;
+
+//     console.log(popup.innerHTML);  // Überprüfe, ob der Inhalt gesetzt wird
+// }

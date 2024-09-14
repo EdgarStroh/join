@@ -122,6 +122,45 @@ function openPopup() {
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
+function openPopupCard() {
+  const popupOverlay = document.getElementById('popupOverlayCard');
+  const popupModal = document.getElementById('popupModalCard');
+
+  popupModal.innerHTML = htmlTemplatePopUpBoardCard();
+
+  // Zeige das Overlay und das Popup an
+  popupOverlay.style.display = 'flex';
+  popupModal.style.display = 'block';
+
+  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
+  popupModal.classList.remove('hide');
+  popupModal.classList.add('show');
+}
+
+function htmlTemplatePopUpBoardCard() {
+  return `
+    <div>
+      Titel:
+      <button onclick="closePopupCard()">x</button>
+    </div>
+
+    <div>description</div>
+
+    Due date: Date <br>
+    Priority: Medium <img>
+
+    Assigned To:
+      Profile1
+      Profile2
+      Profile3
+
+    Subtask
+      allSubtask
+      allSubtask
+
+    <div>Delte Edit</div>
+  `;
+}
 
 function closePopup() {
   const popupOverlay = document.getElementById('popupOverlay');
@@ -137,6 +176,20 @@ function closePopup() {
   // Verstecke das Popup nach der Animation (120ms)
   setTimeout(() => {
     popupModal.style.display = 'none';
+  }, 120); // 120ms entspricht der Dauer der Animation
+}
+function closePopupCard() {
+  const popupOverlay = document.getElementById('popupOverlayCard');
+  const popupModal = document.getElementById('popupModalCard');
+
+  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
+  popupModal.classList.remove('show');
+  popupModal.classList.add('hide');
+
+  // Verstecke das Popup nach der Animation (120ms entspricht der Dauer der Animation)
+  setTimeout(() => {
+    popupModal.style.display = 'none';
+    popupOverlay.style.display = 'none'; // Overlay auch nach der Animation ausblenden
   }, 120); // 120ms entspricht der Dauer der Animation
 }
 
