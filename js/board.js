@@ -52,7 +52,14 @@ function drag(ev) {
 function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  let draggedElement = document.getElementById(data);
+  
+  // Überprüfen, ob das Ziel bereits das übertragene Element enthält
+  if (ev.target.contains(draggedElement)) {
+    return;  // Kein weiteres Hinzufügen
+  }
+
+  ev.target.appendChild(draggedElement);
   let index = parseInt(data.split("-")[1]);
   let currentTask = allBoardContent[index];
   currentTask.status = status;
@@ -72,13 +79,13 @@ function dropToDo(ev) {
 }
 
 
-function highlight(id) {
-  document.getElementById(id).classList.add('drag-area-highlight');
-}
+// function highlight(id) {
+//   document.getElementById(id).classList.add('drag-area-highlight');
+// }
 
-function removeHighlight(id) {
-  document.getElementById(id).classList.remove('drag-area-highlight');
-}
+// function removeHighlight(id) {
+//   document.getElementById(id).classList.remove('drag-area-highlight');
+// }
 
 function renderBoardList() {
   let toDoContainer = document.getElementById("toDo");
