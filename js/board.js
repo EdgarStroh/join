@@ -158,7 +158,7 @@ function htmlTemplatePopUpBoardCard() {
       allSubtask
       allSubtask
 
-    <div>Delte Edit</div>
+    <div>Delete Edit</div>
   `;
 }
 
