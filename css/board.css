@@ -147,7 +147,7 @@
 .drag-area {
     height: 100vh;
     width: 220px;
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
     /* border: 1px dashed black; */
     margin-bottom: 50px;
     display: flex;
@@ -157,7 +157,7 @@
 }
 
 .drag-area-highlight {
-    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
 .todo {
@@ -254,27 +254,29 @@
     width: fit-content;
     height: 27px;
     padding: 4px 16px 4px 16px;
-    border-radius: 8px ;
+    border-radius: 8px;
     text-align: center;
 }
-.boardText{
+
+.boardText {
     flex-direction: column;
     word-wrap: break-word;
 }
-.progressSubTask{
+
+.progressSubTask {
     justify-content: space-between;
 }
 
-.contactCard{
-   border-radius: 50%;
-   height: 32px;
-   width: 32px;
-   border-width: 1px;
-   border-color:white;
-   border-style:solid;
-   display: inline-grid;
-   align-items: center;
-   justify-content: center;
-   color: white;
-   size: 12px;
+.contactCard {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    display: inline-grid;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
 }
