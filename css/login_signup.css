@@ -77,8 +77,8 @@ form {
 .log_in_container_signup {
     width: 100%;
     max-width: 652px;
-    height: 493px;
-    padding-top: 48px;
+    height: auto;
+    padding: 48px 0;
     gap: 32px;
     border-radius: 30px;
     background-color: white;

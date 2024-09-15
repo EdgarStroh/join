@@ -1,3 +1,14 @@
+@media screen and (max-height: 1040px){
+    .sign_up_container {
+        padding: 10%;
+    }
+}
+/* @media screen and (max-height: 900px){
+    .animation_logo {
+       height: ;
+       width: ;
+    }
+} */
 @media screen and (max-width: 768px){
     .log_in_container,
     .popup-modal {
