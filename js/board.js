@@ -151,7 +151,7 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage, contact) 
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach(person => {
       const initials = getInitials(person);
-      assignedHTML += `${initials}  ${person}<br>`;
+      assignedHTML += `${initials}  ${person}<br><br>`;
     });
   }
 
@@ -176,7 +176,7 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage, contact) 
     </div>
 
     <div>
-      Assigned To:<br>
+      Assigned To:<br><br>
       
         ${assignedHTML}
       
