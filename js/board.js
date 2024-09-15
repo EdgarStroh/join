@@ -157,8 +157,8 @@ function htmlTemplatePopUpBoardCard(index, categoryColor,statusImage) {
       <div class="puPrio">
         Priority: ${allBoardContent[index].prio} ${statusImage} 
       </div>
-    Assigned To:
-    ${allBoardContent[index].asigned}
+    Assigned To:<br>
+    ${allBoardContent[index].asigned}<br><br>
 
     Subtask <br>
       allSubtask
