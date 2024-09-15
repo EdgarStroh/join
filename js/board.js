@@ -145,15 +145,17 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach(person => {
       const initials = getInitials(person);
-      const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
-
-      assignedHTML += `
+      // const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
+      const color = contactColors[person];
+      if (color){
+        assignedHTML += `
         <div style="display: flex; align-items: center;">
           <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
             ${initials}
           </span>
           ${person}
         </div><br>`;
+      }
     });
   }
   let statusImage = '';

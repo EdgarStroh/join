@@ -2,7 +2,6 @@ async function deleteDataContact(uid) {
   try {
     await handleDeleteRequest(`${BASE_URL_Contact}/${uid}.json`);
 
-    removeContactFromUI(uid);
     clearExtendedContact();
     updateContacts();
 
@@ -17,14 +16,6 @@ async function handleDeleteRequest(url) {
 
   if (!response.ok)
     throw new Error("Fehler beim Löschen des Kontakts: " + response.statusText);
-}
-
-function removeContactFromUI(uid) {
-  const contactElement = document.getElementById(`${uid}`);
-
-  if (contactElement) {
-    contactElement.remove();
-  }
 }
 
 function clearExtendedContact() {
@@ -42,10 +33,10 @@ function editContact(id) {
 
   const name = document.getElementById("inputEditName").value;
   const email = document.getElementById("inputEditEmail").value;
-  const phone = document.getElementById("inputEditPhone").value;
+  const phone = document.getElementById("inputEditPhone").value; 
 
-  const originalContact = allContacts.find((contact) => contact.Uid === id);
-  const originalIndex = allContacts.findIndex((contact) => contact.Uid === id);
+  const originalContact = allContacts.find((contact) => contact.Uid === id); 
+  const originalIndex = allContacts.findIndex((contact) => contact.Uid === id); 
 
   if (!originalContact) {
     console.error("Kontakt mit ID", id, "nicht gefunden!");
@@ -60,7 +51,7 @@ function editContact(id) {
   };
 
   allContacts[originalIndex] = updatedContact;
-  updateDataContact(id, updatedContact);
+  updateDataContact(id, updatedContact); 
   closeEditContact();
   renderExtendedContact(originalIndex);
 }
@@ -77,28 +68,28 @@ function renderEditContact(id) {
   document.getElementById("popupEditModal").innerHTML = editContactHTML;
 }
 
-async function updateContactInFirebase(id, updatedContact) {
-  try {
-    const response = await fetch(`${BASE_URL_Contact}/${id}.json`, {
-      method: "PUT",
-      body: JSON.stringify(updatedContact),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+// async function updateContactInFirebase(id, updatedContact) {
+//   try {
+//     const response = await fetch(`${BASE_URL_Contact}/${id}.json`, {
+//       method: "PUT",
+//       body: JSON.stringify(updatedContact),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
 
-    if (!response.ok) {
-      throw new Error(
-        `Fehler beim Aktualisieren des Kontakts: ${response.statusText}`
-      );
-    }
+//     if (!response.ok) {
+//       throw new Error(
+//         `Fehler beim Aktualisieren des Kontakts: ${response.statusText}`
+//       );
+//     }
 
-    await updateContacts();
-  } catch (error) {
-    console.error("Fehler beim Aktualisieren des Kontakts:", error);
-    alert("Es gab ein Problem beim Aktualisieren des Kontakts.");
-  }
-}
+//     await updateContacts();
+//   } catch (error) {
+//     console.error("Fehler beim Aktualisieren des Kontakts:", error);
+//     alert("Es gab ein Problem beim Aktualisieren des Kontakts.");
+//   }
+// }
 
 async function updateDataContact(id, data) {
   try {
