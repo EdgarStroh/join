@@ -156,6 +156,7 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
         </div><br>`;
     });
   }
+  
 
   // Subtasks
   if (Array.isArray(allBoardContent[index].subtasks)) {
@@ -198,7 +199,11 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
       ${subtasksHTML}
     </div>
 
-    
+    <div class="deleteEditPopUp">
+     <div><img src="../assets/icons/delete.svg"><span>Delete</span></div>
+      <img src="../assets/icons/I.svg"
+      <div><img src="../assets/icons/edit.svg"><span>Edit</span></div>
+    </div>
   `;
 }
 
