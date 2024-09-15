@@ -122,11 +122,11 @@ function openPopup() {
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
-function openPopupCard(index, categoryColor,statusImage) {
+function openPopupCard(index, categoryColor) {
   const popupOverlay = document.getElementById('popupOverlayCard');
   const popupModal = document.getElementById('popupModalCard');
 
-  popupModal.innerHTML = htmlTemplatePopUpBoardCard(index, categoryColor,statusImage);
+  popupModal.innerHTML = htmlTemplatePopUpBoardCard(index, categoryColor);
 
   // Zeige das Overlay und das Popup an
   popupOverlay.style.display = 'flex';
@@ -137,7 +137,7 @@ function openPopupCard(index, categoryColor,statusImage) {
   popupModal.classList.add('show');
 }
 
-function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
+function htmlTemplatePopUpBoardCard(index, categoryColor) {
   let assignedHTML = '';
   let subtasksHTML = '';
 
@@ -156,6 +156,20 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
         </div><br>`;
     });
   }
+  let statusImage = '';
+    switch (allBoardContent[index].prio) {
+      case 'urgent':
+        statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+        break;
+      case 'medium':
+        statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+        break;
+      case 'low':
+        statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+        break;
+      default:
+        statusImage = ''; // No image if no status
+    }
   
 
   // Subtasks
