@@ -139,20 +139,31 @@ function openPopupCard(index, categoryColor,statusImage) {
 
 function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
   let assignedHTML = '';
-  
+  let subtasksHTML = '';
+
+  // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach(person => {
       const initials = getInitials(person);
       const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
 
-      // Erzeuge die HTML-Struktur mit Initialen und Namen
       assignedHTML += `
         <div style="display: flex; align-items: center;">
-          <span class="contactCardPopUp" style="background-color: ${color}">
+          <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
             ${initials}
           </span>
-            ${person}
+          ${person}
         </div><br>`;
+    });
+  }
+
+  // Subtasks
+  if (Array.isArray(allBoardContent[index].subtasks)) {
+    allBoardContent[index].subtasks.forEach(subtask => {
+      subtasksHTML += `
+        <div class="subtaskCardPopUpContent"> 
+          <input type ="checkbox">${subtask}
+        </div>`;
     });
   }
 
@@ -176,17 +187,18 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
       Priority: ${allBoardContent[index].prio} ${statusImage} 
     </div>
 
-    
-      Assigned To:<br>
+  
+     Assigned To:  
     <div class="contactCardPopUpContent">
       ${assignedHTML}
     </div>
 
-    Subtasks <br>
-    allSubtask
-    allSubtask
+      Subtasks
+    <div >
+      ${subtasksHTML}
+    </div>
 
-    <div>Delete Edit</div>
+    
   `;
 }
 

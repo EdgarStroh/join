@@ -357,5 +357,27 @@
     margin-right: 12px;
 }
 .contactCardPopUpContent{
-    padding:12px 16px 2px 12px;
+    padding:12px 16px 2px 22px;
+}
+.subtaskCardPopUpContent{
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+input[type="checkbox"] {
+    display: inline-block;
+    width: 19px;
+    height: 20px;
+    border: 0px !important;
+    background-image: url('../assets/icons/checkbox.svg');
+    background-size: cover;
+    cursor: pointer;
+    -webkit-appearance: none; /* Entfernt die Standard-Styling für Webkit-Browser */
+    appearance: none; /* Entfernt die Standard-Styling für andere Browser */
+    /* Weitere Stile können hier hinzugefügt werden */
+    border-radius: 0px;
+}
+input[type="checkbox"]:checked {
+    background-image: url(../assets/icons/checkbox_checked.svg);
 }
