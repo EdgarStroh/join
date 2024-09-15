@@ -137,32 +137,54 @@ function openPopupCard(index, categoryColor,statusImage) {
   popupModal.classList.add('show');
 }
 
-function htmlTemplatePopUpBoardCard(index, categoryColor,statusImage) {
-  return `
-      <div class="puCategory">
-        <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-         ${allBoardContent[index].category}
-        </span>
-        <button onclick="closePopupCard()">x</button>
-      </div>
-      <div class="puTitle">
-        ${allBoardContent[index].title}
-      </div>
-      <div class="puDescription">
-        ${allBoardContent[index].description}
-      </div>
-      <div class="puDate">
-        Due date: ${allBoardContent[index].date} 
-      </div>
-      <div class="puPrio">
-        Priority: ${allBoardContent[index].prio} ${statusImage} 
-      </div>
-    Assigned To:<br>
-    ${allBoardContent[index].asigned}<br><br>
+function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage, contact) {
+  // Funktion, um die Initialen eines Namens zu berechnen
+  function getInitials(name) {
+    return name
+      .split(" ")
+      .map(n => n[0]) // Nimm den ersten Buchstaben jedes Namens
+      .join("");
+  }
 
-    Subtask <br>
-      allSubtask
-      allSubtask
+  // Iteriere über alle zugewiesenen Personen und erstelle eine Liste mit Initialen
+  let assignedHTML = '';
+  if (Array.isArray(allBoardContent[index].asigned)) {
+    allBoardContent[index].asigned.forEach(person => {
+      const initials = getInitials(person);
+      assignedHTML += `${initials}  ${person}<br>`;
+    });
+  }
+
+  return `
+    <div class="puCategory">
+      <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+        ${allBoardContent[index].category}
+      </span>
+      <button onclick="closePopupCard()">x</button>
+    </div>
+    <div class="puTitle">
+      ${allBoardContent[index].title}
+    </div>
+    <div class="puDescription">
+      ${allBoardContent[index].description}
+    </div>
+    <div class="puDate">
+      Due date: ${allBoardContent[index].date} 
+    </div>
+    <div class="puPrio">
+      Priority: ${allBoardContent[index].prio} ${statusImage} 
+    </div>
+
+    <div>
+      Assigned To:<br>
+      
+        ${assignedHTML}
+      
+    </div>
+
+    Subtasks <br>
+    allSubtask
+    allSubtask
 
     <div>Delete Edit</div>
   `;
