@@ -203,7 +203,7 @@
 
 .popup-modal-card {
     width: 500px;
-    height: 800px;
+    height: fit-content;
     background-color: white;
     padding: 65px 60px;
     border-radius: 30px;
