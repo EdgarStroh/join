@@ -214,7 +214,7 @@
     z-index: 1001;
     display: none;
     /* Versteckt standardmäßig */
-    opacity: 0;
+    opacity: 0;  
 }
 .popup-modal-card.show {
     display: block;
@@ -317,4 +317,28 @@
 .prioBoardCard {
     padding-top: 8px;
     margin-left: auto;
+}
+
+.puCategory{
+    display: flex;
+    justify-content: space-between;
+}
+.puTitle{
+    font-size: 61px;
+    font-weight: 700;
+}
+.puDescription{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 16px 0;
+}
+.puDate{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 16px 0;
+}
+.puPrio{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 16px 0;
 }

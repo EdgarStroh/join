@@ -156,29 +156,29 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
     }
   
     return `
-      <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
-        <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-          ${allBoardContent[index].category}
-        </span>
-        <div class="boardText flex">
-          <span class="bc2">${allBoardContent[index].title}</span>
-          <span class="bc3">${allBoardContent[index].description}</span>
+    <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
+      <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+        ${allBoardContent[index].category}
+      </span>
+      <div class="boardText flex">
+        <span class="bc2">${allBoardContent[index].title}</span>
+        <span class="bc3">${allBoardContent[index].description}</span>
+      </div>
+      <div class="progressSubTask flex">
+        <div>PLine</div>
+        <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
+      </div>
+      <div class="contactsAndPrio">
+        <div>
+          ${contactsHTML}
         </div>
-        <div class="progressSubTask flex">
-          <div>PLine</div>
-          <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
-        </div>
-        <div class="contactsAndPrio">
-          <div>
-            ${contactsHTML}
-          </div>
-          <div class="prioBoardCard">
-            ${statusImage} 
-          </div>
+        <div class="prioBoardCard">
+          ${statusImage} 
         </div>
       </div>
-    `;
-  }
+    </div>
+  `;
+}
 // function popUpBoard() {
 //     let popup = document.getElementById("popupModalCard");
 //     console.log(popup);  // Überprüfe, ob das Element existiert

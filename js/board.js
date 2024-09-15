@@ -1,8 +1,8 @@
 async function updateBoard() {
-    await loadDataContacts("");
-    await loadDataBoards("");
-    await loadDataUsers("");
-    renderBoardList();
+  await loadDataContacts("");
+  await loadDataBoards("");
+  await loadDataUsers("");
+  renderBoardList();
 }
 
 function allowDrop(ev) {
@@ -53,7 +53,7 @@ function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
   let draggedElement = document.getElementById(data);
-  
+
   // Überprüfen, ob das Ziel bereits das übertragene Element enthält
   if (ev.target.contains(draggedElement)) {
     return;  // Kein weiteres Hinzufügen
@@ -122,11 +122,11 @@ function openPopup() {
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
-function openPopupCard() {
+function openPopupCard(index, categoryColor,statusImage) {
   const popupOverlay = document.getElementById('popupOverlayCard');
   const popupModal = document.getElementById('popupModalCard');
 
-  popupModal.innerHTML = htmlTemplatePopUpBoardCard();
+  popupModal.innerHTML = htmlTemplatePopUpBoardCard(index, categoryColor,statusImage);
 
   // Zeige das Overlay und das Popup an
   popupOverlay.style.display = 'flex';
@@ -137,24 +137,30 @@ function openPopupCard() {
   popupModal.classList.add('show');
 }
 
-function htmlTemplatePopUpBoardCard() {
+function htmlTemplatePopUpBoardCard(index, categoryColor,statusImage) {
   return `
-    <div>
-      Titel:
-      <button onclick="closePopupCard()">x</button>
-    </div>
-
-    <div>description</div>
-
-    Due date: Date <br>
-    Priority: Medium <img>
-
+      <div class="puCategory">
+        <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+         ${allBoardContent[index].category}
+        </span>
+        <button onclick="closePopupCard()">x</button>
+      </div>
+      <div class="puTitle">
+        ${allBoardContent[index].title}
+      </div>
+      <div class="puDescription">
+        ${allBoardContent[index].description}
+      </div>
+      <div class="puDate">
+        Due date: ${allBoardContent[index].date} 
+      </div>
+      <div class="puPrio">
+        Priority: ${allBoardContent[index].prio} ${statusImage} 
+      </div>
     Assigned To:
-      Profile1
-      Profile2
-      Profile3
+    ${allBoardContent[index].asigned}
 
-    Subtask
+    Subtask <br>
       allSubtask
       allSubtask
 
