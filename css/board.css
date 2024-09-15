@@ -342,3 +342,20 @@
     font-weight: 400;
     padding: 16px 0;
 }
+.contactCardPopUp{
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    display: inline-grid;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    margin-right: 12px;
+}
+.contactCardPopUpContent{
+    padding:12px 16px 2px 12px;
+}

@@ -137,21 +137,22 @@ function openPopupCard(index, categoryColor,statusImage) {
   popupModal.classList.add('show');
 }
 
-function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage, contact) {
-  // Funktion, um die Initialen eines Namens zu berechnen
-  function getInitials(name) {
-    return name
-      .split(" ")
-      .map(n => n[0]) // Nimm den ersten Buchstaben jedes Namens
-      .join("");
-  }
-
-  // Iteriere über alle zugewiesenen Personen und erstelle eine Liste mit Initialen
+function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
   let assignedHTML = '';
+  
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach(person => {
       const initials = getInitials(person);
-      assignedHTML += `${initials}  ${person}<br><br>`;
+      const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
+
+      // Erzeuge die HTML-Struktur mit Initialen und Namen
+      assignedHTML += `
+        <div style="display: flex; align-items: center;">
+          <span class="contactCardPopUp" style="background-color: ${color}">
+            ${initials}
+          </span>
+            ${person}
+        </div><br>`;
     });
   }
 
@@ -175,11 +176,10 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage, contact) 
       Priority: ${allBoardContent[index].prio} ${statusImage} 
     </div>
 
-    <div>
-      Assigned To:<br><br>
-      
-        ${assignedHTML}
-      
+    
+      Assigned To:<br>
+    <div class="contactCardPopUpContent">
+      ${assignedHTML}
     </div>
 
     Subtasks <br>
@@ -220,9 +220,6 @@ function closePopupCard() {
     popupOverlay.style.display = 'none'; // Overlay auch nach der Animation ausblenden
   }, 120); // 120ms entspricht der Dauer der Animation
 }
-
-
-
 async function updateTask(id, data) {
   try {
     let response = await fetch(`${BASE_URL_Board}/${id}.json`, {

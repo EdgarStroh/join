@@ -1,3 +1,4 @@
+let contactColors = {};
 function generateLetterSectionHTML(letter) {
     return `
         <div class="letter_section">
@@ -122,22 +123,25 @@ function getInitials(name) {
 // Funktion, die das HTML-Template generiert
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
-    let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
-    let contactsHTML = '';
+  let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
+  let contactsHTML = '';
   
-    if (Array.isArray(showContacts)) {
-      // Iterate through showContacts and check against allContacts
-      showContacts.forEach(contactName => {
-        allContacts.find(contact => {
-          if (contact.name === contactName) {
-            contactsHTML += `
-              <span class="contactCard" style="background-color: ${contact.color}">
-                ${getInitials(contact.name)}
-              </span>`;
-          }
-        });
+  if (Array.isArray(showContacts)) {
+    // Iterate through showContacts und prüfe gegen allContacts
+    showContacts.forEach(contactName => {
+      allContacts.find(contact => {
+        if (contact.name === contactName) {
+          // Speichere die Farbe des Kontakts im contactColors-Objekt
+          contactColors[contactName] = contact.color;
+          
+          contactsHTML += `
+            <span class="contactCard" style="background-color: ${contact.color}">
+              ${getInitials(contact.name)}
+            </span>`;
+        }
       });
-    }
+    });
+  }
   
     // Image source based on the status
     let statusImage = '';
@@ -155,29 +159,30 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
         statusImage = ''; // No image if no status
     }
   
-    return `
-    <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
-      <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-        ${allBoardContent[index].category}
-      </span>
-      <div class="boardText flex">
-        <span class="bc2">${allBoardContent[index].title}</span>
-        <span class="bc3">${allBoardContent[index].description}</span>
+    
+  return `
+  <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
+    <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+      ${allBoardContent[index].category}
+    </span>
+    <div class="boardText flex">
+      <span class="bc2">${allBoardContent[index].title}</span>
+      <span class="bc3">${allBoardContent[index].description}</span>
+    </div>
+    <div class="progressSubTask flex">
+      <div>PLine</div>
+      <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
+    </div>
+    <div class="contactsAndPrio">
+      <div>
+        ${contactsHTML}
       </div>
-      <div class="progressSubTask flex">
-        <div>PLine</div>
-        <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
-      </div>
-      <div class="contactsAndPrio">
-        <div>
-          ${contactsHTML}
-        </div>
-        <div class="prioBoardCard">
-          ${statusImage} 
-        </div>
+      <div class="prioBoardCard">
+        ${statusImage} 
       </div>
     </div>
-  `;
+  </div>
+`;
 }
 // function popUpBoard() {
 //     let popup = document.getElementById("popupModalCard");
