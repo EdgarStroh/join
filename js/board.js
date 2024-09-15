@@ -173,7 +173,9 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
       <span class="boardCategory bc1" style="background-color: ${categoryColor};">
         ${allBoardContent[index].category}
       </span>
-      <button onclick="closePopupCard()">x</button>
+      <div class="closeContainer">
+        <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
+      </div>  
     </div>
     <div class="puTitle">
       ${allBoardContent[index].title}
@@ -200,10 +202,18 @@ function htmlTemplatePopUpBoardCard(index, categoryColor, statusImage) {
     </div>
 
     <div class="deleteEditPopUp">
-     <div><img src="../assets/icons/delete.svg"><span>Delete</span></div>
-      <img src="../assets/icons/I.svg"
-      <div><img src="../assets/icons/edit.svg"><span>Edit</span></div>
-    </div>
+  <div class="delete">
+    <img src="../assets/icons/delete.svg" alt="Delete">
+    <span>Delete</span>
+  </div>
+  <div class="info">
+    <img src="../assets/icons/I.svg" alt="Info">
+  </div>
+  <div class="edit">
+    <img src="../assets/icons/edit.svg" alt="Edit">
+    <span>Edit</span>
+  </div>
+</div>
   `;
 }
 

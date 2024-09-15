@@ -401,7 +401,7 @@ input[type="checkbox"]:checked {
     align-items: center;
     /* gap: 6px;  */
     justify-content: right;
-    cursor: pointer;
+    
     color: #2A3647;
 
 }
@@ -410,4 +410,43 @@ input[type="checkbox"]:checked {
     margin: 0 4px;
     height: 14px;
     width: 14px;
+}
+.deleteEditPopUp div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer; /* Zeigt Handcursor an, wenn über das Element gefahren wird */
+  }
+  
+  .deleteEditPopUp img {
+    width: 21px;
+    height: 21px;
+    margin-right: 8px;
+    /* transition: transform 0.3s ease, filter 0.3s ease; Weiche Übergänge für Hover-Effekte */
+  }
+ 
+  .delete:hover img,
+  .edit:hover img
+   {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(3361%) hue-rotate(190deg) brightness(100%) contrast(103%);
+  }
+  
+  .delete:hover,
+  .edit:hover{
+    color: #007CEE; /* Ändert die Textfarbe beim Hover */
+  }
+
+.close {
+    /* position: fixed;
+    top: 53px;
+    right: 37px; */
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+}
+.closeContainer:hover {
+    background-color: #EEEEEE;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
 }
