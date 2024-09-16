@@ -28,6 +28,14 @@
     .input_login.password-container {
         width:50%;
     }
+    .zoom {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        overflow:hidden;
+        transform-origin: 0 0;
+        transform: scale(0.75);
+    }
 }
 @media screen and (max-width: 465px) {
     .underline {

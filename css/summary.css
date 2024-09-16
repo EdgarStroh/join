@@ -1,3 +1,10 @@
+.text_container_summary {
+    padding: 206px 0 96px 330px;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #F6F7F8;
+}
 .flex-center {
     display: flex;
     justify-content: center;
@@ -17,9 +24,13 @@
 .overview_summary {
     flex-direction: row;
     justify-content: flex-start;
-    gap: 100px;
+    gap: 5%;
     align-items: center;
     padding-top: 50px;
+    width: 100%;
+}
+.overview {
+    width: 60%;
 }
 .summary_container_small {
     flex-direction: row;
@@ -36,8 +47,8 @@
 }
 .small_box {
     justify-content: center;
-    height:168px;
-    width:168px;
+    height: 168px;
+    width: 33.33%;
     padding: 25px 0;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
@@ -56,13 +67,17 @@
 .medium_box {
     flex-direction: row;
     justify-content: space-evenly;
-    height:168px;
-    width:264px;
+    height: 168px;
+    width: 50%;
     padding: 38px 19px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     background-color: white;
     transition: background-color 0.3s ease;
+}
+.medium_box svg {
+    min-width: 70px !important;
+    min-height: 70px !important;
 }
 .medium_box:hover {
     transform: scale(1.05);
@@ -90,8 +105,8 @@
 .large_box {
     flex-direction: row;
     justify-content: space-evenly;
-    height:168px;
-    width:546px;
+    height: 168px;
+    width: 100%;
     padding: 28px 48px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
@@ -139,7 +154,7 @@
 .date {
     flex-direction: column;
     align-items: flex-start;
-    gap:13px;
+    gap: 13px;
 }
 .date span {
     font-size: 16px;
@@ -148,19 +163,17 @@
     color: black;
 }
 .greetings {
+    width: 40%;
     flex-direction: column;
-    gap: 3px;
+    gap: 15px;
 }
 .greetings span {
-    font-size: 47px;
+    font-size: clamp(2.25rem, 0.0257rem + 3.2353vw, 2.9375rem);
     font-weight: 500;
-    line-height: 76.8px;
     color: #2A3647;
 }
 .greetings h2 {
-    font-size: 64px;
+    font-size: clamp(3rem, -0.2353rem + 4.7059vw, 4rem);
     font-weight: 700;
-    line-height: 56.4px;
     color: #29ABE2;
-    
 }
