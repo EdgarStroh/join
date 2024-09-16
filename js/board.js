@@ -225,9 +225,9 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
   <div class="info">
     <img src="../assets/icons/I.svg" alt="Info">
   </div>
-  <div class="edit">
+  <div class="edit" onclick="openPopupCardEdit()">
     <img src="../assets/icons/edit.svg" alt="Edit">
-    <div onclick="openPopupCardEdit()"><span>Edit</span></div>
+    <div><span>Edit</span></div>
   </div>
 </div>
   `;
@@ -246,7 +246,46 @@ function openPopupCardEdit() {
 }
 function htmlTemplatePopUpBoardCardEdit() {
   return `
-    sdfsdfsdfsdf  
+    <div class="closeContainerEdit">
+      <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
+    </div>
+
+    <label for="title">Title<span class="requiredStar"></span></label>   <br>
+        <input type="text" id="title" placeholder="Enter a title" required>
+          <br>
+        <label for="description">Description</label><br>
+        <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
+          <br>
+
+      <label for="dueDate">Due Date<span class="requiredStar"></span></label><br>
+      <input type="date" id="date"><br><br>
+
+      <label for="prio"><strong>Priority</strong></label>
+        <section id="prio" class="flex">
+            <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg"
+                    src="../assets/icons/prioUrgent.svg"></button>
+            <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img
+                    id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
+            <button value="low" id="prioLow" type="button">Low<img id="prioLowImg"
+                    src="../assets/icons/prioLow.svg"></button>
+        </section>
+
+     <label for="contactSelection">Assigned to</label>
+        <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
+            Select contacts to assign
+        </div>
+        <div id="contactList" class="hidden flex"></div><br><br>
+
+     <label for="Subtasks">Subtasks</label>
+      <div id="addSubTask" class="flex">
+          <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
+          <!--Benötigt für onclick Event!-->
+          <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
+      </div>
+      <ul id="subTasksList">
+      </ul>
+
+     <button class="button margin-left" onclick="closePopupCardEdit()">Ok<img src="../assets/icons/create.svg"></button>
   `
 }
 
@@ -283,12 +322,14 @@ function closePopupCard() {
 }
 
 function closePopupCardEdit() {
+  const popupOverlay = document.getElementById('popupOverlayCardEdit');
   const popupModal = document.getElementById('popupModalCardEdit');
   // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
   popupModal.classList.remove('show');
   popupModal.classList.add('hide');
-  // Verstecke das Popup nach der Animation (120ms entspricht der Dauer der Animation)
-  
+
+  popupModal.style.display = 'none';
+  popupOverlay.style.display = 'none';
 }
 
 async function updateTask(id, data) {
