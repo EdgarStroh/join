@@ -156,9 +156,9 @@
     flex-flow: column;
 }
 
-.drag-area-highlight {
-    /* background-color: rgba(0, 0, 0, 0.2); */
-}
+/* .drag-area-highlight {
+    background-color: rgba(0, 0, 0, 0.2);
+} */
 
 .todo {
     background-color: white;
@@ -440,15 +440,14 @@ input[type="checkbox"]:checked {
 }
 .deleteEditPopUp div {
     display: flex;
+    cursor: pointer;
+    gap: 8px;
     align-items: center;
-    margin-bottom: 8px;
-    cursor: pointer; /* Zeigt Handcursor an, wenn über das Element gefahren wird */
   }
   
   .deleteEditPopUp img {
     width: 21px;
     height: 21px;
-    margin-right: 8px;
     /* transition: transform 0.3s ease, filter 0.3s ease; Weiche Übergänge für Hover-Effekte */
   }
  

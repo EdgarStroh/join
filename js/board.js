@@ -205,31 +205,29 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
     <div class="puPrio">
       Priority: ${allBoardContent[index].prio} ${statusImage} 
     </div>
-
-  
-     Assigned To:  
+    <span>Assigned To:</span>  
     <div class="contactCardPopUpContent">
       ${assignedHTML}
     </div>
-
-      Subtasks
+    <span>Subtasks</span> 
     <div >
       ${subtasksHTML}
     </div>
-
     <div class="deleteEditPopUp">
-  <div class="delete">
-    <img src="../assets/icons/delete.svg" alt="Delete">
-    <span>Delete</span>
-  </div>
-  <div class="info">
-    <img src="../assets/icons/I.svg" alt="Info">
-  </div>
-  <div class="edit" onclick="openPopupCardEdit()">
-    <img src="../assets/icons/edit.svg" alt="Edit">
-    <div><span>Edit</span></div>
-  </div>
-</div>
+      <div onclick="deleteDataBoard('${allBoardContent[index].Uid}')" class="delete">
+        <img src="../assets/icons/delete.svg" alt="Delete">
+        <span>Delete</span>
+      </div>
+    <div class="info">
+      <img src="../assets/icons/I.svg" alt="Info">
+    </div>
+    <div class="edit" onclick="openPopupCardEdit()">
+      <img src="../assets/icons/edit.svg" alt="Edit">
+      <div>
+        <span>Edit</span>
+      </div>
+    </div>
+  
   `;
 }
 function openPopupCardEdit() {
@@ -245,7 +243,7 @@ function openPopupCardEdit() {
   popupModal.classList.add('show');
 }
 function htmlTemplatePopUpBoardCardEdit() {
-  return `
+  return /*HTML*/ `
     <div class="closeContainerEdit">
       <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
     </div>
@@ -286,7 +284,7 @@ function htmlTemplatePopUpBoardCardEdit() {
       </ul>
 
      <button class="button margin-left" onclick="closePopupCardEdit()">Ok<img src="../assets/icons/create.svg"></button>
-  `
+  `;
 }
 
 function closePopup() {
@@ -399,3 +397,28 @@ for (let i = 0; i < prioButtons.length; i++) {
         }
     });
 }
+
+
+
+
+async function deleteDataBoard(uid) {
+  try {
+    await handleDeleteTaskRequest(`${BASE_URL_Board}/${uid}.json`);
+
+    closePopupCard();
+    updateBoard();
+
+  } catch (error) {
+    console.error("Fehler beim Löschen der Task:", error);
+    alert("Es gab ein Problem beim Löschen der Task.");
+  }
+}
+
+async function handleDeleteTaskRequest(url) {
+  let response = await fetch(url, { method: "DELETE" });
+
+  if (!response.ok)
+    throw new Error("Fehler beim Löschen der Task: " + response.statusText);
+}
+
+
