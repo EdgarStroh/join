@@ -504,4 +504,11 @@ input[type="checkbox"]:checked {
 }
 .margin-left{
     margin-left: auto;
+} 
+#subTasksList {
+    display: block;
+}
+
+#subTasksList li {
+    justify-content: space-between;
 }

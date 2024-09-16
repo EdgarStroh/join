@@ -86,52 +86,59 @@
                 <div id="popupModal" class="popup-modal">
                     <h1>Add Task</h1>
                     <!-- Start Kopie von Proton -->
-                    <form>
+                    <form id="addTaskForm" method="post">
                         <div class="flex formParts">
                             <section class="formPart flex">
                                 <label for="title">Title<span class="requiredStar">*</span></label>
                                 <input type="text" id="title" placeholder="Enter a title" required>
                                 <br>
                                 <label for="description">Description</label>
-                                <textarea rows="5" placeholder="Enter a Description"></textarea>
+                                <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
                                 <br>
                                 <label for="contactSelection">Assigned to</label>
-                                <select id="contactSelection">
-                                    <option value="">Select contacts to assign</option>
-                                    <option value="K2">Kontakt 2</option>
-                                    <option value="K3">Kontakt 3</option>
-                                </select>
+                                <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
+                                    Select contacts to assign
+                                </div>
+                                <div id="contactList" class="hidden flex"></div>
+            
                             </section>
+                            <hr id="seperationLine">
+                            </hr>
                             <section class="formPart flex">
                                 <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
                                 <input type="date" id="date">
                                 <br>
                                 <label for="prio">Prio</label>
                                 <section id="prio" class="flex">
-                                    <button type="button">Urgent<img src="../assets/icons/prioUrgent.svg"></button>
-                                    <button type="button" class="activePrio">Medium<img
-                                            src="../assets/icons/prioMedium.svg"></button>
-                                    <button type="button">Low<img src="../assets/icons/prioLow.svg"></button>
+                                    <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg"
+                                            src="../assets/icons/prioUrgent.svg"></button>
+                                    <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img
+                                            id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
+                                    <button value="low" id="prioLow" type="button">Low<img id="prioLowImg"
+                                            src="../assets/icons/prioLow.svg"></button>
                                 </section>
                                 <br>
                                 <label for="category">Category<span class="requiredStar">*</span></label>
-                                <select id="category" required>
-                                    <option value="">Select Task Category</option>
-                                    <option value="kat1">Kategorie 1</option>
-                                    <option value="kat2">Kategorie 2</option>
+                                <select id="category" required tabindex="0">
+                                    <option value="" disabled selected hidden>Select Task Category</option>
+                                    <option value="Technical Task">Technical Task</option>
+                                    <option value="User Story">User Story</option>
                                 </select>
                                 <br>
                                 <label for="Subtasks">Subtasks</label>
                                 <div id="addSubTask" class="flex">
-                                    <input placeholder="Add new Subtask" type="text">
-                                    <img src="../assets/icons/addSubtask.svg">
+                                    <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
+                                    <!--Benötigt für onclick Event!-->
+                                    <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
                                 </div>
+                                <ul id="subTasksList">
+                                </ul>
                             </section>
                         </div>
                         <div class="taskFormButtons flex">
                             <p><span class="requiredStar">*</span>This field is required</p>
                             <div class="flex">
-                                <button type="reset" class="button clearBtn">Clear<img src="../assets/icons/cancel.svg"
+                                <button type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
                                         alt="Icon clear task"></button>
                                 <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
                                         alt="Icon create task"></button>
