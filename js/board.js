@@ -1,3 +1,5 @@
+let contactListEdit = document.getElementById("contactList");
+
 async function updateBoard() {
   await loadDataContacts("");
   await loadDataBoards("");
@@ -221,7 +223,7 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
     <div class="info">
       <img src="../assets/icons/I.svg" alt="Info">
     </div>
-    <div class="edit" onclick="openPopupCardEdit()">
+    <div class="edit" onclick="openPopupCardEdit(${index})">
       <img src="../assets/icons/edit.svg" alt="Edit">
       <div>
         <span>Edit</span>
@@ -230,10 +232,12 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
   
   `;
 }
-function openPopupCardEdit() {
+function openPopupCardEdit(index) {
   const popupModal = document.getElementById('popupModalCardEdit');
 
-  popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit();
+  popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
+
+  renderContactSelection();
 
   // Zeige das Overlay und das Popup an
   popupModal.style.display = 'block';
@@ -242,21 +246,24 @@ function openPopupCardEdit() {
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
-function htmlTemplatePopUpBoardCardEdit() {
+function htmlTemplatePopUpBoardCardEdit(index) {
+  
+
+
   return /*HTML*/ `
     <div class="closeContainerEdit">
       <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
     </div>
 
-    <label for="title">Title<span class="requiredStar"></span></label>   <br>
-        <input type="text" id="title" placeholder="Enter a title" required>
+    <label for="title">Title<span class="requiredStar"></span></label><br>
+        <input type="text" id="title" placeholder="Enter a title" value="${allBoardContent[index].title}" required>
           <br>
         <label for="description">Description</label><br>
-        <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
+        <textarea id="description" rows="5" placeholder="Enter a Description">${allBoardContent[index].description}</textarea>
           <br>
 
       <label for="dueDate">Due Date<span class="requiredStar"></span></label><br>
-      <input type="date" id="date"><br><br>
+      <input type="date" id="date" value="${allBoardContent[index].date}"><br><br>
 
       <label for="prio"><strong>Priority</strong></label>
         <section id="prio" class="flex">
@@ -272,7 +279,7 @@ function htmlTemplatePopUpBoardCardEdit() {
         <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
             Select contacts to assign
         </div>
-        <div id="contactList" class="hidden flex"></div><br><br>
+        <div id="contactList" class="flex hidden"></div><br><br> 
 
      <label for="Subtasks">Subtasks</label>
       <div id="addSubTask" class="flex">
@@ -421,4 +428,54 @@ async function handleDeleteTaskRequest(url) {
     throw new Error("Fehler beim Löschen der Task: " + response.statusText);
 }
 
+// noch nicht fertig!!!
+function editTask(id) {
+  console.log(`editTask aufgerufen mit ID: ${id}`);
 
+  // const name = document.getElementById("inputEditName").value;
+  // const email = document.getElementById("inputEditEmail").value;
+  // const phone = document.getElementById("inputEditPhone").value;
+
+  // const originalContact = allContacts.find((contact) => contact.Uid === id);
+  // const originalIndex = allContacts.findIndex((contact) => contact.Uid === id);
+
+  // if (!originalContact) {
+  //   console.error("Kontakt mit ID", id, "nicht gefunden!");
+  //   return;
+  // }
+
+  // const updatedContact = {
+  //   ...originalContact,
+  //   name: name,
+  //   email: email,
+  //   phone: phone,
+  // };
+
+  // allContacts[originalIndex] = updatedContact;
+  // updateDataContact(id, updatedContact);
+  // closeEditContact();
+  // renderExtendedContact(originalIndex);
+}
+
+
+// noch nicht fertig!!!
+function renderContactSelection(){
+  contactListEdit.innerHTML = '';
+  for (i = 0; i < allContacts.length; i++) {
+    const firstLetter = allContacts[i]["name"][0];
+    const spaceIndex = allContacts[i]["name"].indexOf(" ");
+    const firstLetterAfterSpace = allContacts[i]["name"][spaceIndex + 1];
+
+    contactListEdit.innerHTML += `
+                <div class='contact flex' onclick='addTaskContact(event)'>
+                    <div class='flex'>
+                        <span class='circle flex' style='background:${
+                          allContacts[i]["color"]
+                        }'>${firstLetter + firstLetterAfterSpace}</span>
+                        <span>${allContacts[i].name}</span>
+                    </div>
+                    <input type="checkbox" value="${allContacts[i].name}">
+                </div>
+        `;
+  }
+}
