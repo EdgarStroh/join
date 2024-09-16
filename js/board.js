@@ -250,7 +250,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
   
 
 
-  return /*HTML*/ `
+  return `
     <div class="closeContainerEdit">
       <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
     </div>
