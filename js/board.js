@@ -1,5 +1,3 @@
-let contactListEdit = document.getElementById("contactList");
-
 async function updateBoard() {
   await loadDataContacts("");
   await loadDataBoards("");
@@ -237,7 +235,6 @@ function openPopupCardEdit(index) {
 
   popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
 
-  renderContactSelection();
 
   // Zeige das Overlay und das Popup an
   popupModal.style.display = 'block';
@@ -248,8 +245,6 @@ function openPopupCardEdit(index) {
 }
 function htmlTemplatePopUpBoardCardEdit(index) {
   
-
-
   return `
     <div class="closeContainerEdit">
       <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
@@ -279,7 +274,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
         <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
             Select contacts to assign
         </div>
-        <div id="contactList" class="flex hidden"></div><br><br> 
+        <div id="contactList" class="flex hidden"></div><br>${renderContactSelection()}<br> 
 
      <label for="Subtasks">Subtasks</label>
       <div id="addSubTask" class="flex">
@@ -458,15 +453,15 @@ function editTask(id) {
 }
 
 
-// noch nicht fertig!!!
+// noch nicht fertig, weil noch nicht schön (DropDown und Markierungen fehlen)!!!
 function renderContactSelection(){
-  contactListEdit.innerHTML = '';
+  let contactListEdit = '';
   for (i = 0; i < allContacts.length; i++) {
     const firstLetter = allContacts[i]["name"][0];
     const spaceIndex = allContacts[i]["name"].indexOf(" ");
     const firstLetterAfterSpace = allContacts[i]["name"][spaceIndex + 1];
 
-    contactListEdit.innerHTML += `
+    contactListEdit += `
                 <div class='contact flex' onclick='addTaskContact(event)'>
                     <div class='flex'>
                         <span class='circle flex' style='background:${
@@ -478,4 +473,5 @@ function renderContactSelection(){
                 </div>
         `;
   }
+  return contactListEdit;
 }
