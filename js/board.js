@@ -147,7 +147,7 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
       const initials = getInitials(person);
       // const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
       const color = contactColors[person];
-      if (color){
+      if (color) {
         assignedHTML += `
         <div style="display: flex; align-items: center;">
           <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
@@ -159,20 +159,20 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
     });
   }
   let statusImage = '';
-    switch (allBoardContent[index].prio) {
-      case 'urgent':
-        statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
-        break;
-      case 'medium':
-        statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
-        break;
-      case 'low':
-        statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
-        break;
-      default:
-        statusImage = ''; // No image if no status
-    }
-  
+  switch (allBoardContent[index].prio) {
+    case 'urgent':
+      statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+      break;
+    case 'medium':
+      statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+      break;
+    case 'low':
+      statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+      break;
+    default:
+      statusImage = ''; // No image if no status
+  }
+
 
   // Subtasks
   if (Array.isArray(allBoardContent[index].subtasks)) {
@@ -227,10 +227,27 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
   </div>
   <div class="edit">
     <img src="../assets/icons/edit.svg" alt="Edit">
-    <span>Edit</span>
+    <div onclick="openPopupCardEdit()"><span>Edit</span></div>
   </div>
 </div>
   `;
+}
+function openPopupCardEdit() {
+  const popupModal = document.getElementById('popupModalCardEdit');
+
+  popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit();
+
+  // Zeige das Overlay und das Popup an
+  popupModal.style.display = 'block';
+
+  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
+  popupModal.classList.remove('hide');
+  popupModal.classList.add('show');
+}
+function htmlTemplatePopUpBoardCardEdit() {
+  return `
+    sdfsdfsdfsdf  
+  `
 }
 
 function closePopup() {
@@ -262,7 +279,18 @@ function closePopupCard() {
     popupModal.style.display = 'none';
     popupOverlay.style.display = 'none'; // Overlay auch nach der Animation ausblenden
   }, 120); // 120ms entspricht der Dauer der Animation
+  closePopupCardEdit()
 }
+
+function closePopupCardEdit() {
+  const popupModal = document.getElementById('popupModalCardEdit');
+  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
+  popupModal.classList.remove('show');
+  popupModal.classList.add('hide');
+  // Verstecke das Popup nach der Animation (120ms entspricht der Dauer der Animation)
+  
+}
+
 async function updateTask(id, data) {
   try {
     let response = await fetch(`${BASE_URL_Board}/${id}.json`, {
