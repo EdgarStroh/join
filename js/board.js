@@ -230,6 +230,7 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
   
   `;
 }
+
 function openPopupCardEdit(index) {
   const popupModal = document.getElementById('popupModalCardEdit');
 
@@ -244,6 +245,7 @@ function openPopupCardEdit(index) {
   popupModal.classList.add('show');
 }
 function htmlTemplatePopUpBoardCardEdit(index) {
+  const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
   
   return `
     <div class="closeContainerEdit">
@@ -283,6 +285,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
     <div id="contactListEdit" class="flex hidden">
       ${renderContactSelection()} <!-- Kontakte innerhalb des Dropdown-Menüs -->
     </div>
+    <div>${assignedHTML}</div>
 
 
      <label for="Subtasks">Subtasks</label>
@@ -487,12 +490,53 @@ function renderContactSelection(){
   return contactListEdit;
 }
 
+// function toggleContactListView() {
+//   const contactList = document.getElementById("contactListEdit");
+//   if (contactList) {
+//     contactList.classList.toggle("hidden");
+//   } else {
+//     console.error('Element mit ID "contactList" nicht gefunden');
+//   }
+// }
 function toggleContactListView() {
   const contactList = document.getElementById("contactListEdit");
+  const profileBadges = document.querySelector(".profileBadges"); // Profilbadges-Container
+
   if (contactList) {
-    contactList.classList.toggle("hidden");
+    contactList.classList.toggle("active"); // Dropdown ein-/ausblenden
+
+    if (profileBadges) {
+      // Sicherstellen, dass profileBadges existiert
+      if (contactList.classList.contains("active")) {
+        profileBadges.classList.add("dropdown-open"); // Badges ausblenden, wenn Dropdown geöffnet
+      } else {
+        profileBadges.classList.remove("dropdown-open"); // Badges wieder anzeigen
+      }
+    }
   } else {
-    console.error('Element mit ID "contactList" nicht gefunden');
+    console.error('Element mit ID "contactListEdit" nicht gefunden');
   }
 }
+
+
+
+
+function generateAssignedHTML(assignedContacts) {
+  let assignedHTML = "";
+
+  // Initialen und Namen der zugewiesenen Personen
+  if (Array.isArray(assignedContacts)) {
+    assignedContacts.forEach((person) => {
+      const initials = getInitials(person) || ""; // Fallback für Initialen
+      const color = contactColors[person] || ""; // Fallback-Farbe
+      assignedHTML += `
+        <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
+          ${initials}
+        </div>`;
+    });
+  }
+
+  return assignedHTML;
+}
+
 
