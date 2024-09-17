@@ -533,54 +533,24 @@ input[type="checkbox"]:checked {
     outline: none !important;
     border: 1px solid #29ABE2 !important;
 }
-/* #contactListEdit {
-    height:200px;
-    overflow:auto;
-    flex-direction:column;
-    gap:5px;
-    padding-top: 10px;
-    margin-top: -10px;
-    background-color: white;
-} */
+
 #contactListEdit {
     position: absolute;
-    top: 100%; /* Direkt unter dem #contactSelectionEdit */
     left: 0;
     width: 100%;
     background-color: white;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    z-index: 3; /* Über den Profilbadges */
-    height: 200px;
+    z-index: 10;
+    max-height: 200px;
     overflow-y: auto;
     flex-direction: column;
     gap: 5px;
+    margin: 0 60px;
     padding: 10px;
-    margin-top: 5px; /* Abstands-Anpassung */
-    display: none; /* Standardmäßig ausgeblendet */
 }
 
-#contactListEdit.active {
-    display: block; /* Zeige an, wenn aktiv */
-    position: absolute;
-    z-index: 10;
-    background-color: white;
-    border: 1px solid #D1D1D1;
-    border-radius: 5px;
-    max-height: 200px;
-    overflow-y: auto;
-    width: 100%;
-}
 
-/* Badges ausblenden, wenn das Dropdown geöffnet ist */
-.profileBadges.dropdown-open {
-    display: none;
-}
 
-.profileBadges {
-    display: block;
-}
 
-.dropdown-open .profileBadges {
-    display: none; /* Badges ausblenden, wenn Dropdown geöffnet */
-}
+

@@ -253,20 +253,14 @@ function htmlTemplatePopUpBoardCardEdit(index) {
     </div>
 
     <label for="title">Title<span class="requiredStar"></span></label><br>
-        <input type="text" id="title" placeholder="Enter a title" value="${
-          allBoardContent[index].title
-        }" required>
+        <input type="text" id="title" placeholder="Enter a title" value="${allBoardContent[index].title}" required>
           <br>
         <label for="description">Description</label><br>
-        <textarea id="description" rows="5" placeholder="Enter a Description">${
-          allBoardContent[index].description
-        }</textarea>
+        <textarea id="description" rows="5" placeholder="Enter a Description">${allBoardContent[index].description}</textarea>
           <br>
 
       <label for="dueDate">Due Date<span class="requiredStar"></span></label><br>
-      <input type="date" id="date" value="${
-        allBoardContent[index].date
-      }"><br><br>
+      <input type="date" id="date" value="${allBoardContent[index].date}"><br><br>
 
       <label for="prio"><strong>Priority</strong></label>
         <section id="prio" class="flex">
@@ -279,13 +273,13 @@ function htmlTemplatePopUpBoardCardEdit(index) {
         </section>
 
     <label for="contactSelectionEdit">Assigned to</label>
-    <div id="contactSelectionEdit" onclick="toggleContactListView()" tabindex="0">
-      Select contacts to assign
-    </div>
-    <div id="contactListEdit" class="flex hidden">
-      ${renderContactSelection()} <!-- Kontakte innerhalb des Dropdown-Menüs -->
-    </div>
-    <div>${assignedHTML}</div>
+<div id="contactSelectionEdit" onclick="toggleContactListView()" tabindex="0">
+    Select contacts to assign
+</div>
+<div class="profileBadges">
+    ${assignedHTML} <!-- Profilbadges anzeigen -->
+</div>
+
 
 
      <label for="Subtasks">Subtasks</label>
@@ -499,24 +493,52 @@ function renderContactSelection(){
 //   }
 // }
 function toggleContactListView() {
-  const contactList = document.getElementById("contactListEdit");
-  const profileBadges = document.querySelector(".profileBadges"); // Profilbadges-Container
+  const existingDropdown = document.getElementById("contactListEdit");
 
-  if (contactList) {
-    contactList.classList.toggle("active"); // Dropdown ein-/ausblenden
-
-    if (profileBadges) {
-      // Sicherstellen, dass profileBadges existiert
-      if (contactList.classList.contains("active")) {
-        profileBadges.classList.add("dropdown-open"); // Badges ausblenden, wenn Dropdown geöffnet
-      } else {
-        profileBadges.classList.remove("dropdown-open"); // Badges wieder anzeigen
-      }
-    }
+  if (existingDropdown) {
+    // Entferne das Dropdown, wenn es bereits existiert
+    existingDropdown.remove();
   } else {
-    console.error('Element mit ID "contactListEdit" nicht gefunden');
+    // Erstelle und füge das Dropdown dynamisch ein
+    createDropdown();
   }
 }
+
+function createDropdown() {
+  // Erstelle das Dropdown-Menü
+  const contactList = document.createElement("div");
+  contactList.id = "contactListEdit";
+  contactList.classList.add("flex");
+
+  // Füge den HTML-Inhalt der Kontakte hinzu
+  contactList.innerHTML = renderContactSelection(); // Erzeugt den HTML-Code der Kontakte
+
+  // Füge das Dropdown unterhalb des 'contactSelectionEdit' ein
+  const container = document.getElementById("contactSelectionEdit");
+  container.parentElement.insertBefore(contactList, container.nextSibling); // Füge es als Geschwisterelement hinzu
+
+  // Füge eventListener hinzu, um das Dropdown zu schließen, wenn irgendwo anders geklickt wird
+  document.addEventListener("click", closeDropdownOnClickOutside);
+}
+
+
+
+function closeDropdownOnClickOutside(event) {
+  const dropdown = document.getElementById("contactListEdit");
+  const contactSelection = document.getElementById("contactSelectionEdit");
+
+  // Überprüfe, ob der Klick außerhalb des Dropdowns und des Kontakt-Selektionsbereichs war
+  if (
+    dropdown &&
+    !dropdown.contains(event.target) &&
+    !contactSelection.contains(event.target)
+  ) {
+    dropdown.remove();
+    document.removeEventListener("click", closeDropdownOnClickOutside);
+  }
+}
+
+
 
 
 
