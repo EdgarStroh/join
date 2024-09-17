@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
+    <link rel="stylesheet" href="../css/mobileSideBar.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <style>
         #subTasksList {
@@ -24,7 +25,7 @@
     </style>
 </head>
 
-<body class="flex">
+<body class="flex containerContent">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
@@ -92,6 +93,9 @@
                 </div>
             </div>
         </form>
+        <footer>
+            <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
+        </footer>
         <script src="../js/add_task.js"></script>
         <script src="../js/generateHTML.js"></script>
         <script src="../js/sideBar.js"></script>

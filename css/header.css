@@ -1,51 +1,59 @@
-header{
-    padding: 20px 40px 20px 348px;
+.header {
+    padding: 20px 40px 20px 350px;
     position: fixed;
     height: 100px;
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
     width: 100%;
     background-color: white;
-    display:flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
+
 .headerNav {
-    justify-content:center;
-    align-items:center;
-    gap:16px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
 }
+
 .headerHelp {
     padding: 0;
     width: 50px;
 }
+
 .help_icon {
     height: 30px;
     width: 30px;
 }
+
 .help_icon:hover {
     height: 34px;
     width: 34px;
 }
+
 #profileName {
     justify-content: center;
     align-items: center;
     padding: 0;
     border: 3px solid #2A3647;
     border-radius: 50%;
-    width:48px;
+    width: 48px;
     height: 48px;
-    cursor:pointer;
-    color:#29ABE2;
+    cursor: pointer;
+    color: #29ABE2;
 }
+
 #profileName:hover {
     background-color: #D1D1D1;
 }
+
 #headerSubMenu {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 150px;
+    height: 160px;
     width: 150px;
     list-style: none;
     position: absolute;
@@ -54,14 +62,54 @@ header{
     top: 100px;
     border-radius: 20px 0px 20px 20px;
     background: #2A3647;
+
 }
+
 #headerSubMenu a {
     width: 150px;
     padding: 10px;
+    color: #CDCDCD;
 }
+
 #headerSubMenu a:hover {
     background-color: #2A3D59;
+    /* border-radius: 20px 0px 20px 20px; */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    ;
 }
-.hidden{
-    display:none !important;
+
+.hidden {
+    display: none !important;
+}
+
+.helpHeader {
+    display: none;
+}
+
+.logoheader {
+    width: 37px;
+    height: 45px;
+    display: none;
+}
+
+@media screen and (max-width: 1050px) {
+    #kanbanFont {
+        display: none;
+    }
+
+    .helpHeader {
+        display: flow;
+    }
+    .header {
+        padding: 20px 20px 20px 10px;
+    }
+    .logoheader {
+        display: flex;
+        position: absolute;
+        left: 20px;
+        top: 28px;
+    }
+
 }

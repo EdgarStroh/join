@@ -56,3 +56,9 @@ a {
 .activeNavigationPoint{
     background:#091931;
 }
+
+@media screen and (max-width: 1050px){
+    .sideBar{
+        display: none;
+    }
+}

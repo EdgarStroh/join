@@ -14,11 +14,12 @@
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/pop_up.css">
     <!-- <link rel="stylesheet" href="../css/add_task.css"> -->
+    <link rel="stylesheet" href="../css/mobileSideBar.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 
 </head>
 
-<body onload="updateBoard()">
+<body onload="updateBoard()" class="containerContent">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
@@ -158,6 +159,9 @@
  
 
         </div>
+        <footer>
+            <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
+        </footer>
         <script src="../js/edgar.js"></script>
         <script src="../js/generateHTML.js"></script>
         <!-- <script src="../js/add_task.js"></script> -->

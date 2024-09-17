@@ -1,20 +1,46 @@
-.mobile{
+.mobile {
     display: flex;
     flex-direction: column;
     align-items: center;
-cursor: pointer;
+    text-decoration: none;
+    color: white;
+    /* width: auto; */
+    /* width: 30px; */
+    /* height: 87px; */
+    border-radius: 8px;
+    gap: 12px;
+    place-content: center;
+    /* padding:15px 0 15px 0; */
 }
-.mobileImg{
+
+.mobile:hover {
+    background-color: #405173;
+    /* Farbe ändern beim Hover */
+}
+
+.mobileImg {
     width: 30px;
 }
-.mobileSideBar{
-    display: flex;
+
+.mobileSideBar {
+    display: none;
     justify-content: space-around;
-    height: 80px;
+    height: 87px;
     background-color: #2A3647;
     align-items: center;
+    width: 100%;
 }
-a{
+
+/* a {
     text-decoration: none;
-    color:white
+    color: white;
+     width: auto; 
+     padding:4px 12px !important;  
+    border-radius: 12px;
+} */
+
+@media screen and (max-width: 1050px) {
+    .mobileSideBar {
+        display: flex;
+    }
 }

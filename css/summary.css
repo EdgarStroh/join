@@ -176,4 +176,15 @@
     font-size: clamp(3rem, -0.2353rem + 4.7059vw, 4rem);
     font-weight: 700;
     color: #29ABE2;
+}footer {
+    margin-top:auto;
+    
+}
+
+@media screen and (max-width: 1050px){
+    .text_container_summary{
+        padding: 150px 0 55px 20px;
+    }
+
+   
 }
