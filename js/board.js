@@ -561,4 +561,33 @@ function renderSubtasks(subtasks) {
   return ""; // Rückgabe eines leeren Strings, wenn subtasks kein Array ist oder leer
 }
 
+function renderSubtasks(subtasks) {
+  // Überprüfe, ob subtasks ein Array ist und es Elemente enthält
+  if (Array.isArray(subtasks) && subtasks.length > 0) {
+    // Erstelle eine Liste von li-Elementen
+    return subtasks.map((subtask) => `<li>${subtask}</li>`).join("");
+  }
+  return ""; // Rückgabe eines leeren Strings, wenn subtasks kein Array ist oder leer
+}
 
+//Für die Suche verwendete Variablen
+let titlesDOM = document.getElementsByClassName('bc2');
+let descriptionsDOM = document.getElementsByClassName('bc3');
+let searchBar = document.getElementsByClassName('searchBar')[0];
+let boardCardDOM = document.getElementsByClassName('boardCard');
+
+//Suchfunktion
+searchBar.addEventListener('keyup', ()=>{
+  updateBoard().then(
+    ()=>{
+      let searchQuery = searchBar.value.toLowerCase();
+      for(i=0; i<titlesDOM.length;i++){
+        let title = titlesDOM[i].innerHTML.toLowerCase();
+        let description = descriptionsDOM[i].innerHTML.toLowerCase();
+        if(!(title.includes(searchQuery) || description.includes(searchQuery))){
+          boardCardDOM[i].style.display = 'none';
+        }
+      }
+    }
+  )
+})
