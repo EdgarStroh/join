@@ -16,7 +16,7 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
-<body onload="updateContacts()"class="containerContent">
+<body onload="updateContacts()" class="containerContent">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
@@ -25,7 +25,7 @@
         <div class="contact_list flex flex-column">
             <button class="add_contact flex" onclick="openPopup()">Add new contact <img
                     src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
-            <div class="contacts" id="contacts"> 
+            <div class="contacts" id="contacts">
             </div>
         </div>
         <div class="headline_contacts flex">
@@ -34,9 +34,12 @@
                 <path d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
             </svg>
             <h2>Better with a team</h2>
+                <div id="extended_contact" class="extended_contact"></div>
         </div>
-        <div id="extended_contact" class="extended_contact">
-        </div>
+        
+
+    </div>
+
     </div>
 
     <!-- Pop up Add Contact -->
@@ -63,8 +66,10 @@
                             <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required>
                         </div>
                         <div class="button-line flex">
-                            <button class="button-white" onclick="closePopup()">Cancel <img src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
-                            <button class="button-DB" onclick="addContact()">Create contact <img src="../assets/icons/create.svg" alt="Icon create"></button>
+                            <button class="button-white" onclick="closePopup()">Cancel <img
+                                    src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
+                            <button class="button-DB" onclick="addContact()">Create contact <img
+                                    src="../assets/icons/create.svg" alt="Icon create"></button>
                         </div>
                     </form>
                 </div>
@@ -81,7 +86,7 @@
         <p>Contact successfully created</p>
     </div>
     <footer>
-        <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
+        <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
     </footer>
     <script src="../js/contacts.js"></script>
     <script src="../js/generateHTML.js"></script>
@@ -91,5 +96,5 @@
     <script src="../js/sideBar.js"></script>
     <script src="..//js/header.js"></script>
 </body>
- 
+
 </html>

@@ -82,8 +82,8 @@
     color: #007CEE;
 }
 .extended_contact {
-    margin-top: 123px;
-    margin-left: -570px;
+    /* margin-top: 123px;
+    margin-left: -570px; */
 }
 .profil_badge span {
     display: flex;
@@ -109,17 +109,18 @@
 .headline_contacts {
     width: 100%;
     align-items: center;
-    gap: 30px;
+     gap: 30px;
     margin-left: 770px;
-    margin-top: 150px;
+    margin-top: 150px; 
 }
 .slideIn.show {
-    animation: slideIn.12s ease-out forwards;
+    /* animation: slideIn.12s ease-out forwards;
     animation-fill-mode: forwards; /* Halte das Endergebnis */
     display: flex;
     flex-direction: column;
-    gap: 54px;
-    width: 100%;
+    gap: 54px; 
+    /* width: 100%; */
+    min-width: -webkit-fill-available;
 }
 @keyframes slideIn{
     0% {
@@ -153,7 +154,8 @@
 .contact_headline {
     gap: 54px;
     align-items: flex-start;
-    margin-top: 200px; 
+    /* margin-top: 200px;  */
+   
 }
 .contact_headline h4 {
     font-size: 20px;
