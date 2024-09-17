@@ -251,14 +251,20 @@ function htmlTemplatePopUpBoardCardEdit(index) {
     </div>
 
     <label for="title">Title<span class="requiredStar"></span></label><br>
-        <input type="text" id="title" placeholder="Enter a title" value="${allBoardContent[index].title}" required>
+        <input type="text" id="title" placeholder="Enter a title" value="${
+          allBoardContent[index].title
+        }" required>
           <br>
         <label for="description">Description</label><br>
-        <textarea id="description" rows="5" placeholder="Enter a Description">${allBoardContent[index].description}</textarea>
+        <textarea id="description" rows="5" placeholder="Enter a Description">${
+          allBoardContent[index].description
+        }</textarea>
           <br>
 
       <label for="dueDate">Due Date<span class="requiredStar"></span></label><br>
-      <input type="date" id="date" value="${allBoardContent[index].date}"><br><br>
+      <input type="date" id="date" value="${
+        allBoardContent[index].date
+      }"><br><br>
 
       <label for="prio"><strong>Priority</strong></label>
         <section id="prio" class="flex">
@@ -270,11 +276,14 @@ function htmlTemplatePopUpBoardCardEdit(index) {
                     src="../assets/icons/prioLow.svg"></button>
         </section>
 
-     <label for="contactSelection">Assigned to</label>
-        <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
-            Select contacts to assign
-        </div>
-        <div id="contactList" class="flex hidden"></div><br>${renderContactSelection()}<br> 
+    <label for="contactSelectionEdit">Assigned to</label>
+    <div id="contactSelectionEdit" onclick="toggleContactListView()" tabindex="0">
+      Select contacts to assign
+    </div>
+    <div id="contactListEdit" class="flex hidden">
+      ${renderContactSelection()} <!-- Kontakte innerhalb des Dropdown-Menüs -->
+    </div>
+
 
      <label for="Subtasks">Subtasks</label>
       <div id="addSubTask" class="flex">
@@ -464,10 +473,12 @@ function renderContactSelection(){
     contactListEdit += `
                 <div class='contact flex' onclick='addTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circle flex' style='background:${
-                          allContacts[i]["color"]
-                        }'>${firstLetter + firstLetterAfterSpace}</span>
-                        <span>${allContacts[i].name}</span>
+                        <span class='circle flex' style='background:${allContacts[i]["color"]}'>
+                          ${firstLetter + firstLetterAfterSpace}
+                        </span>
+                        <span>
+                          ${allContacts[i].name}
+                        </span>
                     </div>
                     <input type="checkbox" value="${allContacts[i].name}">
                 </div>
@@ -475,3 +486,13 @@ function renderContactSelection(){
   }
   return contactListEdit;
 }
+
+function toggleContactListView() {
+  const contactList = document.getElementById("contactListEdit");
+  if (contactList) {
+    contactList.classList.toggle("hidden");
+  } else {
+    console.error('Element mit ID "contactList" nicht gefunden');
+  }
+}
+
