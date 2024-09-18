@@ -16,3 +16,27 @@ ul{
     width: 35px;
     border-radius: 50%;
 }
+.text_container_privacy{
+    padding: 206px 114px 96px 330px;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #F6F7F8;
+}
+
+@media screen and (max-width: 1050px) {
+
+    .text_container_privacy{
+        /* height: auto !important; */
+        padding: 95px 5px 10px 10px;
+    }
+    
+    }
+
+    @media screen and (max-width: 370px) {
+
+        .text_container_privacy{
+            height: auto !important;
+        }
+        
+        }
