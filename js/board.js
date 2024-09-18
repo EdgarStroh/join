@@ -106,7 +106,7 @@ function htmlTemplatePopUpBoardCard(index) {
   } else {
     categoryColor = "#0038FF"; // Farbe für "User Story"
   }
-  
+
   // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach((person) => {
@@ -208,6 +208,7 @@ function openPopupCardEdit(index) {
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
+
 function htmlTemplatePopUpBoardCardEdit(index) {
   const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
   
@@ -235,7 +236,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
         <button value="low" id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
       </section>
       <label for="contactSelectionEdit">Assigned to</label>
-      <div id="contactSelectionEdit" onclick="toggleContactListView()" tabindex="0"> Select contacts to assign</div>
+      <div id="contactSelectionEdit" onclick="toggleContactListView(${index})" tabindex="0"> Select contacts to assign</div>
       <div class="profileBadges">
         ${assignedHTML} <!-- Profilbadges anzeigen -->
       </div>
@@ -402,11 +403,22 @@ function editTask(uid) {
     return;
   }
 
+  let selectedContacts = document.querySelectorAll(
+    '#contactListEdit .contactEdit input[type="checkbox"]:checked'
+  );
+
+  let contactNames = [];
+  for (let i = 0; i < selectedContacts.length; i++) {
+    let name = selectedContacts[i].value;
+    contactNames.push(name);
+  }
+
   const updatedTask = {
     ...originalTask,
     title: title,
     description: description,
     date: date,
+    asigned: contactNames,
   };
 
   allBoardContent[originalIndex] = updatedTask;
@@ -417,31 +429,39 @@ function editTask(uid) {
 
 
 // noch nicht fertig, weil noch nicht schön (DropDown und Markierungen fehlen)!!!
-function renderContactSelection(){
+function renderContactSelection(index){
   let contactListEdit = '';
   for (i = 0; i < allContacts.length; i++) {
     const firstLetter = allContacts[i]["name"][0];
     const spaceIndex = allContacts[i]["name"].indexOf(" ");
     const firstLetterAfterSpace = allContacts[i]["name"][spaceIndex + 1];
 
+    let checkedContact = "";
+
+    if(allBoardContent[index].asigned.find((name) => name === allContacts[i]["name"])) {
+      checkedContact = "checked"
+    }
+    
     contactListEdit += `
-                <div class='contactEdit flex' onclick='addTaskContact(event)'>
+                <div class='contactEdit flex' onclick='editTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circleEdit flex' style='background:${allContacts[i]["color"]}'>
+                        <span class='circleEdit flex' style='background:${
+                          allContacts[i]["color"]
+                        }'>
                           ${firstLetter + firstLetterAfterSpace}
                         </span>
                         <span>
                           ${allContacts[i].name}
                         </span>
                     </div>
-                    <input type="checkbox" value="${allContacts[i].name}">
+                    <input type="checkbox" ${checkedContact} value="${allContacts[i].name}">
                 </div>
         `;
   }
   return contactListEdit;
 }
 
-function toggleContactListView() {
+function toggleContactListView(index) {
   const existingDropdown = document.getElementById("contactListEdit");
 
   if (existingDropdown) {
@@ -449,18 +469,18 @@ function toggleContactListView() {
     existingDropdown.remove();
   } else {
     // Erstelle und füge das Dropdown dynamisch ein
-    createDropdown();
+    createDropdown(index);
   }
 }
 
-function createDropdown() {
+function createDropdown(index) {
   // Erstelle das Dropdown-Menü
   const contactList = document.createElement("div");
   contactList.id = "contactListEdit";
   contactList.classList.add("flex");
 
   // Füge den HTML-Inhalt der Kontakte hinzu
-  contactList.innerHTML = renderContactSelection(); // Erzeugt den HTML-Code der Kontakte
+  contactList.innerHTML = renderContactSelection(index); // Erzeugt den HTML-Code der Kontakte
 
   // Füge das Dropdown unterhalb des 'contactSelectionEdit' ein
   const container = document.getElementById("contactSelectionEdit");
@@ -500,6 +520,14 @@ function generateAssignedHTML(assignedContacts) {
   }
 
   return assignedHTML;
+}
+
+function editTaskContact(event){
+  if (event.target.type !== "checkbox") {
+    let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
+    checkbox.checked = !checkbox.checked;
+    event.currentTarget.classList.toggle("selectedContact");
+  }
 }
 
 

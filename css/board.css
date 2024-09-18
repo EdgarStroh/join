@@ -429,9 +429,7 @@ input[type="checkbox"]:checked {
     align-items: center;
     /* gap: 6px;  */
     justify-content: right;
-    
     color: #2A3647;
-
 }
 
 .deleteEditPopUp img {
