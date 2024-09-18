@@ -31,13 +31,14 @@
     width: 100%;
 }
 
-/* a {
+.mobileSideBar a {
     text-decoration: none;
     color: white;
      width: auto; 
-     padding:4px 12px !important;  
+     padding:4px 12px ;  
     border-radius: 12px;
-} */
+} 
+
 
 @media screen and (max-width: 1050px) {
     .mobileSideBar {

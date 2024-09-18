@@ -17,7 +17,16 @@
     align-items: center;
     flex-direction:column;
 }
-a {
+.sideBarList a{
+    width:235px;
+    gap:20px;
+    padding:8px 53px;
+    text-align: center;
+    place-items: center;
+    text-decoration: none;
+    color: #CDCDCD;
+}
+.policyAndNotice a{
     width:235px;
     gap:20px;
     padding:8px 53px;
