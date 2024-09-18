@@ -204,8 +204,8 @@
 .popup-modal-card {
     overflow: auto;
     scroll-behavior: smooth;
-    width: 500px;
-    max-height: 900px;
+    min-width: 500px;
+    max-height: 80vh;
     background-color: white;
     padding: 65px 60px;
     border-radius: 30px;
