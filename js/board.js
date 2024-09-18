@@ -80,11 +80,11 @@ function openPopup() {
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
-function openPopupCard(index, categoryColor) {
+function openPopupCard(index) {
   const popupOverlay = document.getElementById('popupOverlayCard');
   const popupModal = document.getElementById('popupModalCard');
 
-  popupModal.innerHTML = htmlTemplatePopUpBoardCard(index, categoryColor);
+  popupModal.innerHTML = htmlTemplatePopUpBoardCard(index);
 
   // Zeige das Overlay und das Popup an
   popupOverlay.style.display = 'flex';
@@ -95,10 +95,18 @@ function openPopupCard(index, categoryColor) {
   popupModal.classList.add('show');
 }
 
-function htmlTemplatePopUpBoardCard(index, categoryColor) {
+function htmlTemplatePopUpBoardCard(index) {
   let assignedHTML = "";
   let subtasksHTML = "";
 
+  // Bestimme die Textfarbe des span basierend auf der Kategorie
+  let categoryColor = "";
+  if (allBoardContent[index].category === "Technical Task") {
+    categoryColor = "#1FD7C1"; // Farbe für "Technical Task"
+  } else {
+    categoryColor = "#0038FF"; // Farbe für "User Story"
+  }
+  
   // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach((person) => {
@@ -209,15 +217,17 @@ function htmlTemplatePopUpBoardCardEdit(index) {
         <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
       </div>
       <label for="title">Title<span class="requiredStar"></span></label>
-      <input type="text" id="title" placeholder="Enter a title" value="${
+      <input type="text" id="inputEditTitle" placeholder="Enter a title" value="${
         allBoardContent[index].title
       }" required>
       <label for="description">Description</label>
-      <textarea id="description" rows="5" placeholder="Enter a Description">${
+      <textarea id="inputEditDescription" rows="5" placeholder="Enter a Description">${
         allBoardContent[index].description
       }</textarea>
       <label for="dueDate">Due Date<span class="requiredStar"></span></label>
-      <input type="date" id="date" value="${allBoardContent[index].date}">
+      <input type="date" id="inputEditDate" value="${
+        allBoardContent[index].date
+      }">
       <label for="prio"><strong>Priority</strong></label>
       <section id="prio" class="flex">
         <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
@@ -238,7 +248,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       <ul id="subTasksList"> 
         ${renderSubtasks(allBoardContent[index].subtasks)}
       </ul>
-      <button class="button margin-left" onclick="closePopupCardEdit()">Ok<img src="../assets/icons/create.svg"></button>
+      <button class="button margin-left" onclick="editTask('${allBoardContent[index].Uid}')">Ok<img src="../assets/icons/create.svg"></button>
     </div>
   `;
 }
@@ -282,9 +292,9 @@ function closePopupCardEdit() {
   popupOverlay.style.display = 'none';
 }
 
-async function updateTask(id, data) {
+async function updateTask(uid, data) {
   try {
-    let response = await fetch(`${BASE_URL_Board}/${id}.json`, {
+    let response = await fetch(`${BASE_URL_Board}/${uid}.json`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -301,7 +311,7 @@ async function updateTask(id, data) {
     console.log("Task erfolgreich aktualisiert:", await response.json());
 
     // Lokale Kontakte aktualisieren
-    const index = allBoardContent.findIndex((task) => task.Uid === id);
+    const index = allBoardContent.findIndex((task) => task.Uid === uid);
     if (index !== -1) {
       allBoardContent[index] = { ...allBoardContent[index], ...data };
     }
@@ -374,32 +384,35 @@ async function handleDeleteTaskRequest(url) {
 }
 
 // noch nicht fertig!!!
-function editTask(id) {
-  console.log(`editTask aufgerufen mit ID: ${id}`);
+function editTask(uid) {
+  console.log(`editTask aufgerufen mit ID: ${uid}`);
 
-  // const name = document.getElementById("inputEditName").value;
-  // const email = document.getElementById("inputEditEmail").value;
-  // const phone = document.getElementById("inputEditPhone").value;
+  const title = document.getElementById("inputEditTitle").value;
+  const description = document.getElementById("inputEditDescription").value;
+  const date = document.getElementById("inputEditDate").value;
+  // const asigned = document.getElementById("inputEditPhone").value;
+  // const prio = document.getElementById("inputEditPhone").value;
+  // const subtask = document.getElementById("inputEditPhone").value;
 
-  // const originalContact = allContacts.find((contact) => contact.Uid === id);
-  // const originalIndex = allContacts.findIndex((contact) => contact.Uid === id);
+  const originalTask = allBoardContent.find((task) => task.Uid === uid);
+  const originalIndex = allBoardContent.findIndex((task) => task.Uid === uid);
 
-  // if (!originalContact) {
-  //   console.error("Kontakt mit ID", id, "nicht gefunden!");
-  //   return;
-  // }
+  if (!originalTask) {
+    console.error("Task mit ID", uid, "nicht gefunden!");
+    return;
+  }
 
-  // const updatedContact = {
-  //   ...originalContact,
-  //   name: name,
-  //   email: email,
-  //   phone: phone,
-  // };
+  const updatedTask = {
+    ...originalTask,
+    title: title,
+    description: description,
+    date: date,
+  };
 
-  // allContacts[originalIndex] = updatedContact;
-  // updateDataContact(id, updatedContact);
-  // closeEditContact();
-  // renderExtendedContact(originalIndex);
+  allBoardContent[originalIndex] = updatedTask;
+  updateTask(uid, updatedTask);
+  closePopupCardEdit();
+  openPopupCard(originalIndex);
 }
 
 

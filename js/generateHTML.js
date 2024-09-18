@@ -92,16 +92,9 @@ function generateErrorLogin() {
 }
 
 function generateBoardContent(index) {
-    // Bestimme die Textfarbe des span basierend auf der Kategorie
-    let categoryColor = '';
-    if (allBoardContent[index].category === 'Technical Task') {
-        categoryColor = '#1FD7C1'; // Farbe für "Technical Task"
-    } else {
-        categoryColor = '#0038FF'; // Farbe für "User Story"
-    }
-
+   
     // Aufruf der Template-Funktion mit Übergabe der Farbe
-    return htmlTemplateGenerateBoardContent(index, categoryColor);
+    return htmlTemplateGenerateBoardContent(index);
 }
 
 function getInitials(name) {
@@ -109,44 +102,56 @@ function getInitials(name) {
 }
 
 // Funktion, die das HTML-Template generiert
-function htmlTemplateGenerateBoardContent(index, categoryColor) {
+function htmlTemplateGenerateBoardContent(index) {
   let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
-  let contactsHTML = '';
+  let contactsHTML = "";
   
+  // Bestimme die Textfarbe des span basierend auf der Kategorie
+  let categoryColor = "";
+  if (allBoardContent[index].category === "Technical Task") {
+    categoryColor = "#1FD7C1"; // Farbe für "Technical Task"
+  } else {
+    categoryColor = "#0038FF"; // Farbe für "User Story"
+  }
+
   if (Array.isArray(showContacts)) {
     // Iterate through showContacts und prüfe gegen allContacts
-    showContacts.forEach(contactName => {
-      allContacts.find(contact => {
+    showContacts.forEach((contactName) => {
+      allContacts.find((contact) => {
         if (contact.name === contactName) {
           // Speichere die Farbe des Kontakts im contactColors-Objekt
           contactColors[contactName] = contact.color;
-          
+
           contactsHTML += `
-            <span class="contactCard" style="background-color: ${contact.color}">
+            <span class="contactCard" style="background-color: ${
+              contact.color
+            }">
               ${getInitials(contact.name)}
             </span>`;
         }
       });
     });
   }
-  
-    // Image source based on the status
-    let statusImage = '';
-    switch (allBoardContent[index].prio) {
-      case 'urgent':
-        statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
-        break;
-      case 'medium':
-        statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
-        break;
-      case 'low':
-        statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
-        break;
-      default:
-        statusImage = ''; // No image if no status
-    }
-  
-    
+
+  // Image source based on the status
+  let statusImage = "";
+  switch (allBoardContent[index].prio) {
+    case "urgent":
+      statusImage =
+        '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+      break;
+    case "medium":
+      statusImage =
+        '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+      break;
+    case "low":
+      statusImage =
+        '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+      break;
+    default:
+      statusImage = ""; // No image if no status
+  }
+
   return `
   <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
     <span class="boardCategory bc1" style="background-color: ${categoryColor};">
