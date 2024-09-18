@@ -248,47 +248,42 @@ function htmlTemplatePopUpBoardCardEdit(index) {
   const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
   
   return `
-    <div class="closeContainerEdit">
-      <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
+    <div class= "containerEdit">
+      <div class="closeContainerEdit">
+        <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
+      </div>
+      <label for="title">Title<span class="requiredStar"></span></label>
+      <input type="text" id="title" placeholder="Enter a title" value="${
+        allBoardContent[index].title
+      }" required>
+      <label for="description">Description</label>
+      <textarea id="description" rows="5" placeholder="Enter a Description">${
+        allBoardContent[index].description
+      }</textarea>
+      <label for="dueDate">Due Date<span class="requiredStar"></span></label>
+      <input type="date" id="date" value="${allBoardContent[index].date}">
+      <label for="prio"><strong>Priority</strong></label>
+      <section id="prio" class="flex">
+        <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
+        <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
+        <button value="low" id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
+      </section>
+      <label for="contactSelectionEdit">Assigned to</label>
+      <div id="contactSelectionEdit" onclick="toggleContactListView()" tabindex="0"> Select contacts to assign</div>
+      <div class="profileBadges">
+        ${assignedHTML} <!-- Profilbadges anzeigen -->
+      </div>
+      <label for="Subtasks">Subtasks</label>
+      <div id="addSubTask" class="flex">
+          <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
+          <!--Benötigt für onclick Event!-->
+          <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
+      </div>
+      <ul id="subTasksList"> 
+        ${renderSubtasks(allBoardContent[index].subtasks)}
+      </ul>
+      <button class="button margin-left" onclick="closePopupCardEdit()">Ok<img src="../assets/icons/create.svg"></button>
     </div>
-    <label for="title">Title<span class="requiredStar"></span></label>
-    <br>
-    <input type="text" id="title" placeholder="Enter a title" value="${
-      allBoardContent[index].title
-    }" required>
-    <br>
-    <label for="description">Description</label>
-    <br>
-    <textarea id="description" rows="5" placeholder="Enter a Description">${
-      allBoardContent[index].description
-    }</textarea>
-    <br>
-    <label for="dueDate">Due Date<span class="requiredStar"></span></label>
-    <br>
-    <input type="date" id="date" value="${allBoardContent[index].date}">
-    <br>
-    <br>
-    <label for="prio"><strong>Priority</strong></label>
-    <section id="prio" class="flex">
-      <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
-      <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
-      <button value="low" id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
-    </section>
-    <label for="contactSelectionEdit">Assigned to</label>
-    <div id="contactSelectionEdit" onclick="toggleContactListView()" tabindex="0"> Select contacts to assign</div>
-    <div class="profileBadges">
-      ${assignedHTML} <!-- Profilbadges anzeigen -->
-    </div>
-    <label for="Subtasks">Subtasks</label>
-    <div id="addSubTask" class="flex">
-        <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
-        <!--Benötigt für onclick Event!-->
-        <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
-    </div>
-    <ul id="subTasksList"> 
-      ${renderSubtasks(allBoardContent[index].subtasks)}
-    </ul>
-    <button class="button margin-left" onclick="closePopupCardEdit()">Ok<img src="../assets/icons/create.svg"></button>
   `;
 }
 
@@ -465,9 +460,9 @@ function renderContactSelection(){
     const firstLetterAfterSpace = allContacts[i]["name"][spaceIndex + 1];
 
     contactListEdit += `
-                <div class='contact flex' onclick='addTaskContact(event)'>
+                <div class='contactEdit flex' onclick='addTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circle flex' style='background:${allContacts[i]["color"]}'>
+                        <span class='circleEdit flex' style='background:${allContacts[i]["color"]}'>
                           ${firstLetter + firstLetterAfterSpace}
                         </span>
                         <span>
@@ -551,15 +546,6 @@ function generateAssignedHTML(assignedContacts) {
   return assignedHTML;
 }
 
-
-function renderSubtasks(subtasks) {
-  // Überprüfe, ob subtasks ein Array ist und es Elemente enthält
-  if (Array.isArray(subtasks) && subtasks.length > 0) {
-    // Erstelle eine Liste von li-Elementen
-    return subtasks.map((subtask) => `<li>${subtask}</li>`).join("");
-  }
-  return ""; // Rückgabe eines leeren Strings, wenn subtasks kein Array ist oder leer
-}
 
 function renderSubtasks(subtasks) {
   // Überprüfe, ob subtasks ein Array ist und es Elemente enthält

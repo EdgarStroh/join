@@ -223,10 +223,11 @@
 
 
 .popup-modal-card-edit{
-    width: fit-content;
-    height: fit-content;
+    /* width: fit-content; */
+    overflow: auto;
+    height: 80vh;
     background-color: white;
-    padding: 65px 60px;
+    padding: 16px 16px;
     border-radius: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -535,19 +536,65 @@ input[type="checkbox"]:checked {
 }
 
 #contactListEdit {
-    position: absolute;
+    position: relative;
     left: 0;
     width: 100%;
     background-color: white;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    z-index: 10;
-    max-height: 200px;
+    max-height: 150px;
     overflow-y: auto;
     flex-direction: column;
-    gap: 5px;
-    margin: 0 60px;
-    padding: 10px;
+    top: -38px;
+}
+/* Container für das gesamte Formular */
+.containerEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Sorgt dafür, dass alle Elemente linksbündig sind */
+    gap: 15px; /* Abstand zwischen den Elementen */
+    padding: 20px; /* Innenabstand für den Container */
+    /* height: fit-content; */
+    overflow: scroll;
+}
+
+/* Profilbadges */
+.profileBadges {
+    display: flex;
+    gap: 8px;
+}
+
+/* Subtasks-Liste */
+#subTasksList {
+    list-style-type: disc;
+    padding-left: 20px; /* Gleiche Einrückung wie andere Elemente */
+    margin: 0;
+}
+
+.contactEdit {
+    cursor: pointer;
+    justify-content: space-between;
+    padding: 5px 16px;
+    border-radius: 10px;
+}
+.contactEdit:hover {
+    background-color: #F0F0F0;
+}
+
+.circleEdit {
+    width:42px;
+    height:42px;
+    border-radius:45px;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+.contactEdit div {
+    align-items:center;
+    gap: 8px;
+}
+.contactEdit input {
+    margin-top: 10px;
 }
 
 
