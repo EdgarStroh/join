@@ -32,6 +32,9 @@
 .overview {
     width: 60%;
 }
+.overview a{
+    text-decoration: none !important;
+}
 .summary_container_small {
     flex-direction: row;
     justify-content: space-between;
