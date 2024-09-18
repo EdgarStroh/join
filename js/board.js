@@ -527,11 +527,10 @@ function closeDropdownOnClickOutside(event) {
 function generateAssignedHTML(assignedContacts) {
   let assignedHTML = "";
 
-  // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(assignedContacts)) {
     assignedContacts.forEach((person) => {
-      const initials = getInitials(person) || ""; // Fallback für Initialen
-      const color = contactColors[person] || ""; // Fallback-Farbe
+      const initials = getInitials(person) || ""; 
+      const color = contactColors[person] || ""; 
       assignedHTML += `
         <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
           ${initials}
@@ -544,47 +543,73 @@ function generateAssignedHTML(assignedContacts) {
 
 
 function renderSubtasks(subtasks) {
-  // Überprüfe, ob subtasks ein Array ist und es Elemente enthält
+
   if (Array.isArray(subtasks) && subtasks.length > 0) {
-    // Erstelle eine Liste von li-Elementen
-    return subtasks
-      .map(
-        (subtask) => `
-      <li>
-        ${subtask.description}
-      </li>
-    `
-      )
-      .join("");
+
+    return subtasks.map((subtask) => `
+      <li>${subtask.description}</li>
+    `).join("");
   }
-  return ""; // Rückgabe eines leeren Strings, wenn subtasks kein Array ist oder leer
+  return "";
 }
 
 async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
-  // Lokale Datenstruktur aktualisieren
-  allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
-
-  // In Firebase aktualisieren
   try {
-    const taskId = allBoardContent[taskIndex].Uid;
-    const updatedSubtask = allBoardContent[taskIndex].subtasks[subtaskIndex];
+    updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted);
+    await updateSubtaskInFirebase(taskIndex, subtaskIndex);
+    await updateBoard();
+  } catch (error) {
+    console.error("Fehler beim Aktualisieren des Subtasks:", error);
+  }
+}
 
-    // Aktualisiere den gesamten Subtask in Firebase
-    await fetch(`${BASE_URL_Board}/${taskId}/subtasks/${subtaskIndex}.json`, {
+function updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
+  allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
+}
+
+async function updateSubtaskInFirebase(taskIndex, subtaskIndex) {
+  const taskId = allBoardContent[taskIndex].Uid;
+  const updatedSubtask = allBoardContent[taskIndex].subtasks[subtaskIndex];
+
+  const response = await fetch(
+    `${BASE_URL_Board}/${taskId}/subtasks/${subtaskIndex}.json`,
+    {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedSubtask),
-    });
+    }
+  );
 
-    // Aktualisiere die gesamte Board-Ansicht
-    await updateBoard();
-  } catch (error) {
-    console.error("Fehler beim Aktualisieren des Subtasks in Firebase:", error);
+  if (!response.ok) {
+    throw new Error("Fehler beim Senden der Daten an Firebase");
   }
 }
 
+function getSubtaskDisplay(subtasks) {
+  if (!subtasks || subtasks.length === 0) {
+    return "";
+  }
+
+  let subtaskCount = subtasks.length;
+  let completedSubtasks = 0;
+
+  for (let i = 0; i < subtaskCount; i++) {
+    if (subtasks[i].completed) {
+      completedSubtasks++;
+    }
+  }
+
+  let progressPercentage = (completedSubtasks / subtaskCount) * 100;
+
+  return `
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
+    </div>
+    <div>${completedSubtasks}/${subtaskCount} Subtasks</div>
+  `;
+}
 
 
 

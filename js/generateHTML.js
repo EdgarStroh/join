@@ -104,38 +104,6 @@ function generateBoardContent(index) {
     return htmlTemplateGenerateBoardContent(index, categoryColor);
 }
 
-function getSubtaskDisplay(subtasks) {
-  // Anzahl der Subtasks und wie viele abgeschlossen sind
-  let subtaskCount = subtasks ? subtasks.length : 0;
-  let completedSubtasks = subtasks
-    ? subtasks.filter((subtask) => subtask.completed).length
-    : 0;
-
-  // Berechne den Fortschritt in Prozent
-  let progressPercentage =
-    subtaskCount > 0 ? (completedSubtasks / subtaskCount) * 100 : 0;
-
-  console.log(`Progress: ${progressPercentage}%`); // Debug-Ausgabe
-
-  // Progressbar HTML generieren
-  let progressBarHTML = `
-    <div class="progress-bar-container">
-        <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
-    </div>
-`;
-
-  // Text für die Anzahl der abgeschlossenen Subtasks
-  let subtaskDisplayText =
-    subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount} Subtasks ` : "";
-
-  // Kombiniere die Progressbar mit dem Text
-  return `
-        ${progressBarHTML}
-        <div>${subtaskDisplayText}</div>
-    `;
-}
-
-
 function getInitials(name) {
     return name.split(" ").map((n) => n[0]).join("");
 }
@@ -202,17 +170,3 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
   </div>
 `;
 }
-// function popUpBoard() {
-//     let popup = document.getElementById("popupModalCard");
-//     console.log(popup);  // Überprüfe, ob das Element existiert
-
-//     popup.innerHTML = "";  // Stelle sicher, dass der Inhalt zurückgesetzt wird
-
-//     popup.innerHTML += `
-//         dasassdasdnjiklnklsdfjklsdfjklsdfsdfkl
-//         sedfj<joldfsjosdfgjklsdgjklsdgjklsdgjkl
-//         sdfgjsdfgjklgsdjkldgs
-//     `;
-
-//     console.log(popup.innerHTML);  // Überprüfe, ob der Inhalt gesetzt wird
-// }
