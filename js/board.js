@@ -438,8 +438,12 @@ function renderContactSelection(index){
 
     let checkedContact = "";
 
-    if(allBoardContent[index].asigned.find((name) => name === allContacts[i]["name"])) {
-      checkedContact = "checked"
+    if (
+      allBoardContent[index].asigned && allBoardContent[index].asigned.find(
+        (name) => name === allContacts[i]["name"]
+      )
+    ) {
+      checkedContact = "checked";
     }
     
     contactListEdit += `
