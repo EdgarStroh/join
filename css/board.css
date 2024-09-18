@@ -411,8 +411,8 @@
 
 input[type="checkbox"] {
     display: inline-block;
-    width: 19px;
-    height: 20px;
+    width: 20px;
+    height: 21px;
     border: 0px !important;
     background-image: url('../assets/icons/checkbox.svg');
     background-size: cover;
