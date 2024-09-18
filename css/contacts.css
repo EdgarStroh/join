@@ -533,8 +533,21 @@ input:focus {
         /* left: 55%;
         position: relative; */
         margin-left: 0;
-        left: 51%;
+        left: 51.5%;
         position: relative;
-         width: auto; 
+         width: 345px; 
     }
+    .headline_contacts_extended {
+        gap:0;
+    }
+    .contact_list{
+        position: absolute;
+        height: calc(100svh - 103px);
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+
+
 }
