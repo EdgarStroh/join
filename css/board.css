@@ -324,11 +324,6 @@
     word-wrap: break-word;
 }
 
-.progressSubTask {
-    justify-content: space-between;
-    font-size: 12px;
-}
-
 .contactCard {
     border-radius: 50%;
     height: 32px;
@@ -606,6 +601,31 @@ input[type="checkbox"]:checked {
     -webkit-line-clamp: 2;
 }
 
+/* Container für die Progressbar */
+.progress-bar-container {
+    width: 55%;
+    background-color: #F4F4F4;
+    border-radius: 5px;
+    overflow: hidden; 
+    height: 8px; 
+}
+
+/* Fortschrittsanzeige */
+.progress-bar {
+    height: 100%; 
+    background-color: #4589FF;
+    width: 0%; 
+    transition: width 0.3s ease; 
+}
+
+
+.progressSubTask {
+    justify-content: space-between;
+    font-size: 12px;
+    align-items: center;
+    width: 100%;
+    gap: 3px;
+}
 
 
 

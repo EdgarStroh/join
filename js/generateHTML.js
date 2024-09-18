@@ -104,23 +104,42 @@ function generateBoardContent(index) {
     return htmlTemplateGenerateBoardContent(index, categoryColor);
 }
 
-// Funktion, um die Subtask-Anzeige zu generieren (z.B. 0/2)
 function getSubtaskDisplay(subtasks) {
-    // Anzahl der Subtasks und wie viele abgeschlossen sind
-    let subtaskCount = subtasks ? subtasks.length : 0;
-    let completedSubtasks = subtasks
-        ? subtasks.filter(subtask => subtask.completed).length
-        : 0;
+  // Anzahl der Subtasks und wie viele abgeschlossen sind
+  let subtaskCount = subtasks ? subtasks.length : 0;
+  let completedSubtasks = subtasks
+    ? subtasks.filter((subtask) => subtask.completed).length
+    : 0;
 
-    // Wenn keine Subtasks vorhanden sind, zeige nichts an
-    return subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount} Subtasks ` : '';
+  // Berechne den Fortschritt in Prozent
+  let progressPercentage =
+    subtaskCount > 0 ? (completedSubtasks / subtaskCount) * 100 : 0;
+
+  console.log(`Progress: ${progressPercentage}%`); // Debug-Ausgabe
+
+  // Progressbar HTML generieren
+  let progressBarHTML = `
+    <div class="progress-bar-container">
+        <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
+    </div>
+`;
+
+  // Text für die Anzahl der abgeschlossenen Subtasks
+  let subtaskDisplayText =
+    subtaskCount > 0 ? `${completedSubtasks}/${subtaskCount} Subtasks ` : "";
+
+  // Kombiniere die Progressbar mit dem Text
+  return `
+        ${progressBarHTML}
+        <div>${subtaskDisplayText}</div>
+    `;
 }
+
 
 function getInitials(name) {
     return name.split(" ").map((n) => n[0]).join("");
 }
 
-// Funktion, die das HTML-Template generiert
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index, categoryColor) {
   let showContacts = allBoardContent[index].asigned || []; // Fallback to empty array if undefined
@@ -170,8 +189,7 @@ function htmlTemplateGenerateBoardContent(index, categoryColor) {
       <span class="bc3">${allBoardContent[index].description}</span>
     </div>
     <div class="progressSubTask flex">
-      <div>PLine</div>
-      <div>${getSubtaskDisplay(allBoardContent[index].subtasks)}</div>
+      ${getSubtaskDisplay(allBoardContent[index].subtasks)}
     </div>
     <div class="contactsAndPrio">
       <div>

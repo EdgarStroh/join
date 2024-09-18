@@ -1,184 +1,180 @@
-//prio buttons
+// Kontakte laden
+const BASE_URL_Contact =
+  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/contacts";
 
-let priority = "";
-
-let prioButtons = document.querySelectorAll('#prio button');
-
-for (let i = 0; i < prioButtons.length; i++) {
-    prioButtons[i].addEventListener('click', (event) => {
-        const selectedButton = event.currentTarget;
-        priority = event.currentTarget.value;
-        const activePrioClass = selectedButton.getAttribute('id') + 'Active';
-        const activeButtonBool = selectedButton.classList.contains(activePrioClass);
-
-        if (!activeButtonBool) {
-            // Remove the active class from all buttons
-            prioButtons.forEach(button => {
-                const buttonActiveClass = button.getAttribute('id') + 'Active';
-                if (button.classList.contains(buttonActiveClass)) {
-                    button.classList.remove(buttonActiveClass);
-                    console.log("active prio class should be removed");
-                    document.getElementById(button.getAttribute('id') + 'Img').src = '../assets/icons/' + button.getAttribute('id') + '.svg';
-                }
-            });
-
-            // Add active class to the selected button
-            selectedButton.classList.add(activePrioClass);
-            document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + 'Selected.svg';
-        } else {
-            // Remove active class if the same button is clicked again
-            selectedButton.classList.remove(activePrioClass);
-            document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + '.svg';
-        }
-    });
-}
-
-//contacts
-
-// link for contacts
-const BASE_URL_Contact = "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/contacts";
-
-// load for contacts
+// Kontakte aus Firebase laden
 async function loadDataContacts(path = "") {
-    let response = await fetch(BASE_URL_Contact + path + ".json");
-    let contactsData = await response.json();
-    // Convert the Firebase object to an array of contacts
-    return allContacts = Object.keys(contactsData).map(key => contactsData[key]);
+  let response = await fetch(BASE_URL_Contact + path + ".json");
+  let contactsData = await response.json();
+  return (allContacts = Object.keys(contactsData).map(
+    (key) => contactsData[key]
+  ));
 }
 
-let contactSelection = document.getElementById('contactSelection');
-let contactList = document.getElementById('contactList');
-let contact = document.querySelectorAll('.contact');
+let contactSelection = document.getElementById("contactSelection");
+let contactList = document.getElementById("contactList");
 
-//render contacts
-async function renderContactList(){
+// Kontakte rendern
+async function renderContactList() {
   const contacts = await loadDataContacts();
 
-  // Sortieren der Kontakte alphabetisch nach dem Namen
+  // Kontakte alphabetisch sortieren
   contacts.sort((a, b) => {
     if (a.name < b.name) return -1;
     if (a.name > b.name) return 1;
     return 0;
   });
 
-  for (i = 0; i < contacts.length; i++) {
+  for (let i = 0; i < contacts.length; i++) {
     const firstLetter = contacts[i]["name"][0];
     const spaceIndex = contacts[i]["name"].indexOf(" ");
     const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1];
     contactList.innerHTML += `
-                <div class='contact flex' onclick='addTaskContact(event)'>
-                    <div class='flex'>
-                        <span class='circle flex' style='background:${
-                          contacts[i]["color"]
-                        }'>${firstLetter + firstLetterAfterSpace}</span>
-                        <span>${contacts[i].name}</span>
-                    </div>
-                    <input type="checkbox" value="${contacts[i].name}">
+            <div class='contact flex' onclick='addTaskContact(event)'>
+                <div class='flex'>
+                    <span class='circle flex' style='background:${
+                      contacts[i]["color"]
+                    }'>
+                        ${firstLetter + firstLetterAfterSpace}
+                    </span>
+                    <span>${contacts[i].name}</span>
                 </div>
+                <input type="checkbox" value="${contacts[i].name}">
+            </div>
         `;
   }
 }
 
 renderContactList();
 
-function toggleContactListView(){
-    contactList.classList.toggle('hidden');
-};
-
-//adds the possibility to click beside the checkbox
-function addTaskContact(event){
-    if(event.target.type !== 'checkbox'){
-        let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
-        if(checkbox.checked === true){
-            checkbox.checked = false;
-        } else {
-            checkbox.checked = true;
-        }
-        event.currentTarget.classList.toggle('selectedContact');
-    }
+function toggleContactListView() {
+  contactList.classList.toggle("hidden");
 }
 
-//form handling
-
-let addTaskForm =  document.getElementById('addTaskForm');
-let title = document.getElementById('title');
-let date = document.getElementById('date');
-let description = document.getElementById('description');
-let category = document.getElementById('category');
-let subtask = document.getElementById('subtask');
-let subtasks = [];
-let subtasksList = document.getElementById('subTasksList');
-let addSubtaskButton = document.getElementById('addSubtaskButton');
-
-function renderSubtaskList(){
-    subtasksList.innerHTML = "";
-    for(i=0; i<subtasks.length; i++){
-        subtasksList.innerHTML += `<li class="flex"><span>${subtasks[i]}</span></li>`;
-    }
+// Ermöglicht das Klicken auf das gesamte Kontakt-Element
+function addTaskContact(event) {
+  if (event.target.type !== "checkbox") {
+    let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
+    checkbox.checked = !checkbox.checked;
+    event.currentTarget.classList.toggle("selectedContact");
+  }
 }
 
-function addSubtask(){
-    subtasks.push(subtask.value);
-    renderSubtaskList();
-};
+// Formularverarbeitung
+let addTaskForm = document.getElementById("addTaskForm");
+let title = document.getElementById("title");
+let date = document.getElementById("date");
+let description = document.getElementById("description");
+let category = document.getElementById("category");
+let subtask = document.getElementById("subtask");
+let subtasks = []; // Subtasks werden als Objekte gespeichert
+let subtasksList = document.getElementById("subTasksList");
+let addSubtaskButton = document.getElementById("addSubtaskButton");
 
-function deleteSubtask(index){
-    subtasks.splice(index, 1);
+function renderSubtaskList() {
+  subtasksList.innerHTML = "";
+  for (let i = 0; i < subtasks.length; i++) {
+    subtasksList.innerHTML += `<li class="flex"><span>${subtasks[i].description}</span></li>`;
+  }
 }
 
+function addSubtask() {
+  subtasks.push({
+    description: subtask.value,
+    completed: false, // Standardmäßig auf false setzen
+  });
+  renderSubtaskList();
+  subtask.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
+}
 
-//edgar.js - tasks from firebase
+function deleteSubtask(index) {
+  subtasks.splice(index, 1);
+  renderSubtaskList(); // Aktualisiere die Liste nach dem Löschen
+}
 
-const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
+// Firebase Basis-URL für das Board
+const BASE_URL_Board =
+  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
 
-// post task's for board
+// Daten zu Firebase posten
 async function postDataBoards(path = "", data = {}) {
-    let response = await fetch(BASE_URL_Board + path + ".json", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+  let response = await fetch(BASE_URL_Board + path + ".json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-    });
-   
-    return responseToJSon = await response.json();
+  return await response.json();
 }
 
+// Ereignislistener für das Hinzufügen des Tasks
+addTaskForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-addTaskForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    
-    let selectedContacts = document.querySelectorAll('#contactList .contact input[type="checkbox"]:checked');
-    
-    let contactNames = [];
-    for (let i = 0; i < selectedContacts.length; i++) {
-        let name = selectedContacts[i].value;
-        contactNames.push(name);
-    }
-    
-    // Bereite die Daten vor, die gesendet werden sollen
-    let data = {
-        'asigned' : contactNames,
-        'category' : category.value,
-        'date' : date.value,
-        'description' : description.value,
-        'prio' : priority,
-        'status' : 'toDo',
-        'subtasks' : subtasks,
-        'title' : title.value,
-    };
+  let selectedContacts = document.querySelectorAll(
+    '#contactList .contact input[type="checkbox"]:checked'
+  );
 
-    try {
-        // Warten, bis die Daten erfolgreich gepostet wurden
-        await postDataBoards("", data);
-        
-        // Nach erfolgreichem Posten zur board.html weiterleiten
-        window.location.href = "board.html";
-    } catch (error) {
-        console.log("Error posting data to Firebase:", error);
-    }
+  let contactNames = [];
+  for (let i = 0; i < selectedContacts.length; i++) {
+    let name = selectedContacts[i].value;
+    contactNames.push(name);
+  }
+
+  // Daten vorbereiten
+  let data = {
+    asigned: contactNames,
+    category: category.value,
+    date: date.value,
+    description: description.value,
+    prio: priority,
+    status: "toDo",
+    subtasks: subtasks, // Subtasks enthalten jetzt `description` und `completed`
+    title: title.value,
+  };
+
+  try {
+    // Posten der Daten
+    await postDataBoards("", data);
+
+    // Nach erfolgreichem Posten zur board.html weiterleiten
+    window.location.href = "board.html";
+  } catch (error) {
+    console.log("Error posting data to Firebase:", error);
+  }
 });
 
+// Prio-Buttons
+let priority = "";
 
+let prioButtons = document.querySelectorAll("#prio button");
 
+for (let i = 0; i < prioButtons.length; i++) {
+  prioButtons[i].addEventListener("click", (event) => {
+    const selectedButton = event.currentTarget;
+    priority = event.currentTarget.value;
+    const activePrioClass = selectedButton.getAttribute("id") + "Active";
+    const activeButtonBool = selectedButton.classList.contains(activePrioClass);
+
+    if (!activeButtonBool) {
+      // Entferne die aktive Klasse von allen Buttons
+      prioButtons.forEach((button) => {
+        const buttonActiveClass = button.getAttribute("id") + "Active";
+        if (button.classList.contains(buttonActiveClass)) {
+          button.classList.remove(buttonActiveClass);
+          document.getElementById(button.getAttribute("id") + "Img").src = "../assets/icons/" + button.getAttribute("id") + ".svg";
+        }
+      });
+
+      // Füge aktive Klasse zum ausgewählten Button hinzu
+      selectedButton.classList.add(activePrioClass);
+      document.getElementById(selectedButton.getAttribute("id") + "Img").src = "../assets/icons/" + selectedButton.getAttribute("id") + "Selected.svg";
+    } else {
+      // Entferne aktive Klasse, wenn derselbe Button erneut geklickt wird
+      selectedButton.classList.remove(activePrioClass);
+      document.getElementById(selectedButton.getAttribute("id") + "Img").src = "../assets/icons/" + selectedButton.getAttribute("id") + ".svg";
+    }
+  });
+}

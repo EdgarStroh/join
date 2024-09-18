@@ -138,12 +138,12 @@ function openPopupCard(index, categoryColor) {
 }
 
 function htmlTemplatePopUpBoardCard(index, categoryColor) {
-  let assignedHTML = '';
-  let subtasksHTML = '';
+  let assignedHTML = "";
+  let subtasksHTML = "";
 
   // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(allBoardContent[index].asigned)) {
-    allBoardContent[index].asigned.forEach(person => {
+    allBoardContent[index].asigned.forEach((person) => {
       const initials = getInitials(person);
       // const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
       const color = contactColors[person];
@@ -158,77 +158,81 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
       }
     });
   }
-  let statusImage = '';
+  let statusImage = "";
   switch (allBoardContent[index].prio) {
-    case 'urgent':
-      statusImage = '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+    case "urgent":
+      statusImage =
+        '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
       break;
-    case 'medium':
-      statusImage = '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+    case "medium":
+      statusImage =
+        '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
       break;
-    case 'low':
-      statusImage = '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+    case "low":
+      statusImage =
+        '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
       break;
     default:
-      statusImage = ''; // No image if no status
+      statusImage = ""; // No image if no status
   }
-
 
   // Subtasks
   if (Array.isArray(allBoardContent[index].subtasks)) {
-    allBoardContent[index].subtasks.forEach(subtask => {
+    allBoardContent[index].subtasks.forEach((subtask, subtaskIndex) => {
       subtasksHTML += `
-        <div class="subtaskCardPopUpContent"> 
-          <input type ="checkbox">${subtask}
-        </div>`;
+            <div class="subtaskCardPopUpContent"> 
+                <input type="checkbox" ${subtask.completed ? "checked" : ""}
+                    onchange="toggleSubtaskCompletion(${index}, ${subtaskIndex}, this.checked)">
+                ${subtask.description}
+            </div>`;
     });
   }
 
   return `
     <div class="puCategory">
-      <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-        ${allBoardContent[index].category}
-      </span>
-      <div class="closeContainer">
-        <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
-      </div>  
+        <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+            ${allBoardContent[index].category}
+        </span>
+        <div class="closeContainer">
+            <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
+        </div>  
     </div>
     <div class="puTitle">
-      ${allBoardContent[index].title}
+        ${allBoardContent[index].title}
     </div>
     <div class="puDescription">
-      ${allBoardContent[index].description}
+        ${allBoardContent[index].description}
     </div>
     <div class="puDate">
-      Due date: ${allBoardContent[index].date} 
+        Due date: ${allBoardContent[index].date} 
     </div>
     <div class="puPrio">
-      Priority: ${allBoardContent[index].prio} ${statusImage} 
+        Priority: ${allBoardContent[index].prio} ${statusImage} 
     </div>
     <span>Assigned To:</span>  
     <div class="contactCardPopUpContent">
-      ${assignedHTML}
+        ${assignedHTML}
     </div>
     <span>Subtasks</span> 
-    <div >
-      ${subtasksHTML}
+    <div>
+        ${subtasksHTML}
     </div>
     <div class="deleteEditPopUp">
-      <div onclick="deleteDataBoard('${allBoardContent[index].Uid}')" class="delete">
-        <img src="../assets/icons/delete.svg" alt="Delete">
-        <span>Delete</span>
-      </div>
-    <div class="info">
-      <img src="../assets/icons/I.svg" alt="Info">
+        <div onclick="deleteDataBoard('${allBoardContent[index].Uid}')" class="delete">
+            <img src="../assets/icons/delete.svg" alt="Delete">
+            <span>Delete</span>
+        </div>
+        <div class="info">
+            <img src="../assets/icons/I.svg" alt="Info">
+        </div>
+        <div class="edit" onclick="openPopupCardEdit(${index})">
+            <img src="../assets/icons/edit.svg" alt="Edit">
+            <div>
+                <span>Edit</span>
+            </div>
+        </div>
     </div>
-    <div class="edit" onclick="openPopupCardEdit(${index})">
-      <img src="../assets/icons/edit.svg" alt="Edit">
-      <div>
-        <span>Edit</span>
-      </div>
-    </div>
-  
-  `;
+`;
 }
 
 function openPopupCardEdit(index) {
@@ -476,14 +480,6 @@ function renderContactSelection(){
   return contactListEdit;
 }
 
-// function toggleContactListView() {
-//   const contactList = document.getElementById("contactListEdit");
-//   if (contactList) {
-//     contactList.classList.toggle("hidden");
-//   } else {
-//     console.error('Element mit ID "contactList" nicht gefunden');
-//   }
-// }
 function toggleContactListView() {
   const existingDropdown = document.getElementById("contactListEdit");
 
@@ -551,10 +547,47 @@ function renderSubtasks(subtasks) {
   // Überprüfe, ob subtasks ein Array ist und es Elemente enthält
   if (Array.isArray(subtasks) && subtasks.length > 0) {
     // Erstelle eine Liste von li-Elementen
-    return subtasks.map((subtask) => `<li>${subtask}</li>`).join("");
+    return subtasks
+      .map(
+        (subtask) => `
+      <li>
+        ${subtask.description}
+      </li>
+    `
+      )
+      .join("");
   }
   return ""; // Rückgabe eines leeren Strings, wenn subtasks kein Array ist oder leer
 }
+
+async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
+  // Lokale Datenstruktur aktualisieren
+  allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
+
+  // In Firebase aktualisieren
+  try {
+    const taskId = allBoardContent[taskIndex].Uid;
+    const updatedSubtask = allBoardContent[taskIndex].subtasks[subtaskIndex];
+
+    // Aktualisiere den gesamten Subtask in Firebase
+    await fetch(`${BASE_URL_Board}/${taskId}/subtasks/${subtaskIndex}.json`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedSubtask),
+    });
+
+    // Aktualisiere die gesamte Board-Ansicht
+    await updateBoard();
+  } catch (error) {
+    console.error("Fehler beim Aktualisieren des Subtasks in Firebase:", error);
+  }
+}
+
+
+
+
 
 //Für die Suche verwendete Variablen
 let titlesDOM = document.getElementsByClassName('bc2');
