@@ -13,50 +13,13 @@ function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
-// function dropDone(ev) {
-//   ev.preventDefault();
-//   let data = ev.dataTransfer.getData("text");
-//   ev.target.appendChild(document.getElementById(data));
-//   let index = parseInt(data.split("-")[1]);
-//   let currentTask = allBoardContent[index];
-//   currentTask.status = "done";
-//   updateTask(currentTask.Uid, currentTask);
-// }
-// function dropAwait(ev) {
-//   ev.preventDefault();
-//   let data = ev.dataTransfer.getData("text");
-//   ev.target.appendChild(document.getElementById(data));
-//   let index = parseInt(data.split("-")[1]);
-//   let currentTask = allBoardContent[index];
-//   currentTask.status = "await";
-//   updateTask(currentTask.Uid, currentTask);
-// }
-// function dropInProgress(ev) {
-//   ev.preventDefault();
-//   let data = ev.dataTransfer.getData("text");
-//   ev.target.appendChild(document.getElementById(data));
-//   let index = parseInt(data.split("-")[1]);
-//   let currentTask = allBoardContent[index];
-//   currentTask.status = "in progress";
-//   updateTask(currentTask.Uid, currentTask);
-// }
-// function dropToDo(ev) {
-//   ev.preventDefault();
-//   let data = ev.dataTransfer.getData("text");
-//   ev.target.appendChild(document.getElementById(data));
-//   let index = parseInt(data.split("-")[1]);
-//   let currentTask = allBoardContent[index];
-//   currentTask.status = "toDo";
-//   updateTask(currentTask.Uid, currentTask);
-// }
 function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
   let draggedElement = document.getElementById(data);
 
-  // Überprüfen, ob das Ziel bereits das übertragene Element enthält
   if (ev.target.contains(draggedElement)) {
-    return;  // Kein weiteres Hinzufügen
+    return;  
   }
 
   ev.target.appendChild(draggedElement);
@@ -65,27 +28,22 @@ function handleDrop(ev, status) {
   currentTask.status = status;
   updateTask(currentTask.Uid, currentTask);
 }
+
 function dropDone(ev) {
   handleDrop(ev, "done");
 }
+
 function dropAwait(ev) {
   handleDrop(ev, "await");
 }
+
 function dropInProgress(ev) {
   handleDrop(ev, "in progress");
 }
+
 function dropToDo(ev) {
   handleDrop(ev, "toDo");
 }
-
-
-// function highlight(id) {
-//   document.getElementById(id).classList.add('drag-area-highlight');
-// }
-
-// function removeHighlight(id) {
-//   document.getElementById(id).classList.remove('drag-area-highlight');
-// }
 
 function renderBoardList() {
   let toDoContainer = document.getElementById("toDo");
@@ -237,14 +195,8 @@ function htmlTemplatePopUpBoardCard(index, categoryColor) {
 
 function openPopupCardEdit(index) {
   const popupModal = document.getElementById('popupModalCardEdit');
-
   popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
-
-
-  // Zeige das Overlay und das Popup an
   popupModal.style.display = 'block';
-
-  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
   popupModal.classList.remove('hide');
   popupModal.classList.add('show');
 }
@@ -294,19 +246,15 @@ function htmlTemplatePopUpBoardCardEdit(index) {
 function closePopup() {
   const popupOverlay = document.getElementById('popupOverlay');
   const popupModal = document.getElementById('popupModal');
-
-  // Verstecke das Overlay sofort
   popupOverlay.style.display = 'none';
-
-  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
   popupModal.classList.remove('show');
   popupModal.classList.add('hide');
 
-  // Verstecke das Popup nach der Animation (120ms)
   setTimeout(() => {
     popupModal.style.display = 'none';
-  }, 120); // 120ms entspricht der Dauer der Animation
+  }, 120); 
 }
+
 function closePopupCard() {
   const popupOverlay = document.getElementById('popupOverlayCard');
   const popupModal = document.getElementById('popupModalCard');
@@ -565,26 +513,6 @@ async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
 
 function updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
   allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
-}
-
-async function updateSubtaskInFirebase(taskIndex, subtaskIndex) {
-  const taskId = allBoardContent[taskIndex].Uid;
-  const updatedSubtask = allBoardContent[taskIndex].subtasks[subtaskIndex];
-
-  const response = await fetch(
-    `${BASE_URL_Board}/${taskId}/subtasks/${subtaskIndex}.json`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedSubtask),
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error("Fehler beim Senden der Daten an Firebase");
-  }
 }
 
 function getSubtaskDisplay(subtasks) {

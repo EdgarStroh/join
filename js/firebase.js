@@ -36,6 +36,25 @@ async function postDataContacts(path = "", data = {}) {
     return responseToJSon = await response.json();
 }
 
+// update contact
+async function updateContactInFirebase(id, data) {
+  const response = await fetch(`${BASE_URL_Contact}/${id}.json`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Fehler beim Aktualisieren des Kontakts: ${response.statusText}`
+    );
+  }
+
+  return response.json();
+}
+
 //                              +++ BOARD +++
 
 const BASE_URL_Board = "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
@@ -64,7 +83,27 @@ async function postDataBoards(path = "", data = {}) {
 
     });
     return responseToJSon = await response.json();
-    
+}
+
+// update subtasks
+async function updateSubtaskInFirebase(taskIndex, subtaskIndex) {
+  const taskId = allBoardContent[taskIndex].Uid;
+  const updatedSubtask = allBoardContent[taskIndex].subtasks[subtaskIndex];
+
+  const response = await fetch(
+    `${BASE_URL_Board}/${taskId}/subtasks/${subtaskIndex}.json`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedSubtask),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Fehler beim Senden der Daten an Firebase");
+  }
 }
 
 //                              +++ USER +++

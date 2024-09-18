@@ -68,58 +68,21 @@ function renderEditContact(id) {
   document.getElementById("popupEditModal").innerHTML = editContactHTML;
 }
 
-// async function updateContactInFirebase(id, updatedContact) {
-//   try {
-//     const response = await fetch(`${BASE_URL_Contact}/${id}.json`, {
-//       method: "PUT",
-//       body: JSON.stringify(updatedContact),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(
-//         `Fehler beim Aktualisieren des Kontakts: ${response.statusText}`
-//       );
-//     }
-
-//     await updateContacts();
-//   } catch (error) {
-//     console.error("Fehler beim Aktualisieren des Kontakts:", error);
-//     alert("Es gab ein Problem beim Aktualisieren des Kontakts.");
-//   }
-// }
-
 async function updateDataContact(id, data) {
   try {
-    let response = await fetch(`${BASE_URL_Contact}/${id}.json`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error(
-        `Fehler beim Aktualisieren des Kontakts: ${response.statusText}`
-      );
-    }
-
-    console.log("Kontakt erfolgreich aktualisiert:", await response.json());
-
-    // Lokale Kontakte aktualisieren
-    const index = allContacts.findIndex((contact) => contact.Uid === id);
-    if (index !== -1) {
-      allContacts[index] = { ...allContacts[index], ...data };
-    }
-
-    // UI aktualisieren
+    await updateContactInFirebase(id, data);
+    updateLocalContact(id, data);
     renderContactList();
   } catch (error) {
     console.error("Fehler beim Aktualisieren des Kontakts:", error);
     alert("Es gab ein Problem beim Aktualisieren des Kontakts.");
+  }
+}
+
+function updateLocalContact(id, data) {
+  const index = allContacts.findIndex((contact) => contact.Uid === id);
+  if (index !== -1) {
+    allContacts[index] = { ...allContacts[index], ...data };
   }
 }
 
