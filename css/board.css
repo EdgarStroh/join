@@ -204,7 +204,7 @@
 .popup-modal-card {
     overflow: auto;
     scroll-behavior: smooth;
-    min-width: 500px;
+    max-width: 500px;
     max-height: 80vh;
     background-color: white;
     padding: 65px 60px;
@@ -242,6 +242,7 @@
 .popup-modal-card-edit input,
 .popup-modal-card-edit textarea {
     width: 100%;
+    font-weight: 300;
 }
 .popup-modal-card-edit.show{
     display: block;
@@ -596,7 +597,12 @@ input[type="checkbox"]:checked {
 .contactEdit input {
     margin-top: 10px;
 }
-
+.bc3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
 
 
 
