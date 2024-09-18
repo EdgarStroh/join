@@ -523,3 +523,18 @@ input:focus {
     }
 
 }
+
+@media screen and (max-width: 1050px) {
+
+    .contact_list{
+        margin: 100px 0 0 0px
+    }
+    .headline_contacts{
+        /* left: 55%;
+        position: relative; */
+        margin-left: 0;
+        left: 51%;
+        position: relative;
+         width: auto; 
+    }
+}
