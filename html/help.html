@@ -14,12 +14,24 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 <body class="flex container containerContent">
+    <script>
+        function goBack() {
+            const referrer = document.referrer;
+            if (referrer) {
+                window.location.href = referrer; // Geht zurück zur Seite, von der der Benutzer kam
+            } else {
+                window.location.href = 'index.html'; // Falls kein Referrer vorhanden ist
+            }
+        }
+        </script>
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
-    <div class="text_container flex">
-        <img class="arrow_left" src="../assets/icons/arrow_left.svg" alt="Icon arrow left">
+    <div class="text_container_help flex">
+        <a href="javascript:void(0);" onclick="goBack();" style="cursor: pointer;">
+            <img class="arrow_left" src="../assets/icons/arrow_left.svg" alt="Icon arrow left">
+        </a>
         <div class="headline flex">
             <h1>Help</h1>
         </div>

@@ -22,3 +22,18 @@
 .help_text {
     flex-direction: column;
 }
+.text_container_help{
+    padding: 206px 114px 96px 330px;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #F6F7F8;
+}
+@media screen and (max-width: 1050px) {
+
+.text_container_help{
+    height:auto !important;
+    padding: 95px 5px 10px 10px;
+}
+
+}
