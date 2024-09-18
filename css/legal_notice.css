@@ -1,21 +1,43 @@
-ul{
-    list-style-position:inside;
+ul {
+    list-style-position: inside;
 }
+
 .headline {
     width: 100%;
     justify-content: space-between;
     align-items: center;
 }
+
 .arrow_left {
     cursor: pointer;
     height: 32px;
 }
+
 .arrow_left:hover {
     background-color: #EEEEEE;
     height: 35px;
     width: 35px;
     border-radius: 50%;
 }
+
 .join {
     color: #29ABE2;
 }
+
+.text_container_legal {
+    padding: 206px 114px 96px 330px;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #F6F7F8;
+
+}
+@media screen and (max-width: 1050px) {
+
+    .text_container_legal{
+        /* height: auto !important; */
+        padding: 95px 5px 10px 10px;
+        height: auto !important;
+    }
+    
+    }
