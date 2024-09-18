@@ -547,6 +547,7 @@ input[type="checkbox"]:checked {
     overflow-y: auto;
     flex-direction: column;
     top: -38px;
+    margin-bottom: -38px;
 }
 /* Container für das gesamte Formular */
 .containerEdit {
@@ -563,6 +564,7 @@ input[type="checkbox"]:checked {
 .profileBadges {
     display: flex;
     gap: 8px;
+    padding-left: 11px;
 }
 
 /* Subtasks-Liste */
