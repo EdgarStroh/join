@@ -174,11 +174,7 @@ input[type="date"]:focus {
     width: 100%;
     background-color: white;
 }
-/* .addSubTask {
-    padding-right: 30px; 
-    background: url(../assets/icons/addSubtask.svg) no-repeat right 10px center;
-    background-size: 20px 20px; 
-} */
+
 .button {
     display: flex;
     align-items: center;
@@ -342,8 +338,21 @@ input, .addSubTask, select, textarea {
 .subtask-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
     z-index: 2;
+    overflow: visible;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50%; 
+    transition: background-color 0.2s ease; 
+}
+
+.icon-wrapper:hover {
+    background-color: #eeeeee; 
 }
 
 .action-icon {
@@ -351,6 +360,10 @@ input, .addSubTask, select, textarea {
     height: 20px;
     cursor: pointer;
 }
+
+
+
+
 
 
 

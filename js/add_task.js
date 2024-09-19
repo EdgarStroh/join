@@ -80,13 +80,21 @@ function renderSubtaskList() {
         <input type="text" class="subtask-edit-input" value="${subtasks[i].description}" style="display: none;">
         <span class="subtask-text">${subtasks[i].description}</span>
         <div class="subtask-actions">
-          <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtask(${i})" class="action-icon edit-icon">
-          <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtask(${i})" class="action-icon delete-icon">
-          <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtask(${i})" class="action-icon save-icon" style="display: none;">
+          <div class="icon-wrapper">
+            <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtask(${i})" class="action-icon edit-icon">
+          </div>
+          <div class="icon-wrapper">
+            <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtask(${i})" class="action-icon delete-icon">
+          </div>
+          <div class="separator"></div> <!-- Separator zwischen den Icons -->
+          <div class="icon-wrapper">
+            <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtask(${i})" class="action-icon save-icon" style="display: none;">
+          </div>
         </div>
       </li>`;
   }
 }
+
 
 
 function showActions(index) {
@@ -123,7 +131,6 @@ function editSubtask(index) {
   saveIcon.style.display = "block";
 }
 
-
 function saveSubtask(index) {
   const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
   const subtaskText = subtaskItem.querySelector(".subtask-text");
@@ -146,6 +153,7 @@ function saveSubtask(index) {
   editIcon.style.display = "block";
   saveIcon.style.display = "none";
 }
+
 
 
 function deleteSubtask(index) {
