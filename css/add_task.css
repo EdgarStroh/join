@@ -134,18 +134,50 @@ input[type="date"]:focus {
     outline: none;
 }
 
-#addSubTask {
-    width:100%;
+#subtask {
+    flex-grow: 1; /* Eingabefeld nimmt den verfügbaren Platz ein */
+    border: none; /* Entfernt den Standardrahmen */
+    outline: none; /* Entfernt den Standardfokus */
+    font-size: 16px; /* Schriftgröße */
+    padding: 10px; /* Innenabstand */
+    border-radius: 10px 0 0 10px; /* Abgerundete Ecken nur links */
 }
+
+#subtask::placeholder {
+    color: #ccc; /* Platzhalterfarbe */
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#addSubTask {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    border-radius: 10px; /* Abgerundete Ecken */
+    padding: 5px 10px; /* Innenabstand */
+    width: 100%; /* Vollbreite */
+    box-sizing: border-box; /* Padding und Border einbeziehen */
+    background-color: white;
+}
+
+#addSubTask img {
+    margin-left: 10px; /* Abstand zum Eingabefeld */
+    cursor: pointer;
+}
+
+#addSubTask img:hover {
+    transform: scale(1.1); /* Vergrößerungseffekt beim Hover */
+}
+
 #addSubTask input {
     width: 100%;
     background-color: white;
 }
-.addSubTask {
+/* .addSubTask {
     padding-right: 30px; 
     background: url(../assets/icons/addSubtask.svg) no-repeat right 10px center;
     background-size: 20px 20px; 
-}
+} */
 .button {
     display: flex;
     align-items: center;
