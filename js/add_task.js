@@ -71,11 +71,82 @@ let subtasks = []; // Subtasks werden als Objekte gespeichert
 let subtasksList = document.getElementById("subTasksList");
 let addSubtaskButton = document.getElementById("addSubtaskButton");
 
+
 function renderSubtaskList() {
   subtasksList.innerHTML = "";
   for (let i = 0; i < subtasks.length; i++) {
-    subtasksList.innerHTML += `<li class="flex"><span>${subtasks[i].description}</span></li>`;
+    subtasksList.innerHTML += `
+      <li class="subtask" data-index="${i}">
+        <input type="text" class="subtask-edit-input" value="${subtasks[i].description}" style="display: none;">
+        <span class="subtask-text">${subtasks[i].description}</span>
+        <div class="subtask-actions">
+          <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtask(${i})" class="action-icon edit-icon">
+          <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtask(${i})" class="action-icon delete-icon">
+         
+          <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtask(${i})" class="action-icon save-icon" style="display: none;">
+        </div>
+      </li>`;
   }
+}
+
+
+function showActions(index) {
+  document.getElementById(`subtask-actions-${index}`).style.display = "flex";
+}
+
+function hideActions(index) {
+  document.getElementById(`subtask-actions-${index}`).style.display = "none";
+}
+
+function editSubtask(index) {
+  const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
+  const subtaskText = subtaskItem.querySelector(".subtask-text");
+  const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
+  const editIcon = subtaskItem.querySelector(".edit-icon");
+  const saveIcon = subtaskItem.querySelector(".save-icon");
+
+  // Füge die Klasse hinzu, um den Hover-Effekt zu deaktivieren
+  subtaskItem.classList.add("editing");
+
+  // Verstecke den Text und zeige das Eingabefeld
+  subtaskText.style.display = "none";
+  subtaskInput.style.display = "block";
+
+  // Setze das Eingabefeld in den bearbeitbaren Zustand
+  subtaskInput.focus();
+
+  // Zeige das Speichern-Symbol, verstecke das Bearbeiten-Symbol
+  editIcon.style.display = "none";
+  saveIcon.style.display = "block";
+}
+
+function saveSubtask(index) {
+  const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
+  const subtaskText = subtaskItem.querySelector(".subtask-text");
+  const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
+  const editIcon = subtaskItem.querySelector(".edit-icon");
+  const saveIcon = subtaskItem.querySelector(".save-icon");
+
+  // Aktualisiere den Subtask-Text
+  subtasks[index].description = subtaskInput.value;
+
+  // Aktualisiere die Anzeige
+  subtaskText.textContent = subtaskInput.value;
+  subtaskText.style.display = "block";
+  subtaskInput.style.display = "none";
+
+  // Entferne die Klasse, um den Hover-Effekt wieder zu aktivieren
+  subtaskItem.classList.remove("editing");
+
+  // Zeige das Bearbeiten-Symbol, verstecke das Speichern-Symbol
+  editIcon.style.display = "block";
+  saveIcon.style.display = "none";
+}
+
+
+function deleteSubtask(index) {
+  subtasks.splice(index, 1);
+  renderSubtaskList(); // Aktualisiere die Liste nach dem Löschen
 }
 
 function addSubtask() {
@@ -85,11 +156,6 @@ function addSubtask() {
   });
   renderSubtaskList();
   subtask.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
-}
-
-function deleteSubtask(index) {
-  subtasks.splice(index, 1);
-  renderSubtaskList(); // Aktualisiere die Liste nach dem Löschen
 }
 
 // Firebase Basis-URL für das Board

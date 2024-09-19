@@ -36,7 +36,7 @@ label, input, textarea, #prio button, select {
     font-size:20px;
 }
 input, textarea {
-    padding-left: 12px;
+    padding-left: 20px;
     border-radius: 10px;
 }
 textarea {
@@ -141,7 +141,6 @@ input[type="date"]:focus {
     width: 100%;
     background-color: white;
 }
-
 .addSubTask {
     padding-right: 30px; 
     background: url(../assets/icons/addSubtask.svg) no-repeat right 10px center;
@@ -264,6 +263,68 @@ input, .addSubTask, select, textarea {
     background:#2A3647;
     color:white;
 }
+
+#subTasksList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subtask {
+    display: flex;
+    align-items: center;
+    padding: 8px; 
+    border-radius: 10px;
+    position: relative;
+}
+
+.subtask:hover {
+    background-color: #eeeeee;
+}
+
+.subtask.editing {
+    background-color: white; 
+}
+
+.subtask-edit-input {
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 16px;
+    border: none !important;
+    outline: none;
+    background: white; 
+    border-radius: 0; 
+    height: auto; 
+    appearance: none; 
+    &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.subtask span {
+    flex-grow: 1; 
+}
+
+.subtask-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.action-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
 
 /*Responsive*/
 

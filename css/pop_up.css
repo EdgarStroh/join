@@ -13,7 +13,7 @@ label, input, textarea, #prio button, select{
     font-size:20px;
 }
 input, textarea{
-    padding-left:12px;
+    padding-left: 20px;
 }
 textarea {
     border: 1px solid #D1D1D1;
