@@ -139,8 +139,8 @@ input[type="date"]:focus {
     border: none; /* Entfernt den Standardrahmen */
     outline: none; /* Entfernt den Standardfokus */
     font-size: 16px; /* Schriftgröße */
-    padding: 10px; /* Innenabstand */
     border-radius: 10px 0 0 10px; /* Abgerundete Ecken nur links */
+    padding: 0;
 }
 
 #subtask::placeholder {
