@@ -402,16 +402,19 @@ function editTask(uid) {
     console.error("Task mit ID", uid, "nicht gefunden!");
     return;
   }
+  let contactNames = originalTask.asigned;
 
   let selectedContacts = document.querySelectorAll(
     '#contactListEdit .contactEdit input[type="checkbox"]:checked'
   );
-
-  let contactNames = [];
-  for (let i = 0; i < selectedContacts.length; i++) {
-    let name = selectedContacts[i].value;
-    contactNames.push(name);
+  if(selectedContacts.length > 0){
+    contactNames = [];
+    for (let i = 0; i < selectedContacts.length; i++) {
+      let name = selectedContacts[i].value;
+      contactNames.push(name);
+    }
   }
+  
 
   const updatedTask = {
     ...originalTask,
@@ -427,8 +430,6 @@ function editTask(uid) {
   openPopupCard(originalIndex);
 }
 
-
-// noch nicht fertig, weil noch nicht schön (DropDown und Markierungen fehlen)!!!
 function renderContactSelection(index){
   let contactListEdit = '';
   for (i = 0; i < allContacts.length; i++) {
