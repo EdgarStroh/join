@@ -403,6 +403,10 @@
     align-items: center;
     gap: 20px;
 }
+.subtaskCardPopUpContent:hover {
+    background-color: #EEEEEE;
+    border-radius: 8px;
+}
 
 input[type="checkbox"] {
     display: inline-block;
