@@ -129,6 +129,7 @@
 }
 .info {
     flex-direction: column;
+    text-align: center;
 }
 .info:hover {
     color: white !important;
