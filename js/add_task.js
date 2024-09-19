@@ -159,12 +159,14 @@ function deleteSubtask(index) {
 }
 
 function addSubtask() {
-  subtasks.push({
-    description: subtask.value,
-    completed: false, // Standardmäßig auf false setzen
-  });
-  renderSubtaskList();
-  subtask.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
+  if(subtask.value != ""){
+    subtasks.push({
+      description: subtask.value,
+      completed: false, // Standardmäßig auf false setzen
+    });
+    renderSubtaskList();
+    subtask.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
+  }
 }
 
 // Firebase Basis-URL für das Board
