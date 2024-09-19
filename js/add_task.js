@@ -115,10 +115,15 @@ function editSubtask(index) {
   // Setze das Eingabefeld in den bearbeitbaren Zustand
   subtaskInput.focus();
 
+  // Setze den Cursor an das Ende des Textes
+  const length = subtaskInput.value.length;
+  subtaskInput.setSelectionRange(length, length);
+
   // Zeige das Speichern-Symbol, verstecke das Bearbeiten-Symbol
   editIcon.style.display = "none";
   saveIcon.style.display = "block";
 }
+
 
 function saveSubtask(index) {
   const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
