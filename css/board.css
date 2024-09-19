@@ -543,8 +543,8 @@ input[type="checkbox"]:checked {
     max-height: 150px;
     overflow-y: auto;
     flex-direction: column;
-    top: -38px;
-    margin-bottom: -38px;
+    top: -16px;
+    margin-bottom: -70px;
 }
 /* Container für das gesamte Formular */
 .containerEdit {

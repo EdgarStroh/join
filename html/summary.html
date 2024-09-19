@@ -14,10 +14,9 @@
    
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
-<body class="flex container containerContent">
+<body onload="updateSummary()" class="flex container containerContent">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
-        
         <script>w3.includeHTML();</script>
     </aside>
     <div class="text_container_summary">
@@ -42,7 +41,7 @@
                             </g>
                         </svg>
                         <div class="info flex">
-                            <span class="amount">XX</span> <!-- passende Zahl reinrendern -->
+                            <span class="amount" id="toDoCount"></span> <!-- ID hinzugefügt -->
                             <span class="title">To-do</span>
                         </div>
                     </a>
@@ -53,7 +52,7 @@
                         </svg>
 
                         <div class="info flex">
-                            <span class="amount">XX</span> <!-- passende Zahl reinrendern -->
+                            <span class="amount" id="doneCount"></span> <!-- ID hinzugefügt -->
                             <span class="title">Done</span>
                         </div>
                     </a>
@@ -64,13 +63,13 @@
                         <div class="urgent flex">
                             <img src="../assets/icons/urgent.svg" alt="Icon Urgent">
                             <div class="info flex">
-                                <span class="amount">XX</span> <!-- passende Zahl reinrendern -->
+                                <span class="amount" id="urgentCount"></span> <!-- ID hinzugefügt -->
                                 <span class="title">Urgent</span> 
                             </div>
                         </div>
                         <img src="../assets/icons/seperator_urgent.svg" alt="seperator">
                         <div class="date flex">
-                            <div id="date">month day, year</div> <!-- hier wird das Deadline-Datum reingerendert -->
+                            <div id="date"><!-- hier wird das Deadline-Datum reingerendert --></div> 
                             <span>Upcoming Deadline</span>
                         </div>
                     </a>
@@ -79,19 +78,19 @@
                 <div class="summary_container_small flex">
                     <a class="small_box flex" href="board.html">
                         <div class="info flex">
-                            <span class="amount">XX</span> <!-- passende Zahl reinrendern -->
+                            <span class="amount" id="totalTasksCount"></span> <!-- ID hinzugefügt -->
                             <span class="title">Tasks <br> in Board</span>
                         </div>
                     </a>
                     <a class="small_box flex" href="board.html">
                         <div class="info flex">
-                            <span class="amount">XX</span> <!-- passende Zahl reinrendern -->
+                            <span class="amount" id="inProgressCount"></span> <!-- ID hinzugefügt -->
                             <span class="title">Tasks <br> in Progress</span>
                         </div>
                     </a>
                     <a class="small_box flex" href="board.html">
                         <div class="info flex">
-                            <span class="amount">XX</span> <!-- passende Zahl reinrendern -->
+                            <span class="amount" id="awaitFeedbackCount"></span> <!-- ID hinzugefügt -->
                             <span class="title">Awaiting <br> Feedback</span>
                         </div>
                     </a>
@@ -109,9 +108,10 @@
         <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
     </footer>
     <script src="../js/firebase.js"></script>
-    <script src="../js/script.js"></script>
-    <script src="../js/summary.js"></script>
-    <script src="../js/sideBar.js"></script>
-    <script src="..//js/header.js"></script>
+<script src="../js/summary.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/sideBar.js"></script>
+<script src="../js/header.js"></script>
+
 </body>
 </html>

@@ -2,6 +2,7 @@ async function updateBoard() {
   await loadDataContacts("");
   await loadDataBoards("");
   await loadDataUsers("");
+
   renderBoardList();
 }
 
@@ -19,7 +20,7 @@ function handleDrop(ev, status) {
   let draggedElement = document.getElementById(data);
 
   if (ev.target.contains(draggedElement)) {
-    return;  
+    return;
   }
 
   ev.target.appendChild(draggedElement);
@@ -69,30 +70,30 @@ function renderBoardList() {
 }
 
 function openPopup() {
-  const popupOverlay = document.getElementById('popupOverlay');
-  const popupModal = document.getElementById('popupModal');
+  const popupOverlay = document.getElementById("popupOverlay");
+  const popupModal = document.getElementById("popupModal");
 
   // Zeige das Overlay und das Popup an
-  popupOverlay.style.display = 'flex';
-  popupModal.style.display = 'block';
+  popupOverlay.style.display = "flex";
+  popupModal.style.display = "block";
 
   // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
-  popupModal.classList.remove('hide');
-  popupModal.classList.add('show');
+  popupModal.classList.remove("hide");
+  popupModal.classList.add("show");
 }
 function openPopupCard(index) {
-  const popupOverlay = document.getElementById('popupOverlayCard');
-  const popupModal = document.getElementById('popupModalCard');
+  const popupOverlay = document.getElementById("popupOverlayCard");
+  const popupModal = document.getElementById("popupModalCard");
 
   popupModal.innerHTML = htmlTemplatePopUpBoardCard(index);
 
   // Zeige das Overlay und das Popup an
-  popupOverlay.style.display = 'flex';
-  popupModal.style.display = 'block';
+  popupOverlay.style.display = "flex";
+  popupModal.style.display = "block";
 
   // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
-  popupModal.classList.remove('hide');
-  popupModal.classList.add('show');
+  popupModal.classList.remove("hide");
+  popupModal.classList.add("show");
 }
 
 function htmlTemplatePopUpBoardCard(index) {
@@ -202,16 +203,16 @@ function htmlTemplatePopUpBoardCard(index) {
 }
 
 function openPopupCardEdit(index) {
-  const popupModal = document.getElementById('popupModalCardEdit');
+  const popupModal = document.getElementById("popupModalCardEdit");
   popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
-  popupModal.style.display = 'block';
-  popupModal.classList.remove('hide');
-  popupModal.classList.add('show');
+  popupModal.style.display = "block";
+  popupModal.classList.remove("hide");
+  popupModal.classList.add("show");
 }
 
 function htmlTemplatePopUpBoardCardEdit(index) {
   const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
-  
+
   return `
     <div class= "containerEdit">
       <div class="closeContainerEdit">
@@ -238,7 +239,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       <label for="contactSelectionEdit">Assigned to</label>
       <div id="contactSelectionEdit" onclick="toggleContactListView(${index})" tabindex="0"> Select contacts to assign</div>
       <div class="profileBadges">
-        ${assignedHTML} <!-- Profilbadges anzeigen -->
+        ${assignedHTML}
       </div>
       <label for="Subtasks">Subtasks</label>
       <div id="addSubTask" class="flex">
@@ -249,48 +250,50 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       <ul id="subTasksList"> 
         ${renderSubtasks(allBoardContent[index].subtasks)}
       </ul>
-      <button class="button margin-left" onclick="editTask('${allBoardContent[index].Uid}')">Ok<img src="../assets/icons/create.svg"></button>
+      <button class="button margin-left" onclick="editTask('${
+        allBoardContent[index].Uid
+      }')">Ok<img src="../assets/icons/create.svg"></button>
     </div>
   `;
 }
 
 function closePopup() {
-  const popupOverlay = document.getElementById('popupOverlay');
-  const popupModal = document.getElementById('popupModal');
-  popupOverlay.style.display = 'none';
-  popupModal.classList.remove('show');
-  popupModal.classList.add('hide');
+  const popupOverlay = document.getElementById("popupOverlay");
+  const popupModal = document.getElementById("popupModal");
+  popupOverlay.style.display = "none";
+  popupModal.classList.remove("show");
+  popupModal.classList.add("hide");
 
   setTimeout(() => {
-    popupModal.style.display = 'none';
-  }, 120); 
+    popupModal.style.display = "none";
+  }, 120);
 }
 
 function closePopupCard() {
-  const popupOverlay = document.getElementById('popupOverlayCard');
-  const popupModal = document.getElementById('popupModalCard');
+  const popupOverlay = document.getElementById("popupOverlayCard");
+  const popupModal = document.getElementById("popupModalCard");
 
   // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
-  popupModal.classList.remove('show');
-  popupModal.classList.add('hide');
+  popupModal.classList.remove("show");
+  popupModal.classList.add("hide");
 
   // Verstecke das Popup nach der Animation (120ms entspricht der Dauer der Animation)
   setTimeout(() => {
-    popupModal.style.display = 'none';
-    popupOverlay.style.display = 'none'; // Overlay auch nach der Animation ausblenden
+    popupModal.style.display = "none";
+    popupOverlay.style.display = "none"; // Overlay auch nach der Animation ausblenden
   }, 120); // 120ms entspricht der Dauer der Animation
-  closePopupCardEdit()
+  closePopupCardEdit();
 }
 
 function closePopupCardEdit() {
-  const popupOverlay = document.getElementById('popupOverlayCardEdit');
-  const popupModal = document.getElementById('popupModalCardEdit');
+  const popupOverlay = document.getElementById("popupOverlayCardEdit");
+  const popupModal = document.getElementById("popupModalCardEdit");
   // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
-  popupModal.classList.remove('show');
-  popupModal.classList.add('hide');
+  popupModal.classList.remove("show");
+  popupModal.classList.add("hide");
 
-  popupModal.style.display = 'none';
-  popupOverlay.style.display = 'none';
+  popupModal.style.display = "none";
+  popupOverlay.style.display = "none";
 }
 
 async function updateTask(uid, data) {
@@ -326,43 +329,36 @@ async function updateTask(uid, data) {
 }
 
 // PROTON SCHEIß
-//prio buttons
+//prio buttons  <-- das muss hier glaube ich gar nicht sein!!!
 
-let priority = "";
+// let priority = "";
 
-let prioButtons = document.querySelectorAll('#prio button');
+// let prioButtons = document.querySelectorAll('#prio button');
 
-for (let i = 0; i < prioButtons.length; i++) {
-    prioButtons[i].addEventListener('click', (event) => {
-        const selectedButton = event.currentTarget;
-        priority = event.currentTarget.value;
-        const activePrioClass = selectedButton.getAttribute('id') + 'Active';
-        const activeButtonBool = selectedButton.classList.contains(activePrioClass);
+// for (let i = 0; i < prioButtons.length; i++) {
+//     prioButtons[i].addEventListener('click', (event) => {
+//         const selectedButton = event.currentTarget;
+//         priority = event.currentTarget.value;
+//         const activePrioClass = selectedButton.getAttribute('id') + 'Active';
+//         const activeButtonBool = selectedButton.classList.contains(activePrioClass);
 
-        if (!activeButtonBool) {
-            // Remove the active class from all buttons
-            prioButtons.forEach(button => {
-                const buttonActiveClass = button.getAttribute('id') + 'Active';
-                if (button.classList.contains(buttonActiveClass)) {
-                    button.classList.remove(buttonActiveClass);
-                    console.log("active prio class should be removed");
-                    document.getElementById(button.getAttribute('id') + 'Img').src = '../assets/icons/' + button.getAttribute('id') + '.svg';
-                }
-            });
-
-            // Add active class to the selected button
-            selectedButton.classList.add(activePrioClass);
-            document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + 'Selected.svg';
-        } else {
-            // Remove active class if the same button is clicked again
-            selectedButton.classList.remove(activePrioClass);
-            document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + '.svg';
-        }
-    });
-}
-
-
-
+//         if (!activeButtonBool) {
+//           prioButtons.forEach(button => {
+//             const buttonActiveClass = button.getAttribute('id') + 'Active';
+//             if (button.classList.contains(buttonActiveClass)) {
+//                 button.classList.remove(buttonActiveClass);
+//                 console.log("active prio class should be removed");
+//                 document.getElementById(button.getAttribute('id') + 'Img').src = '../assets/icons/' + button.getAttribute('id') + '.svg';
+//             }
+//           });
+//             selectedButton.classList.add(activePrioClass);
+//             document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + 'Selected.svg';
+//         } else {
+//             selectedButton.classList.remove(activePrioClass);
+//             document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + '.svg';
+//         }
+//     });
+// }
 
 async function deleteDataBoard(uid) {
   try {
@@ -370,7 +366,6 @@ async function deleteDataBoard(uid) {
 
     closePopupCard();
     updateBoard();
-
   } catch (error) {
     console.error("Fehler beim Löschen der Task:", error);
     alert("Es gab ein Problem beim Löschen der Task.");
@@ -391,7 +386,7 @@ function editTask(uid) {
   const title = document.getElementById("inputEditTitle").value;
   const description = document.getElementById("inputEditDescription").value;
   const date = document.getElementById("inputEditDate").value;
-  // const asigned = document.getElementById("inputEditPhone").value;
+  // const asigned = document.getElementById("inputEditPhone").value;  <-- das muss ich doch nicht mehr machen, oder?
   // const prio = document.getElementById("inputEditPhone").value;
   // const subtask = document.getElementById("inputEditPhone").value;
 
@@ -407,14 +402,13 @@ function editTask(uid) {
   let selectedContacts = document.querySelectorAll(
     '#contactListEdit .contactEdit input[type="checkbox"]:checked'
   );
-  if(selectedContacts.length > 0){
+  if (selectedContacts.length > 0) {
     contactNames = [];
     for (let i = 0; i < selectedContacts.length; i++) {
       let name = selectedContacts[i].value;
       contactNames.push(name);
     }
   }
-  
 
   const updatedTask = {
     ...originalTask,
@@ -430,8 +424,8 @@ function editTask(uid) {
   openPopupCard(originalIndex);
 }
 
-function renderContactSelection(index){
-  let contactListEdit = '';
+function renderContactSelection(index) {
+  let contactListEdit = "";
   for (i = 0; i < allContacts.length; i++) {
     const firstLetter = allContacts[i]["name"][0];
     const spaceIndex = allContacts[i]["name"].indexOf(" ");
@@ -440,13 +434,14 @@ function renderContactSelection(index){
     let checkedContact = "";
 
     if (
-      allBoardContent[index].asigned && allBoardContent[index].asigned.find(
+      allBoardContent[index].asigned &&
+      allBoardContent[index].asigned.find(
         (name) => name === allContacts[i]["name"]
       )
     ) {
       checkedContact = "checked";
     }
-    
+
     contactListEdit += `
                 <div class='contactEdit flex' onclick='editTaskContact(event)'>
                     <div class='flex'>
@@ -459,7 +454,9 @@ function renderContactSelection(index){
                           ${allContacts[i].name}
                         </span>
                     </div>
-                    <input type="checkbox" ${checkedContact} value="${allContacts[i].name}">
+                    <input type="checkbox" ${checkedContact} value="${
+      allContacts[i].name
+    }">
                 </div>
         `;
   }
@@ -515,8 +512,8 @@ function generateAssignedHTML(assignedContacts) {
 
   if (Array.isArray(assignedContacts)) {
     assignedContacts.forEach((person) => {
-      const initials = getInitials(person) || ""; 
-      const color = contactColors[person] || ""; 
+      const initials = getInitials(person) || "";
+      const color = contactColors[person] || "";
       assignedHTML += `
         <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
           ${initials}
@@ -527,7 +524,7 @@ function generateAssignedHTML(assignedContacts) {
   return assignedHTML;
 }
 
-function editTaskContact(event){
+function editTaskContact(event) {
   if (event.target.type !== "checkbox") {
     let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
     checkbox.checked = !checkbox.checked;
@@ -535,14 +532,15 @@ function editTaskContact(event){
   }
 }
 
-
 function renderSubtasks(subtasks) {
-
   if (Array.isArray(subtasks) && subtasks.length > 0) {
-
-    return subtasks.map((subtask) => `
+    return subtasks
+      .map(
+        (subtask) => `
       <li>${subtask.description}</li>
-    `).join("");
+    `
+      )
+      .join("");
   }
   return "";
 }
@@ -585,27 +583,23 @@ function getSubtaskDisplay(subtasks) {
   `;
 }
 
-
-
-
 //Für die Suche verwendete Variablen
-let titlesDOM = document.getElementsByClassName('bc2');
-let descriptionsDOM = document.getElementsByClassName('bc3');
-let searchBar = document.getElementsByClassName('searchBar')[0];
-let boardCardDOM = document.getElementsByClassName('boardCard');
+let titlesDOM = document.getElementsByClassName("bc2");
+let descriptionsDOM = document.getElementsByClassName("bc3");
+let searchBar = document.getElementsByClassName("searchBar")[0];
+let boardCardDOM = document.getElementsByClassName("boardCard");
 
 //Suchfunktion
-searchBar.addEventListener('keyup', ()=>{
-  updateBoard().then(
-    ()=>{
-      let searchQuery = searchBar.value.toLowerCase();
-      for(i=0; i<titlesDOM.length;i++){
-        let title = titlesDOM[i].innerHTML.toLowerCase();
-        let description = descriptionsDOM[i].innerHTML.toLowerCase();
-        if(!(title.includes(searchQuery) || description.includes(searchQuery))){
-          boardCardDOM[i].style.display = 'none';
-        }
+searchBar.addEventListener("keyup", () => {
+  updateBoard().then(() => {
+    let searchQuery = searchBar.value.toLowerCase();
+    for (i = 0; i < titlesDOM.length; i++) {
+      let title = titlesDOM[i].innerHTML.toLowerCase();
+      let description = descriptionsDOM[i].innerHTML.toLowerCase();
+      if (!(title.includes(searchQuery) || description.includes(searchQuery))) {
+        boardCardDOM[i].style.display = "none";
       }
     }
-  )
-})
+  });
+});
+

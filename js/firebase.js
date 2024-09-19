@@ -69,7 +69,7 @@ async function loadDataBoards(path = "") {
         ...localBoardContent[key]
     }));
 
-    renderBoardList();
+    // renderBoardList();
 }
 
 // post task's for board

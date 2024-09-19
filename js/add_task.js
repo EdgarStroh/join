@@ -71,7 +71,6 @@ let subtasks = []; // Subtasks werden als Objekte gespeichert
 let subtasksList = document.getElementById("subTasksList");
 let addSubtaskButton = document.getElementById("addSubtaskButton");
 
-
 function renderSubtaskList() {
   subtasksList.innerHTML = "";
   for (let i = 0; i < subtasks.length; i++) {
@@ -94,8 +93,6 @@ function renderSubtaskList() {
       </li>`;
   }
 }
-
-
 
 function showActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "flex";
