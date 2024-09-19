@@ -247,7 +247,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
         <img onclick="addSubtaskEdit(${index})" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
       </div>
       <ul id="subTasksListEdit"> 
-        ${renderSubtasks(allBoardContent[index].subtasks)}
+        ${renderSubtasks(index)}
       </ul>
       <button class="button margin-left" onclick="editTask('${
         allBoardContent[index].Uid
@@ -271,26 +271,7 @@ function addSubtaskEdit(index) {
 
 function renderSubtaskListEdit(index) {
   let subtasksListEdit = document.getElementById("subTasksListEdit");
-  subtasksListEdit.innerHTML = "";
-  for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
-    subtasksListEdit.innerHTML += `
-      <li class="subtask" data-index="${i}">
-        <input type="text" class="subtask-edit-input" value="${allBoardContent[index].subtasks[i].description}" style="display: none;">
-        <span class="subtask-text">${allBoardContent[index].subtasks[i].description}</span>
-        <div class="subtask-actions">
-          <div class="icon-wrapper">
-            <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtaskEdit(${index}, ${i})" class="action-icon edit-icon">
-          </div>
-          <div class="icon-wrapper">
-            <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtaskEdit(${index}, ${i})" class="action-icon delete-icon">
-          </div>
-          <div class="separator"></div> <!-- Separator zwischen den Icons -->
-          <div class="icon-wrapper">
-            <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtaskEdit(${index}, ${i})" class="action-icon save-icon" style="display: none;">
-          </div>
-        </div>
-      </li>`;
-  }
+  subtasksListEdit.innerHTML = renderSubtasks(index);
 }
 
 function editSubtaskEdit(taskIndex, subtaskIndex) {
@@ -636,17 +617,29 @@ function editTaskContact(event) {
   }
 }
 
-function renderSubtasks(subtasks) {
-  if (Array.isArray(subtasks) && subtasks.length > 0) {
-    return subtasks
-      .map(
-        (subtask) => `
-      <li>${subtask.description}</li>
-    `
-      )
-      .join("");
+function renderSubtasks(index) {
+  let returnList = "";
+
+  for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
+    returnList += `
+      <li class="subtask" data-index="${i}">
+        <input type="text" class="subtask-edit-input" value="${allBoardContent[index].subtasks[i].description}" style="display: none;">
+        <span class="subtask-text">${allBoardContent[index].subtasks[i].description}</span>
+        <div class="subtask-actions">
+          <div class="icon-wrapper">
+            <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtaskEdit(${index}, ${i})" class="action-icon edit-icon">
+          </div>
+          <div class="icon-wrapper">
+            <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtaskEdit(${index}, ${i})" class="action-icon delete-icon">
+          </div>
+          <div class="separator"></div> <!-- Separator zwischen den Icons -->
+          <div class="icon-wrapper">
+            <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtaskEdit(${index}, ${i})" class="action-icon save-icon" style="display: none;">
+          </div>
+        </div>
+      </li>`;
   }
-  return "";
+  return returnList;
 }
 
 async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
