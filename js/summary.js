@@ -1,7 +1,15 @@
-async function updateSummary(){
-   await loadDataBoards();
+async function updateSummary() {
+  await loadDataBoards();
   greetUser();
   updateTaskCounts();
+
+  // Füge den Aufruf hinzu, um das nächste Urgent-Datum zu aktualisieren
+  let nextUrgentDate = getNextUrgentTaskDate();
+  if (nextUrgentDate) {
+    document.getElementById("date").innerText = formatDate(nextUrgentDate);
+  } else {
+    document.getElementById("date").innerText = "No upcoming urgent tasks";
+  }
 }
 
 function greetUser() {
@@ -19,7 +27,8 @@ function greetUser() {
   }
 
   document.querySelector("#greetings span").textContent = greeting;
-  document.querySelector("#greetings h2").textContent = localStorage.getItem("loggedInUser");
+  document.querySelector("#greetings h2").textContent =
+    localStorage.getItem("loggedInUser");
 }
 
 function updateTaskCounts() {
@@ -40,7 +49,7 @@ function updateTaskCounts() {
     } else if (task.status === "done") {
       doneCount++;
     }
-    if (task.prio === "urgent" && task.status != "done") {    
+    if (task.prio === "urgent" && task.status != "done") {
       urgentCount++;
     }
   });
@@ -53,5 +62,30 @@ function updateTaskCounts() {
   document.getElementById("totalTasksCount").innerText = totalTasks;
 }
 
-// was ist mit date?
+function getNextUrgentTaskDate() {
+  let urgentTasks = allBoardContent.filter(
+    (task) => task.prio === "urgent" && task.status !== "done"
+  );
+
+  if (urgentTasks.length === 0) {
+    return null; // Keine "urgent"-Aufgaben gefunden
+  }
+
+  // Konvertieren der Datumszeichenketten in tatsächliche Date-Objekte und das nächste Datum finden
+  let nextUrgentTask = urgentTasks.reduce((earliestTask, currentTask) => {
+    let earliestDate = new Date(earliestTask.date);
+    let currentDate = new Date(currentTask.date);
+
+    return currentDate < earliestDate ? currentTask : earliestTask;
+  });
+
+  return nextUrgentTask.date;
+}
+
+// Helper-Funktion zum Formatieren des Datums im amerikanischen Stil (z. B. "September 22, 2024")
+function formatDate(dateString) {
+  let options = { year: 'numeric', month: 'long', day: 'numeric' };
+  let date = new Date(dateString);
+  return date.toLocaleDateString('en-US', options); // 'en-US' für das amerikanische Format
+}
 
