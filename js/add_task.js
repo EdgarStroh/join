@@ -156,6 +156,14 @@ function deleteSubtask(index) {
   renderSubtaskList(); // Aktualisiere die Liste nach dem Löschen
 }
 
+// Event listener für Enter-Taste im Subtask-Feld
+subtask.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Verhindert das Standardverhalten des Formulars (z.B. Absenden)
+    addSubtask(); // Funktion aufrufen, wenn Enter gedrückt wird
+  }
+});
+
 function addSubtask() {
   if(subtask.value != ""){
     subtasks.push({
@@ -166,6 +174,8 @@ function addSubtask() {
     subtask.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
   }
 }
+
+
 
 // Firebase Basis-URL für das Board
 const BASE_URL_Board =
