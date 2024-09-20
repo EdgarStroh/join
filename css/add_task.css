@@ -154,7 +154,7 @@ input[type="date"]:focus {
     align-items: center;
     border: 1px solid #ccc; /* Rahmenfarbe */
     border-radius: 10px; /* Abgerundete Ecken */
-    padding: 5px 10px; /* Innenabstand */
+    padding: 0 10px; /* Innenabstand */
     width: 100%; /* Vollbreite */
     box-sizing: border-box; /* Padding und Border einbeziehen */
     background-color: white;

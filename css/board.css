@@ -221,7 +221,6 @@
     scrollbar-width: none;
 }
 
-
 .popup-modal-card-edit{
     /* width: fit-content; */
     overflow: auto;
@@ -239,14 +238,17 @@
     /* Versteckt standardmäßig */
     /* opacity: 1; */
 }
+
 .popup-modal-card-edit input,
 .popup-modal-card-edit textarea {
     width: 100%;
     font-weight: 300;
 }
+
 .popup-modal-card-edit.show{
     display: block;
 }
+
 .popup-modal-card-edit.hide{
     opacity: 0;
 }
@@ -337,7 +339,6 @@
     color: white;
     font-size: 14px;
     margin-left: -12px;
-
 }
 
 .contactsAndPrio {
@@ -403,6 +404,7 @@
     align-items: center;
     gap: 20px;
 }
+
 .subtaskCardPopUpContent:hover {
     background-color: #EEEEEE;
     border-radius: 8px;
@@ -441,29 +443,30 @@ input[type="checkbox"]:checked {
     height: 14px;
     width: 14px;
 }
+
 .deleteEditPopUp div {
     display: flex;
     cursor: pointer;
     gap: 8px;
     align-items: center;
-  }
+}
   
-  .deleteEditPopUp img {
+.deleteEditPopUp img {
     width: 21px;
     height: 21px;
     /* transition: transform 0.3s ease, filter 0.3s ease; Weiche Übergänge für Hover-Effekte */
-  }
+}
  
-  .delete:hover img,
-  .edit:hover img
-   {
+.delete:hover img,
+.edit:hover img
+{
     filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(3361%) hue-rotate(190deg) brightness(100%) contrast(103%);
-  }
-  
-  .delete:hover,
-  .edit:hover{
+}
+
+.delete:hover,
+.edit:hover{
     color: #007CEE; /* Ändert die Textfarbe beim Hover */
-  }
+}
 
 .close {
     /* position: fixed;
@@ -473,6 +476,7 @@ input[type="checkbox"]:checked {
     height: 15px;
     width: 15px;
 }
+
 .closeContainer{
     height: 20px;
     width: 20px;
@@ -480,19 +484,70 @@ input[type="checkbox"]:checked {
     justify-content: center;
     align-items: center;
 }
+
 .closeContainer:hover {
     background-color: #EEEEEE;
     border-radius: 50%;
 }
-#subTasksList {
-    display: block;
+
+
+#subtask {
+    flex-grow: 1; /* Eingabefeld nimmt den verfügbaren Platz ein */
+    border: none; /* Entfernt den Standardrahmen */
+    outline: none; /* Entfernt den Standardfokus */
+    font-size: 16px; /* Schriftgröße */
+    border-radius: 10px 0 0 10px; /* Abgerundete Ecken nur links */
+    padding: 0;
 }
 
-#subTasksList li {
+#subtask::placeholder {
+    color: #ccc; /* Platzhalterfarbe */
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#addSubTaskEdit {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    border-radius: 10px; /* Abgerundete Ecken */
+    padding: 0 10px; /* Innenabstand */
+    width: 100%; /* Vollbreite */
+    box-sizing: border-box; /* Padding und Border einbeziehen */
+    background-color: white;
+}
+
+#addSubTaskEdit img {
+    margin-left: 10px; /* Abstand zum Eingabefeld */
+    cursor: pointer;
+}
+
+#addSubTaskEdit img:hover {
+    background-color: #eeeeee;
+    border-radius: 50%;
+}
+
+#addSubTaskEdit input {
+    border: none;
+    padding: 0;
+}
+
+
+
+#subTasksList,
+#subTasksListEdit {
+    display: block;
+    list-style-type: disc;
+    margin: 0;
+    width: 100%;
+}
+
+#subTasksList li,
+#subTasksListEdit li {
     justify-content: space-between;
 }
 
-.closeContainerEdit{
+.closeContainerEdit {
     height: 20px;
     width: 20px;
     display: flex;
@@ -500,20 +555,15 @@ input[type="checkbox"]:checked {
     align-items: center;
     margin-left: auto;
 }
+
 .closeContainerEdit:hover {
     background-color: #EEEEEE;
     border-radius: 50%;
 }
-.margin-left{
+
+.margin-left {
     margin-left: auto;
 } 
-#subTasksList {
-    display: block;
-}
-
-#subTasksList li {
-    justify-content: space-between;
-}
 
 #contactSelectionEdit {
     background: url(../assets/icons/dropdownIcon.svg) no-repeat right 10px center;
@@ -564,13 +614,6 @@ input[type="checkbox"]:checked {
     padding-left: 11px;
 }
 
-/* Subtasks-Liste */
-#subTasksList {
-    list-style-type: disc;
-    padding-left: 20px; /* Gleiche Einrückung wie andere Elemente */
-    margin: 0;
-}
-
 .contactEdit {
     cursor: pointer;
     justify-content: space-between;
@@ -603,7 +646,7 @@ input[type="checkbox"]:checked {
     -webkit-line-clamp: 2;
 }
 
-/* Container für die Progressbar */
+/* Progressbar */
 .progress-bar-container {
     width: 55%;
     background-color: #F4F4F4;
@@ -612,14 +655,12 @@ input[type="checkbox"]:checked {
     height: 8px; 
 }
 
-/* Fortschrittsanzeige */
 .progress-bar {
     height: 100%; 
     background-color: #4589FF;
     width: 0%; 
     transition: width 0.3s ease; 
 }
-
 
 .progressSubTask {
     justify-content: space-between;
