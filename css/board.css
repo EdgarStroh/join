@@ -160,6 +160,19 @@
     background-color: rgba(0, 0, 0, 0.2);
 } */
 
+.emptyColumnMessage {
+  text-align: center;
+  color: #A8A8A8;
+  background-color: #E7E7E7;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px dashed #A8A8A8;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
 .todo {
     background-color: white;
     border: 1px solid black;

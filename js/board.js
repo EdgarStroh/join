@@ -51,23 +51,52 @@ function renderBoardList() {
   let progressContainer = document.getElementById("inProgress");
   let awaitContainer = document.getElementById("awaitFeedback");
   let doneContainer = document.getElementById("done");
+
+  // Leere die Container
   toDoContainer.innerHTML = "";
   progressContainer.innerHTML = "";
   awaitContainer.innerHTML = "";
   doneContainer.innerHTML = "";
 
+  // Variablen zur Überprüfung, ob die Spalten leer sind
+  let isToDoEmpty = true;
+  let isProgressEmpty = true;
+  let isAwaitEmpty = true;
+  let isDoneEmpty = true;
+
+  // Durchlaufe alle Aufgaben und fülle die entsprechenden Spalten
   for (let index = 0; index < allBoardContent.length; index++) {
-    if (allBoardContent[index].status == "toDo") {
+    let task = allBoardContent[index];
+    if (task.status === "toDo") {
       toDoContainer.innerHTML += generateBoardContent(index);
-    } else if (allBoardContent[index].status == "in progress") {
+      isToDoEmpty = false;
+    } else if (task.status === "in progress") {
       progressContainer.innerHTML += generateBoardContent(index);
-    } else if (allBoardContent[index].status == "await") {
+      isProgressEmpty = false;
+    } else if (task.status === "await") {
       awaitContainer.innerHTML += generateBoardContent(index);
-    } else {
+      isAwaitEmpty = false;
+    } else if (task.status === "done") {
       doneContainer.innerHTML += generateBoardContent(index);
+      isDoneEmpty = false;
     }
   }
+
+  // Zeige Nachrichten für leere Spalten an
+  if (isToDoEmpty) {
+    toDoContainer.innerHTML = `<div class="emptyColumnMessage">No tasks in To-Do</div>`;
+  }
+  if (isProgressEmpty) {
+    progressContainer.innerHTML = `<div class="emptyColumnMessage">No tasks in Progress</div>`;
+  }
+  if (isAwaitEmpty) {
+    awaitContainer.innerHTML = `<div class="emptyColumnMessage">No tasks awaiting feedback</div>`;
+  }
+  if (isDoneEmpty) {
+    doneContainer.innerHTML = `<div class="emptyColumnMessage">No tasks completed</div>`;
+  }
 }
+
 
 function openPopup() {
   const popupOverlay = document.getElementById("popupOverlay");
