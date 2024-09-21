@@ -152,6 +152,11 @@ function saveSubtask(index) {
   saveIcon.style.display = "none";
 }
 
+function clearSubtasks(){
+  subtasks = [];
+  renderSubtaskList();
+}
+
 function deleteSubtask(index) {
   subtasks.splice(index, 1);
   renderSubtaskList(); // Aktualisiere die Liste nach dem Löschen

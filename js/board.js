@@ -662,7 +662,6 @@ function renderSubtasks(index) {
           <div class="icon-wrapper">
             <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtaskEdit(${index}, ${i})" class="action-icon delete-icon">
           </div>
-          <div class="separator"></div> <!-- Separator zwischen den Icons -->
           <div class="icon-wrapper">
             <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtaskEdit(${index}, ${i})" class="action-icon save-icon" style="display: none;">
           </div>
