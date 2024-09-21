@@ -72,6 +72,16 @@ async function loadDataBoards(path = "") {
     // renderBoardList();
 }
 
+function sanitizeAssignedContacts(){
+  allBoardContent.forEach((task) => {
+    if (task.asigned){
+      let newListAssigned = task.asigned.filter((assignee) =>
+        allContacts.find((contact) => contact.name === assignee)
+      );
+      task.asigned = newListAssigned;
+    }});
+}
+
 // post task's for board
 async function postDataBoards(path = "", data = {}) {
     let response = await fetch(BASE_URL_Board + path + ".json", {

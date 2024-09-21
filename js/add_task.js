@@ -73,6 +73,7 @@ let addSubtaskButton = document.getElementById("addSubtaskButton");
 
 function renderSubtaskList() {
   subtasksList.innerHTML = "";
+ 
   for (let i = 0; i < subtasks.length; i++) {
     subtasksList.innerHTML += `
       <li class="subtask" data-index="${i}">
@@ -175,8 +176,6 @@ function addSubtask() {
   }
 }
 
-
-
 // Firebase Basis-URL für das Board
 const BASE_URL_Board =
   "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
@@ -203,9 +202,11 @@ addTaskForm.addEventListener("submit", async (event) => {
   );
 
   let contactNames = [];
-  for (let i = 0; i < selectedContacts.length; i++) {
-    let name = selectedContacts[i].value;
-    contactNames.push(name);
+  if (selectedContacts.length) {
+    for (let i = 0; i < selectedContacts.length; i++) {
+      let name = selectedContacts[i].value;
+      contactNames.push(name);
+    }
   }
 
   // Daten vorbereiten

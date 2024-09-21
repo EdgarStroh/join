@@ -3,6 +3,7 @@ async function updateBoard() {
   await loadDataBoards("");
   await loadDataUsers("");
 
+  sanitizeAssignedContacts();  
   renderBoardList();
 }
 
@@ -65,6 +66,7 @@ function renderBoardList() {
   let isDoneEmpty = true;
 
   // Durchlaufe alle Aufgaben und fülle die entsprechenden Spalten
+   
   for (let index = 0; index < allBoardContent.length; index++) {
     let task = allBoardContent[index];
     if (task.status === "toDo") {
@@ -151,7 +153,7 @@ function htmlTemplatePopUpBoardCard(index) {
           </span>
           ${person}
         </div><br>`;
-      }
+      } 
     });
   }
   let statusImage = "";
@@ -516,13 +518,11 @@ function editTask(uid) {
   let selectedContacts = document.querySelectorAll(
     '#contactListEdit .contactEdit input[type="checkbox"]:checked'
   );
-  if (selectedContacts.length > 0) {
     contactNames = [];
     for (let i = 0; i < selectedContacts.length; i++) {
       let name = selectedContacts[i].value;
       contactNames.push(name);
     }
-  }
 
   const updatedTask = {
     ...originalTask,
@@ -540,6 +540,7 @@ function editTask(uid) {
 
 function renderContactSelection(index) {
   let contactListEdit = "";
+   
   for (i = 0; i < allContacts.length; i++) {
     const firstLetter = allContacts[i]["name"][0];
     const spaceIndex = allContacts[i]["name"].indexOf(" ");
