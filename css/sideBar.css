@@ -3,7 +3,7 @@
 }
 .sideBar {
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     background: #2A3647;
     height:100vh;
     flex-direction:column;

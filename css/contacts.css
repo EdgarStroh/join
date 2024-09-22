@@ -471,6 +471,21 @@ input:focus {
     display: none;
     z-index: 1;
 }
+.forMobileText{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: max-content;
+}
+.vectorUnderline{
+    display: none;
+    background-image: url('../assets/icons/vector_login.svg');
+    width: 100px;
+    height: 4px;
+    margin-right: auto;
+    margin-top: 13px;
+    height: 3px;
+}
 
 @keyframes slideInBottom {
     from {
@@ -491,7 +506,7 @@ input:focus {
     }
 
     .contact_list {
-        width: 369px;
+        width: 380px;
     }
 
     .headline_contacts {
@@ -499,7 +514,24 @@ input:focus {
     }
 
 }
-
+@media screen and (max-width: 1170px) {
+    .vectorUnderline{
+        display: flex;
+    }
+    .headline_contacts_extended svg {
+        display: none;
+    }
+    .forMobileText{
+        flex-direction: column-reverse;
+    }
+    .headline_contacts_extended{
+        flex-direction: column;
+        margin-right: auto;
+    }
+    .forMobileText{
+        gap:0px;
+    }
+}
 @media screen and (max-width: 1150px) {
     .contact_content_extended {
         flex-direction: column;
@@ -513,14 +545,14 @@ input:focus {
         flex-direction: column;
     }
 
-    .headline_contacts_extended svg {
+    /* .headline_contacts_extended svg {
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
         -o-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
 
-    }
+    } */
 
 }
 
@@ -533,21 +565,57 @@ input:focus {
         /* left: 55%;
         position: relative; */
         margin-left: 0;
-        left: 51.5%;
+        left: 53%;
         position: relative;
          width: 345px; 
     }
     .headline_contacts_extended {
         gap:0;
+        margin-right: 300px;
     }
+    
     .contact_list{
         position: absolute;
         height: calc(100svh - 103px);
     }
 }
+@media screen and (max-width: 970px) {
+    
+    .headline_contacts_extended {
+        
+        margin-right: 240px;
+    }
+}
+@media screen and (max-width: 900px) {
+    
+    .headline_contacts_extended {
+        
+        margin-right: 145px;
+    }
+}
 
 @media screen and (max-width: 800px) {
+    .headline_contacts{
+        display: none;
+    }
+    .mobileSideBar{
+        position: fixed;
+        bottom: 0;
+    }
+    .contact_list{
+        width: 100%;
+    }
+    .contact_content{
+        zoom: 90%;
+    }
+    .contacts{
+        height: 90%;
+    }
 
-
-
+}
+@media screen and (max-width: 600px) {
+    .contact_list {
+        position: absolute;
+        height: calc(90% - 103px);
+    }
 }

@@ -43,14 +43,13 @@ function generateExtendedContact(name, email, phone, color, Uid, id) {
         </div>
     </div>
     </div>
-
-    <h4>Contact Information</h4>
-            <div class="contact_details flex flex-column">
-                <p>Email</p>
-                <p>${email}</p>
-                <p>Phone</p>
-                <p>${phone}</p>
-            </div>
+          <h4>Contact Information</h4>
+                <div class="contact_details flex flex-column">
+                      <p>Email</p>
+                      <p>${email}</p>
+                      <p>Phone</p>
+                      <p>${phone}</p>
+                  </div>     
 </div>`;
 }
 
