@@ -90,6 +90,30 @@ function generateErrorLogin() {
     `;
 }
 
+function generateButtonMediumEdit(index) {
+  return `
+      <button onclick="setPriority('urgent', ${index})" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
+      <button onclick="setPriority('medium', ${index})" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
+      <button onclick="setPriority('low', ${index})" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
+    `;
+}
+
+function generateButtonLowEdit(index) {
+  return `
+      <button onclick="setPriority('urgent', ${index})" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
+      <button onclick="setPriority('medium', ${index})" value="medium" id="prioMediumEdit" type="button">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMedium.svg"></button>
+      <button onclick="setPriority('low', ${index})" value="low" id="prioLowEdit" type="button" class="prioLowActive">Low<img id="prioLowImgEdit" src="../assets/icons/prioLowSelected.svg"></button>
+    `;
+}
+
+function generateButtonUrgentEdit(index) {
+  return ` 
+      <button onclick="setPriority('urgent', ${index})" value="urgent" id="prioUrgentEdit" type="button" class="prioUrgentActive">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgentSelected.svg"></button>
+      <button onclick="setPriority('medium', ${index})" value="medium" id="prioMediumEdit" type="button">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMedium.svg"></button>
+      <button onclick="setPriority('low', ${index})" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
+    `;
+}
+
 function generateBoardContent(index) {
    
     // Aufruf der Template-Funktion mit Übergabe der Farbe

@@ -236,6 +236,9 @@ function htmlTemplatePopUpBoardCard(index) {
 function openPopupCardEdit(index) {
   const popupModal = document.getElementById("popupModalCardEdit");
   popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
+
+  setPriority(allBoardContent[index].prio, index);
+
   popupModal.style.display = "block";
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
@@ -261,11 +264,11 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       <input type="date" id="inputEditDate" value="${
         allBoardContent[index].date
       }">
-      <label for="prio"><strong>Priority</strong></label>
-      <section id="prio" class="flex">
-        <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg" src="../assets/icons/prioUrgent.svg"></button>
-        <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
-        <button value="low" id="prioLow" type="button">Low<img id="prioLowImg" src="../assets/icons/prioLow.svg"></button>
+      <label for="prioEdit"><strong>Priority</strong></label>
+      <section id="prioEdit" class="flex">
+        <button onclick="setPriority('urgent', ${index})" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
+        <button onclick="setPriority('medium', ${index})" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
+        <button onclick="setPriority('low', ${index})" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
       </section>
       <label for="contactSelectionEdit">Assigned to</label>
       <div id="contactSelectionEdit" onclick="toggleContactListView(${index})" tabindex="0"> Select contacts to assign</div>
@@ -285,6 +288,21 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       }')">Ok<img src="../assets/icons/create.svg"></button>
     </div>
   `;
+}
+
+// PRIORITY
+function setPriority(priority, index){
+  let priorityContainer = document.getElementById('prioEdit');
+  if (priority === 'urgent'){
+    priorityContainer.innerHTML = generateButtonUrgentEdit(index);
+    allBoardContent[index].prio = 'urgent';
+  } else if (priority === 'low') {
+    priorityContainer.innerHTML = generateButtonLowEdit(index);
+    allBoardContent[index].prio = 'low';
+  } else {
+    priorityContainer.innerHTML = generateButtonMediumEdit(index);
+    allBoardContent[index].prio = 'medium';
+  }
 }
 
 // SUBTASK EDIT
@@ -447,38 +465,6 @@ async function updateTask(uid, data) {
   }
 }
 
-// PROTON SCHEIß
-//prio buttons  <-- das muss hier glaube ich gar nicht sein!!!
-
-// let priority = "";
-
-// let prioButtons = document.querySelectorAll('#prio button');
-
-// for (let i = 0; i < prioButtons.length; i++) {
-//     prioButtons[i].addEventListener('click', (event) => {
-//         const selectedButton = event.currentTarget;
-//         priority = event.currentTarget.value;
-//         const activePrioClass = selectedButton.getAttribute('id') + 'Active';
-//         const activeButtonBool = selectedButton.classList.contains(activePrioClass);
-
-//         if (!activeButtonBool) {
-//           prioButtons.forEach(button => {
-//             const buttonActiveClass = button.getAttribute('id') + 'Active';
-//             if (button.classList.contains(buttonActiveClass)) {
-//                 button.classList.remove(buttonActiveClass);
-//                 console.log("active prio class should be removed");
-//                 document.getElementById(button.getAttribute('id') + 'Img').src = '../assets/icons/' + button.getAttribute('id') + '.svg';
-//             }
-//           });
-//             selectedButton.classList.add(activePrioClass);
-//             document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + 'Selected.svg';
-//         } else {
-//             selectedButton.classList.remove(activePrioClass);
-//             document.getElementById(selectedButton.getAttribute('id') + 'Img').src = '../assets/icons/' + selectedButton.getAttribute('id') + '.svg';
-//         }
-//     });
-// }
-
 async function deleteDataBoard(uid) {
   try {
     await handleDeleteTaskRequest(`${BASE_URL_Board}/${uid}.json`);
@@ -505,9 +491,6 @@ function editTask(uid) {
   const title = document.getElementById("inputEditTitle").value;
   const description = document.getElementById("inputEditDescription").value;
   const date = document.getElementById("inputEditDate").value;
-  // const asigned = document.getElementById("inputEditPhone").value;  <-- das muss ich doch nicht mehr machen, oder?
-  // const prio = document.getElementById("inputEditPhone").value;
-  // const subtask = document.getElementById("inputEditPhone").value;
 
   const originalTask = allBoardContent.find((task) => task.Uid === uid);
   const originalIndex = allBoardContent.findIndex((task) => task.Uid === uid);
