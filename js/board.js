@@ -290,6 +290,9 @@ function htmlTemplatePopUpBoardCardEdit(index) {
 // SUBTASK EDIT
 
 function addSubtaskEdit(index) {
+  if(!allBoardContent[index].subtasks){
+    allBoardContent[index].subtasks = [];
+  }
   if (subtaskEdit.value != "") {
     allBoardContent[index].subtasks.push({
       description: subtaskEdit.value,
@@ -650,8 +653,9 @@ function editTaskContact(event) {
 function renderSubtasks(index) {
   let returnList = "";
 
-  for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
-    returnList += `
+  if (allBoardContent[index].subtasks){
+    for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
+      returnList += `
       <li class="subtask" data-index="${i}">
         <input type="text" class="subtask-edit-input" value="${allBoardContent[index].subtasks[i].description}" style="display: none;">
         <span class="subtask-text">${allBoardContent[index].subtasks[i].description}</span>
@@ -667,6 +671,7 @@ function renderSubtasks(index) {
           </div>
         </div>
       </li>`;
+    }
   }
   return returnList;
 }
