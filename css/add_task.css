@@ -1,48 +1,64 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
+
 .hidden {
-    display:none;
+    display: none;
 }
+
 .text_content {
-    border-radius:10px;
-    width:100%;
-    display:flex;
-    align-items:center;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
     padding: 206px 114px 96px 330px;
     width: 100%;
     height: 100vh;
     flex-direction: column;
     background-color: #F6F7F8;
 }
-.h1Div{
+
+.h1Div {
     display: flex;
     margin-right: auto;
 }
+
 form {
-    margin-right:auto;
+    margin-right: auto;
 }
+
 .formParts {
-    width:100%;
-    gap:75px;
+    width: 100%;
+    gap: 75px;
     padding-top: 50px;
 }
+
 ::placeholder {
-    color:#D1D1D1;
+    color: #D1D1D1;
 }
-label, input, textarea, #prio button, select {
-    font-size:20px;
+
+label,
+input,
+textarea,
+#prio button,
+select {
+    font-size: 20px;
 }
-input, textarea {
+
+input,
+textarea {
     padding-left: 20px;
     border-radius: 10px;
 }
+
 textarea {
     border: 1px solid #D1D1D1;
     padding-top: 20px;
 }
+
 select {
     height: 48px;
     border-radius: 10px;
@@ -50,55 +66,68 @@ select {
     line-height: 24px;
     padding-left: 12px;
 }
-input:focus, textarea:focus, select:focus {
+
+input:focus,
+textarea:focus,
+select:focus {
     outline: none !important;
     border: 1px solid #29ABE2;
 }
+
 .formPart {
-    width:440px;
-    flex-direction:column;
-    gap:8px;
+    width: 440px;
+    flex-direction: column;
+    gap: 8px;
 }
+
 .requiredStar {
     color: #FF8190;
 }
-input{
-    height:48px;
+
+input {
+    height: 48px;
     border: 1px solid #D1D1D1;
     line-height: 24px;
 }
+
 #prio {
     gap: 18px;
 }
+
 #prio button {
     width: 136px;
     height: 56px;
     padding: 16px 10px 16px 10px;
-    border-radius:10px;
-    background:white;
-    border:none;
+    border-radius: 10px;
+    background: white;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor:pointer;
-    gap:8px;
+    cursor: pointer;
+    gap: 8px;
     box-shadow: 0px 0px 4px 0px #0000001A;
 }
+
 #prio button:hover {
     box-shadow: 0px 4px 4px 0px #00000040;
 }
-.prioUrgentActive { 
+
+.prioUrgentActive {
     background: #FF3D00 !important;
-    color:white;
+    color: white;
 }
+
 .prioMediumActive {
-    background:#FFA800 !important;
-    color:white;
+    background: #FFA800 !important;
+    color: white;
 }
+
 .prioLowActive {
     background: #7AE229 !important;
-    color:white;
+    color: white;
 }
+
 #date {
     outline: none !important;
     padding-right: 30px;
@@ -106,11 +135,13 @@ input{
     background-size: 20px 20px;
     background-color: white;
     position: relative;
-    cursor: pointer; /* Zeigt den Zeiger, wenn der Nutzer auf das Feld fährt */
+    cursor: pointer;
+    /* Zeigt den Zeiger, wenn der Nutzer auf das Feld fährt */
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0; /* Versteckt den Standard-Indikator, ohne dessen Funktionalität zu beeinträchtigen */
+    opacity: 0;
+    /* Versteckt den Standard-Indikator, ohne dessen Funktionalität zu beeinträchtigen */
     position: absolute;
     right: 10px;
     top: 50%;
@@ -126,7 +157,8 @@ input[type="date"] {
     -moz-appearance: none;
     appearance: none;
     position: relative;
-    padding-right: 30px; /* Platz für das Icon */
+    padding-right: 30px;
+    /* Platz für das Icon */
     cursor: pointer;
 }
 
@@ -135,16 +167,22 @@ input[type="date"]:focus {
 }
 
 #subtask {
-    flex-grow: 1; /* Eingabefeld nimmt den verfügbaren Platz ein */
-    border: none; /* Entfernt den Standardrahmen */
-    outline: none; /* Entfernt den Standardfokus */
-    font-size: 16px; /* Schriftgröße */
-    border-radius: 10px 0 0 10px; /* Abgerundete Ecken nur links */
+    flex-grow: 1;
+    /* Eingabefeld nimmt den verfügbaren Platz ein */
+    border: none;
+    /* Entfernt den Standardrahmen */
+    outline: none;
+    /* Entfernt den Standardfokus */
+    font-size: 16px;
+    /* Schriftgröße */
+    border-radius: 10px 0 0 10px;
+    /* Abgerundete Ecken nur links */
     padding: 0;
 }
 
 #subtask::placeholder {
-    color: #ccc; /* Platzhalterfarbe */
+    color: #ccc;
+    /* Platzhalterfarbe */
     font-size: 20px;
     font-weight: 400;
 }
@@ -152,16 +190,22 @@ input[type="date"]:focus {
 #addSubTask {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc; /* Rahmenfarbe */
-    border-radius: 10px; /* Abgerundete Ecken */
-    padding: 0 10px; /* Innenabstand */
-    width: 100%; /* Vollbreite */
-    box-sizing: border-box; /* Padding und Border einbeziehen */
+    border: 1px solid #ccc;
+    /* Rahmenfarbe */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+    padding: 0 10px;
+    /* Innenabstand */
+    width: 100%;
+    /* Vollbreite */
+    box-sizing: border-box;
+    /* Padding und Border einbeziehen */
     background-color: white;
 }
 
 #addSubTask img {
-    margin-left: 10px; /* Abstand zum Eingabefeld */
+    margin-left: 10px;
+    /* Abstand zum Eingabefeld */
     cursor: pointer;
 }
 
@@ -189,10 +233,12 @@ input[type="date"]:focus {
     cursor: pointer;
     height: 45px;
 }
+
 .button:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
+
 .clearBtn {
     background: white;
     color: #2A3647;
@@ -200,39 +246,48 @@ input[type="date"]:focus {
     font-weight: 400;
     display: flex;
     align-items: center;
-    gap: 8px; 
+    gap: 8px;
     padding: 8px 16px;
     cursor: pointer;
     transition: color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
 }
+
 .clearBtn img {
-    transition: filter 0.3s ease; 
+    transition: filter 0.3s ease;
 }
+
 .clearBtn:hover {
     border: 1px solid #29ABE2;
-    background-color: white; 
+    background-color: white;
     color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
+
 .clearBtn:hover img {
     filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
+
 .taskFormButtons {
-    padding:75px 0;
-    width:100%;
+    padding: 75px 0;
+    width: 100%;
     justify-content: space-between;
-    align-items:flex-end;
-}
-.taskFormButtons div{
-    gap:16px;
+    align-items: flex-end;
+    gap: 4px;
 }
 
-input, .addSubTask, select, textarea {
-    cursor:pointer;
+.taskFormButtons div {
+    gap: 16px;
+}
+
+input,
+.addSubTask,
+select,
+textarea {
+    cursor: pointer;
 }
 
 #seperationLine {
-    border:1px solid #D1D1D1;
+    border: 1px solid #D1D1D1;
 }
 
 #contactSelection {
@@ -246,51 +301,57 @@ input, .addSubTask, select, textarea {
     cursor: pointer;
     z-index: 1;
 }
+
 #contactSelection:focus {
     outline: none !important;
     border: 1px solid #29ABE2 !important;
 }
+
 /* der Focus funktioniert hier noch nicht!!!! */
 
 #contactList {
-    height:200px;
-    overflow:auto;
-    flex-direction:column;
-    gap:5px;
+    height: 200px;
+    overflow: auto;
+    flex-direction: column;
+    gap: 5px;
     padding-top: 10px;
     margin-top: -10px;
     background-color: white;
 }
 
 .circle {
-    width:42px;
-    height:42px;
-    border-radius:45px;
-    justify-content:center;
-    align-items:center;
-    color:white;
+    width: 42px;
+    height: 42px;
+    border-radius: 45px;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
+
 .contact {
-    padding-right:15px;
-    padding-left:15px;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-radius:10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
 }
+
 .contact:hover {
-    background:#D1D1D1;
-    cursor:pointer;
+    background: #D1D1D1;
+    cursor: pointer;
 }
+
 .contact div {
-    justify-content:center;
-    align-items:center;
-    gap:10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
+
 .selectedContact {
-    background:#2A3647;
-    color:white;
+    background: #2A3647;
+    color: white;
 }
 
 #subTasksList {
@@ -302,7 +363,7 @@ input, .addSubTask, select, textarea {
 .subtask {
     display: flex;
     align-items: center;
-    padding: 8px; 
+    padding: 8px;
     border-radius: 10px;
     position: relative;
 }
@@ -312,7 +373,7 @@ input, .addSubTask, select, textarea {
 }
 
 .subtask.editing {
-    background-color: white; 
+    background-color: white;
 }
 
 .subtask-edit-input {
@@ -321,10 +382,11 @@ input, .addSubTask, select, textarea {
     font-size: 16px;
     border: none !important;
     outline: none;
-    background: white; 
-    border-radius: 0; 
-    height: auto; 
-    appearance: none; 
+    background: white;
+    border-radius: 0;
+    height: auto;
+    appearance: none;
+
     &:focus {
         outline: none !important;
         box-shadow: none !important;
@@ -332,7 +394,7 @@ input, .addSubTask, select, textarea {
 }
 
 .subtask span {
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .subtask-actions {
@@ -347,12 +409,12 @@ input, .addSubTask, select, textarea {
     justify-content: center;
     align-items: center;
     padding: 5px;
-    border-radius: 50%; 
-    transition: background-color 0.2s ease; 
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
 }
 
 .icon-wrapper:hover {
-    background-color: #eeeeee; 
+    background-color: #eeeeee;
 }
 
 .action-icon {
@@ -360,17 +422,6 @@ input, .addSubTask, select, textarea {
     height: 20px;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*Responsive*/
 
@@ -422,22 +473,44 @@ input, .addSubTask, select, textarea {
         padding-top: 50px;
         flex-flow: column;
     }
-    #seperationLine{
+
+    #seperationLine {
         display: none;
     }
+
     form {
         margin: 0;
     }
-    .h1Div{
+
+    .h1Div {
         place-content: center;
     }
 }
+
 @media screen and (max-width: 1050px) {
-    .text_content{
+    .text_content {
         padding: 150px 0 55px 20px;
         /* height: 0px; */
     }
-    .text_content{
-        height:auto;
+
+    .text_content {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .clearBtn{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .text_content {
+        zoom:80%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .text_content {
+        zoom:65%;
     }
 }
