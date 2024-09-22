@@ -619,3 +619,12 @@ input:focus {
         height: calc(90% - 103px);
     }
 }
+@media screen and (max-width: 350px) {
+    .single_contact {
+        /* padding: 15px 5px; */
+        width: 320px;
+    }
+    .contact_content {
+        zoom: 87%;
+    }
+}
