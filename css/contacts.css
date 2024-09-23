@@ -616,7 +616,7 @@ input:focus {
 @media screen and (max-width: 600px) {
     .contact_list {
         position: absolute;
-        height: calc(90% - 103px);
+        height: calc(87% - 103px);
     }
 }
 @media screen and (max-width: 350px) {
