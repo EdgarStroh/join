@@ -527,19 +527,23 @@ function editTask(uid) {
 
 function renderContactSelection(index) {
   let contactListEdit = "";
-   
-  for (i = 0; i < allContacts.length; i++) {
-    const firstLetter = allContacts[i]["name"][0];
-    const spaceIndex = allContacts[i]["name"].indexOf(" ");
-    const firstLetterAfterSpace = allContacts[i]["name"][spaceIndex + 1];
+
+  const sortedContacts = [...allContacts].sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
+
+  for (let i = 0; i < sortedContacts.length; i++) {
+    const firstLetter = sortedContacts[i]["name"][0];
+    const spaceIndex = sortedContacts[i]["name"].indexOf(" ");
+    const firstLetterAfterSpace = sortedContacts[i]["name"][spaceIndex + 1] || "";
 
     let checkedContact = "";
 
     if (
       allBoardContent[index].asigned &&
-      allBoardContent[index].asigned.find(
-        (name) => name === allContacts[i]["name"]
-      )
+      allBoardContent[index].asigned.find((name) => name === sortedContacts[i]["name"])
     ) {
       checkedContact = "checked";
     }
@@ -547,50 +551,40 @@ function renderContactSelection(index) {
     contactListEdit += `
                 <div class='contactEdit flex' onclick='editTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circleEdit flex' style='background:${
-                          allContacts[i]["color"]
-                        }'>
+                        <span class='circleEdit flex' style='background:${sortedContacts[i]["color"]}'>
                           ${firstLetter + firstLetterAfterSpace}
                         </span>
                         <span>
-                          ${allContacts[i].name}
+                          ${sortedContacts[i].name}
                         </span>
                     </div>
-                    <input type="checkbox" ${checkedContact} value="${
-      allContacts[i].name
-    }">
+                    <input type="checkbox" ${checkedContact} value="${sortedContacts[i].name}">
                 </div>
         `;
   }
   return contactListEdit;
 }
 
+
 function toggleContactListView(index) {
   const existingDropdown = document.getElementById("contactListEdit");
 
   if (existingDropdown) {
-    // Entferne das Dropdown, wenn es bereits existiert
     existingDropdown.remove();
   } else {
-    // Erstelle und füge das Dropdown dynamisch ein
     createDropdown(index);
   }
 }
 
 function createDropdown(index) {
-  // Erstelle das Dropdown-Menü
+
   const contactList = document.createElement("div");
   contactList.id = "contactListEdit";
   contactList.classList.add("flex");
+  contactList.innerHTML = renderContactSelection(index); 
 
-  // Füge den HTML-Inhalt der Kontakte hinzu
-  contactList.innerHTML = renderContactSelection(index); // Erzeugt den HTML-Code der Kontakte
-
-  // Füge das Dropdown unterhalb des 'contactSelectionEdit' ein
   const container = document.getElementById("contactSelectionEdit");
-  container.parentElement.insertBefore(contactList, container.nextSibling); // Füge es als Geschwisterelement hinzu
-
-  // Füge eventListener hinzu, um das Dropdown zu schließen, wenn irgendwo anders geklickt wird
+  container.parentElement.insertBefore(contactList, container.nextSibling); 
   document.addEventListener("click", closeDropdownOnClickOutside);
 }
 
@@ -598,7 +592,6 @@ function closeDropdownOnClickOutside(event) {
   const dropdown = document.getElementById("contactListEdit");
   const contactSelection = document.getElementById("contactSelectionEdit");
 
-  // Überprüfe, ob der Klick außerhalb des Dropdowns und des Kontakt-Selektionsbereichs war
   if (
     dropdown &&
     !dropdown.contains(event.target) &&
