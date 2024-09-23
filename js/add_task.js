@@ -18,17 +18,17 @@ let contactList = document.getElementById("contactList");
 async function renderContactList() {
   const contacts = await loadDataContacts();
 
-  // Kontakte alphabetisch sortieren
   contacts.sort((a, b) => {
     if (a.name < b.name) return -1;
     if (a.name > b.name) return 1;
     return 0;
   });
 
+  contactList.innerHTML = ""; 
   for (let i = 0; i < contacts.length; i++) {
     const firstLetter = contacts[i]["name"][0];
     const spaceIndex = contacts[i]["name"].indexOf(" ");
-    const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1];
+    const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1] || "";
     contactList.innerHTML += `
             <div class='contact flex' onclick='addTaskContact(event)'>
                 <div class='flex'>
@@ -45,10 +45,32 @@ async function renderContactList() {
   }
 }
 
+// Initiales Rendern der Kontaktliste
 renderContactList();
 
 function toggleContactListView() {
   contactList.classList.toggle("hidden");
+
+  if (!contactList.classList.contains("hidden")) {
+    document.addEventListener("click", closeDropdownOnClickOutside); 
+  } else {
+    document.removeEventListener("click", closeDropdownOnClickOutside); 
+  }
+}
+
+// Dropdown schließen, wenn außerhalb geklickt wird
+function closeDropdownOnClickOutside(event) {
+  const dropdown = document.getElementById("contactList");
+  const contactSelection = document.getElementById("contactSelection");
+
+  if (
+    dropdown &&
+    !dropdown.contains(event.target) &&
+    !contactSelection.contains(event.target)
+  ) {
+    dropdown.classList.add("hidden");
+    document.removeEventListener("click", closeDropdownOnClickOutside); 
+  }
 }
 
 // Ermöglicht das Klicken auf das gesamte Kontakt-Element
@@ -67,13 +89,13 @@ let date = document.getElementById("date");
 let description = document.getElementById("description");
 let category = document.getElementById("category");
 let subtask = document.getElementById("subtask");
-let subtasks = []; // Subtasks werden als Objekte gespeichert
+let subtasks = []; 
 let subtasksList = document.getElementById("subTasksList");
 let addSubtaskButton = document.getElementById("addSubtaskButton");
 
 function renderSubtaskList() {
   subtasksList.innerHTML = "";
- 
+
   for (let i = 0; i < subtasks.length; i++) {
     subtasksList.innerHTML += `
       <li class="subtask" data-index="${i}">
@@ -95,14 +117,6 @@ function renderSubtaskList() {
   }
 }
 
-function showActions(index) {
-  document.getElementById(`subtask-actions-${index}`).style.display = "flex";
-}
-
-function hideActions(index) {
-  document.getElementById(`subtask-actions-${index}`).style.display = "none";
-}
-
 function editSubtask(index) {
   const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
   const subtaskText = subtaskItem.querySelector(".subtask-text");
@@ -110,21 +124,14 @@ function editSubtask(index) {
   const editIcon = subtaskItem.querySelector(".edit-icon");
   const saveIcon = subtaskItem.querySelector(".save-icon");
 
-  // Füge die Klasse hinzu, um den Hover-Effekt zu deaktivieren
   subtaskItem.classList.add("editing");
-
-  // Verstecke den Text und zeige das Eingabefeld
   subtaskText.style.display = "none";
   subtaskInput.style.display = "block";
-
-  // Setze das Eingabefeld in den bearbeitbaren Zustand
   subtaskInput.focus();
 
-  // Setze den Cursor an das Ende des Textes
   const length = subtaskInput.value.length;
   subtaskInput.setSelectionRange(length, length);
 
-  // Zeige das Speichern-Symbol, verstecke das Bearbeiten-Symbol
   editIcon.style.display = "none";
   saveIcon.style.display = "block";
 }
@@ -136,48 +143,42 @@ function saveSubtask(index) {
   const editIcon = subtaskItem.querySelector(".edit-icon");
   const saveIcon = subtaskItem.querySelector(".save-icon");
 
-  // Aktualisiere den Subtask-Text
   subtasks[index].description = subtaskInput.value;
-
-  // Aktualisiere die Anzeige
   subtaskText.textContent = subtaskInput.value;
   subtaskText.style.display = "block";
   subtaskInput.style.display = "none";
 
-  // Entferne die Klasse, um den Hover-Effekt wieder zu aktivieren
   subtaskItem.classList.remove("editing");
-
-  // Zeige das Bearbeiten-Symbol, verstecke das Speichern-Symbol
   editIcon.style.display = "block";
   saveIcon.style.display = "none";
 }
 
-function clearSubtasks(){
+function clearSubtasks() {
   subtasks = [];
   renderSubtaskList();
 }
 
 function deleteSubtask(index) {
   subtasks.splice(index, 1);
-  renderSubtaskList(); // Aktualisiere die Liste nach dem Löschen
+  renderSubtaskList();
 }
 
 // Event listener für Enter-Taste im Subtask-Feld
-subtask.addEventListener("keydown", function(event) {
+subtask.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    event.preventDefault(); // Verhindert das Standardverhalten des Formulars (z.B. Absenden)
-    addSubtask(); // Funktion aufrufen, wenn Enter gedrückt wird
+    event.preventDefault();
+    addSubtask();
   }
 });
 
 function addSubtask() {
-  if(subtask.value != ""){
+  if (subtask.value != "") {
     subtasks.push({
       description: subtask.value,
-      completed: false, // Standardmäßig auf false setzen
+      completed: false,
     });
     renderSubtaskList();
-    subtask.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
+    subtask.value = "";
   }
 }
 
@@ -214,7 +215,6 @@ addTaskForm.addEventListener("submit", async (event) => {
     }
   }
 
-  // Daten vorbereiten
   let data = {
     asigned: contactNames,
     category: category.value,
@@ -222,15 +222,12 @@ addTaskForm.addEventListener("submit", async (event) => {
     description: description.value,
     prio: priority,
     status: "toDo",
-    subtasks: subtasks, // Subtasks enthalten jetzt `description` und `completed`
+    subtasks: subtasks,
     title: title.value,
   };
 
   try {
-    // Posten der Daten
     await postDataBoards("", data);
-
-    // Nach erfolgreichem Posten zur board.html weiterleiten
     window.location.href = "board.html";
   } catch (error) {
     console.log("Error posting data to Firebase:", error);
@@ -250,22 +247,22 @@ for (let i = 0; i < prioButtons.length; i++) {
     const activeButtonBool = selectedButton.classList.contains(activePrioClass);
 
     if (!activeButtonBool) {
-      // Entferne die aktive Klasse von allen Buttons
       prioButtons.forEach((button) => {
         const buttonActiveClass = button.getAttribute("id") + "Active";
         if (button.classList.contains(buttonActiveClass)) {
           button.classList.remove(buttonActiveClass);
-          document.getElementById(button.getAttribute("id") + "Img").src = "../assets/icons/" + button.getAttribute("id") + ".svg";
+          document.getElementById(button.getAttribute("id") + "Img").src =
+            "../assets/icons/" + button.getAttribute("id") + ".svg";
         }
       });
 
-      // Füge aktive Klasse zum ausgewählten Button hinzu
       selectedButton.classList.add(activePrioClass);
-      document.getElementById(selectedButton.getAttribute("id") + "Img").src = "../assets/icons/" + selectedButton.getAttribute("id") + "Selected.svg";
+      document.getElementById(selectedButton.getAttribute("id") + "Img").src =
+        "../assets/icons/" + selectedButton.getAttribute("id") + "Selected.svg";
     } else {
-      // Entferne aktive Klasse, wenn derselbe Button erneut geklickt wird
       selectedButton.classList.remove(activePrioClass);
-      document.getElementById(selectedButton.getAttribute("id") + "Img").src = "../assets/icons/" + selectedButton.getAttribute("id") + ".svg";
+      document.getElementById(selectedButton.getAttribute("id") + "Img").src =
+        "../assets/icons/" + selectedButton.getAttribute("id") + ".svg";
     }
   });
 }
