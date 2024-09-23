@@ -112,6 +112,7 @@ function openPopup() {
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
+
 function openPopupCard(index) {
   const popupOverlay = document.getElementById("popupOverlayCard");
   const popupModal = document.getElementById("popupModalCard");

@@ -80,6 +80,22 @@ function renderContactList() {
 
   contactsContainer.innerHTML = html;
 }
+function openPopupMobile(){
+  const popupOverlay = document.getElementById("popupOverlayMobile");
+  const popupModal = document.getElementById("popupModalMobile");
+
+  popupOverlay.style.display = "flex";
+  popupModal.style.display = "block";
+
+  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
+  popupModal.classList.remove("hide");
+  popupModal.classList.add("show");
+
+}
+function closePopupMobile(){
+  document.getElementById("popupOverlayMobile").style.display = "none";
+  document.getElementById("popupModalMobile").style.display = "none";
+}
 
 function showPopupContact() {
   const overlay = document.getElementById("popupOverlay");
