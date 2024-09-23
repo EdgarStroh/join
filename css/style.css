@@ -63,11 +63,12 @@ p {
 }
 
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     left: 0;
     width: 100%;
     color: #CDCDCD !important;
+    z-index: 2;
 }
 /* ===== Scrollbar CSS ===== */
 
