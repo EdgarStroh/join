@@ -10,7 +10,7 @@ function generateLetterSectionHTML(letter) {
 
 function generateContactContent(name, email, id, color, uid) {
     return `
-        <div id="${uid}" onclick="toggleBackground(this); openContact(${id})" class="single_contact flex">
+        <div id="${uid}" onclick="toggleBackground(this); openContact(${id}) " class="single_contact flex">
             <div class="profil_badge flex">
                 <span style="background-color: ${color}">${getInitials(name)}</span> 
             </div>
@@ -31,7 +31,7 @@ function generateExtendedContact(name, email, phone, color, Uid, id) {
         </span>
         <div class="contact_info_extended flex flex-column">
         <h3>${name}</h3>
-        <div class="contact_tools flex">
+        <div class="contact_tools flex" id="contact_tools">
             <div onclick="openEditContact(${id})" class="edit flex">
                 <img src="../assets/icons/edit.svg" alt="Icon edit">
                 <span>Edit</span>

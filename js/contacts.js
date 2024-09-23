@@ -103,3 +103,13 @@ function closePopupSuccess() {
   document.getElementById("popupContactSuccess").style.display = "none";
   loadDataUsers("");
 }
+
+function mobileShowContact(){
+  document.getElementById("contact_list").style.display = "none";
+  // document.getElementById("contact_list").style.width = "1px";
+  document.getElementById("headline_contacts").style.display = "flex";
+  document.getElementById("headline_contacts").style.left = "auto";
+  document.getElementById("headline_contacts").style.width = "100%";
+  document.getElementById("headline_contacts").style.height = "auto";
+  // document.getElementById("contact_tools").style.display = "none"
+}

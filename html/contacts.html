@@ -21,14 +21,14 @@
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
-    <div class="contact_content flex">
-        <div class="contact_list flex flex-column">
+    <div class="contact_content flex" >
+        <div class="contact_list flex flex-column" id="contact_list">
             <button class="add_contact flex" onclick="openPopup()">Add new contact <img
                     src="../assets/icons/add_contact.svg" alt="Icon add contact"></button>
             <div class="contacts" id="contacts">
             </div>
         </div>
-        <div class="headline_contacts flex">
+        <div class="headline_contacts flex" id="headline_contacts">
             <div class="headline_contacts_extended">
                 <h1>Contacts</h1>
                 <div class="forMobileText">
@@ -91,7 +91,7 @@
     </div>
 
     <!-- Button adding people on phone -->
-     <div class="mobileAddButton">
+     <div class="mobileAddButton" id="mobileAddButton" onclick="mobileShowContact()">
         <img src="../assets/icons/add_contact.svg">
      </div>
     <footer>

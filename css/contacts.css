@@ -612,6 +612,7 @@ input:focus {
 @media screen and (max-width: 800px) {
     .headline_contacts{
         display: none;
+       
     }
     .mobileSideBar{
         position: fixed;
@@ -627,8 +628,33 @@ input:focus {
         height: 90%;
     }
     .mobileAddButton{
-
+        display: flow;
     }
+    .contact_details{
+        /* margin-right: 29%; */
+    }
+    h4{
+        /* margin-right: 35%; */
+    }
+    .contact_tools{
+        display: none;
+    }
+    .contact_content_extended {
+        flex-direction: row;
+        zoom: 90%;
+        gap: 10px;
+    }
+    .contact_headline {
+        align-items: baseline;
+        padding-left: 15px;
+    }
+    .headline_contacts_extended{
+        margin-right: auto;
+        padding-left: 15px;
+        
+    }
+    
+
 
 }
 @media screen and (max-width: 600px) {
