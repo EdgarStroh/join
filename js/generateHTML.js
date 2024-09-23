@@ -10,7 +10,7 @@ function generateLetterSectionHTML(letter) {
 
 function generateContactContent(name, email, id, color, uid) {
     return `
-        <div id="${uid}" onclick="toggleBackground(this); openContact(${id}) " class="single_contact flex">
+        <div id="${uid}" onclick="toggleBackground(this); openContact(${id}) ;mobileShowContact()" class="single_contact flex">
             <div class="profil_badge flex">
                 <span style="background-color: ${color}">${getInitials(name)}</span> 
             </div>

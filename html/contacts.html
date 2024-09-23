@@ -16,7 +16,7 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
-<body onload="updateContacts()" class="containerContent">
+<body onload="updateContacts()" class="containerContent" id="containerContentContact">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
@@ -91,9 +91,14 @@
     </div>
 
     <!-- Button adding people on phone -->
-     <div class="mobileAddButton" id="mobileAddButton" onclick="mobileShowContact()">
+     <div class="mobileAddButton" id="mobileAddButton" >
         <img src="../assets/icons/add_contact.svg">
      </div>
+
+     <div class="arrow_left_contact" id="arrow_left_contact" onclick="mobileShowContactReverse()">
+        <img src="../assets/icons/arrow_left.svg">
+     </div>
+
     <footer>
         <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
     </footer>

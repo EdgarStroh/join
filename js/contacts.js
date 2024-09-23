@@ -43,7 +43,7 @@ function renderExtendedContact(id) {
     allContacts[id].phone,
     allContacts[id].color,
     allContacts[id].Uid,
-    id 
+    id
   );
 
   setTimeout(() => {
@@ -87,7 +87,7 @@ function showPopupContact() {
 
   overlay.style.display = "flex";
   success.style.display = "flex";
-  success.style.opacity = "0"; 
+  success.style.opacity = "0";
 
   setTimeout(() => {
     success.style.opacity = "1";
@@ -104,12 +104,23 @@ function closePopupSuccess() {
   loadDataUsers("");
 }
 
-function mobileShowContact(){
-  document.getElementById("contact_list").style.display = "none";
-  // document.getElementById("contact_list").style.width = "1px";
-  document.getElementById("headline_contacts").style.display = "flex";
-  document.getElementById("headline_contacts").style.left = "auto";
-  document.getElementById("headline_contacts").style.width = "100%";
-  document.getElementById("headline_contacts").style.height = "auto";
-  // document.getElementById("contact_tools").style.display = "none"
+function mobileShowContact() {
+  if (window.innerWidth < 800) { // Check if viewport width is less than 800px
+    document.getElementById("contact_list").style.display = "none";
+    document.getElementById("headline_contacts").style.display = "flex";
+    document.getElementById("arrow_left_contact").style.display = "flex";
+    document.getElementById("headline_contacts").style.left = "auto";
+    document.getElementById("headline_contacts").style.width = "100%";
+    document.getElementById("headline_contacts").style.height = "auto";
+  }
+}
+
+function mobileShowContactReverse() {
+  document.getElementById("contact_list").style.display = "flex";
+  document.getElementById("headline_contacts").style.display = "none";
+  document.getElementById("arrow_left_contact").style.display = "none";
+  // document.getElementById("headline_contacts").style.left = "auto";
+  // document.getElementById("headline_contacts").style.width = "100%";
+  // document.getElementById("headline_contacts").style.height = "auto";
+ 
 }
