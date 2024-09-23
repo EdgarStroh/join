@@ -44,6 +44,7 @@ label,
 input,
 textarea,
 #prio button,
+#prioEdit button,
 select {
     font-size: 20px;
 }
@@ -90,11 +91,13 @@ input {
     line-height: 24px;
 }
 
-#prio {
+#prio,
+#prioEdit {
     gap: 18px;
 }
 
-#prio button {
+#prio button,
+#prioEdit button {
     width: 136px;
     height: 56px;
     padding: 16px 10px 16px 10px;
@@ -109,7 +112,8 @@ input {
     box-shadow: 0px 0px 4px 0px #0000001A;
 }
 
-#prio button:hover {
+#prio button:hover,
+#prioEdit button:hover {
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
