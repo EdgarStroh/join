@@ -115,12 +115,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
-    width: 120px;
+    height: 14vw;
+    width: 14vw;
+    max-width: 120px;
+    max-height: 120px;
     color: white;
     border-radius: 50%;
     font-size: 47px;
     text-align: center;
+    overflow: hidden;
+    min-height: 80px;
+    min-width: 80px;
+    /* font-size: 4vw; */
+    
 }
 
 .headline_contacts {
@@ -702,6 +709,9 @@ input:focus {
         position: absolute;
         /* height: calc(81% - 7%); */
         /* min-height: fit-content; */
+    }
+    .profil_badge_extended{
+        font-size: 40px;
     }
 
 }
