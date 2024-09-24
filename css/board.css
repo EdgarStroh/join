@@ -238,6 +238,8 @@
     /* Versteckt standardmäßig */
     opacity: 0;
     scrollbar-width: none;
+    min-width: 400px;
+    min-height: 600px;
 }
 
 .popup-modal-card-edit{

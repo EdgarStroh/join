@@ -113,7 +113,8 @@
         top: 28px;
     }
     #headerSubMenu a {
-        padding: 4px 0px 11px 20px;
+        padding: 4px 0px 11px 12px;
+        text-align: left;
     }
 
 }    

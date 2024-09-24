@@ -145,13 +145,19 @@ function closePopupSuccess() {
 }
 
 function mobileShowContact() {
-  if (window.innerWidth < 800) { // Check if viewport width is less than 800px
+  if (window.innerWidth < 800) {
     document.getElementById("contact_list").style.display = "none";
     document.getElementById("headline_contacts").style.display = "flex";
     document.getElementById("arrow_left_contact").style.display = "flex";
     document.getElementById("headline_contacts").style.left = "auto";
     document.getElementById("headline_contacts").style.width = "100%";
     document.getElementById("headline_contacts").style.height = "auto";
+
+    // Bild wechseln
+    const imgElement = document.getElementById("MobileToggle");
+    if (imgElement) {
+      imgElement.src = "../assets/icons/dots.svg"; // Neuer Bildpfad
+    }
   }
 }
 
@@ -162,5 +168,27 @@ function mobileShowContactReverse() {
   // document.getElementById("headline_contacts").style.left = "auto";
   // document.getElementById("headline_contacts").style.width = "100%";
   // document.getElementById("headline_contacts").style.height = "auto";
- 
+ // Bild wechseln
+ const imgElement = document.getElementById("MobileToggle");
+ if (imgElement) {
+   imgElement.src = "../assets/icons/add_contact.svg"; // Neuer Bildpfad
+ }
 }
+
+function toggleMenuMobile() {
+  let menu = document.getElementById("mobileSubMenu");
+  if (menu) {
+    menu.classList.toggle("hidden");
+  }
+}
+
+window.addEventListener("load", () => {
+  let mobileMenuIcon = document.getElementById("mobileMenuIcon");
+
+  if (mobileMenuIcon) {
+    // Call the correct function toggleMenuMobile, not toggleMenu
+    mobileMenuIcon.addEventListener("click", toggleMenuMobile);
+  } else {
+    console.error("Das Menü-Icon wurde nicht gefunden.");
+  }
+});

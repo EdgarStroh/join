@@ -95,19 +95,19 @@
         <div>
             <img class="profileImgMobile" src="../assets/img/profileImg.svg">
         </div>
-      
-            <form class="fromMobilePop">
-                <div class="input_loginMobile flex flex-column">
-                    <input class="nameMobile" type="text" id="inputNameMobile" placeholder="Name" required>
-                    <input class="emailMobile" type="email" id="inputEmailMobile" placeholder="Email" required>
-                    <input class="phoneMobile" type="tel" id="inputPhoneMobile" placeholder="Phone" required>
-                </div>
-                <div class="button-lineMobile flex">
-                    <button class="button-DB" onclick="addContactMobile()">Create contact <img
-                            src="../assets/icons/create.svg" alt="Icon create"></button>
-                </div>
-            </form>
-        
+
+        <form class="fromMobilePop" onsubmit="addContactMobile()">
+            <div class="input_loginMobile flex flex-column">
+                <input class="nameMobile" type="text" id="inputNameMobile" placeholder="Name" required>
+                <input class="emailMobile" type="email" id="inputEmailMobile" placeholder="Email" required>
+                <input class="phoneMobile" type="tel" id="inputPhoneMobile" placeholder="Phone" required>
+            </div>
+            <div class="button-lineMobile flex">
+                <button class="button-DB">Create contact <img src="../assets/icons/create.svg"
+                        alt="Icon create"></button>
+            </div>
+        </form>
+
     </div>
 
     <!-- Pop up Edit contact -->
@@ -120,8 +120,18 @@
 
     <!-- Button adding people on phone -->
     <div class="mobileAddButton" id="mobileAddButton" onclick="openPopupMobile()">
-        <img src="../assets/icons/add_contact.svg">
+        <img id="MobileToggle" src="../assets/icons/add_contact.svg">
     </div>
+    <!-- Toggle Button for Sub Menu -->
+    <div class="mobileEditDelete" onclick="toggleMenuMobile()">
+        <img id="mobileMenuIcon" src="../assets/icons/dots.svg" alt="Menu Icon">
+        <div id="mobileSubMenu" class="hidden">
+            <a href="#"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
+            <a href="#"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
+        </div>
+    </div>
+    <!-- Sub Menu -->
+    
 
     <div class="arrow_left_contact" id="arrow_left_contact" onclick="mobileShowContactReverse()">
         <img src="../assets/icons/arrow_left.svg">
