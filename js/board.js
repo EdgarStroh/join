@@ -13,6 +13,7 @@ function allowDrop(ev) {
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
+  ev.target.classList.add("dragging");
 }
 
 function handleDrop(ev, status) {
@@ -25,11 +26,22 @@ function handleDrop(ev, status) {
   }
 
   ev.target.appendChild(draggedElement);
+  draggedElement.classList.remove("dragging"); // Entfernt die Klasse nach dem Drop
+
   let index = parseInt(data.split("-")[1]);
   let currentTask = allBoardContent[index];
   currentTask.status = status;
   updateTask(currentTask.Uid, currentTask);
 }
+
+// Entferne die `dragging` Klasse nach dem Drag-Vorgang
+document.addEventListener("dragend", function (ev) {
+  ev.target.classList.remove("dragging");
+});
+
+
+
+
 
 function dropDone(ev) {
   handleDrop(ev, "done");
