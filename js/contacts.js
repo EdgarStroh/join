@@ -86,7 +86,7 @@ function openPopupMobile(){
 
   popupOverlay.style.display = "flex";
   popupModal.style.display = "block";
-  popupModal.style.opacity = "1";
+  // popupModal.style.opacity = "1";
   // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
