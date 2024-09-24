@@ -139,6 +139,12 @@
     justify-content: center;
 }
 
+.dragging {
+    transform: rotate(5deg);
+    transition: transform 0.2s ease;
+}
+
+
 .boardContent {
     display: flex;
     justify-content: space-between;
