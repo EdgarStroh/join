@@ -31,6 +31,30 @@ function resetContactForm() {
   document.getElementById("inputPhone").value = "";
 }
 
+function addContactMobile() {
+  let contactData = getContactFormDataMobile();
+  postDataContacts("", contactData);
+  resetContactForm();
+  closePopup();
+  showPopupContact();
+  updateContacts();
+}
+
+function getContactFormDataMobile() {
+  return {
+    name: document.getElementById("inputNameMobile").value,
+    email: document.getElementById("inputEmailMobile").value,
+    phone: document.getElementById("inputPhoneMobile").value,
+    color: getRandomColor(),
+  };
+}
+
+function resetContactFormMobile() {
+  document.getElementById("inputNameMobile").value = "";
+  document.getElementById("inputEmailMobile").value = "";
+  document.getElementById("inputPhoneMobile").value = "";
+}
+
 function renderExtendedContact(id) {
   let extendedContact = document.getElementById("extended_contact");
 
