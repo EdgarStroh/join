@@ -470,24 +470,28 @@ input[type="checkbox"]:checked {
     .sideBar{
         display: none;
     } */
-
     .formParts {
         width: 100%;
-        gap: 75px;
+        gap: 40px;
         padding-top: 50px;
         flex-flow: column;
     }
-
     #seperationLine {
         display: none;
     }
-
     form {
         margin: 0;
     }
-
     .h1Div {
         place-content: center;
+    }
+    .taskFormButtons {
+        padding: 20px 0;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-direction: column;
     }
 }
 
@@ -496,7 +500,6 @@ input[type="checkbox"]:checked {
         padding: 150px 0 55px 20px;
         /* height: 0px; */
     }
-
     .text_content {
         height: auto;
     }
@@ -510,11 +513,15 @@ input[type="checkbox"]:checked {
 
 @media screen and (max-width: 480px) {
     .text_content {
-        zoom:80%;
+        zoom: 80%;
     }
 }
 @media screen and (max-width: 400px) {
     .text_content {
-        zoom:65%;
+        zoom: 65%;
+        height: 100%;
+    }
+    .h1Div {
+        padding-top: 50px;
     }
 }
