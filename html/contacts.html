@@ -42,7 +42,7 @@
             <div id="extended_contact" class="extended_contact"></div>
         </div>
     </div>
-</div>
+    </div>
 
     <!-- Pop up Add Contact -->
     <div id="popupOverlay" class="popup-overlay"></div>
@@ -81,6 +81,7 @@
     <!-- Pop up Mobile Add Contact -->
     <div id="popupOverlayMobile" class="popup-overlay-mobile" onclick="closePopupMobile()"></div>
     <div id="popupModalMobile" class="popup-modal-mobile">
+
         <div class="closeMobilePopUp" onclick="closePopupMobile()">
             <img src="../assets/icons/closeWhite.svg">
         </div>
@@ -91,7 +92,22 @@
             <img class="underline" src="../assets/icons/vector_login.svg">
         </div>
 
-
+        <div>
+            <img class="profileImgMobile" src="../assets/img/profileImg.svg">
+        </div>
+      
+            <form class="fromMobilePop">
+                <div class="input_loginMobile flex flex-column">
+                    <input class="nameMobile" type="text" id="inputName" placeholder="Name" required>
+                    <input class="emailMobile" type="email" id="inputEmail" placeholder="Email" required>
+                    <input class="phoneMobile" type="tel" id="inputPhone" placeholder="Phone" required>
+                </div>
+                <div class="button-lineMobile flex">
+                    <button class="button-DB" onclick="addContact()">Create contact <img
+                            src="../assets/icons/create.svg" alt="Icon create"></button>
+                </div>
+            </form>
+        
     </div>
 
     <!-- Pop up Edit contact -->

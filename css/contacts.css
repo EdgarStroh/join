@@ -1,3 +1,10 @@
+h4{
+    font-weight: 300;
+}
+.headline_contacts_extended h2{
+    font-weight: 400;
+}
+
 .contact_content {
     flex-direction: row;
     background-color: #F6F7F8;
@@ -127,7 +134,7 @@
     min-height: 80px;
     min-width: 80px;
     /* font-size: 4vw; */
-    
+
 }
 
 .headline_contacts {
@@ -247,6 +254,7 @@
     z-index: 1001;
     display: none;
     opacity: 0;
+    background: linear-gradient(90deg, #2A3647 45%, white 40%);
 }
 
 .popup-modal.show,
@@ -287,7 +295,7 @@
 
 /* ENDE POP UP */
 
-.popup-overlay-mobile{
+.popup-overlay-mobile {
     position: fixed;
     top: 0;
     left: 0;
@@ -300,9 +308,10 @@
     align-items: center;
     z-index: 1000;
 }
-.popup-modal-mobile{
-    width: 93%;
-    height: 74%;
+
+.popup-modal-mobile {
+    width: 500px;
+    height: 700px;
     background-color: white;
     padding: 30px 30px;
     border-radius: 30px;
@@ -315,18 +324,31 @@
     display: none;
     /* Versteckt standardmäßig */
     opacity: 1;
-}
-.closeMobilePopUp{
-    float: right;
-    display:flex ;
+    background: linear-gradient(180deg, #2A3647 45%, white 40%);
+    display: flex;
     flex-direction: column;
+
 }
-.popup-bg-mobile{
-    background-color: #2A3647;
+
+.closeMobilePopUp {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.popup-bg-mobile {
+    color: white;
+    zoom: 80%;
+    width: 100%;
+    /* height: 36%; */
+    /* top: 12%; */
+    /* position: relative; */
+    padding-top: 92px;
 }
 
 .popup-bg {
-    background-color: #2A3647;
+    /* background-color: #2A3647; */
     width: 465px;
     height: 600px;
     border-top-left-radius: 30px;
@@ -365,6 +387,17 @@ input:focus {
     gap: 32px;
 }
 
+.input_loginMobile {
+    gap: 6px;
+    /* width: 200px; */
+
+}
+.fromMobilePop{
+    position: absolute;
+    bottom: 7%;
+}
+
+
 .name {
     padding-right: 30px;
     background: url(../assets/icons/person.svg) no-repeat right 21px center;
@@ -382,11 +415,39 @@ input:focus {
     background: url(../assets/icons/call.svg) no-repeat right 21px center;
     background-size: 20px 20px;
 }
+.nameMobile {
+    padding-right: 30px;
+    background: url(../assets/icons/person.svg) no-repeat right 21px center;
+    background-size: 20px 20px;
+}
+
+.emailMobile{
+    padding-right: 30px;
+    background: url(../assets/icons/mail.svg) no-repeat right 21px center;
+    background-size: 20px 20px;
+}
+
+.phoneMobile {
+    padding-right: 30px;
+    background: url(../assets/icons/call.svg) no-repeat right 21px center;
+    background-size: 20px 20px;
+}
 
 .email,
 .phone,
 .name {
     width: 422px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    padding: 12px 21px;
+    font-size: 20px;
+}
+.emailMobile,
+.phoneMobile,
+.nameMobile {
+    /* width: 422px; */
+    /* width: 171%; */
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
@@ -407,6 +468,24 @@ input:focus {
     width: 120px;
     align-self: center;
     margin-bottom: 50px;
+}
+
+.profileImgMobile {
+    height: 120px;
+    width: 120px;
+    /* align-self: center; */
+    /* margin-bottom: 50px; */
+    /* position: absolute; */
+    top: 37%;
+    /* right: 50%; */
+    left: 34%;
+    /* margin-top: 95px; */
+    /* margin-left: 155px; */
+    /* justify-content: center; */
+    display: flex;
+    width: 100%;
+    text-align: -webkit-center;
+    margin-top: 52px;
 }
 
 .button-DB {
@@ -459,6 +538,17 @@ input:focus {
     margin-right: auto;
     padding-top: 50px;
 }
+.button-lineMobile{
+    padding-top: 30px;
+    gap: 24px;
+    place-content: center;
+}
+.fromMobilePop {
+    position: relative;
+    /* bottom: -17%; */
+    top: 7%;
+}
+
 
 .popup-Right-Side-Content {
     display: flex;
@@ -617,6 +707,9 @@ input:focus {
     .contact_content_extended {
         flex-direction: column;
     }
+    .popup-modal{
+      zoom: 80%;
+    }
 
     .contact_headline {
         align-items: center;
@@ -677,6 +770,9 @@ input:focus {
 
         margin-right: 145px;
     }
+    .popup-modal{
+        zoom: 70%;
+      }
 }
 
 @media screen and (max-width: 800px) {
@@ -684,6 +780,7 @@ input:focus {
         display: none;
 
     }
+
     .add_contact {
         display: none;
     }
@@ -730,7 +827,7 @@ input:focus {
     .contact_headline {
         align-items: baseline;
         padding-left: 15px;
-        gap:25px;
+        gap: 25px;
     }
 
     .headline_contacts_extended {
@@ -738,6 +835,7 @@ input:focus {
         padding-left: 15px;
 
     }
+
     .slideIn.show {
         animation: none;
     }
@@ -750,8 +848,15 @@ input:focus {
         /* height: calc(81% - 7%); */
         /* min-height: fit-content; */
     }
-    .profil_badge_extended{
+
+    .profil_badge_extended {
         font-size: 40px;
+    }
+
+}
+@media screen and (max-width: 530px) {
+    .popup-modal-mobile{
+        zoom:75%
     }
 
 }
@@ -760,6 +865,11 @@ input:focus {
     .contacts {
         height: auto;
         margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .popup-modal-mobile{
+        zoom:63%
     }
 }
 
@@ -772,4 +882,5 @@ input:focus {
     .contact_content {
         zoom: 87%;
     }
+    
 }
