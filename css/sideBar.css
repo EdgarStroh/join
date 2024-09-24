@@ -66,7 +66,7 @@
     background:#091931;
 }
 
-@media screen and (max-width: 1050px){
+@media screen and (max-width: 1020px){
     .sideBar{
         display: none;
     }

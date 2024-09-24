@@ -152,12 +152,13 @@ function mobileShowContact() {
     document.getElementById("headline_contacts").style.left = "auto";
     document.getElementById("headline_contacts").style.width = "100%";
     document.getElementById("headline_contacts").style.height = "auto";
-
+    document.getElementById("mobileAddButton").style.display = "none";
+    document.getElementById("mobileEditDelete").style.display = "flow";
     // Bild wechseln
-    const imgElement = document.getElementById("MobileToggle");
-    if (imgElement) {
-      imgElement.src = "../assets/icons/dots.svg"; // Neuer Bildpfad
-    }
+    // const imgElement = document.getElementById("MobileToggle");
+    // if (imgElement) {
+    //   imgElement.src = "../assets/icons/dots.svg"; // Neuer Bildpfad
+    // }
   }
 }
 
@@ -165,14 +166,18 @@ function mobileShowContactReverse() {
   document.getElementById("contact_list").style.display = "flex";
   document.getElementById("headline_contacts").style.display = "none";
   document.getElementById("arrow_left_contact").style.display = "none";
+  document.getElementById("mobileAddButton").style.display = "flow";
+  document.getElementById("mobileEditDelete").style.display = "none";
+  // toggleMenuMobile();
   // document.getElementById("headline_contacts").style.left = "auto";
   // document.getElementById("headline_contacts").style.width = "100%";
   // document.getElementById("headline_contacts").style.height = "auto";
  // Bild wechseln
- const imgElement = document.getElementById("MobileToggle");
- if (imgElement) {
-   imgElement.src = "../assets/icons/add_contact.svg"; // Neuer Bildpfad
- }
+//  const imgElement = document.getElementById("MobileToggle");
+//  if (imgElement) {
+//    imgElement.src = "../assets/icons/add_contact.svg"; // Neuer Bildpfad
+//  }
+
 }
 
 function toggleMenuMobile() {
@@ -182,13 +187,13 @@ function toggleMenuMobile() {
   }
 }
 
-window.addEventListener("load", () => {
-  let mobileMenuIcon = document.getElementById("mobileMenuIcon");
+// window.addEventListener("load", () => {
+//   let mobileMenuIcon = document.getElementById("mobileMenuIcon");
 
-  if (mobileMenuIcon) {
-    // Call the correct function toggleMenuMobile, not toggleMenu
-    mobileMenuIcon.addEventListener("click", toggleMenuMobile);
-  } else {
-    console.error("Das Menü-Icon wurde nicht gefunden.");
-  }
-});
+//   if (mobileMenuIcon) {
+//     // Call the correct function toggleMenuMobile, not toggleMenu
+//     mobileMenuIcon.addEventListener("click", toggleMenuMobile);
+//   } else {
+//     console.error("Das Menü-Icon wurde nicht gefunden.");
+//   }
+// });

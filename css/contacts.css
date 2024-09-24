@@ -652,6 +652,10 @@ input:focus {
     /* display: none; */
 }
 
+.mobileAddButton:hover {
+    background-color: #29ABE2;
+}
+
 .mobileEditDelete {
     cursor: pointer;
     position: absolute;
@@ -664,9 +668,13 @@ input:focus {
     text-align: center;
     border-radius: 50%;
     box-shadow: 0px 4px 4px 0px #00000040;
-    /* display: none; */
+    display: none;
     bottom: 0;
     margin-bottom: 100px;
+}
+
+.mobileEditDelete:hover {
+    background-color: #29ABE2;
 }
 
 /* .hidden {
@@ -683,12 +691,16 @@ input:focus {
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
 }
-#mobileSubMenu a{
+
+#mobileSubMenu a {
     display: flex;
     flex-direction: row;
     gap: 12px;
-    padding: 12px 16px;  
+    padding: 12px 16px;
 }
+/* #mobileSubMenu a:hover {
+    background-color: #29ABE2;
+} */
 
 .arrow_left_contact {
     height: 32px;
@@ -779,7 +791,7 @@ input:focus {
 
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1020px) {
 
     .contact_list {
         margin: 100px 0 0 0px
@@ -853,7 +865,7 @@ input:focus {
     }
 
     .mobileAddButton {
-        /* display: flow; */
+        display: flow;
     }
 
     .contact_details {

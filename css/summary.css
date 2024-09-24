@@ -246,7 +246,7 @@ footer {
 }
 
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1020px) {
     .text_container_summary {
         padding: 130px 0 15px 20px;
         /* zoom: 90%; */

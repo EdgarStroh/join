@@ -495,7 +495,7 @@ input[type="checkbox"]:checked {
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1020px) {
     .text_content {
         padding: 150px 0 55px 20px;
         /* height: 0px; */

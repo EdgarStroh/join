@@ -95,7 +95,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1020px) {
     #kanbanFont {
         display: none;
     }
