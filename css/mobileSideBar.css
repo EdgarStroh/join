@@ -43,5 +43,7 @@
 @media screen and (max-width: 1050px) {
     .mobileSideBar {
         display: flex;
+        position: fixed;
+        bottom: 0;
     }
 }
