@@ -185,12 +185,7 @@ if (menu && !menu.classList.contains("hidden")) {
 
 }
 
-function toggleMenuMobile() {
-  let menu = document.getElementById("mobileSubMenu");
-  if (menu) {
-    menu.classList.toggle("hidden");
-  }
-}
+
 
 // window.addEventListener("load", () => {
 //   let mobileMenuIcon = document.getElementById("mobileMenuIcon");

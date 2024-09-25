@@ -20,7 +20,7 @@ async function handleDeleteRequest(url) {
 
 function clearExtendedContact() {
   const extendedContact = document.getElementById("extended_contact");
-  
+
   if (extendedContact) {
     extendedContact.innerHTML = "";
   }
@@ -33,10 +33,10 @@ function editContact(id) {
 
   const name = document.getElementById("inputEditName").value;
   const email = document.getElementById("inputEditEmail").value;
-  const phone = document.getElementById("inputEditPhone").value; 
+  const phone = document.getElementById("inputEditPhone").value;
 
-  const originalContact = allContacts.find((contact) => contact.Uid === id); 
-  const originalIndex = allContacts.findIndex((contact) => contact.Uid === id); 
+  const originalContact = allContacts.find((contact) => contact.Uid === id);
+  const originalIndex = allContacts.findIndex((contact) => contact.Uid === id);
 
   if (!originalContact) {
     console.error("Kontakt mit ID", id, "nicht gefunden!");
@@ -51,7 +51,7 @@ function editContact(id) {
   };
 
   allContacts[originalIndex] = updatedContact;
-  updateDataContact(id, updatedContact); 
+  updateDataContact(id, updatedContact);
   closeEditContact();
   renderExtendedContact(originalIndex);
 }
@@ -102,4 +102,26 @@ function openEditContact(id) {
 
 function closeEditContact() {
   togglePopup("popupEditOverlay", "popupEditModal", false);
+}
+
+
+document.querySelectorAll('.contact-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const uid = item.getAttribute('data-uid'); // UID aus dem DOM-Attribut
+    const id = item.getAttribute('data-id');   // ID aus dem DOM-Attribut
+    toggleMenuMobile(uid, id);
+  });
+});
+
+function toggleMenuMobile(uid, id) {
+  let menu = document.getElementById("mobileSubMenu");
+  if (menu) {
+    menu.classList.toggle("hidden");
+  }
+
+  // Menü dynamisch aktualisieren
+  menu.innerHTML = `
+      <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
+      <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
+  `;
 }

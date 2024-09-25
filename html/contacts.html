@@ -123,31 +123,28 @@
         <img id="MobileToggle" src="../assets/icons/add_contact.svg">
     </div>
     <!-- Toggle Button for Sub Menu -->
-    <div class="mobileEditDelete" id="mobileEditDelete" onclick="toggleMenuMobile()">
+    <div class="mobileEditDelete" id="mobileEditDelete" onclick="toggleMenuMobile('someUID', 'someID')">
         <img id="mobileMenuIcon" src="../assets/icons/dots.svg" alt="Menu Icon">
-         <!-- Sub Menu -->
-        <div id="mobileSubMenu" class="hidden">
-            <a href="#" onclick="openEditContact()"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
-            <a href="#" onclick="deleteDataContact()"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
-        </div>
-    </div>
-   
-    
-<!-- Arrow left -->
-    <div class="arrow_left_contact" id="arrow_left_contact" onclick="mobileShowContactReverse()">
-        <img src="../assets/icons/arrow_left.svg">
+        <!-- Sub Menu -->
+        <div id="mobileSubMenu" class="hidden"></div>
     </div>
 
-    <footer>
-        <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
-    </footer>
-    <script src="../js/contacts.js"></script>
-    <script src="../js/generateHTML.js"></script>
-    <script src="../js/anica.js"></script>
-    <script src="../js/script.js"></script>
-    <script src="../js/firebase.js"></script>
-    <script src="../js/sideBar.js"></script>
-    <script src="..//js/header.js"></script>
+
+        <!-- Arrow left -->
+        <div class="arrow_left_contact" id="arrow_left_contact" onclick="mobileShowContactReverse()">
+            <img src="../assets/icons/arrow_left.svg">
+        </div>
+
+        <footer>
+            <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
+        </footer>
+        <script src="../js/contacts.js"></script>
+        <script src="../js/generateHTML.js"></script>
+        <script src="../js/anica.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/firebase.js"></script>
+        <script src="../js/sideBar.js"></script>
+        <script src="..//js/header.js"></script>
 </body>
 
 </html>
