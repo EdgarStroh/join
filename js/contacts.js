@@ -177,6 +177,11 @@ function mobileShowContactReverse() {
 //  if (imgElement) {
 //    imgElement.src = "../assets/icons/add_contact.svg"; // Neuer Bildpfad
 //  }
+let menu = document.getElementById("mobileSubMenu");
+if (menu && !menu.classList.contains("hidden")) {
+  menu.classList.add("hidden");
+}
+
 
 }
 

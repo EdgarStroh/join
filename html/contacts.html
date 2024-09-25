@@ -125,14 +125,15 @@
     <!-- Toggle Button for Sub Menu -->
     <div class="mobileEditDelete" id="mobileEditDelete" onclick="toggleMenuMobile()">
         <img id="mobileMenuIcon" src="../assets/icons/dots.svg" alt="Menu Icon">
+         <!-- Sub Menu -->
         <div id="mobileSubMenu" class="hidden">
-            <a href="#"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
-            <a href="#"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
+            <a href="#" onclick="openEditContact()"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
+            <a href="#" onclick="deleteDataContact()"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
         </div>
     </div>
-    <!-- Sub Menu -->
+   
     
-
+<!-- Arrow left -->
     <div class="arrow_left_contact" id="arrow_left_contact" onclick="mobileShowContactReverse()">
         <img src="../assets/icons/arrow_left.svg">
     </div>
