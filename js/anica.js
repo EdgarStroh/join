@@ -129,8 +129,8 @@ function toggleMenuMobile(uid, id) {
 
     // Submenü-Inhalt hinzufügen
     menuHidden.innerHTML = `
-      <a href="#" onclick="openEditContact('${id}'); return false;"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
-      <a href="#" onclick="deleteDataContact('${uid}'); return false;"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
+      <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
+      <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
     `;
     
     // Submenü zum Container hinzufügen
