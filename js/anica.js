@@ -1,7 +1,7 @@
 async function deleteDataContact(uid) {
   try {
     await handleDeleteRequest(`${BASE_URL_Contact}/${uid}.json`);
-
+    
     clearExtendedContact();
     updateContacts();
 
@@ -113,7 +113,10 @@ function closeEditContact() {
 //   });
 // });
 
-function toggleMenuMobile(uid, id) {
+function toggleMenuMobile(id, uid) {
+  console.log("ID:", id); // Überprüfung der UID
+  console.log("UID:", uid);   // Überprüfung der ID
+
   let menuHidden = document.getElementById("mobileSubMenu");
   let menuContainer = document.getElementById("renderEditDelete");
 
@@ -123,6 +126,7 @@ function toggleMenuMobile(uid, id) {
     menuHidden.classList.toggle("hidden");
   } else {
     // Submenü erstellen
+
     menuHidden = document.createElement("div");
     menuHidden.id = "mobileSubMenu";
     menuHidden.className = "hidden"; // Hier kannst du die Klassen hinzufügen
@@ -135,7 +139,10 @@ function toggleMenuMobile(uid, id) {
     
     // Submenü zum Container hinzufügen
     menuContainer.appendChild(menuHidden);
+   
+
     // Sichtbarkeit des Submenüs jetzt einstellen
     menuHidden.classList.remove("hidden");
+    
   }
 }

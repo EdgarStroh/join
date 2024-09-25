@@ -5,6 +5,7 @@ async function updateContacts() {
 
 function openContact(id) {
   renderExtendedContact(id);
+  toggleMenuMobile(id);
 }
 
 function addContact() {
