@@ -20,7 +20,7 @@
     .sign_up_container {
         width: 100%;
         justify-content: center;
-        padding-bottom: 200px;
+        padding-bottom: 98px;
         position: fixed;
     }
 }
@@ -81,7 +81,7 @@
         padding: 32px 0;
     }
     .sign_up_container {
-        padding: 0 0 200px 0;
+        padding-bottom: 98px;
     }
     .sign_up_button {
         gap: 8px;

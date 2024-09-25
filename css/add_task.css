@@ -497,7 +497,7 @@ input[type="checkbox"]:checked {
 
 @media screen and (max-width: 1020px) {
     .text_content {
-        padding: 150px 0 55px 20px;
+        padding: 150px 0 85px 20px;
         /* height: 0px; */
     }
     .text_content {
@@ -514,12 +514,14 @@ input[type="checkbox"]:checked {
 @media screen and (max-width: 480px) {
     .text_content {
         zoom: 80%;
+        padding-bottom: 120px;
     }
 }
 @media screen and (max-width: 400px) {
     .text_content {
         zoom: 65%;
-        height: 100%;
+        /* height: 100%; */
+        /* padding: 150px 0 150px 20px; */
     }
     .h1Div {
         padding-top: 50px;
