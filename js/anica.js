@@ -114,19 +114,22 @@ function closeEditContact() {
 // });
 
 function toggleMenuMobile(id, uid) {
-  console.log("ID:", id); // Überprüfung der UID
-  console.log("UID:", uid);   // Überprüfung der ID
+  console.log("ID:", id); // Überprüfung der ID
+  console.log("UID:", uid); // Überprüfung der UID
 
   let menuHidden = document.getElementById("mobileSubMenu");
   let menuContainer = document.getElementById("renderEditDelete");
 
-  // Überprüfen, ob das Submenü bereits existiert
   if (menuHidden) {
+    // Den Inhalt des Submenüs mit der neuen ID und UID aktualisieren
+    menuHidden.innerHTML = `
+      <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
+      <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
+    `;
     // Sichtbarkeit umschalten
     menuHidden.classList.toggle("hidden");
   } else {
-    // Submenü erstellen
-
+    // Submenü erstellen, falls es noch nicht existiert
     menuHidden = document.createElement("div");
     menuHidden.id = "mobileSubMenu";
     menuHidden.className = "hidden"; // Hier kannst du die Klassen hinzufügen
@@ -136,13 +139,10 @@ function toggleMenuMobile(id, uid) {
       <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
       <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
     `;
-    
+
     // Submenü zum Container hinzufügen
     menuContainer.appendChild(menuHidden);
-   
-
-    // Sichtbarkeit des Submenüs jetzt einstellen
+    // Sichtbarkeit des Submenüs einstellen
     menuHidden.classList.remove("hidden");
-    
   }
 }
