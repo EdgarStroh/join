@@ -677,13 +677,15 @@ input:focus {
     background-color: #29ABE2;
 }
 
-/* .hidden {
+.hidden {
     display: none;
-  } */
+  }
 
 #mobileSubMenu {
     position: absolute;
-    top: -40%;
+    /* height: 200px;
+    width: 200px; */
+    top: -180%;
     right: -15%;
     background-color: white;
     /* height: 40px;

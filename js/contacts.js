@@ -104,7 +104,7 @@ function renderContactList() {
 
   contactsContainer.innerHTML = html;
 }
-function openPopupMobile(){
+function openPopupMobile() {
   const popupOverlay = document.getElementById("popupOverlayMobile");
   const popupModal = document.getElementById("popupModalMobile");
 
@@ -116,7 +116,7 @@ function openPopupMobile(){
   popupModal.classList.add("show");
 
 }
-function closePopupMobile(){
+function closePopupMobile() {
   document.getElementById("popupOverlayMobile").style.display = "none";
   document.getElementById("popupModalMobile").style.display = "none";
 }
@@ -153,12 +153,8 @@ function mobileShowContact() {
     document.getElementById("headline_contacts").style.width = "100%";
     document.getElementById("headline_contacts").style.height = "auto";
     document.getElementById("mobileAddButton").style.display = "none";
-    document.getElementById("mobileEditDelete").style.display = "flow";
-    // Bild wechseln
-    // const imgElement = document.getElementById("MobileToggle");
-    // if (imgElement) {
-    //   imgElement.src = "../assets/icons/dots.svg"; // Neuer Bildpfad
-    // }
+    document.getElementById("renderEditDelete").style.display = "flow";
+
   }
 }
 
@@ -167,22 +163,11 @@ function mobileShowContactReverse() {
   document.getElementById("headline_contacts").style.display = "none";
   document.getElementById("arrow_left_contact").style.display = "none";
   document.getElementById("mobileAddButton").style.display = "flow";
-  document.getElementById("mobileEditDelete").style.display = "none";
-  // toggleMenuMobile();
-  // document.getElementById("headline_contacts").style.left = "auto";
-  // document.getElementById("headline_contacts").style.width = "100%";
-  // document.getElementById("headline_contacts").style.height = "auto";
- // Bild wechseln
-//  const imgElement = document.getElementById("MobileToggle");
-//  if (imgElement) {
-//    imgElement.src = "../assets/icons/add_contact.svg"; // Neuer Bildpfad
-//  }
-let menu = document.getElementById("mobileSubMenu");
-if (menu && !menu.classList.contains("hidden")) {
-  menu.classList.add("hidden");
-}
-
-
+  document.getElementById("renderEditDelete").style.display = "none";
+  let menu = document.getElementById("mobileSubMenu");
+  if (menu && !menu.classList.contains("hidden")) {
+    menu.classList.add("hidden");
+  }
 }
 
 

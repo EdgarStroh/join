@@ -105,23 +105,37 @@ function closeEditContact() {
 }
 
 
-document.querySelectorAll('.contact-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const uid = item.getAttribute('data-uid'); // UID aus dem DOM-Attribut
-    const id = item.getAttribute('data-id');   // ID aus dem DOM-Attribut
-    toggleMenuMobile(uid, id);
-  });
-});
+// document.querySelectorAll('.contact-item').forEach(item => {
+//   item.addEventListener('click', () => {
+//     const uid = item.getAttribute('data-uid'); // UID aus dem DOM-Attribut
+//     const id = item.getAttribute('data-id');   // ID aus dem DOM-Attribut
+//     toggleMenuMobile(uid, id);
+//   });
+// });
 
 function toggleMenuMobile(uid, id) {
-  let menu = document.getElementById("mobileSubMenu");
-  if (menu) {
-    menu.classList.toggle("hidden");
-  }
+  let menuHidden = document.getElementById("mobileSubMenu");
+  let menuContainer = document.getElementById("renderEditDelete");
 
-  // Menü dynamisch aktualisieren
-  menu.innerHTML = `
-      <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
-      <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
-  `;
+  // Überprüfen, ob das Submenü bereits existiert
+  if (menuHidden) {
+    // Sichtbarkeit umschalten
+    menuHidden.classList.toggle("hidden");
+  } else {
+    // Submenü erstellen
+    menuHidden = document.createElement("div");
+    menuHidden.id = "mobileSubMenu";
+    menuHidden.className = "hidden"; // Hier kannst du die Klassen hinzufügen
+
+    // Submenü-Inhalt hinzufügen
+    menuHidden.innerHTML = `
+      <a href="#" onclick="openEditContact('${id}'); return false;"><img src="../assets/icons/edit.svg" alt="Edit Icon">Edit</a>
+      <a href="#" onclick="deleteDataContact('${uid}'); return false;"><img src="../assets/icons/delete.svg" alt="Delete Icon">Delete</a>
+    `;
+    
+    // Submenü zum Container hinzufügen
+    menuContainer.appendChild(menuHidden);
+    // Sichtbarkeit des Submenüs jetzt einstellen
+    menuHidden.classList.remove("hidden");
+  }
 }
