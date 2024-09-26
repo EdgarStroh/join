@@ -12,7 +12,7 @@ function generateContactContent(name, email, id, color, uid) {
     return `
         <div id="${uid}" onclick="toggleBackground(this); openContact(${id}) ;mobileShowContact()" class="single_contact flex">
             <div class="profil_badge flex">
-                <span style="background-color: ${color}">${getInitials(name)}</span> 
+                <span style="background-color: ${color}">${getInitials(name).toUpperCase()}</span> 
             </div>
             <div class="contact_info flex flex-column">
                 <h3>${name}</h3> 
@@ -27,7 +27,7 @@ function generateExtendedContact(name, email, phone, color, Uid, id) {
     <div class="contact_headline flex flex-column">
     <div class="contact_content_extended flex">
         <span class="profil_badge_extended flex" style="background-color:${color}">
-            ${getInitials(name)}
+            ${getInitials(name).toUpperCase()}
         </span>
         <div class="contact_info_extended flex flex-column">
         <h3>${name}</h3>
@@ -149,7 +149,7 @@ function htmlTemplateGenerateBoardContent(index) {
             <span class="contactCard" style="background-color: ${
               contact.color
             }">
-              ${getInitials(contact.name)}
+              ${getInitials(contact.name).toUpperCase()}
             </span>`;
         }
       });

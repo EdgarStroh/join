@@ -10,7 +10,7 @@ async function updateBoard() {
 let draggedFrom = null;
 
 function allowDrop(ev) {
-  ev.preventDefault(); 
+  ev.preventDefault();
 
   const dropArea = ev.target.closest(".drag-area");
 
@@ -26,6 +26,7 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
+  ev.target.classList.add("dragging");
   ev.dataTransfer.setData("text", ev.target.id);
   draggedFrom = ev.target.closest(".drag-area");
 
@@ -41,15 +42,13 @@ function drag(ev) {
       dropTarget.style.display = "block";
     }
   });
-
-  ev.target.classList.add("dragging");
 }
 
 function dragLeave(ev) {
   const dropArea = ev.target.closest(".drag-area");
   const dropTarget = dropArea.querySelector(".drop-target");
   if (dropTarget) {
-    dropTarget.style.display = "none"; 
+    dropTarget.style.display = "none";
   }
 }
 
@@ -64,7 +63,6 @@ function dragEnd(ev) {
 
 document.addEventListener("dragend", dragEnd);
 
-// Funktion, um den Task fallen zu lassen und das Drop-Ziel zu entfernen
 function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
@@ -86,11 +84,6 @@ function handleDrop(ev, status) {
   draggedFrom = null;
 }
 
-// Entferne die `dragging` Klasse nach dem Drag-Vorgang
-document.addEventListener("dragend", function (ev) {
-  ev.target.classList.remove("dragging");
-});
-
 function dropDone(ev) {
   handleDrop(ev, "done");
 }
@@ -107,10 +100,10 @@ function dropToDo(ev) {
   handleDrop(ev, "toDo");
 }
 
-// Funktion, um das Highlighting zu entfernen, wenn der Task die Spalte verlässt
 function removeHighlight(ev) {
-    ev.target.classList.remove("highlight"); // Entferne die Highlight-Klasse
+  ev.target.classList.remove("highlight");
 }
+
 
 function renderBoardList() {
   let toDoContainer = document.getElementById("toDo");
@@ -208,7 +201,7 @@ function htmlTemplatePopUpBoardCard(index) {
   // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach((person) => {
-      const initials = getInitials(person);
+      const initials = getInitials(person).toUpperCase();
       // const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
       const color = contactColors[person];
       if (color) {
@@ -349,9 +342,7 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       <ul id="subTasksListEdit"> 
         ${renderSubtasks(index)}
       </ul>
-      <button class="button margin-left" onclick="editTask('${
-        allBoardContent[index].Uid
-      }')">Ok<img src="../assets/icons/create.svg"></button>
+      <button class="button margin-left" onclick="editTask('${allBoardContent[index].Uid}')">Ok<img src="../assets/icons/create.svg"></button>
     </div>
   `;
 }
@@ -594,21 +585,26 @@ function renderContactSelection(index) {
   let contactListEdit = "";
 
   const sortedContacts = [...allContacts].sort((a, b) => {
-    if (a.name < b.name) return -1;
-    if (a.name > b.name) return 1;
+    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
     return 0;
   });
 
   for (let i = 0; i < sortedContacts.length; i++) {
-    const firstLetter = sortedContacts[i]["name"][0];
-    const spaceIndex = sortedContacts[i]["name"].indexOf(" ");
-    const firstLetterAfterSpace = sortedContacts[i]["name"][spaceIndex + 1] || "";
+    // const firstLetter = sortedContacts[i]["name"][0];
+    // const spaceIndex = sortedContacts[i]["name"].indexOf(" ");
+    // const firstLetterAfterSpace = sortedContacts[i]["name"][spaceIndex + 1] || "";
+    const initials = getInitials(sortedContacts[i]["name"]).toUpperCase();
+    // const spaceIndex = contacts[i]["name"].indexOf(" ");
+    // const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1] || "";
 
     let checkedContact = "";
 
     if (
       allBoardContent[index].asigned &&
-      allBoardContent[index].asigned.find((name) => name === sortedContacts[i]["name"])
+      allBoardContent[index].asigned.find(
+        (name) => name === sortedContacts[i]["name"]
+      )
     ) {
       checkedContact = "checked";
     }
@@ -616,14 +612,18 @@ function renderContactSelection(index) {
     contactListEdit += `
                 <div class='contactEdit flex' onclick='editTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circleEdit flex' style='background:${sortedContacts[i]["color"]}'>
-                          ${firstLetter + firstLetterAfterSpace}
+                        <span class='circleEdit flex' style='background:${
+                          sortedContacts[i]["color"]
+                        }'>
+                          ${initials}
                         </span>
                         <span>
                           ${sortedContacts[i].name}
                         </span>
                     </div>
-                    <input type="checkbox" ${checkedContact} value="${sortedContacts[i].name}">
+                    <input type="checkbox" ${checkedContact} value="${
+      sortedContacts[i].name
+    }">
                 </div>
         `;
   }
@@ -672,7 +672,7 @@ function generateAssignedHTML(assignedContacts) {
 
   if (Array.isArray(assignedContacts)) {
     assignedContacts.forEach((person) => {
-      const initials = getInitials(person) || "";
+      const initials = getInitials(person).toUpperCase() || "";
       const color = contactColors[person] || "";
       assignedHTML += `
         <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
