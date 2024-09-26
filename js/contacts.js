@@ -209,32 +209,48 @@ function clearExtendedContact() {
 }
 
 //    EDIT CONTACT   //
+
 function editContact(id) {
   console.log(`editContact aufgerufen mit ID: ${id}`);
 
+  const updatedContact = getUpdatedContact(id);
+  if (!updatedContact) {
+    console.error(`Kontakt mit ID ${id} nicht gefunden!`);
+    return;
+  }
+
+  updateAllContacts(id, updatedContact);
+  updateDataContact(id, updatedContact);
+  closeEditContact();
+  renderUpdatedContact(id);
+}
+
+function getUpdatedContact(id) {
   const name = document.getElementById("inputEditName").value;
   const email = document.getElementById("inputEditEmail").value;
   const phone = document.getElementById("inputEditPhone").value;
 
   const originalContact = allContacts.find((contact) => contact.Uid === id);
-  const originalIndex = allContacts.findIndex((contact) => contact.Uid === id);
+  if (!originalContact) return null;
 
-  if (!originalContact) {
-    console.error("Kontakt mit ID", id, "nicht gefunden!");
-    return;
-  }
-
-  const updatedContact = {
+  return {
     ...originalContact,
     name: name,
     email: email,
     phone: phone,
   };
+}
 
-  allContacts[originalIndex] = updatedContact;
-  updateDataContact(id, updatedContact);
-  closeEditContact();
-  renderExtendedContact(originalIndex);
+function updateAllContacts(id, updatedContact) {
+  const index = allContacts.findIndex((contact) => contact.Uid === id);
+  if (index !== -1) {
+    allContacts[index] = updatedContact;
+  }
+}
+
+function renderUpdatedContact(id) {
+  const index = allContacts.findIndex((contact) => contact.Uid === id);
+  renderExtendedContact(index);
 }
 
 function renderEditContact(id) {
