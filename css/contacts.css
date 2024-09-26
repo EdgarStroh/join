@@ -679,7 +679,7 @@ input:focus {
 
 .hidden {
     display: none;
-  }
+}
 
 #mobileSubMenu {
     position: absolute;
@@ -701,9 +701,10 @@ input:focus {
     flex-direction: row;
     gap: 12px;
     padding: 12px 16px;
-    color:  #2A3647;
-    
+    color: #2A3647;
+
 }
+
 /* #mobileSubMenu a:hover {
     background-color: #29ABE2;
 } */
@@ -849,6 +850,106 @@ input:focus {
 
     }
 
+    .profileImg {
+        /* height: 180px;
+        width: 180px; */
+    }
+
+    .popup-bg h1 {
+        /* font-size: 61px; */
+    }
+
+    .popup-modal {
+        zoom: 100%;
+    }
+
+    .popup-modal,
+    .popup-edit-modal {
+        width: 500px;
+        height: 700px;
+        padding: 30px 30px;
+        background: linear-gradient(180deg, #2A3647 45%, white 40%);
+        flex-direction: column;
+    }
+
+    .popupLogo {
+        display: none;
+    }
+
+    #popupModal .flex {
+        flex-direction: column;
+
+    }
+
+    .popup-Right-Side-Content {
+        text-align: center;
+        margin-top: 60px;
+        display: block;
+        padding: 0px;
+    }
+
+    .popup-Right-Side {
+        padding: 0;
+        zoom: 80%;
+    }
+
+    .button-white {
+        display: none;
+    }
+    .close_container:hover {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        background-color: #EEEEEE;
+        height: 0px;
+        width: 0px;
+        border-radius: 50%;
+    }
+
+    .close_container {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 20px;
+        width: 20px;
+        /* background-color: #EEEEEE; */
+        margin-right: 25px;
+        margin-top: 25px;
+    }
+
+    .close {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        -webkit-filter: grayscale(1) invert(1);
+        filter: grayscale(1) invert(1);
+    }
+
+    .button-DB {
+        width: fit-content;
+        align-self: center;
+    }
+
+    /* Weitere Anpassungen nach Bedarf */
+    .popup-modal .popup-bg,
+    .popup-edit-modal .popup-bg {
+        /* Beispiel: Neue Hintergrundfarbe */
+        /* background: #2A3647; */
+        margin-top: 45px;
+    }
+
+    /* Anpassung von Inhalten, wenn nötig */
+    .popup-modal h1,
+    .popup-edit-modal h1 {
+
+        /* weitere Anpassungen */
+    }
+
+    .popup-bg {
+        height: 100%;
+        padding: 0px 0px;
+    }
+
     .add_contact {
         display: none;
     }
@@ -927,7 +1028,9 @@ input:focus {
     .popup-modal-mobile {
         zoom: 75%
     }
-
+    .popup-modal{
+        zoom: 75%;
+    }
 }
 
 @media screen and (max-height: 750px) {
@@ -940,6 +1043,9 @@ input:focus {
 @media screen and (max-width: 400px) {
     .popup-modal-mobile {
         zoom: 63%
+    }
+    .popup-modal {
+        zoom: 62%;
     }
 }
 
