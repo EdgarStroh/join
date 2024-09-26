@@ -173,6 +173,11 @@
 /* .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.2);
 } */
+.highlight {
+    border: 1px dashed #A8A8A8; /* Farbe der gestrichelten Umrandung */
+    border-radius: 10px; /* Optional: abgerundete Ecken */
+    background-color: transparent;
+}
 
 .emptyColumnMessage {
     text-align: center;

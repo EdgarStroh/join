@@ -8,14 +8,22 @@ async function updateBoard() {
 }
 
 function allowDrop(ev) {
-  ev.preventDefault();
+  ev.preventDefault(); // Erlaubt das Droppen
+  if (!ev.target.classList.contains("highlight")) {
+    ev.target.classList.add("highlight"); // Füge die Highlight-Klasse hinzu
+  }
 }
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
   ev.target.classList.add("dragging");
 }
+// Entferne das Highlight, wenn das Task-Element den Bereich verlässt
+function dragLeave(ev) {
+    ev.target.classList.remove("highlight");
+}
 
+// Funktion, um den Task fallen zu lassen und das Highlight zu entfernen
 function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
@@ -27,6 +35,7 @@ function handleDrop(ev, status) {
 
   ev.target.appendChild(draggedElement);
   draggedElement.classList.remove("dragging"); // Entfernt die Klasse nach dem Drop
+  ev.target.classList.remove("highlight"); // Entferne das Highlight nach dem Drop
 
   let index = parseInt(data.split("-")[1]);
   let currentTask = allBoardContent[index];
@@ -38,10 +47,6 @@ function handleDrop(ev, status) {
 document.addEventListener("dragend", function (ev) {
   ev.target.classList.remove("dragging");
 });
-
-
-
-
 
 function dropDone(ev) {
   handleDrop(ev, "done");
@@ -57,6 +62,11 @@ function dropInProgress(ev) {
 
 function dropToDo(ev) {
   handleDrop(ev, "toDo");
+}
+
+// Funktion, um das Highlighting zu entfernen, wenn der Task die Spalte verlässt
+function removeHighlight(ev) {
+    ev.target.classList.remove("highlight"); // Entferne die Highlight-Klasse
 }
 
 function renderBoardList() {
