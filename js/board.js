@@ -581,7 +581,7 @@ function editTask(uid) {
   openPopupCard(originalIndex);
 }
 
-function renderContactSelection(index) {
+function renderContactSelectionBoard(index) {
   let contactListEdit = "";
 
   const sortedContacts = [...allContacts].sort((a, b) => {
@@ -646,7 +646,7 @@ function createDropdown(index) {
   const contactList = document.createElement("div");
   contactList.id = "contactListEdit";
   contactList.classList.add("flex");
-  contactList.innerHTML = renderContactSelection(index); 
+  contactList.innerHTML = renderContactSelectionBoard(index); 
 
   const container = document.getElementById("contactSelectionEdit");
   container.parentElement.insertBefore(contactList, container.nextSibling); 
