@@ -7,40 +7,83 @@ async function updateBoard() {
   renderBoardList();
 }
 
+let draggedFrom = null;
+
 function allowDrop(ev) {
-  ev.preventDefault(); // Erlaubt das Droppen
-  if (!ev.target.classList.contains("highlight")) {
-    ev.target.classList.add("highlight"); // Füge die Highlight-Klasse hinzu
+  ev.preventDefault(); 
+
+  const dropArea = ev.target.closest(".drag-area");
+
+  if (dropArea !== draggedFrom) {
+    let dropTarget = dropArea.querySelector(".drop-target");
+    if (!dropTarget) {
+      dropTarget = document.createElement("div");
+      dropTarget.classList.add("drop-target");
+      dropArea.appendChild(dropTarget);
+    }
+    dropTarget.style.display = "block";
   }
 }
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
+  draggedFrom = ev.target.closest(".drag-area");
+
+  const allColumns = document.querySelectorAll(".drag-area");
+  allColumns.forEach((column) => {
+    if (column !== draggedFrom) {
+      let dropTarget = column.querySelector(".drop-target");
+      if (!dropTarget) {
+        dropTarget = document.createElement("div");
+        dropTarget.classList.add("drop-target");
+        column.appendChild(dropTarget);
+      }
+      dropTarget.style.display = "block";
+    }
+  });
+
   ev.target.classList.add("dragging");
 }
-// Entferne das Highlight, wenn das Task-Element den Bereich verlässt
+
 function dragLeave(ev) {
-    ev.target.classList.remove("highlight");
+  const dropArea = ev.target.closest(".drag-area");
+  const dropTarget = dropArea.querySelector(".drop-target");
+  if (dropTarget) {
+    dropTarget.style.display = "none"; 
+  }
 }
 
-// Funktion, um den Task fallen zu lassen und das Highlight zu entfernen
+function dragEnd(ev) {
+  ev.target.classList.remove("dragging");
+
+  const allDropTargets = document.querySelectorAll(".drop-target");
+  allDropTargets.forEach((dropTarget) => dropTarget.remove());
+
+  draggedFrom = null;
+}
+
+document.addEventListener("dragend", dragEnd);
+
+// Funktion, um den Task fallen zu lassen und das Drop-Ziel zu entfernen
 function handleDrop(ev, status) {
   ev.preventDefault();
   let data = ev.dataTransfer.getData("text");
   let draggedElement = document.getElementById(data);
 
-  if (ev.target.contains(draggedElement)) {
-    return;
-  }
+  const dropArea = ev.target.closest(".drag-area");
 
-  ev.target.appendChild(draggedElement);
-  draggedElement.classList.remove("dragging"); // Entfernt die Klasse nach dem Drop
-  ev.target.classList.remove("highlight"); // Entferne das Highlight nach dem Drop
+  const allDropTargets = document.querySelectorAll(".drop-target");
+  allDropTargets.forEach((dropTarget) => dropTarget.remove());
+
+  dropArea.appendChild(draggedElement);
+  draggedElement.classList.remove("dragging");
 
   let index = parseInt(data.split("-")[1]);
   let currentTask = allBoardContent[index];
   currentTask.status = status;
   updateTask(currentTask.Uid, currentTask);
+
+  draggedFrom = null;
 }
 
 // Entferne die `dragging` Klasse nach dem Drag-Vorgang

@@ -174,9 +174,18 @@
     background-color: rgba(0, 0, 0, 0.2);
 } */
 .highlight {
-    border: 1px dashed #A8A8A8; /* Farbe der gestrichelten Umrandung */
-    border-radius: 10px; /* Optional: abgerundete Ecken */
+    border: 1px dashed #A8A8A8; 
+    border-radius: 10px; 
     background-color: transparent;
+}
+.drop-target {
+    border: 1px dashed #A8A8A8; 
+    /* background-color: rgba(41, 171, 226, 0.1);  */
+    height: 220px; 
+    width: 100%; 
+    margin: 10px auto; 
+    border-radius: 10px; 
+    display: none; 
 }
 
 .emptyColumnMessage {
