@@ -155,7 +155,6 @@ function mobileShowContact() {
     document.getElementById("headline_contacts").style.height = "auto";
     document.getElementById("mobileAddButton").style.display = "none";
     document.getElementById("renderEditDelete").style.display = "flow";
-
   }
 }
 
