@@ -21,9 +21,21 @@ function isFormValid() {
 function checkPasswords() {
   const password = document.getElementById("signupPassword").value;
   const confirmPassword = document.getElementById("signupConfirmPassword").value;
+  const passwordError = document.getElementById("passwordError");
 
-  return password === confirmPassword;
+  if (password !== confirmPassword) {
+    passwordError.innerHTML = "Your passwords don't match. Please try again."; 
+    document.getElementById("signupPassword").classList.add("input-error");
+    document.getElementById("signupConfirmPassword").classList.add("input-error");
+    return false;
+  } else {
+    passwordError.innerHTML = ""; 
+    document.getElementById("signupPassword").classList.remove("input-error");
+    document.getElementById("signupConfirmPassword").classList.remove("input-error");
+    return true; 
+  }
 }
+
 
 function areFieldsFilled() {
   return (
@@ -69,9 +81,7 @@ function clearForm() {
 
 function checkPasswordConfirmation() {
   const password = document.getElementById("signupPassword").value;
-  const confirmPassword = document.getElementById(
-    "signupConfirmPassword"
-  ).value;
+  const confirmPassword = document.getElementById("signupConfirmPassword").value;
   const input = document.getElementById("signupConfirmPassword");
 
   input.setCustomValidity(
@@ -101,27 +111,33 @@ function closePopupSuccess() {
 }
 
 function enableSignupButton() {
-  document.getElementById("signUpButton").disabled = !isFormValid();
+  const isChecked = document.getElementById("checkboxLogin1").checked;
+  const passwordsMatch = checkPasswords(); 
+  const fieldsFilled = areFieldsFilled();
+
+  document.getElementById("signUpButton").disabled = !(
+    isChecked &&
+    passwordsMatch &&
+    fieldsFilled
+  );
 }
 
 function addInputEventListeners() {
   document.getElementById("inputName").addEventListener("input", enableSignupButton);
   document.getElementById("inputEmail").addEventListener("input", enableSignupButton);
   document.getElementById("signupPassword").addEventListener("input", () => {
+    checkPasswords(); 
     enableSignupButton();
     toggleIcon("signupPassword", "toggleSignupPasswordIcon");
   });
-  document
-    .getElementById("signupConfirmPassword")
-    .addEventListener("input", () => {
+  document.getElementById("signupConfirmPassword").addEventListener("input", () => {
+      checkPasswords(); 
       enableSignupButton();
-      checkPasswordConfirmation();
       toggleIcon("signupConfirmPassword", "toggleSignupConfirmPasswordIcon");
     });
-  document
-    .getElementById("checkboxLogin1")
-    .addEventListener("change", enableSignupButton);
+  document.getElementById("checkboxLogin1").addEventListener("change", enableSignupButton);
 }
+
 
 function toggleIcon(inputId, iconId) {
   const inputField = document.getElementById(inputId);

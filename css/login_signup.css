@@ -87,6 +87,7 @@ form {
     flex-direction: column;
     align-items: center;
 }
+
 .login_error {
     justify-content: center;
     color: red;
@@ -94,6 +95,7 @@ form {
     margin: -15px;
     height: 20px;
 }
+
 .log_in_container h1 {
     margin-bottom: -20px;
 }
@@ -279,9 +281,16 @@ input[type="checkbox"]:checked {
     display: flex;
     justify-content: center;
 }
+
 .input-error {
-  border: 1px solid #FF001F;
+    border: 1px solid #FF001F !important; /* Red border to indicate an error */
 }
+
+.input-error:focus {
+    border: 1px solid #FF001F !important; /* Red border when focused */
+    outline: none; /* Removes the blue outline */
+}
+
 .margin-width-auto{
     margin: 0 auto;
 }
