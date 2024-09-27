@@ -99,7 +99,6 @@
     #kanbanFont {
         display: none;
     }
-
     .helpHeader {
         display: flow;
     }
@@ -114,7 +113,10 @@
     }
     #headerSubMenu a {
         padding: 4px 0px 11px 12px;
-        text-align: left;
+        text-align: center;
+    }
+    .headerHelp img {
+        display: none !important;
     }
 
 }    

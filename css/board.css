@@ -159,11 +159,11 @@
 }
 
 .drag-area {
-    height: 100vh;
+    height: 100%;
     width: 220px;
     /* background-color: rgba(0, 0, 0, 0.1); */
     /* border: 1px dashed black; */
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     display: flex;
     align-items: flex-start;
     display: flex;
@@ -756,7 +756,7 @@ input[type="checkbox"]:checked {
     }
 
     .drag-area {
-        height: 235px;
+        height: 300px;
         flex-wrap: wrap;
         width: 100vw;
         /* width: 700px; */
