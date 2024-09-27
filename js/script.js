@@ -51,3 +51,12 @@ function openPopup() {
 function closePopup() {
   togglePopup("popupOverlay", "popupModal", false);
 }
+
+ function goBack() {
+   const referrer = document.referrer;
+   if (referrer) {
+     window.location.href = referrer; // Geht zurück zur Seite, von der der Benutzer kam
+   } else {
+     window.location.href = "index.html"; // Falls kein Referrer vorhanden ist
+   }
+ }

@@ -14,16 +14,6 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 <body class="flex container containerContent">
-    <script>
-        function goBack() {
-            const referrer = document.referrer;
-            if (referrer) {
-                window.location.href = referrer; // Geht zurück zur Seite, von der der Benutzer kam
-            } else {
-                window.location.href = 'index.html'; // Falls kein Referrer vorhanden ist
-            }
-        }
-        </script>
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>

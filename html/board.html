@@ -42,7 +42,6 @@
                 </div>
             </div>
         </section>
-
         <div class="boardContent">
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">To do
@@ -53,9 +52,7 @@
                 <div class="drag-area" id="toDo" ondrop="dropToDo(event)" ondragover="allowDrop(event);" ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
-
             <!-- <img id="drag1" src="../assets/icons/contacts.svg" draggable="true" ondragstart="drag(event)" width="336" height="69"> -->
-
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">In progress
                     <button class="plusButton" onclick="openPopup()">
@@ -65,8 +62,6 @@
                 <div class="drag-area" id="inProgress" ondrop="dropInProgress(event)" ondragover="allowDrop(event);" ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
-
-
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Await feedback
                     <button class="plusButton" onclick="openPopup()">
@@ -76,90 +71,82 @@
                 <div class="drag-area" id="awaitFeedback" ondrop="dropAwait(event)" ondragover="allowDrop(event);" ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
-
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Done</div>
                 <div class="drag-area" id="done" ondrop="dropDone(event)" ondragover="allowDrop(event);" ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
-
             <!-- Pop up for add Task Button-->
-           
-                <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
-                <div id="popupModal" class="popup-modal">
-                    <h1>Add Task</h1>
-                    <!-- Start Kopie von Proton -->
-                    <form id="addTaskForm" method="post">
-                        <div class="flex formParts">
-                            <section class="formPart flex">
-                                <label for="title">Title<span class="requiredStar">*</span></label>
-                                <input type="text" id="title" placeholder="Enter a title" required>
-                                <br>
-                                <label for="description">Description</label>
-                                <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
-                                <br>
-                                <label for="contactSelection">Assigned to</label>
-                                <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
-                                    Select contacts to assign
-                                </div>
-                                <div id="contactList" class="hidden flex"></div>
-            
-                            </section>
-                            <hr id="seperationLine">
-                            </hr>
-                            <section class="formPart flex">
-                                <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
-                                <input type="date" id="date">
-                                <br>
-                                <label for="prio">Prio</label>
-                                <section id="prio" class="flex">
-                                    <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg"
-                                            src="../assets/icons/prioUrgent.svg"></button>
-                                    <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img
-                                            id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
-                                    <button value="low" id="prioLow" type="button">Low<img id="prioLowImg"
-                                            src="../assets/icons/prioLow.svg"></button>
-                                </section>
-                                <br>
-                                <label for="category">Category<span class="requiredStar">*</span></label>
-                                <select id="category" required tabindex="0">
-                                    <option value="" disabled selected hidden>Select Task Category</option>
-                                    <option value="Technical Task">Technical Task</option>
-                                    <option value="User Story">User Story</option>
-                                </select>
-                                <br>
-                                <label for="Subtasks">Subtasks</label>
-                                <div id="addSubTask" class="flex">
-                                    <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
-                                    <!--Benötigt für onclick Event!-->
-                                    <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
-                                </div>
-                                <ul id="subTasksList">
-                                </ul>
-                            </section>
-                        </div>
-                        <div class="taskFormButtons flex">
-                            <p><span class="requiredStar">*</span>This field is required</p>
-                            <div class="flex">
-                                <button type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
-                                        alt="Icon clear task"></button>
-                                <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
-                                        alt="Icon create task"></button>
+            <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
+            <div id="popupModal" class="popup-modal">
+                <h1>Add Task</h1>
+                <!-- Start Kopie von Proton -->
+                <form id="addTaskForm" method="post">
+                    <div class="flex formParts">
+                        <section class="formPart flex">
+                            <label for="title">Title<span class="requiredStar">*</span></label>
+                            <input type="text" id="title" placeholder="Enter a title" required>
+                            <br>
+                            <label for="description">Description</label>
+                            <textarea id="description" rows="5" placeholder="Enter a Description"></textarea>
+                            <br>
+                            <label for="contactSelection">Assigned to</label>
+                            <div id="contactSelection" onclick="toggleContactListView()" tabindex="0">
+                                Select contacts to assign
                             </div>
+                            <div id="contactList" class="hidden flex"></div>
+                        </section>
+                        <hr id="seperationLine">
+                        </hr>
+                        <section class="formPart flex">
+                            <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
+                            <input type="date" id="date">
+                            <br>
+                            <label for="prio">Prio</label>
+                            <section id="prio" class="flex">
+                                <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg"
+                                        src="../assets/icons/prioUrgent.svg"></button>
+                                <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img
+                                        id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
+                                <button value="low" id="prioLow" type="button">Low<img id="prioLowImg"
+                                        src="../assets/icons/prioLow.svg"></button>
+                            </section>
+                            <br>
+                            <label for="category">Category<span class="requiredStar">*</span></label>
+                            <select id="category" required tabindex="0">
+                                <option value="" disabled selected hidden>Select Task Category</option>
+                                <option value="Technical Task">Technical Task</option>
+                                <option value="User Story">User Story</option>
+                            </select>
+                            <br>
+                            <label for="Subtasks">Subtasks</label>
+                            <div id="addSubTask" class="flex">
+                                <input id="subtask" class="addSubTask" placeholder="Add new Subtask" type="text">
+                                <!--Benötigt für onclick Event!-->
+                                <img onclick="addSubtask()" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
+                            </div>
+                            <ul id="subTasksList">
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="taskFormButtons flex">
+                        <p><span class="requiredStar">*</span>This field is required</p>
+                        <div class="flex">
+                            <button type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
+                                    alt="Icon clear task"></button>
+                            <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
+                                    alt="Icon create task"></button>
                         </div>
-                    </form>
-                    <!-- Ende Kopie von Proton -->
-                </div>
-                
+                    </div>
+                </form>
+                <!-- Ende Kopie von Proton -->
+            </div>
             <!-- Pop up for boardCards-->
-                <div id="popupOverlayCard" class="popup-overlay" onclick="closePopupCard()"></div>
-                <div id="popupModalCard" class="popup-modal-card"></div>
-
-             <!-- Pop up for boardCardsEdit-->
-                <div id="popupOverlayCardEdit" class="popup-overlay-edit" onclick="closePopupCardEdit()"></div>
-                <div id="popupModalCardEdit" class="popup-modal-card-edit"></div>
- 
-
+            <div id="popupOverlayCard" class="popup-overlay" onclick="closePopupCard()"></div>
+            <div id="popupModalCard" class="popup-modal-card"></div>
+            <!-- Pop up for boardCardsEdit-->
+            <div id="popupOverlayCardEdit" class="popup-overlay-edit" onclick="closePopupCardEdit()"></div>
+            <div id="popupModalCardEdit" class="popup-modal-card-edit"></div>
         </div>
         <footer>
             <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
