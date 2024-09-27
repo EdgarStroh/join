@@ -3,6 +3,7 @@ async function updateBoard() {
   await loadDataBoards("");
   await loadDataUsers("");
 
+  checkLogin();
   sanitizeAssignedContacts();  
   renderBoardList();
 }

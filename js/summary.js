@@ -2,6 +2,7 @@ async function updateSummary() {
   await loadDataBoards();
   greetUser();
   updateTaskCounts();
+  checkLogin();
 
   // Füge den Aufruf hinzu, um das nächste Urgent-Datum zu aktualisieren
   let nextUrgentDate = getNextUrgentTaskDate();

@@ -1,6 +1,7 @@
 async function updateContacts() {
   await loadDataContacts("");
   renderContactList();
+  checkLogin();
 }
 
 function openContact(id) {

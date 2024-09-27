@@ -60,3 +60,9 @@ function closePopup() {
      window.location.href = "index.html"; // Falls kein Referrer vorhanden ist
    }
  }
+
+ function checkLogin() {
+   if (!localStorage.getItem("loggedInUser")) {
+     window.location.href = "index.html";
+   }
+ }
