@@ -105,6 +105,55 @@ function removeHighlight(ev) {
   ev.target.classList.remove("highlight");
 }
 
+// Funktion, die das HTML-Template generiert
+function htmlTemplateGenerateBoardContent(index) {
+  let showContacts = allBoardContent[index].asigned || []; 
+  let contactsHTML = "";
+  let categoryColor = "";
+
+  if (allBoardContent[index].category === "Technical Task") {
+    categoryColor = "#1FD7C1"; 
+  } else {
+    categoryColor = "#0038FF";
+  }
+
+  if (Array.isArray(showContacts)) {
+    showContacts.forEach((contactName) => {
+      allContacts.find((contact) => {
+        if (contact.name === contactName) {
+          contactColors[contactName] = contact.color;
+          contactsHTML += `
+            <span class="contactCard" style="background-color: ${contact.color}">
+              ${getInitials(contact.name).toUpperCase()}
+            </span>`;
+        }
+      });
+    });
+  }
+
+  let statusImage = "";
+  switch (allBoardContent[index].prio) {
+    case "urgent":
+      statusImage =
+        '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
+      break;
+    case "medium":
+      statusImage =
+        '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
+      break;
+    case "low":
+      statusImage =
+        '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
+      break;
+    default:
+      statusImage = "";
+  }
+  return generateBoardCard(index, categoryColor, contactsHTML, statusImage);
+}
+
+function generateBoardContent(index) {
+  return htmlTemplateGenerateBoardContent(index);
+}
 
 function renderBoardList() {
   let toDoContainer = document.getElementById("toDo");
@@ -112,19 +161,15 @@ function renderBoardList() {
   let awaitContainer = document.getElementById("awaitFeedback");
   let doneContainer = document.getElementById("done");
 
-  // Leere die Container
   toDoContainer.innerHTML = "";
   progressContainer.innerHTML = "";
   awaitContainer.innerHTML = "";
   doneContainer.innerHTML = "";
 
-  // Variablen zur Überprüfung, ob die Spalten leer sind
   let isToDoEmpty = true;
   let isProgressEmpty = true;
   let isAwaitEmpty = true;
   let isDoneEmpty = true;
-
-  // Durchlaufe alle Aufgaben und fülle die entsprechenden Spalten
    
   for (let index = 0; index < allBoardContent.length; index++) {
     let task = allBoardContent[index];
@@ -143,7 +188,6 @@ function renderBoardList() {
     }
   }
 
-  // Zeige Nachrichten für leere Spalten an
   if (isToDoEmpty) {
     toDoContainer.innerHTML = `<div class="emptyColumnMessage">No tasks in To-Do</div>`;
   }
@@ -165,11 +209,9 @@ function openPopupAddTask(status = 'toDo') {
 
   resetAddTask(status);
 
-  // Zeige das Overlay und das Popup an
   popupOverlay.style.display = "flex";
   popupModal.style.display = "block";
 
-  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
@@ -180,11 +222,9 @@ function openPopupCard(index) {
 
   popupModal.innerHTML = htmlTemplatePopUpBoardCard(index);
 
-  // Zeige das Overlay und das Popup an
   popupOverlay.style.display = "flex";
   popupModal.style.display = "block";
 
-  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
@@ -192,33 +232,34 @@ function openPopupCard(index) {
 function htmlTemplatePopUpBoardCard(index) {
   let assignedHTML = "";
   let subtasksHTML = "";
-
-  // Bestimme die Textfarbe des span basierend auf der Kategorie
   let categoryColor = "";
+
   if (allBoardContent[index].category === "Technical Task") {
-    categoryColor = "#1FD7C1"; // Farbe für "Technical Task"
+    categoryColor = "#1FD7C1"; 
   } else {
-    categoryColor = "#0038FF"; // Farbe für "User Story"
+    categoryColor = "#0038FF"; 
   }
 
-  // Initialen und Namen der zugewiesenen Personen
   if (Array.isArray(allBoardContent[index].asigned)) {
     allBoardContent[index].asigned.forEach((person) => {
       const initials = getInitials(person).toUpperCase();
-      // const color = contactColors[person] || '#cccccc'; // Standardfarbe, falls keine Farbe gefunden wird
       const color = contactColors[person];
+
       if (color) {
         assignedHTML += `
-        <div style="display: flex; align-items: center;">
-          <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
-            ${initials}
-          </span>
-          ${person}
-        </div><br>`;
+          <div style="display: flex; align-items: center;">
+            <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
+              ${initials}
+            </span>
+            ${person}
+          </div><br>
+        `;
       } 
     });
   }
+
   let statusImage = "";
+
   switch (allBoardContent[index].prio) {
     case "urgent":
       statusImage =
@@ -233,10 +274,9 @@ function htmlTemplatePopUpBoardCard(index) {
         '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
       break;
     default:
-      statusImage = ""; // No image if no status
+      statusImage = ""; 
   }
 
-  // Subtasks
   if (Array.isArray(allBoardContent[index].subtasks)) {
     allBoardContent[index].subtasks.forEach((subtask, subtaskIndex) => {
       subtasksHTML += `
@@ -352,8 +392,6 @@ function htmlTemplatePopUpBoardCardEdit(index) {
   `;
 }
 
-// SUBTASK EDIT
-
 function addSubtaskEdit(index) {
   if(!allBoardContent[index].subtasks){
     allBoardContent[index].subtasks = [];
@@ -361,10 +399,10 @@ function addSubtaskEdit(index) {
   if (subtaskEdit.value != "") {
     allBoardContent[index].subtasks.push({
       description: subtaskEdit.value,
-      completed: false, // Standardmäßig auf false setzen
+      completed: false, 
     });
     renderSubtaskListEdit(index);
-    subtaskEdit.value = ""; // Leert das Eingabefeld nach dem Hinzufügen
+    subtaskEdit.value = ""; 
   }
 }
 
@@ -374,61 +412,45 @@ function renderSubtaskListEdit(index) {
 }
 
 function editSubtaskEdit(taskIndex, subtaskIndex) {
-  const subtaskItem = document.querySelector(
-    `.subtask[data-index='${subtaskIndex}']`
-  );
+  const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
   const subtaskText = subtaskItem.querySelector(".subtask-text");
   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
   const editIcon = subtaskItem.querySelector(".edit-icon");
   const saveIcon = subtaskItem.querySelector(".save-icon");
 
-  // Füge die Klasse hinzu, um den Hover-Effekt zu deaktivieren
   subtaskItem.classList.add("editing");
-
-  // Verstecke den Text und zeige das Eingabefeld
   subtaskText.style.display = "none";
   subtaskInput.style.display = "block";
-
-  // Setze das Eingabefeld in den bearbeitbaren Zustand
   subtaskInput.focus();
 
-  // Setze den Cursor an das Ende des Textes
   const length = subtaskInput.value.length;
   subtaskInput.setSelectionRange(length, length);
 
-  // Zeige das Speichern-Symbol, verstecke das Bearbeiten-Symbol
   editIcon.style.display = "none";
   saveIcon.style.display = "block";
 }
 
 function saveSubtaskEdit(taskIndex, subtaskIndex) {
-  const subtaskItem = document.querySelector(
-    `.subtask[data-index='${subtaskIndex}']`
-  );
+  const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
   const subtaskText = subtaskItem.querySelector(".subtask-text");
   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
   const editIcon = subtaskItem.querySelector(".edit-icon");
   const saveIcon = subtaskItem.querySelector(".save-icon");
 
-  // Aktualisiere den Subtask-Text
   allBoardContent[taskIndex].subtasks[subtaskIndex].description = subtaskInput.value;
 
-  // Aktualisiere die Anzeige
   subtaskText.textContent = subtaskInput.value;
   subtaskText.style.display = "block";
   subtaskInput.style.display = "none";
-
-  // Entferne die Klasse, um den Hover-Effekt wieder zu aktivieren
   subtaskItem.classList.remove("editing");
 
-  // Zeige das Bearbeiten-Symbol, verstecke das Speichern-Symbol
   editIcon.style.display = "block";
   saveIcon.style.display = "none";
 }
 
 function deleteSubtaskEdit(taskIndex, subtaskIndex) {
   allBoardContent[taskIndex].subtasks.splice(subtaskIndex, 1);
-  renderSubtaskListEdit(taskIndex); // Aktualisiere die Liste nach dem Löschen
+  renderSubtaskListEdit(taskIndex); 
 }
 
 function showActions(index) {
@@ -438,8 +460,6 @@ function showActions(index) {
 function hideActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "none";
 }
-
-// ENDE SUBTASK EDIT
 
 function closePopup() {
   const popupOverlay = document.getElementById("popupOverlay");
@@ -457,22 +477,20 @@ function closePopupCard() {
   const popupOverlay = document.getElementById("popupOverlayCard");
   const popupModal = document.getElementById("popupModalCard");
 
-  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
 
-  // Verstecke das Popup nach der Animation (120ms entspricht der Dauer der Animation)
   setTimeout(() => {
     popupModal.style.display = "none";
-    popupOverlay.style.display = "none"; // Overlay auch nach der Animation ausblenden
-  }, 120); // 120ms entspricht der Dauer der Animation
+    popupOverlay.style.display = "none";
+  }, 120); 
   closePopupCardEdit();
 }
 
 function closePopupCardEdit() {
   const popupOverlay = document.getElementById("popupOverlayCardEdit");
   const popupModal = document.getElementById("popupModalCardEdit");
-  // Entferne die `show`-Klasse und füge die `hide`-Klasse hinzu, um die Animation zu starten
+  
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
 
@@ -486,14 +504,13 @@ async function updateTask(uid, data) {
 
     console.log("Task erfolgreich aktualisiert:", await response.json());
 
-    // Lokale Kontakte aktualisieren
     const index = allBoardContent.findIndex((task) => task.Uid === uid);
     if (index !== -1) {
       allBoardContent[index] = { ...allBoardContent[index], ...data };
     }
 
-    // UI aktualisieren
     renderBoardList();
+
   } catch (error) {
     console.error("Fehler beim Aktualisieren der Task:", error);
     alert("Es gab ein Problem beim Aktualisieren der Task.");
@@ -512,7 +529,6 @@ async function deleteDataBoard(uid) {
   }
 }
 
-// noch nicht fertig!!!
 function editTask(uid) {
   console.log(`editTask aufgerufen mit ID: ${uid}`);
 
@@ -564,20 +580,12 @@ function renderContactSelectionBoard(index) {
   });
 
   for (let i = 0; i < sortedContacts.length; i++) {
-    // const firstLetter = sortedContacts[i]["name"][0];
-    // const spaceIndex = sortedContacts[i]["name"].indexOf(" ");
-    // const firstLetterAfterSpace = sortedContacts[i]["name"][spaceIndex + 1] || "";
     const initials = getInitials(sortedContacts[i]["name"]).toUpperCase();
-    // const spaceIndex = contacts[i]["name"].indexOf(" ");
-    // const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1] || "";
-
     let checkedContact = "";
 
     if (
       allBoardContent[index].asigned &&
-      allBoardContent[index].asigned.find(
-        (name) => name === sortedContacts[i]["name"]
-      )
+      allBoardContent[index].asigned.find((name) => name === sortedContacts[i]["name"])
     ) {
       checkedContact = "checked";
     }
@@ -592,9 +600,7 @@ function renderContactSelectionBoard(index) {
                           ${sortedContacts[i].name}
                         </span>
                     </div>
-                    <input type="checkbox" ${checkedContact} value="${
-sortedContacts[i].name
-    }">
+                    <input type="checkbox" ${checkedContact} value="${sortedContacts[i].name}">
                 </div>
         `;
   }
@@ -668,22 +674,7 @@ function renderSubtasks(index) {
 
   if (allBoardContent[index].subtasks){
     for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
-      returnList += `
-      <li class="subtask" data-index="${i}">
-        <input type="text" class="subtask-edit-input" value="${allBoardContent[index].subtasks[i].description}" style="display: none;">
-        <span class="subtask-text">${allBoardContent[index].subtasks[i].description}</span>
-        <div class="subtask-actions">
-          <div class="icon-wrapper">
-            <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtaskEdit(${index}, ${i})" class="action-icon edit-icon">
-          </div>
-          <div class="icon-wrapper">
-            <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtaskEdit(${index}, ${i})" class="action-icon delete-icon">
-          </div>
-          <div class="icon-wrapper">
-            <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtaskEdit(${index}, ${i})" class="action-icon save-icon" style="display: none;">
-          </div>
-        </div>
-      </li>`;
+      returnList += generateSubtasks(i, index);
     }
   }
   return returnList;
@@ -726,6 +717,9 @@ function getSubtaskDisplay(subtasks) {
     <div>${completedSubtasks}/${subtaskCount} Subtasks</div>
   `;
 }
+
+
+// SEARCH FUNCTION
 
 //Für die Suche verwendete Variablen
 let titlesDOM = document.getElementsByClassName("bc2");
