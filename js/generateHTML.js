@@ -135,6 +135,22 @@ function generateSubtaskList(i) {
     `;
 }
 
+function generateContactList(index) {
+  return `
+            <div class='contact flex' onclick='addTaskContact(event)'>
+                <div class='flex'>
+                    <span class='circle flex' style='background:${
+                      allContacts[index]["color"]
+                    }'>
+                        ${getInitials(allContacts[index]["name"]).toUpperCase()}
+                    </span>
+                    <span>${allContacts[index].name}</span>
+                </div>
+                <input type="checkbox" value="${allContacts[index].name}">
+            </div>
+        `;
+}
+
 function generateBoardContent(index) {
    
     // Aufruf der Template-Funktion mit Übergabe der Farbe

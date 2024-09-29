@@ -23,6 +23,15 @@ async function loadDataContacts(path = "") {
     }));
 }
 
+// Kontakte aus Firebase laden
+async function loadDataContacts(path = "") {
+  let response = await fetch(BASE_URL_Contact + path + ".json");
+  let contactsData = await response.json();
+  return (allContacts = Object.keys(contactsData).map(
+    (key) => contactsData[key]
+  ));
+}
+
 // post for contacts
 async function postDataContacts(path = "", data = {}) {
     let response = await fetch(BASE_URL_Contact + path + ".json", {
@@ -72,6 +81,7 @@ async function loadDataBoards(path = "") {
     // renderBoardList();
 }
 
+
 function sanitizeAssignedContacts(){
   allBoardContent.forEach((task) => {
     if (task.asigned){
@@ -83,16 +93,55 @@ function sanitizeAssignedContacts(){
 }
 
 // post task's for board
-async function postDataBoards(path = "", data = {}) {
-    let response = await fetch(BASE_URL_Board + path + ".json", {
-        method: "POST",
-        header: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+// async function postDataBoards(path = "", data = {}) {
+//     let response = await fetch(BASE_URL_Board + path + ".json", {
+//         method: "POST",
+//         header: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data)
 
-    });
-    return responseToJSon = await response.json();
+//     });
+//     return responseToJSon = await response.json();
+// }
+// Daten zu Firebase posten
+async function postDataBoards(path = "", data = {}) {
+  let response = await fetch(BASE_URL_Board + path + ".json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return await response.json();
+}
+
+
+async function updateTaskFirebase(uid, data) {
+  let response = await fetch(`${BASE_URL_Board}/${uid}.json`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Fehler beim Aktualisieren der Task: ${response.statusText}`
+    );
+  }
+  return response;
+}
+
+async function handleDeleteTaskRequest(uid) {
+  let response = await fetch(`${BASE_URL_Board}/${uid}.json`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok)
+    throw new Error("Fehler beim Löschen der Task: " + response.statusText);
 }
 
 // update subtasks

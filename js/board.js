@@ -493,19 +493,7 @@ function closePopupCardEdit() {
 
 async function updateTask(uid, data) {
   try {
-    let response = await fetch(`${BASE_URL_Board}/${uid}.json`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error(
-        `Fehler beim Aktualisieren der Task: ${response.statusText}`
-      );
-    }
+    let response = await updateTaskFirebase(uid, data);
 
     console.log("Task erfolgreich aktualisiert:", await response.json());
 
@@ -525,7 +513,7 @@ async function updateTask(uid, data) {
 
 async function deleteDataBoard(uid) {
   try {
-    await handleDeleteTaskRequest(`${BASE_URL_Board}/${uid}.json`);
+    await handleDeleteTaskRequest(uid);
 
     closePopupCard();
     updateBoard();
@@ -533,13 +521,6 @@ async function deleteDataBoard(uid) {
     console.error("Fehler beim Löschen der Task:", error);
     alert("Es gab ein Problem beim Löschen der Task.");
   }
-}
-
-async function handleDeleteTaskRequest(url) {
-  let response = await fetch(url, { method: "DELETE" });
-
-  if (!response.ok)
-    throw new Error("Fehler beim Löschen der Task: " + response.statusText);
 }
 
 // noch nicht fertig!!!

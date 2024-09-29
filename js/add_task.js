@@ -1,54 +1,29 @@
-// Kontakte laden
-const BASE_URL_Contact =
-  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/contacts";
 
-// Kontakte aus Firebase laden
-async function loadDataContacts(path = "") {
-  let response = await fetch(BASE_URL_Contact + path + ".json");
-  let contactsData = await response.json();
-  return (allContacts = Object.keys(contactsData).map(
-    (key) => contactsData[key]
-  ));
-}
 
 let contactSelection = document.getElementById("contactSelection");
-let contactList = document.getElementById("contactList");
 
 // Kontakte rendern
 async function renderContactList() {
-  const contacts = await loadDataContacts();
+  await loadDataContacts();
 
-  contacts.sort((a, b) => {
+  allContacts.sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
     return 0;
   });
 
+  let contactList = document.getElementById("contactList");
+
   contactList.innerHTML = ""; 
-  for (let i = 0; i < contacts.length; i++) {
-    const initials = getInitials(contacts[i]["name"]).toUpperCase();
-    // const spaceIndex = contacts[i]["name"].indexOf(" ");
-    // const firstLetterAfterSpace = contacts[i]["name"][spaceIndex + 1] || "";
-    contactList.innerHTML += `
-            <div class='contact flex' onclick='addTaskContact(event)'>
-                <div class='flex'>
-                    <span class='circle flex' style='background:${
-                      contacts[i]["color"]
-                    }'>
-                        ${initials}
-                    </span>
-                    <span>${contacts[i].name}</span>
-                </div>
-                <input type="checkbox" value="${contacts[i].name}">
-            </div>
-        `;
+  for (let index = 0; index < allContacts.length; index++) {
+    contactList.innerHTML += generateContactList(index);
   }
 }
-
 // Initiales Rendern der Kontaktliste
 renderContactList();
 
 function toggleContactListView() {
+  let contactList = document.getElementById("contactList");
   contactList.classList.toggle("hidden");
 
   if (!contactList.classList.contains("hidden")) {
@@ -164,23 +139,6 @@ function addSubtask() {
     renderSubtaskList();
     subtask.value = "";
   }
-}
-
-// Firebase Basis-URL für das Board
-const BASE_URL_Board =
-  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
-
-// Daten zu Firebase posten
-async function postDataBoards(path = "", data = {}) {
-  let response = await fetch(BASE_URL_Board + path + ".json", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  return await response.json();
 }
 
 // Ereignislistener für das Hinzufügen des Tasks
