@@ -1,4 +1,5 @@
 let contactColors = {};
+
 function generateLetterSectionHTML(letter) {
     return `
         <div class="letter_section">
@@ -110,6 +111,27 @@ function generateButtonUrgentEdit(index) {
       <button onclick="setPriority('urgent', ${index})" value="urgent" id="prioUrgentEdit" type="button" class="prioUrgentActive">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgentSelected.svg"></button>
       <button onclick="setPriority('medium', ${index})" value="medium" id="prioMediumEdit" type="button">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMedium.svg"></button>
       <button onclick="setPriority('low', ${index})" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
+    `;
+}
+
+function generateSubtaskList(i) {
+  return `
+      <li class="subtask" data-index="${i}">
+        <input type="text" class="subtask-edit-input" value="${subtasks[i].description}" style="display: none;">
+        <span class="subtask-text">${subtasks[i].description}</span>
+        <div class="subtask-actions">
+          <div class="icon-wrapper">
+            <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtask(${i})" class="action-icon edit-icon">
+          </div>
+          <div class="icon-wrapper">
+            <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtask(${i})" class="action-icon delete-icon">
+          </div>
+          <div class="separator"></div> <!-- Separator zwischen den Icons -->
+          <div class="icon-wrapper">
+            <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtask(${i})" class="action-icon save-icon" style="display: none;">
+          </div>
+        </div>
+      </li>
     `;
 }
 

@@ -97,23 +97,7 @@ function renderSubtaskList() {
   subtasksList.innerHTML = "";
 
   for (let i = 0; i < subtasks.length; i++) {
-    subtasksList.innerHTML += `
-      <li class="subtask" data-index="${i}">
-        <input type="text" class="subtask-edit-input" value="${subtasks[i].description}" style="display: none;">
-        <span class="subtask-text">${subtasks[i].description}</span>
-        <div class="subtask-actions">
-          <div class="icon-wrapper">
-            <img src="../assets/icons/edit.svg" alt="Edit" onclick="editSubtask(${i})" class="action-icon edit-icon">
-          </div>
-          <div class="icon-wrapper">
-            <img src="../assets/icons/delete.svg" alt="Delete" onclick="deleteSubtask(${i})" class="action-icon delete-icon">
-          </div>
-          <div class="separator"></div> <!-- Separator zwischen den Icons -->
-          <div class="icon-wrapper">
-            <img src="../assets/icons/check.svg" alt="Save" onclick="saveSubtask(${i})" class="action-icon save-icon" style="display: none;">
-          </div>
-        </div>
-      </li>`;
+    subtasksList.innerHTML += generateSubtaskList(i);
   }
 }
 
