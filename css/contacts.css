@@ -775,7 +775,8 @@ input:focus {
         flex-direction: column;
     }
 
-    .popup-modal {
+    .popup-modal,
+    .popup-edit-modal {
         zoom: 80%;
     }
 
@@ -839,7 +840,8 @@ input:focus {
         margin-right: 145px;
     }
 
-    .popup-modal {
+    .popup-modal,
+    .popup-edit-modal {
         zoom: 70%;
     }
 }
@@ -848,6 +850,10 @@ input:focus {
     .headline_contacts {
         display: none;
 
+    }
+    
+    .popup-edit-modal .flex{
+        flex-direction: column;
     }
 
     .profileImg {
@@ -859,7 +865,8 @@ input:focus {
         /* font-size: 61px; */
     }
 
-    .popup-modal {
+    .popup-modal,
+    .popup-edit-modal {
         zoom: 100%;
     }
 
@@ -1028,7 +1035,8 @@ input:focus {
     .popup-modal-mobile {
         zoom: 75%
     }
-    .popup-modal{
+    .popup-modal,
+    .popup-edit-modal{
         zoom: 75%;
     }
 }
@@ -1044,7 +1052,8 @@ input:focus {
     .popup-modal-mobile {
         zoom: 63%
     }
-    .popup-modal {
+    .popup-modal,
+    .popup-edit-modal {
         zoom: 62%;
     }
 }
