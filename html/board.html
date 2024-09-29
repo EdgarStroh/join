@@ -36,7 +36,7 @@
                             <img src="../assets/icons/search.svg" alt="Search Icon" class="search-icon">
                         </div>
                     </div>
-                    <button class="addTaskButton" onclick="openPopup()">Add task
+                    <button class="addTaskButton" onclick="openPopupAddTask()">Add task
                         <img src="../assets/icons/plus.svg">
                     </button>
                 </div>
@@ -45,7 +45,7 @@
         <div class="boardContent">
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">To do
-                    <button class="plusButton" onclick="openPopup()">
+                    <button class="plusButton" onclick="openPopupAddTask()">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
@@ -55,7 +55,7 @@
             <!-- <img id="drag1" src="../assets/icons/contacts.svg" draggable="true" ondragstart="drag(event)" width="336" height="69"> -->
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">In progress
-                    <button class="plusButton" onclick="openPopup()">
+                    <button class="plusButton" onclick="openPopupAddTask('in progress')">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Await feedback
-                    <button class="plusButton" onclick="openPopup()">
+                    <button class="plusButton" onclick="openPopupAddTask('await')">
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
@@ -127,7 +127,7 @@
             <div class="taskFormButtons flex">
                 <p><span class="requiredStar">*</span>This field is required</p>
                 <div class="flex">
-                    <button onclick="clearSubtasks()" type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
+                    <button onclick="resetAddTask()" type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
                             alt="Icon clear task"></button>
                     <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
                             alt="Icon create task"></button>

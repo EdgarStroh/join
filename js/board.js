@@ -159,9 +159,11 @@ function renderBoardList() {
 }
 
 
-function openPopup() {
+function openPopupAddTask(status = 'toDo') {
   const popupOverlay = document.getElementById("popupOverlay");
   const popupModal = document.getElementById("popupModal");
+
+  resetAddTask(status);
 
   // Zeige das Overlay und das Popup an
   popupOverlay.style.display = "flex";

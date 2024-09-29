@@ -2,6 +2,21 @@ let subtask = document.getElementById("subtask");
 let subtasks = []; 
 let contactSelection = document.getElementById("contactSelection");
 let newPriority = 'medium';
+let newStatus = 'toDo';
+
+function resetAddTask(status = 'toDo'){
+  let contactList = document.getElementById("contactList");
+
+  newStatus = status;
+  document.getElementById("title").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("category").value = "";
+
+  clearSubtasks();
+  setPriority("medium", -1, "prio");
+  contactList.classList.add("hidden");
+}
 
 // Kontakte rendern
 async function renderContactList() {
@@ -156,7 +171,7 @@ addTaskForm.addEventListener("submit", async (event) => {
     date: date.value,
     description: description.value,
     prio: newPriority,
-    status: "toDo",
+    status: newStatus,
     subtasks: subtasks,
     title: title.value,
   };
@@ -196,36 +211,3 @@ function setPriority(priority, index, id){
     }
   }
 }
-
-// Prio-Buttons
-// let priority = "";
-
-// let prioButtons = document.querySelectorAll("#prio button");
-
-// for (let i = 0; i < prioButtons.length; i++) {
-//   prioButtons[i].addEventListener("click", (event) => {
-//     const selectedButton = event.currentTarget;
-//     priority = event.currentTarget.value;
-//     const activePrioClass = selectedButton.getAttribute("id") + "Active";
-//     const activeButtonBool = selectedButton.classList.contains(activePrioClass);
-
-//     if (!activeButtonBool) {
-//       prioButtons.forEach((button) => {
-//         const buttonActiveClass = button.getAttribute("id") + "Active";
-//         if (button.classList.contains(buttonActiveClass)) {
-//           button.classList.remove(buttonActiveClass);
-//           document.getElementById(button.getAttribute("id") + "Img").src =
-//             "../assets/icons/" + button.getAttribute("id") + ".svg";
-//         }
-//       });
-
-//       selectedButton.classList.add(activePrioClass);
-//       document.getElementById(selectedButton.getAttribute("id") + "Img").src =
-//         "../assets/icons/" + selectedButton.getAttribute("id") + "Selected.svg";
-//     } else {
-//       selectedButton.classList.remove(activePrioClass);
-//       document.getElementById(selectedButton.getAttribute("id") + "Img").src =
-//         "../assets/icons/" + selectedButton.getAttribute("id") + ".svg";
-//     }
-//   });
-// }
