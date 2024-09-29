@@ -653,6 +653,7 @@ input:focus {
 }
 
 .mobileAddButton:hover {
+    border-radius: 50%;
     background-color: #29ABE2;
 }
 
