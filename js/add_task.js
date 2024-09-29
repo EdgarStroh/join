@@ -47,7 +47,14 @@ function toggleContactListViewAddTask() {
   }
 }
 
-// Dropdown schließen, wenn außerhalb geklickt wird
+function toggleContactCheckbox(event) {
+  if (event.target.type !== "checkbox") {
+    let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
+    checkbox.checked = !checkbox.checked;
+    event.currentTarget.classList.toggle("selectedContact");
+  }
+}
+
 function closeDropdownOnClickOutside(event) {
   const dropdown = document.getElementById("contactList");
   const contactSelection = document.getElementById("contactSelection");
@@ -59,15 +66,6 @@ function closeDropdownOnClickOutside(event) {
   ) {
     dropdown.classList.add("hidden");
     document.removeEventListener("click", closeDropdownOnClickOutside); 
-  }
-}
-
-// Ermöglicht das Klicken auf das gesamte Kontakt-Element
-function addTaskContact(event) {
-  if (event.target.type !== "checkbox") {
-    let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
-    checkbox.checked = !checkbox.checked;
-    event.currentTarget.classList.toggle("selectedContact");
   }
 }
 
@@ -127,7 +125,6 @@ function deleteSubtask(index) {
   renderSubtaskList();
 }
 
-// Event listener für Enter-Taste im Subtask-Feld
 subtask.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -147,67 +144,103 @@ function addSubtask() {
 }
 
 // Ereignislistener für das Hinzufügen des Tasks
+// addTaskForm.addEventListener("submit", async (event) => {
+//   event.preventDefault();
+//   let title = document.getElementById("title");
+//   let date = document.getElementById("date");
+//   let description = document.getElementById("description");
+//   let category = document.getElementById("category");
+//   let selectedContacts = document.querySelectorAll(
+//     '#contactList .contact input[type="checkbox"]:checked'
+//   );
+
+//   let contactNames = [];
+//   if (selectedContacts.length) {
+//     for (let i = 0; i < selectedContacts.length; i++) {
+//       let name = selectedContacts[i].value;
+//       contactNames.push(name);
+//     }
+//   }
+
+//   let data = {
+//     asigned: contactNames,
+//     category: category.value,
+//     date: date.value,
+//     description: description.value,
+//     prio: newPriority,
+//     status: newStatus,
+//     subtasks: subtasks,
+//     title: title.value,
+//   };
+
+//   try {
+//     await postDataBoards("", data);
+//     window.location.href = "board.html";
+//   } catch (error) {
+//     console.log("Error posting data to Firebase:", error);
+//   }
+// });
+
+
 addTaskForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  let title = document.getElementById("title");
-  let date = document.getElementById("date");
-  let description = document.getElementById("description");
-  let category = document.getElementById("category");
-  let selectedContacts = document.querySelectorAll(
-    '#contactList .contact input[type="checkbox"]:checked'
-  );
 
-  let contactNames = [];
-  if (selectedContacts.length) {
-    for (let i = 0; i < selectedContacts.length; i++) {
-      let name = selectedContacts[i].value;
-      contactNames.push(name);
-    }
-  }
-
-  let data = {
-    asigned: contactNames,
-    category: category.value,
-    date: date.value,
-    description: description.value,
-    prio: newPriority,
-    status: newStatus,
-    subtasks: subtasks,
-    title: title.value,
-  };
-
+  let data = collectFormData();
   try {
     await postDataBoards("", data);
     window.location.href = "board.html";
   } catch (error) {
-    console.log("Error posting data to Firebase:", error);
+    console.error("Error posting data to Firebase:", error);
   }
 });
 
+function collectFormData() {
+  return {
+    asigned: getSelectedContacts(),
+    category: document.getElementById("category").value,
+    date: document.getElementById("date").value,
+    description: document.getElementById("description").value,
+    prio: newPriority,
+    status: newStatus,
+    subtasks: subtasks,
+    title: document.getElementById("title").value,
+  };
+}
 
-// PRIORITY
-function setPriority(priority, index, id){
+function getSelectedContacts() {
+  let selectedContacts = document.querySelectorAll('#contactList .contact input[type="checkbox"]:checked');
+  let contactNames = [];
+
+  selectedContacts.forEach((contact) => {
+    contactNames.push(contact.value);
+  });
+
+  return contactNames;
+}
+
+function setPriority(priority, index, id) {
   let priorityContainer = document.getElementById(id);
-  if (priority === 'urgent'){
-    priorityContainer.innerHTML = generateButtonUrgentEdit(index, id);
-    if (index >= 0) {
-      allBoardContent[index].prio = 'urgent';
-    } else {
-      newPriority = 'urgent';
-    }
-  } else if (priority === 'low') {
-    priorityContainer.innerHTML = generateButtonLowEdit(index, id);
-    if (index >= 0) {
-      allBoardContent[index].prio = "low";
-    } else {
-      newPriority = "low";
-    }
+  updatePriorityContainer(priority, priorityContainer, index, id);
+  updatePriorityValue(priority, index);
+}
+
+function updatePriorityContainer(priority, container, index, id) {
+  switch (priority) {
+    case "urgent":
+      container.innerHTML = generateButtonUrgentEdit(index, id);
+      break;
+    case "low":
+      container.innerHTML = generateButtonLowEdit(index, id);
+      break;
+    default:
+      container.innerHTML = generateButtonMediumEdit(index, id);
+  }
+}
+
+function updatePriorityValue(priority, index) {
+  if (index >= 0) {
+    allBoardContent[index].prio = priority;
   } else {
-    priorityContainer.innerHTML = generateButtonMediumEdit(index, id);
-    if (index >= 0) {
-      allBoardContent[index].prio = "medium";
-    } else {
-      newPriority = "medium";
-    }
+    newPriority = priority;
   }
 }

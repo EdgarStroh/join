@@ -157,7 +157,7 @@ function generateSubtaskList(i) {
 
 function generateContactList(index) {
   return `
-            <div class='contact flex' onclick='addTaskContact(event)'>
+            <div class='contact flex' onclick='toggleContactCheckbox(event)'>
                 <div class='flex'>
                     <span class='circle flex' style='background:${
                       allContacts[index]["color"]

@@ -336,11 +336,6 @@ textarea {
     gap: 10px;
 }
 
-.selectedContact {
-    background: #2A3647;
-    color: white;
-}
-
 #subTasksList {
     display: flex;
     flex-direction: column;
