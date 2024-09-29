@@ -1,6 +1,7 @@
-
-
+let subtask = document.getElementById("subtask");
+let subtasks = []; 
 let contactSelection = document.getElementById("contactSelection");
+let newPriority = 'medium';
 
 // Kontakte rendern
 async function renderContactList() {
@@ -19,8 +20,6 @@ async function renderContactList() {
     contactList.innerHTML += generateContactList(index);
   }
 }
-// Initiales Rendern der Kontaktliste
-renderContactList();
 
 function toggleContactListView() {
   let contactList = document.getElementById("contactList");
@@ -57,18 +56,9 @@ function addTaskContact(event) {
   }
 }
 
-// Formularverarbeitung
-let addTaskForm = document.getElementById("addTaskForm");
-let title = document.getElementById("title");
-let date = document.getElementById("date");
-let description = document.getElementById("description");
-let category = document.getElementById("category");
-let subtask = document.getElementById("subtask");
-let subtasks = []; 
-let subtasksList = document.getElementById("subTasksList");
-let addSubtaskButton = document.getElementById("addSubtaskButton");
-
 function renderSubtaskList() {
+  let subtasksList = document.getElementById("subTasksList");
+
   subtasksList.innerHTML = "";
 
   for (let i = 0; i < subtasks.length; i++) {
@@ -144,7 +134,10 @@ function addSubtask() {
 // Ereignislistener für das Hinzufügen des Tasks
 addTaskForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
+  let title = document.getElementById("title");
+  let date = document.getElementById("date");
+  let description = document.getElementById("description");
+  let category = document.getElementById("category");
   let selectedContacts = document.querySelectorAll(
     '#contactList .contact input[type="checkbox"]:checked'
   );
@@ -162,7 +155,7 @@ addTaskForm.addEventListener("submit", async (event) => {
     category: category.value,
     date: date.value,
     description: description.value,
-    prio: priority,
+    prio: newPriority,
     status: "toDo",
     subtasks: subtasks,
     title: title.value,
@@ -176,35 +169,63 @@ addTaskForm.addEventListener("submit", async (event) => {
   }
 });
 
-// Prio-Buttons
-let priority = "";
 
-let prioButtons = document.querySelectorAll("#prio button");
-
-for (let i = 0; i < prioButtons.length; i++) {
-  prioButtons[i].addEventListener("click", (event) => {
-    const selectedButton = event.currentTarget;
-    priority = event.currentTarget.value;
-    const activePrioClass = selectedButton.getAttribute("id") + "Active";
-    const activeButtonBool = selectedButton.classList.contains(activePrioClass);
-
-    if (!activeButtonBool) {
-      prioButtons.forEach((button) => {
-        const buttonActiveClass = button.getAttribute("id") + "Active";
-        if (button.classList.contains(buttonActiveClass)) {
-          button.classList.remove(buttonActiveClass);
-          document.getElementById(button.getAttribute("id") + "Img").src =
-            "../assets/icons/" + button.getAttribute("id") + ".svg";
-        }
-      });
-
-      selectedButton.classList.add(activePrioClass);
-      document.getElementById(selectedButton.getAttribute("id") + "Img").src =
-        "../assets/icons/" + selectedButton.getAttribute("id") + "Selected.svg";
+// PRIORITY
+function setPriority(priority, index, id){
+  let priorityContainer = document.getElementById(id);
+  if (priority === 'urgent'){
+    priorityContainer.innerHTML = generateButtonUrgentEdit(index, id);
+    if (index >= 0) {
+      allBoardContent[index].prio = 'urgent';
     } else {
-      selectedButton.classList.remove(activePrioClass);
-      document.getElementById(selectedButton.getAttribute("id") + "Img").src =
-        "../assets/icons/" + selectedButton.getAttribute("id") + ".svg";
+      newPriority = 'urgent';
     }
-  });
+  } else if (priority === 'low') {
+    priorityContainer.innerHTML = generateButtonLowEdit(index, id);
+    if (index >= 0) {
+      allBoardContent[index].prio = "low";
+    } else {
+      newPriority = "low";
+    }
+  } else {
+    priorityContainer.innerHTML = generateButtonMediumEdit(index, id);
+    if (index >= 0) {
+      allBoardContent[index].prio = "medium";
+    } else {
+      newPriority = "medium";
+    }
+  }
 }
+
+// Prio-Buttons
+// let priority = "";
+
+// let prioButtons = document.querySelectorAll("#prio button");
+
+// for (let i = 0; i < prioButtons.length; i++) {
+//   prioButtons[i].addEventListener("click", (event) => {
+//     const selectedButton = event.currentTarget;
+//     priority = event.currentTarget.value;
+//     const activePrioClass = selectedButton.getAttribute("id") + "Active";
+//     const activeButtonBool = selectedButton.classList.contains(activePrioClass);
+
+//     if (!activeButtonBool) {
+//       prioButtons.forEach((button) => {
+//         const buttonActiveClass = button.getAttribute("id") + "Active";
+//         if (button.classList.contains(buttonActiveClass)) {
+//           button.classList.remove(buttonActiveClass);
+//           document.getElementById(button.getAttribute("id") + "Img").src =
+//             "../assets/icons/" + button.getAttribute("id") + ".svg";
+//         }
+//       });
+
+//       selectedButton.classList.add(activePrioClass);
+//       document.getElementById(selectedButton.getAttribute("id") + "Img").src =
+//         "../assets/icons/" + selectedButton.getAttribute("id") + "Selected.svg";
+//     } else {
+//       selectedButton.classList.remove(activePrioClass);
+//       document.getElementById(selectedButton.getAttribute("id") + "Img").src =
+//         "../assets/icons/" + selectedButton.getAttribute("id") + ".svg";
+//     }
+//   });
+// }

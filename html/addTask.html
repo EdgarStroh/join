@@ -17,7 +17,7 @@
     
 </head>
 
-<body onload="checkLogin()" class="flex containerContent">
+<body onload="checkLogin(); renderContactList()" class="flex containerContent">
     <aside>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
@@ -48,12 +48,9 @@
                     <br>
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
-                        <button value="urgent" id="prioUrgent" type="button">Urgent<img id="prioUrgentImg"
-                                src="../assets/icons/prioUrgent.svg"></button>
-                        <button value="medium" id="prioMedium" type="button" class="prioMediumActive">Medium<img
-                                id="prioMediumImg" src="../assets/icons/prioMediumSelected.svg"></button>
-                        <button value="low" id="prioLow" type="button">Low<img id="prioLowImg"
-                                src="../assets/icons/prioLow.svg"></button>
+                        <button onclick="setPriority('urgent', -1, 'prio')" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
+                        <button onclick="setPriority('medium', -1, 'prio')" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
+                        <button onclick="setPriority('low', -1, 'prio')" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
                     </section>
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>

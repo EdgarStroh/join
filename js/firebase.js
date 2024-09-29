@@ -24,13 +24,13 @@ async function loadDataContacts(path = "") {
 }
 
 // Kontakte aus Firebase laden
-async function loadDataContacts(path = "") {
-  let response = await fetch(BASE_URL_Contact + path + ".json");
-  let contactsData = await response.json();
-  return (allContacts = Object.keys(contactsData).map(
-    (key) => contactsData[key]
-  ));
-}
+// async function loadDataContacts(path = "") {
+//   let response = await fetch(BASE_URL_Contact + path + ".json");
+//   let contactsData = await response.json();
+//   return (allContacts = Object.keys(contactsData).map(
+//     (key) => contactsData[key]
+//   ));
+// }
 
 // post for contacts
 async function postDataContacts(path = "", data = {}) {

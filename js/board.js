@@ -297,7 +297,7 @@ function openPopupCardEdit(index) {
   const popupModal = document.getElementById("popupModalCardEdit");
   popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
 
-  setPriority(allBoardContent[index].prio, index);
+  setPriority(allBoardContent[index].prio, index, "prioEdit");
 
   popupModal.style.display = "block";
   popupModal.classList.remove("hide");
@@ -326,9 +326,9 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       }">
       <label for="prioEdit"><strong>Priority</strong></label>
       <section id="prioEdit" class="flex">
-        <button onclick="setPriority('urgent', ${index})" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
-        <button onclick="setPriority('medium', ${index})" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
-        <button onclick="setPriority('low', ${index})" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
+        <button onclick="setPriority('urgent', ${index}, 'prioEdit')" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
+        <button onclick="setPriority('medium', ${index}, 'prioEdit')" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
+        <button onclick="setPriority('low', ${index}, 'prioEdit')" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
       </section>
       <label for="contactSelectionEdit">Assigned to</label>
       <div id="contactSelectionEdit" onclick="toggleContactListView(${index})" tabindex="0"> Select contacts to assign</div>
@@ -343,24 +343,11 @@ function htmlTemplatePopUpBoardCardEdit(index) {
       <ul id="subTasksListEdit"> 
         ${renderSubtasks(index)}
       </ul>
-      <button class="button margin-left" onclick="editTask('${allBoardContent[index].Uid}')">Ok<img src="../assets/icons/create.svg"></button>
+      <button class="button margin-left" onclick="editTask('${
+        allBoardContent[index].Uid
+      }')">Ok<img src="../assets/icons/create.svg"></button>
     </div>
   `;
-}
-
-// PRIORITY
-function setPriority(priority, index){
-  let priorityContainer = document.getElementById('prioEdit');
-  if (priority === 'urgent'){
-    priorityContainer.innerHTML = generateButtonUrgentEdit(index);
-    allBoardContent[index].prio = 'urgent';
-  } else if (priority === 'low') {
-    priorityContainer.innerHTML = generateButtonLowEdit(index);
-    allBoardContent[index].prio = 'low';
-  } else {
-    priorityContainer.innerHTML = generateButtonMediumEdit(index);
-    allBoardContent[index].prio = 'medium';
-  }
 }
 
 // SUBTASK EDIT
