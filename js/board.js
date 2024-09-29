@@ -562,11 +562,13 @@ function editTask(uid) {
   let selectedContacts = document.querySelectorAll(
     '#contactListEdit .contactEdit input[type="checkbox"]:checked'
   );
+  if (selectedContacts.length > 0){
     contactNames = [];
     for (let i = 0; i < selectedContacts.length; i++) {
       let name = selectedContacts[i].value;
       contactNames.push(name);
     }
+  }
 
   const updatedTask = {
     ...originalTask,
@@ -613,9 +615,7 @@ function renderContactSelectionBoard(index) {
     contactListEdit += `
                 <div class='contactEdit flex' onclick='editTaskContact(event)'>
                     <div class='flex'>
-                        <span class='circleEdit flex' style='background:${
-                          sortedContacts[i]["color"]
-                        }'>
+                        <span class='circleEdit flex' style='background:${sortedContacts[i]["color"]}'>
                           ${initials}
                         </span>
                         <span>
@@ -623,7 +623,7 @@ function renderContactSelectionBoard(index) {
                         </span>
                     </div>
                     <input type="checkbox" ${checkedContact} value="${
-      sortedContacts[i].name
+sortedContacts[i].name
     }">
                 </div>
         `;
