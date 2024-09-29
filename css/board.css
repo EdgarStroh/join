@@ -522,12 +522,14 @@ input[type="checkbox"]:checked {
 }
 
 .closeContainer {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
 
 .closeContainer:hover {
     background-color: #EEEEEE;
@@ -736,6 +738,28 @@ input[type="checkbox"]:checked {
     gap: 3px;
 }
 
+.close {
+    display: table;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+}
+
+.divClose:hover {
+    display: table;
+    margin-left: auto;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #F0F0F0;
+}
+
 
 @media screen and (max-width: 1340px) {
     .text_containerBoard {
@@ -796,8 +820,9 @@ input[type="checkbox"]:checked {
         align-items: baseline;
     }
 }
+
 @media screen and (max-width: 530px) {
-    .containerEdit{
+    .containerEdit {
         zoom: 78%;
     }
 }
@@ -806,15 +831,18 @@ input[type="checkbox"]:checked {
     .popup-modal-card {
         zoom: 90%;
     }
-    .containerEdit{
+
+    .containerEdit {
         zoom: 68%;
     }
 }
+
 @media screen and (max-width: 360px) {
     .popup-modal-card {
         zoom: 78%;
     }
-    .containerEdit{
+
+    .containerEdit {
         zoom: 59%;
     }
 }

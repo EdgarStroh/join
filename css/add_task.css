@@ -304,7 +304,10 @@ textarea {
     padding-top: 10px;
     margin-top: -10px;
     background-color: white;
+    
 }
+
+
 
 .circle {
     width: 42px;
@@ -368,6 +371,7 @@ textarea {
     border-radius: 0;
     height: auto;
     appearance: none;
+
     &:focus {
         outline: none !important;
         box-shadow: none !important;
@@ -420,11 +424,14 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
     background-image: url(../assets/icons/checkbox_checked.svg);
 }
-
+.abc{
+    border-radius: 20px;
+}
 
 /*Responsive*/
 
 @media screen and (max-width: 1400px) {
+
     /* aside div div{
         display:flex;
         flex-direction: column;
@@ -465,29 +472,32 @@ input[type="checkbox"]:checked {
     .sideBar{
         display: none;
     } */
-    .formParts {
+    /* .formParts {
         width: 100%;
         gap: 40px;
         padding-top: 50px;
         flex-flow: column;
-    }
+    } */
     #seperationLine {
         display: none;
     }
+
     form {
         margin: 0;
     }
+
     .h1Div {
         place-content: center;
     }
-    .taskFormButtons {
+
+    /* .taskFormButtons {
         padding: 20px 0;
         width: 100%;
         justify-content: space-between;
         align-items: center;
         gap: 24px;
         flex-direction: column;
-    }
+    } */
 }
 
 @media screen and (max-width: 1020px) {
@@ -495,14 +505,42 @@ input[type="checkbox"]:checked {
         padding: 150px 0 85px 20px;
         /* height: 0px; */
     }
+
     .text_content {
         height: auto;
+    }
+
+    .popup-modal {
+        zoom: 80%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    .popup-modal {
+        zoom: 60%;
     }
 }
 
 @media screen and (max-width: 750px) {
-    .clearBtn{
+    .clearBtn {
         display: none;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .popup-modal {
+        height: 100%;
+        width: 100%;
+    }
+
+    .formParts {
+        flex-direction: column;
+        align-items: center;
+    }
+    .taskFormButtons{
+        place-content: center;
+        gap: 96px;
     }
 }
 
@@ -512,13 +550,23 @@ input[type="checkbox"]:checked {
         padding-bottom: 120px;
     }
 }
+
 @media screen and (max-width: 400px) {
     .text_content {
         zoom: 65%;
         /* height: 100%; */
         /* padding: 150px 0 150px 20px; */
     }
+
     .h1Div {
         padding-top: 50px;
     }
+}
+
+@media screen and (max-width: 340px) {
+    .taskFormButtons{
+        place-content: center;
+        gap: 75px;
+    }
+
 }
