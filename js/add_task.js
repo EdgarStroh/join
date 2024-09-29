@@ -21,7 +21,7 @@ async function renderContactList() {
   }
 }
 
-function toggleContactListView() {
+function toggleContactListViewAddTask() {
   let contactList = document.getElementById("contactList");
   contactList.classList.toggle("hidden");
 
