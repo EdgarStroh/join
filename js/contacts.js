@@ -156,6 +156,7 @@ function mobileShowContact() {
     document.getElementById("headline_contacts").style.height = "auto";
     document.getElementById("mobileAddButton").style.display = "none";
     document.getElementById("renderEditDelete").style.display = "flow";
+    document.getElementById("contact_tools").classList.add("hidden")
   }
 }
 
@@ -310,30 +311,37 @@ function closeEditContact() {
 //   });
 // });
 
-function toggleMenuMobile(id, uid) {
+function toggleMenuMobile() {
   // console.log("ID:", id); 
   // console.log("UID:", uid); 
-
-  let menuHidden = document.getElementById("mobileSubMenu");
-  let menuContainer = document.getElementById("renderEditDelete");
-
-  if (menuHidden) {
-    menuHidden.innerHTML = `
-      <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
-      <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
-    `;
-  
-    menuHidden.classList.toggle("hidden");
-  } else {
-    menuHidden = document.createElement("div");
-    menuHidden.id = "mobileSubMenu";
-    menuHidden.className = "hidden";
-    menuHidden.innerHTML = `
-      <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
-      <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
-    `;
-
-    menuContainer.appendChild(menuHidden);
-    menuHidden.classList.remove("hidden");
+  if (window.innerWidth < 800) {
+    document.getElementById("contact_tools").classList.toggle("hidden")
   }
+  // let menuHidden = document.getElementById("mobileSubMenu");
+  // let menuContainer = document.getElementById("renderEditDelete");
+  // let menu = document.getElementById("contact_tools");
+  // if (menu && !menu.classList.contains("hidden")) {
+  //   menu.classList.add("hidden");
+  // }
+
+  // if (menuHidden) {
+  //   menuHidden.innerHTML = `
+  //     <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
+  //     <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
+  //   `;
+
+  //   menuHidden.classList.toggle("hidden");
+  // } else {
+  //   menuHidden = document.createElement("div");
+  //   menuHidden.id = "mobileSubMenu";
+  //   contactTools = "hidden";
+  //   menuHidden.className = "hidden";
+  //   menuHidden.innerHTML = `
+  //     <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
+  //     <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
+  //   `;
+
+  //   menuContainer.appendChild(menuHidden);
+  //   menuHidden.classList.remove("hidden");
+  // }
 }
