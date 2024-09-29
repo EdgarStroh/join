@@ -297,7 +297,7 @@ textarea {
 }
 
 #contactList {
-    height: 200px;
+    height: 146px;
     overflow: auto;
     flex-direction: column;
     gap: 5px;
