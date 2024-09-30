@@ -760,6 +760,10 @@ input[type="checkbox"]:checked {
     width: 0%;
     transition: width 0.3s ease;
 }
+#contactList{
+    top: 629px!important;
+    width: 339px !important;
+}
 
 .progressSubTask {
     justify-content: space-between;

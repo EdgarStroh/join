@@ -307,7 +307,7 @@ textarea {
     position: absolute;
     /* width: 100%; */
     width: inherit;
-    bottom: 200px;
+    top: 745px;
     z-index: 1;
 }
 
