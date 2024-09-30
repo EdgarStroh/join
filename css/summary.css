@@ -250,7 +250,7 @@ footer {
 
 @media screen and (max-width: 1020px) {
     .text_container_summary {
-        padding: 130px 0 15px 20px;
+        padding: 139px 0 15px 20px;
         zoom: 90%;
     }
 
@@ -308,10 +308,11 @@ footer {
 @media screen and (max-width: 500px) {
     .text_container_summary {
         zoom: 55%;
-        
-
     }
 
+    .headline_summary{
+        zoom: 110%;
+    }
     .amount {
         font-size: 45px;
     }
