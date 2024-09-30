@@ -34,7 +34,8 @@
 .mobileSideBar a {
     text-decoration: none;
     color: #CDCDCD;
-    width: 80px; 
+    width: 105px;
+    height: 87px;
     padding-top:4px ;  
     border-radius: 12px;
 } 

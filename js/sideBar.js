@@ -1,15 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
-    w3.includeHTML(function() {
+document.addEventListener('DOMContentLoaded', function () {
+    w3.includeHTML(function () {
         let currentSite = window.location.pathname.toLowerCase().replace(/\/$/, '');
-        let navigationLinks = document.querySelectorAll('.sideBar a');
+        console.log(`Current site: ${currentSite}`);
 
-        for(let i = 0; i < navigationLinks.length; i++) {
-            let link = navigationLinks[i];
+        // Select all sidebar links (both normal and mobile)
+        let allLinks = document.querySelectorAll('.sideBar a, .mobileSideBar a');
+
+        for (let i = 0; i < allLinks.length; i++) {
+            let link = allLinks[i];
             let linkPath = new URL(link.href).pathname.toLowerCase().replace(/\/$/, '');
-            if(linkPath === currentSite) {
-                link.classList.add('activeNavigationPoint');
+            console.log(`Checking link: ${linkPath}`);
+
+            if (linkPath === currentSite) {
+                if (link.closest('.sideBar')) {
+                    link.classList.add('activeNavigationPoint');
+                    console.log(`Active Navigation Point added to: ${link.href}`);
+                } else if (link.closest('.mobileSideBar')) {
+                    link.classList.add('activeMobileNavigationPoint');
+                    console.log(`Active Mobile Navigation Point added to: ${link.href}`);
+                }
             }
         }
     });
 });
-
