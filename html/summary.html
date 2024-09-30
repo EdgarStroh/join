@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/mobileSideBar.css">
     <link rel="stylesheet" href="../css/summary.css">
-
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
 <body onload="updateSummary()" class="flex container containerContent">
     <aside>
+        <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
@@ -115,15 +115,11 @@
         </div>
 
     </div>
-    <footer>
-        <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
-    </footer>
     <script src="../js/firebase.js"></script>
     <script src="../js/summary.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/sideBar.js"></script>
     <script src="../js/header.js"></script>
-
+    <script src="../js/sideBar.js"></script>
 </body>
 
 </html>
