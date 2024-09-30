@@ -9,52 +9,28 @@ function openContact(id) {
   toggleMenuMobile(id);
 }
 
-function addContact() {
-  let contactData = getContactFormData();
+function addContact(isMobile = false) {
+  let contactData = getContactFormData(isMobile);
   postDataContacts("", contactData);
-  resetContactForm();
+  resetContactForm(isMobile);
   closePopup();
   showPopupContact();
   updateContacts();
 }
 
-function addContactMobile() {
-  let contactData = getContactFormDataMobile();
-  postDataContacts("", contactData);
-  resetContactForm();
-  closePopup();
-  showPopupContact();
-  updateContacts();
-}
-
-function getContactFormData() {
+function getContactFormData(isMobile) {
   return {
-    name: document.getElementById("inputName").value,
-    email: document.getElementById("inputEmail").value,
-    phone: document.getElementById("inputPhone").value,
+    name: document.getElementById(isMobile ? "inputNameMobile" : "inputName").value,
+    email: document.getElementById(isMobile ? "inputEmailMobile" : "inputEmail").value,
+    phone: document.getElementById(isMobile ? "inputPhoneMobile" : "inputPhone").value,
     color: getRandomColor(),
   };
 }
 
-function getContactFormDataMobile() {
-  return {
-    name: document.getElementById("inputNameMobile").value,
-    email: document.getElementById("inputEmailMobile").value,
-    phone: document.getElementById("inputPhoneMobile").value,
-    color: getRandomColor(),
-  };
-}
-
-function resetContactForm() {
-  document.getElementById("inputName").value = "";
-  document.getElementById("inputEmail").value = "";
-  document.getElementById("inputPhone").value = "";
-}
-
-function resetContactFormMobile() {
-  document.getElementById("inputNameMobile").value = "";
-  document.getElementById("inputEmailMobile").value = "";
-  document.getElementById("inputPhoneMobile").value = "";
+function resetContactForm(isMobile) {
+  document.getElementById(isMobile ? "inputNameMobile" : "inputName").value = "";
+  document.getElementById(isMobile ? "inputEmailMobile" : "inputEmail").value = "";
+  document.getElementById(isMobile ? "inputPhoneMobile" : "inputPhone").value = "";
 }
 
 function renderExtendedContact(id) {
@@ -106,45 +82,6 @@ function renderContactList() {
 
   contactsContainer.innerHTML = html;
 }
-function openPopupMobile() {
-  const popupOverlay = document.getElementById("popupOverlayMobile");
-  const popupModal = document.getElementById("popupModalMobile");
-
-  popupOverlay.style.display = "flex";
-  popupModal.style.display = "block";
-  // popupModal.style.opacity = "1";
-  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
-  popupModal.classList.remove("hide");
-  popupModal.classList.add("show");
-
-}
-function closePopupMobile() {
-  document.getElementById("popupOverlayMobile").style.display = "none";
-  document.getElementById("popupModalMobile").style.display = "none";
-}
-
-function showPopupContact() {
-  const overlay = document.getElementById("popupOverlay");
-  const success = document.getElementById("popupContactSuccess");
-
-  overlay.style.display = "flex";
-  success.style.display = "flex";
-  success.style.opacity = "0";
-
-  setTimeout(() => {
-    success.style.opacity = "1";
-  }, 1);
-
-  setTimeout(function () {
-    closePopupSuccess();
-  }, 1250);
-}
-
-function closePopupSuccess() {
-  document.getElementById("popupOverlay").style.display = "none";
-  document.getElementById("popupContactSuccess").style.display = "none";
-  loadDataUsers("");
-}
 
 function mobileShowContact() {
   if (window.innerWidth < 800) {
@@ -171,17 +108,6 @@ function mobileShowContactReverse() {
     menu.classList.add("hidden");
   }
 }
-
-// window.addEventListener("load", () => {
-//   let mobileMenuIcon = document.getElementById("mobileMenuIcon");
-
-//   if (mobileMenuIcon) {
-//     // Call the correct function toggleMenuMobile, not toggleMenu
-//     mobileMenuIcon.addEventListener("click", toggleMenuMobile);
-//   } else {
-//     console.error("Das Menü-Icon wurde nicht gefunden.");
-//   }
-// });
 
 async function deleteDataContact(uid) {
   try {
@@ -303,45 +229,8 @@ function closeEditContact() {
   togglePopup("popupEditOverlay", "popupEditModal", false);
 }
 
-// document.querySelectorAll('.contact-item').forEach(item => {
-//   item.addEventListener('click', () => {
-//     const uid = item.getAttribute('data-uid'); // UID aus dem DOM-Attribut
-//     const id = item.getAttribute('data-id');   // ID aus dem DOM-Attribut
-//     toggleMenuMobile(uid, id);
-//   });
-// });
-
 function toggleMenuMobile() {
-  // console.log("ID:", id); 
-  // console.log("UID:", uid); 
   if (window.innerWidth < 800) {
     document.getElementById("contact_tools").classList.toggle("hidden")
   }
-  // let menuHidden = document.getElementById("mobileSubMenu");
-  // let menuContainer = document.getElementById("renderEditDelete");
-  // let menu = document.getElementById("contact_tools");
-  // if (menu && !menu.classList.contains("hidden")) {
-  //   menu.classList.add("hidden");
-  // }
-
-  // if (menuHidden) {
-  //   menuHidden.innerHTML = `
-  //     <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
-  //     <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
-  //   `;
-
-  //   menuHidden.classList.toggle("hidden");
-  // } else {
-  //   menuHidden = document.createElement("div");
-  //   menuHidden.id = "mobileSubMenu";
-  //   contactTools = "hidden";
-  //   menuHidden.className = "hidden";
-  //   menuHidden.innerHTML = `
-  //     <a href="#" onclick="openEditContact('${id}')"><img src="../assets/icons/edit.svg">Edit</a>
-  //     <a href="#" onclick="deleteDataContact('${uid}')"><img src="../assets/icons/delete.svg">Delete</a>
-  //   `;
-
-  //   menuContainer.appendChild(menuHidden);
-  //   menuHidden.classList.remove("hidden");
-  // }
 }

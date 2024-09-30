@@ -35,6 +35,17 @@ function openPopupCardEdit(index) {
   popupModal.classList.add("show");
 }
 
+function openPopupMobile() {
+  const popupOverlay = document.getElementById("popupOverlayMobile");
+  const popupModal = document.getElementById("popupModalMobile");
+
+  popupOverlay.style.display = "flex";
+  popupModal.style.display = "block";
+  // popupModal.style.opacity = "1";
+  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
+  popupModal.classList.remove("hide");
+  popupModal.classList.add("show");
+}
 
 function closePopup() {
   const popupOverlay = document.getElementById("popupOverlay");
@@ -71,4 +82,32 @@ function closePopupCardEdit() {
 
   popupModal.style.display = "none";
   popupOverlay.style.display = "none";
+}
+
+function closePopupMobile() {
+  document.getElementById("popupOverlayMobile").style.display = "none";
+  document.getElementById("popupModalMobile").style.display = "none";
+}
+
+function showPopupContact() {
+  const overlay = document.getElementById("popupOverlay");
+  const success = document.getElementById("popupContactSuccess");
+
+  overlay.style.display = "flex";
+  success.style.display = "flex";
+  success.style.opacity = "0";
+
+  setTimeout(() => {
+    success.style.opacity = "1";
+  }, 1);
+
+  setTimeout(function () {
+    closePopupSuccess();
+  }, 1250);
+}
+
+function closePopupSuccess() {
+  document.getElementById("popupOverlay").style.display = "none";
+  document.getElementById("popupContactSuccess").style.display = "none";
+  loadDataUsers("");
 }
