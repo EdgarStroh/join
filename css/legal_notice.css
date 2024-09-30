@@ -8,15 +8,8 @@ ul {
     align-items: center;
 }
 
-.arrow_left {
-    cursor: pointer;
-    height: 32px;
-}
-
 .arrow_left:hover {
     background-color: #EEEEEE;
-    height: 35px;
-    width: 35px;
     border-radius: 50%;
 }
 

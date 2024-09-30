@@ -109,7 +109,7 @@ footer {
     height: 32px;
     width: 32px;
     cursor: pointer;
-    position: sticky;
+    position: fixed;
     top: 22.1%;
     left: 90%;
 }
