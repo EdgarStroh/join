@@ -9,8 +9,8 @@ body {
     display: none;
 }
 
-.text_content {
-    border-radius: 10px;
+.text_contentTask {
+    /* border-radius: 10px; */
     width: 100%;
     display: flex;
     align-items: center;
@@ -304,18 +304,10 @@ textarea {
     padding-top: 10px;
     margin-top: -10px;
     background-color: white;
-    
-}
-
-
-
-.circle {
-    width: 42px;
-    height: 42px;
-    border-radius: 45px;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    position: absolute;
+    /* width: 100%; */
+    width: inherit;
+    /* bottom: 200px; */
 }
 
 .contact {
@@ -326,7 +318,19 @@ textarea {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+    /* position: relative; */
 }
+
+.circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 45px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
 
 .contact:hover {
     background: #D1D1D1;
@@ -478,16 +482,16 @@ input[type="checkbox"]:checked {
         padding-top: 50px;
         flex-flow: column;
     } */
-    #seperationLine {
+    /* #seperationLine {
         display: none;
-    }
+    } */
 
     form {
         margin: 0;
     }
 
     .h1Div {
-        place-content: center;
+        /* margin-right: auto; */
     }
 
     /* .taskFormButtons {
@@ -499,19 +503,33 @@ input[type="checkbox"]:checked {
         flex-direction: column;
     } */
 }
+@media screen and (max-width: 1310px) {
+    .formParts {
+        gap: 25px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .formParts {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 @media screen and (max-width: 1020px) {
-    .text_content {
+    .text_contentTask {
         padding: 150px 0 85px 20px;
         /* height: 0px; */
     }
 
-    .text_content {
+    .text_contentTask {
         height: auto;
     }
 
     .popup-modal {
         zoom: 80%;
+    }
+    .h1Div {
+        justify-content: center;
     }
 }
 
@@ -545,14 +563,14 @@ input[type="checkbox"]:checked {
 }
 
 @media screen and (max-width: 480px) {
-    .text_content {
+    .text_contentTask {
         zoom: 80%;
         padding-bottom: 120px;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .text_content {
+    .text_contentTask {
         zoom: 65%;
         /* height: 100%; */
         /* padding: 150px 0 150px 20px; */
