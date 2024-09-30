@@ -90,7 +90,7 @@
                 <h1>Add Task</h1>
                 <!-- Start Kopie von Proton -->
                 <form id="addTaskForm" method="post">
-                    <div class="flex formParts">
+                    <div class="flex formPartsPopUp">
                         <section class="formPart flex">
                             <label for="title">Title<span class="requiredStar">*</span></label>
                             <input type="text" id="title" placeholder="Enter a title" required>
@@ -104,7 +104,7 @@
                             </div>
                             <div id="contactList" class="hidden flex"></div>
                         </section>
-                        <hr id="seperationLine">
+                        <hr id="seperationLinePopUp">
                         </hr>
                         <section class="formPart flex">
                             <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
@@ -139,7 +139,7 @@
                             </ul>
                         </section>
                     </div>
-                    <div class="taskFormButtons flex">
+                    <div class="taskFormButtonsPopUp flex">
                         <p><span class="requiredStar">*</span>This field is required</p>
                         <div class="flex">
                             <button onclick="resetAddTask()" type="reset" class="button clearBtn">Clear <img

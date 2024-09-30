@@ -11,6 +11,9 @@
     flex-direction: column;
     background-color: #F6F7F8;
 }
+.flex{
+    gap: 4px;
+}
 
 .searchButtonContainer {
     gap: 20px;
@@ -241,6 +244,15 @@
     display: none;
     /* Versteckt standardmäßig */
     opacity: 0;
+    overflow: auto;
+    scrollbar-width: none;
+}
+.taskFormButtonsPopUp{
+    padding-top: 24px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 4px;
 }
 
 .popup-modal-card {
@@ -520,11 +532,17 @@ input[type="checkbox"]:checked {
     /* Ändert die Textfarbe beim Hover */
 }
 
+.formPartsPopUp {
+    width: 100%;
+    gap: 75px;
+    padding-top: 50px;
+}
+
 .close {
     /* position: fixed;
     top: 53px;
     right: 37px; */
-    
+
     /* height: 15px;
     width: 15px; */
 }
@@ -678,7 +696,7 @@ input[type="checkbox"]:checked {
     /* Innenabstand für den Container */
     /* height: fit-content; */
     overflow: scroll;
-    
+
 }
 
 
@@ -814,6 +832,17 @@ input[type="checkbox"]:checked {
     .boardContent {
         /* padding-left: 20px; */
         padding-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .formPartsPopUp {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #seperationLinePopUp {
+        display: none;
     }
 }
 
