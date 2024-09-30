@@ -105,33 +105,6 @@ function renderBoardList() {
   }
 }
 
-
-function openPopupAddTask(status = 'toDo') {
-  const popupOverlay = document.getElementById("popupOverlay");
-  const popupModal = document.getElementById("popupModal");
-
-  resetAddTask(status);
-
-  popupOverlay.style.display = "flex";
-  popupModal.style.display = "block";
-
-  popupModal.classList.remove("hide");
-  popupModal.classList.add("show");
-}
-
-function openPopupCard(index) {
-  const popupOverlay = document.getElementById("popupOverlayCard");
-  const popupModal = document.getElementById("popupModalCard");
-
-  popupModal.innerHTML = htmlTemplatePopUpBoardCard(index);
-
-  popupOverlay.style.display = "flex";
-  popupModal.style.display = "block";
-
-  popupModal.classList.remove("hide");
-  popupModal.classList.add("show");
-}
-
 function htmlTemplatePopUpBoardCard(index) {
   let assignedHTML = "";
   let subtasksHTML = "";
@@ -190,109 +163,13 @@ function htmlTemplatePopUpBoardCard(index) {
             </div>`;
     });
   }
-
-  return `
-    <div class="puCategory">
-        <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-            ${allBoardContent[index].category}
-        </span>
-        <div class="closeContainer">
-            <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
-        </div>  
-    </div>
-    <div class="puTitle">
-        ${allBoardContent[index].title}
-    </div>
-    <div class="puDescription">
-        ${allBoardContent[index].description}
-    </div>
-    <div class="puDate">
-        Due date: ${allBoardContent[index].date} 
-    </div>
-    <div class="puPrio">
-        Priority: ${allBoardContent[index].prio} ${statusImage} 
-    </div>
-    <span>Assigned To:</span>  
-    <div class="contactCardPopUpContent">
-        ${assignedHTML}
-    </div>
-    <span>Subtasks</span> 
-    <div>
-        ${subtasksHTML}
-    </div>
-    <div class="deleteEditPopUp">
-        <div onclick="deleteDataBoard('${allBoardContent[index].Uid}')" class="delete">
-            <img src="../assets/icons/delete.svg" alt="Delete">
-            <span>Delete</span>
-        </div>
-        <div class="info">
-            <img src="../assets/icons/I.svg" alt="Info">
-        </div>
-        <div class="edit" onclick="openPopupCardEdit(${index})">
-            <img src="../assets/icons/edit.svg" alt="Edit">
-            <div>
-                <span>Edit</span>
-            </div>
-        </div>
-    </div>
-`;
-}
-
-function openPopupCardEdit(index) {
-  const popupModal = document.getElementById("popupModalCardEdit");
-  popupModal.innerHTML = htmlTemplatePopUpBoardCardEdit(index);
-
-  setPriority(allBoardContent[index].prio, index, "prioEdit");
-
-  popupModal.style.display = "block";
-  popupModal.classList.remove("hide");
-  popupModal.classList.add("show");
+  return generatePopupBoardCard(categoryColor, index, statusImage, assignedHTML, subtasksHTML);
 }
 
 function htmlTemplatePopUpBoardCardEdit(index) {
   const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
 
-  return `
-    <div class= "containerEdit">
-      <div class="closeContainerEdit">
-        <img class="close" onclick="closePopupCard()" src="../assets/icons/close.svg">
-      </div>
-      <label for="title">Title<span class="requiredStar"></span></label>
-      <input type="text" id="inputEditTitle" placeholder="Enter a title" value="${
-        allBoardContent[index].title
-      }" required>
-      <label for="description">Description</label>
-      <textarea id="inputEditDescription" rows="5" placeholder="Enter a Description">${
-        allBoardContent[index].description
-      }</textarea>
-      <label for="dueDate">Due Date<span class="requiredStar"></span></label>
-      <input type="date" id="inputEditDate" value="${
-        allBoardContent[index].date
-      }">
-      <label for="prioEdit"><strong>Priority</strong></label>
-      <section id="prioEdit" class="flex">
-        <button onclick="setPriority('urgent', ${index}, 'prioEdit')" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
-        <button onclick="setPriority('medium', ${index}, 'prioEdit')" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
-        <button onclick="setPriority('low', ${index}, 'prioEdit')" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
-      </section>
-      <label for="contactSelectionEdit">Assigned to</label>
-      <div id="contactSelectionEdit" onclick="toggleContactListView(${index})" tabindex="0"> Select contacts to assign</div>
-      <div class="profileBadges">
-        ${assignedHTML}
-      </div>
-      <label for="subtask">Subtasks</label>
-      <div id="addSubTaskEdit" class="flex">
-        <input id="subtaskEdit" class="addSubTask" placeholder="Add new subtask" type="text">
-        <img onclick="addSubtaskEdit(${index})" style="cursor:pointer" src="../assets/icons/addSubtask.svg">
-      </div>
-      <ul id="subTasksListEdit"> 
-        ${renderSubtasks(index)}
-      </ul>
-      <button class="button margin-left" onclick="editTask('${
-        allBoardContent[index].Uid
-      }')">Ok<img src="../assets/icons/create.svg"></button>
-    </div>
-  `;
+  return generatePopupBoardCardEdit(index, assignedHTML);
 }
 
 function addSubtaskEdit(index) {
@@ -362,43 +239,6 @@ function showActions(index) {
 
 function hideActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "none";
-}
-
-function closePopup() {
-  const popupOverlay = document.getElementById("popupOverlay");
-  const popupModal = document.getElementById("popupModal");
-  popupOverlay.style.display = "none";
-  popupModal.classList.remove("show");
-  popupModal.classList.add("hide");
-
-  setTimeout(() => {
-    popupModal.style.display = "none";
-  }, 120);
-}
-
-function closePopupCard() {
-  const popupOverlay = document.getElementById("popupOverlayCard");
-  const popupModal = document.getElementById("popupModalCard");
-
-  popupModal.classList.remove("show");
-  popupModal.classList.add("hide");
-
-  setTimeout(() => {
-    popupModal.style.display = "none";
-    popupOverlay.style.display = "none";
-  }, 120); 
-  closePopupCardEdit();
-}
-
-function closePopupCardEdit() {
-  const popupOverlay = document.getElementById("popupOverlayCardEdit");
-  const popupModal = document.getElementById("popupModalCardEdit");
-  
-  popupModal.classList.remove("show");
-  popupModal.classList.add("hide");
-
-  popupModal.style.display = "none";
-  popupOverlay.style.display = "none";
 }
 
 async function updateTask(uid, data) {
