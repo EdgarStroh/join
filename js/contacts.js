@@ -9,52 +9,28 @@ function openContact(id) {
   toggleMenuMobile(id);
 }
 
-function addContact() {
-  let contactData = getContactFormData();
+function addContact(isMobile = false) {
+  let contactData = getContactFormData(isMobile);
   postDataContacts("", contactData);
-  resetContactForm();
+  resetContactForm(isMobile);
   closePopup();
   showPopupContact();
   updateContacts();
 }
 
-function addContactMobile() {
-  let contactData = getContactFormDataMobile();
-  postDataContacts("", contactData);
-  resetContactForm();
-  closePopup();
-  showPopupContact();
-  updateContacts();
-}
-
-function getContactFormData() {
+function getContactFormData(isMobile) {
   return {
-    name: document.getElementById("inputName").value,
-    email: document.getElementById("inputEmail").value,
-    phone: document.getElementById("inputPhone").value,
+    name: document.getElementById(isMobile ? "inputNameMobile" : "inputName").value,
+    email: document.getElementById(isMobile ? "inputEmailMobile" : "inputEmail").value,
+    phone: document.getElementById(isMobile ? "inputPhoneMobile" : "inputPhone").value,
     color: getRandomColor(),
   };
 }
 
-function getContactFormDataMobile() {
-  return {
-    name: document.getElementById("inputNameMobile").value,
-    email: document.getElementById("inputEmailMobile").value,
-    phone: document.getElementById("inputPhoneMobile").value,
-    color: getRandomColor(),
-  };
-}
-
-function resetContactForm() {
-  document.getElementById("inputName").value = "";
-  document.getElementById("inputEmail").value = "";
-  document.getElementById("inputPhone").value = "";
-}
-
-function resetContactFormMobile() {
-  document.getElementById("inputNameMobile").value = "";
-  document.getElementById("inputEmailMobile").value = "";
-  document.getElementById("inputPhoneMobile").value = "";
+function resetContactForm(isMobile) {
+  document.getElementById(isMobile ? "inputNameMobile" : "inputName").value = "";
+  document.getElementById(isMobile ? "inputEmailMobile" : "inputEmail").value = "";
+  document.getElementById(isMobile ? "inputPhoneMobile" : "inputPhone").value = "";
 }
 
 function renderExtendedContact(id) {
