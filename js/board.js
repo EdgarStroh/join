@@ -8,103 +8,6 @@ async function updateBoard() {
   renderBoardList();
 }
 
-let draggedFrom = null;
-
-function allowDrop(ev) {
-  ev.preventDefault();
-
-  const dropArea = ev.target.closest(".drag-area");
-
-  if (dropArea !== draggedFrom) {
-    let dropTarget = dropArea.querySelector(".drop-target");
-    if (!dropTarget) {
-      dropTarget = document.createElement("div");
-      dropTarget.classList.add("drop-target");
-      dropArea.appendChild(dropTarget);
-    }
-    dropTarget.style.display = "block";
-  }
-}
-
-function drag(ev) {
-  ev.target.classList.add("dragging");
-  ev.dataTransfer.setData("text", ev.target.id);
-  draggedFrom = ev.target.closest(".drag-area");
-
-  const allColumns = document.querySelectorAll(".drag-area");
-  allColumns.forEach((column) => {
-    if (column !== draggedFrom) {
-      let dropTarget = column.querySelector(".drop-target");
-      if (!dropTarget) {
-        dropTarget = document.createElement("div");
-        dropTarget.classList.add("drop-target");
-        column.appendChild(dropTarget);
-      }
-      dropTarget.style.display = "block";
-    }
-  });
-}
-
-function dragLeave(ev) {
-  const dropArea = ev.target.closest(".drag-area");
-  const dropTarget = dropArea.querySelector(".drop-target");
-  if (dropTarget) {
-    dropTarget.style.display = "none";
-  }
-}
-
-function dragEnd(ev) {
-  ev.target.classList.remove("dragging");
-
-  const allDropTargets = document.querySelectorAll(".drop-target");
-  allDropTargets.forEach((dropTarget) => dropTarget.remove());
-
-  draggedFrom = null;
-}
-
-document.addEventListener("dragend", dragEnd);
-
-function handleDrop(ev, status) {
-  ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
-  let draggedElement = document.getElementById(data);
-
-  const dropArea = ev.target.closest(".drag-area");
-
-  const allDropTargets = document.querySelectorAll(".drop-target");
-  allDropTargets.forEach((dropTarget) => dropTarget.remove());
-
-  dropArea.appendChild(draggedElement);
-  draggedElement.classList.remove("dragging");
-
-  let index = parseInt(data.split("-")[1]);
-  let currentTask = allBoardContent[index];
-  currentTask.status = status;
-  updateTask(currentTask.Uid, currentTask);
-
-  draggedFrom = null;
-}
-
-function dropDone(ev) {
-  handleDrop(ev, "done");
-}
-
-function dropAwait(ev) {
-  handleDrop(ev, "await");
-}
-
-function dropInProgress(ev) {
-  handleDrop(ev, "in progress");
-}
-
-function dropToDo(ev) {
-  handleDrop(ev, "toDo");
-}
-
-function removeHighlight(ev) {
-  ev.target.classList.remove("highlight");
-}
-
 // Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index) {
   let showContacts = allBoardContent[index].asigned || []; 
@@ -607,7 +510,6 @@ function renderContactSelectionBoard(index) {
   return contactListEdit;
 }
 
-
 function toggleContactListView(index) {
   const existingDropdown = document.getElementById("contactListEdit");
 
@@ -717,7 +619,6 @@ function getSubtaskDisplay(subtasks) {
     <div>${completedSubtasks}/${subtaskCount} Subtasks</div>
   `;
 }
-
 
 // SEARCH FUNCTION
 
