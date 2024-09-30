@@ -10,7 +10,7 @@ function openContact(id) {
 }
 
 function addContact(isMobile = false) {
-  let contactData = getContactFormData(isMobile);
+  let contactData = collectContactInputData(isMobile);
   postDataContacts("", contactData);
   resetContactForm(isMobile);
   closePopup();
@@ -18,7 +18,7 @@ function addContact(isMobile = false) {
   updateContacts();
 }
 
-function getContactFormData(isMobile) {
+function collectContactInputData(isMobile) {
   return {
     name: document.getElementById(isMobile ? "inputNameMobile" : "inputName").value,
     email: document.getElementById(isMobile ? "inputEmailMobile" : "inputEmail").value,
@@ -72,12 +72,7 @@ function renderContactList() {
       html += generateLetterSectionHTML(currentLetter);
     }
 
-    html += generateContactContent(
-      contact.name,
-      contact.email,
-      id,
-      contact.color
-    );
+    html += generateContactContent(contact.name, contact.email, id,contact.color);
   });
 
   contactsContainer.innerHTML = html;
@@ -135,8 +130,6 @@ function clearExtendedContact() {
     extendedContact.innerHTML = "";
   }
 }
-
-//    EDIT CONTACT   //
 
 function editContact(id) {
   console.log(`editContact aufgerufen mit ID: ${id}`);

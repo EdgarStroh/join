@@ -17,6 +17,7 @@ function toggleCheckbox(labelId) {
     label.classList.add("checked");
   }
 }
+
 function guestLogin() {
   localStorage.setItem("loggedInUser", "Guest");
   window.location.href = "summary.html";

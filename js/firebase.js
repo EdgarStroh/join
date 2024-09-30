@@ -23,15 +23,6 @@ async function loadDataContacts(path = "") {
     }));
 }
 
-// Kontakte aus Firebase laden
-// async function loadDataContacts(path = "") {
-//   let response = await fetch(BASE_URL_Contact + path + ".json");
-//   let contactsData = await response.json();
-//   return (allContacts = Object.keys(contactsData).map(
-//     (key) => contactsData[key]
-//   ));
-// }
-
 // post for contacts
 async function postDataContacts(path = "", data = {}) {
     let response = await fetch(BASE_URL_Contact + path + ".json", {
@@ -92,18 +83,6 @@ function sanitizeAssignedContacts(){
     }});
 }
 
-// post task's for board
-// async function postDataBoards(path = "", data = {}) {
-//     let response = await fetch(BASE_URL_Board + path + ".json", {
-//         method: "POST",
-//         header: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data)
-
-//     });
-//     return responseToJSon = await response.json();
-// }
 // Daten zu Firebase posten
 async function postDataBoards(path = "", data = {}) {
   let response = await fetch(BASE_URL_Board + path + ".json", {

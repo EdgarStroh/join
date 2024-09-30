@@ -36,7 +36,6 @@ function checkPasswords() {
   }
 }
 
-
 function areFieldsFilled() {
   return (
     document.getElementById("inputName").value.trim() !== "" &&
@@ -137,7 +136,6 @@ function addInputEventListeners() {
     });
   document.getElementById("checkboxLogin1").addEventListener("change", enableSignupButton);
 }
-
 
 function toggleIcon(inputId, iconId) {
   const inputField = document.getElementById(inputId);

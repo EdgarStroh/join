@@ -18,7 +18,6 @@ function resetAddTask(status = 'toDo'){
   contactList.classList.add("hidden");
 }
 
-// Kontakte rendern
 async function renderContactList() {
   await loadDataContacts();
 
@@ -142,45 +141,6 @@ function addSubtask() {
     subtask.value = "";
   }
 }
-
-// Ereignislistener für das Hinzufügen des Tasks
-// addTaskForm.addEventListener("submit", async (event) => {
-//   event.preventDefault();
-//   let title = document.getElementById("title");
-//   let date = document.getElementById("date");
-//   let description = document.getElementById("description");
-//   let category = document.getElementById("category");
-//   let selectedContacts = document.querySelectorAll(
-//     '#contactList .contact input[type="checkbox"]:checked'
-//   );
-
-//   let contactNames = [];
-//   if (selectedContacts.length) {
-//     for (let i = 0; i < selectedContacts.length; i++) {
-//       let name = selectedContacts[i].value;
-//       contactNames.push(name);
-//     }
-//   }
-
-//   let data = {
-//     asigned: contactNames,
-//     category: category.value,
-//     date: date.value,
-//     description: description.value,
-//     prio: newPriority,
-//     status: newStatus,
-//     subtasks: subtasks,
-//     title: title.value,
-//   };
-
-//   try {
-//     await postDataBoards("", data);
-//     window.location.href = "board.html";
-//   } catch (error) {
-//     console.log("Error posting data to Firebase:", error);
-//   }
-// });
-
 
 addTaskForm.addEventListener("submit", async (event) => {
   event.preventDefault();

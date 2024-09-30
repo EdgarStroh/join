@@ -31,6 +31,7 @@ function openPopupCardEdit(index) {
   setPriority(allBoardContent[index].prio, index, "prioEdit");
 
   popupModal.style.display = "block";
+  
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
@@ -41,8 +42,7 @@ function openPopupMobile() {
 
   popupOverlay.style.display = "flex";
   popupModal.style.display = "block";
-  // popupModal.style.opacity = "1";
-  // Entferne die `hide`-Klasse (falls vorhanden) und füge die `show`-Klasse hinzu
+
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
