@@ -31,7 +31,7 @@ function openPopupCardEdit(index) {
   setPriority(allBoardContent[index].prio, index, "prioEdit");
 
   popupModal.style.display = "block";
-  
+
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
@@ -102,12 +102,33 @@ function showPopupContact() {
   }, 1);
 
   setTimeout(function () {
-    closePopupSuccess();
+    closePopupContactSuccess();
   }, 1250);
+}
+
+function closePopupContactSuccess() {
+  document.getElementById("popupOverlay").style.display = "none";
+  document.getElementById("popupContactSuccess").style.display = "none";
+  loadDataUsers("");
+}
+
+function showPopupRegister() {
+  const overlay = document.getElementById("popupOverlay");
+  const success = document.getElementById("popupSuccess");
+
+  overlay.style.display = "flex";
+  success.style.display = "flex";
+  success.style.opacity = "0";
+
+  setTimeout(() => {
+    success.style.opacity = "1";
+  }, 1);
+
+  setTimeout(closePopupSuccess, 1250);
 }
 
 function closePopupSuccess() {
   document.getElementById("popupOverlay").style.display = "none";
-  document.getElementById("popupContactSuccess").style.display = "none";
+  document.getElementById("popupSuccess").style.display = "none";
   loadDataUsers("");
 }

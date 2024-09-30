@@ -67,7 +67,7 @@ function addUserToContacts(userData) {
 function handleSignUpSuccess() {
   clearForm();
   closePopup();
-  showPopup();
+  showPopupRegister();
 }
 
 function clearForm() {
@@ -88,7 +88,7 @@ function checkPasswordConfirmation() {
   );
 }
 
-function showPopup() {
+function showPopupRegister() {
   const overlay = document.getElementById("popupOverlay");
   const success = document.getElementById("popupSuccess");
 

@@ -64,29 +64,26 @@ function updateTaskCounts() {
 }
 
 function getNextUrgentTaskDate() {
-  let urgentTasks = allBoardContent.filter(
+  const urgentTasks = allBoardContent.filter(
     (task) => task.prio === "urgent" && task.status !== "done"
   );
 
   if (urgentTasks.length === 0) {
-    return null; // Keine "urgent"-Aufgaben gefunden
+    return null;
   }
 
-  // Konvertieren der Datumszeichenketten in tatsächliche Date-Objekte und das nächste Datum finden
-  let nextUrgentTask = urgentTasks.reduce((earliestTask, currentTask) => {
-    let earliestDate = new Date(earliestTask.date);
-    let currentDate = new Date(currentTask.date);
-
-    return currentDate < earliestDate ? currentTask : earliestTask;
+  const nextUrgentTask = urgentTasks.reduce((earliestTask, currentTask) => {
+    return new Date(currentTask.date) < new Date(earliestTask.date)
+      ? currentTask
+      : earliestTask;
   });
-
   return nextUrgentTask.date;
 }
 
-// Helper-Funktion zum Formatieren des Datums im amerikanischen Stil (z. B. "September 22, 2024")
+
 function formatDate(dateString) {
   let options = { year: 'numeric', month: 'long', day: 'numeric' };
   let date = new Date(dateString);
-  return date.toLocaleDateString('en-US', options); // 'en-US' für das amerikanische Format
+  return date.toLocaleDateString('en-US', options);
 }
 
