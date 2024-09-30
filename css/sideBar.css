@@ -40,11 +40,10 @@
 }
 .sideBarList a.activeNavigationPoint {
     background-color: #091931;
-    color: #FFFFFF; /* Optional: Textfarbe für aktive Links */
 }
 .sideBarList a.activeNavigationPoint:hover {
     background-color: #091931;
-    color: #FFFFFF;
+    
 }
 .sideBar .icon {
     height:30px;
