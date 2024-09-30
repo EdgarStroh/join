@@ -404,12 +404,14 @@
 .puTitle {
     font-size: 61px;
     font-weight: 700;
+    word-wrap: break-word;
 }
 
 .puDescription {
     font-size: 20px;
     font-weight: 400;
     padding: 16px 0;
+    word-wrap: break-word;
 }
 
 .puDate {
