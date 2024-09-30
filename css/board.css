@@ -443,6 +443,9 @@
 
 .contactCardPopUpContent {
     padding: 12px 16px 2px 22px;
+    height: 150px;
+    overflow: auto;
+    margin: 8px 0;
 }
 
 .subtaskCardPopUpContent {
@@ -483,6 +486,8 @@ input[type="checkbox"]:checked {
     /* gap: 6px;  */
     justify-content: right;
     color: #2A3647;
+    /* margin-top: 135px; */
+
 }
 
 .deleteEditPopUp img {
