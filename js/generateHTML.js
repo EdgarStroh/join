@@ -66,17 +66,25 @@ function generateEditContact(contact) {
             <div class="close_container">
             <img class="close" onclick="closeEditContact()" src="../assets/icons/close.svg" alt="Icon close">
           </div>
-          <img class="profileImg" src="../assets/img/profileImg.svg">
+          <span class="profileImg" style="background-color: ${contact.color}">${getInitials(contact.name).toUpperCase()}</span>
           <div class="popup-Right-Side flex-column">
             <form>
               <div class="input_login flex flex-column">
-                <input class="name" type="text" id="inputEditName" placeholder="Name" value="${contact.name}" required>
-                <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${contact.email}" required>
-                <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${contact.phone}" required>
+                <input class="name" type="text" id="inputEditName" placeholder="Name" value="${
+                  contact.name
+                }" required>
+                <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${
+                  contact.email
+                }" required>
+                <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${
+                  contact.phone
+                }" required>
               </div>
               <div class="button-line flex">
                 <button type="button" class="button-white" onclick="closeEditContact()">Cancel <img src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
-                <button type="button" class="button-DB" onclick="editContact('${contact.Uid}')">Save <img src="../assets/icons/create.svg" alt="Icon create"></button>
+                <button type="button" class="button-DB" onclick="editContact('${
+                  contact.Uid
+                }')">Save <img src="../assets/icons/create.svg" alt="Icon create"></button>
               </div>
             </form>
           </div>

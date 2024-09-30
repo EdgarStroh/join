@@ -472,6 +472,12 @@ input:focus {
     width: 120px;
     align-self: center;
     margin-bottom: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 47px;
 }
 
 .profileImgMobile {
