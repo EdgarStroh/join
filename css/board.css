@@ -517,17 +517,18 @@ input[type="checkbox"]:checked {
     /* position: fixed;
     top: 53px;
     right: 37px; */
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
+    
+    /* height: 15px;
+    width: 15px; */
 }
 
 .closeContainer {
-    height: 16px;
-    width: 16px;
+    height: 25px;
+    width: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
 }
 
 
@@ -743,12 +744,13 @@ input[type="checkbox"]:checked {
 
 .close {
     display: table;
-    margin-left: auto;
+    /* margin-left: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
 
 .divClose:hover {
