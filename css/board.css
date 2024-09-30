@@ -11,7 +11,8 @@
     flex-direction: column;
     background-color: #F6F7F8;
 }
-.flex{
+
+.flex {
     gap: 4px;
 }
 
@@ -247,7 +248,8 @@
     overflow: auto;
     scrollbar-width: none;
 }
-.taskFormButtonsPopUp{
+
+.taskFormButtonsPopUp {
     padding-top: 24px;
     width: 100%;
     justify-content: space-between;
@@ -790,6 +792,12 @@ input[type="checkbox"]:checked {
     background-color: #F0F0F0;
 }
 
+@media screen and (max-width: 2000px) {
+    #contactList {
+        top: 620px !important;
+        width: 340px!important;
+    }
+}
 
 @media screen and (max-width: 1340px) {
     .text_containerBoard {
@@ -840,9 +848,16 @@ input[type="checkbox"]:checked {
         flex-direction: column;
         align-items: center;
     }
+    .popup-modal {
+        border-radius: 0px;
+    }
 
     #seperationLinePopUp {
         display: none;
+    }
+    #contactList{
+        bottom: 852px !important;
+        width: 439px !important;
     }
 }
 

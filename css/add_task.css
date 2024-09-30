@@ -307,7 +307,8 @@ textarea {
     position: absolute;
     /* width: 100%; */
     width: inherit;
-    /* bottom: 200px; */
+    bottom: 200px;
+    z-index: 1;
 }
 
 .contact {
@@ -428,11 +429,17 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
     background-image: url(../assets/icons/checkbox_checked.svg);
 }
-.abc{
+
+.abc {
     border-radius: 20px;
 }
 
 /*Responsive*/
+@media screen and (max-width: 2000px) {
+    #contactList {
+        top: 745px;
+    }
+}
 
 @media screen and (max-width: 1400px) {
 
@@ -503,11 +510,13 @@ input[type="checkbox"]:checked {
         flex-direction: column;
     } */
 }
+
 @media screen and (max-width: 1310px) {
     .formParts {
         gap: 25px;
     }
 }
+
 @media screen and (max-width: 1200px) {
     .formParts {
         flex-direction: column;
@@ -520,7 +529,9 @@ input[type="checkbox"]:checked {
         padding: 150px 0 85px 20px;
         /* height: 0px; */
     }
-
+    #contactList {
+        top: 682px;
+    }
     .text_contentTask {
         height: auto;
     }
@@ -528,6 +539,7 @@ input[type="checkbox"]:checked {
     .popup-modal {
         zoom: 80%;
     }
+
     .h1Div {
         justify-content: center;
     }
@@ -556,7 +568,8 @@ input[type="checkbox"]:checked {
         flex-direction: column;
         align-items: center;
     }
-    .taskFormButtons{
+
+    .taskFormButtons {
         place-content: center;
         gap: 96px;
     }
@@ -566,6 +579,9 @@ input[type="checkbox"]:checked {
     .text_contentTask {
         zoom: 80%;
         padding-bottom: 120px;
+    }
+    #contactList {
+        top: 685px;
     }
 }
 
@@ -579,10 +595,13 @@ input[type="checkbox"]:checked {
     .h1Div {
         padding-top: 50px;
     }
+    #contactList {
+        top: 731px;
+    }
 }
 
 @media screen and (max-width: 340px) {
-    .taskFormButtons{
+    .taskFormButtons {
         place-content: center;
         gap: 75px;
     }
