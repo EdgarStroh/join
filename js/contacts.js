@@ -110,6 +110,7 @@ async function deleteDataContact(uid) {
 
     clearExtendedContact();
     updateContacts();
+    closeEditContact();
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
     alert("Es gab ein Problem beim Löschen des Kontakts.");
