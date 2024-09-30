@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     w3.includeHTML(function () {
-        let currentSite = window.location.pathname.toLowerCase().replace(/\/$/, '');
+        let currentSite = window.location.pathname;
         // console.log(`Current site: ${currentSite}`);
 
         // Select all sidebar links (both normal and mobile)
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (let i = 0; i < allLinks.length; i++) {
             let link = allLinks[i];
-            let linkPath = new URL(link.href).pathname.toLowerCase().replace(/\/$/, '');
+            let linkPath = new URL(link.href).pathname;
             // console.log(`Checking link: ${linkPath}`);
 
             if (linkPath === currentSite) {

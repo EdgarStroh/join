@@ -822,7 +822,7 @@ input:focus {
 
     .contact_list {
         position: absolute;
-        /* height: calc(100svh - 103px); */
+        height: calc(100svh - 192px);
     }
 }
 
@@ -970,6 +970,7 @@ input:focus {
 
     .contact_list {
         width: 100%;
+        height: calc(100svh - 89px);
     }
 
     .contact_content {
@@ -1085,6 +1086,11 @@ input:focus {
 
     .contact_content {
         zoom: 87%;
+        /* height: calc(100svh - 57px)!important; */
+
+    }
+    .contact_list{
+        height: calc(84% - 2%);
     }
 
 }

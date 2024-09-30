@@ -19,6 +19,7 @@
 
 <body onload="checkLogin(); renderContactList()" class="flex containerContent">
     <aside>
+        <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
@@ -81,14 +82,15 @@
         </form>
     </div>
     <footer>
-        <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
+        
     </footer>
     <script src="../js/firebase.js"></script>
     <script src="../js/add_task.js"></script>
     <script src="../js/generateHTML.js"></script>
-    <script src="../js/sideBar.js"></script>
+   
     <script src="..//js/header.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/sideBar.js"></script>
 </body>
 
 </html>
