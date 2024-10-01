@@ -92,7 +92,7 @@ input{
 #addSubTask img{
     background:white;
     border-radius:10px 10px 10px 10px;
-    border:1px solid #D1D1D1;
+    /* border:1px solid #D1D1D1; */
     /* border-left:0; */
 }
 

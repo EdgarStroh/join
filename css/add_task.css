@@ -284,7 +284,10 @@ textarea {
 }
 
 #contactSelection {
-    background: url(../assets/icons/dropdownIcon.svg) no-repeat right 10px center;
+    background-image: url("../assets/icons/arrow_drop_down.svg");
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 17px) center;
     background-color: white;
     font-size: 20px;
     width: 100%;
@@ -296,6 +299,8 @@ textarea {
 }
 
 #contactSelection:focus {
+    background-image: url("../assets/icons/arrow_drop_up.svg");
+    transition: background-image 0.15s linear;
     outline: none !important;
     border: 1px solid #29ABE2 !important;
 }
