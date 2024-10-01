@@ -330,7 +330,7 @@ function generatePopupBoardCard(categoryColor, index, statusImage, assignedHTML,
         ${assignedHTML}
     </div>
     <span>Subtasks</span> 
-    <div>
+    <div class="puSubtask">
         ${subtasksHTML}
     </div>
     <div class="deleteEditPopUp">

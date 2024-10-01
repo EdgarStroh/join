@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../css/mobileSideBar.css">
-    <script src="https://www.w3schools.com/lib/w3.js"></script> 
-    
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
 </head>
 
 <body onload="checkLogin(); renderContactList()" class="flex containerContent">
     <aside>
-        <div w3-include-html="../assets/templates/mobileSideBar.html"></div> 
+        <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
     </aside>
@@ -42,16 +42,22 @@
                     </div>
                     <div id="contactList" class="hidden flex"></div>
                 </section>
-                <hr id="seperationLine"></hr>
+                <hr id="seperationLine">
+                </hr>
                 <section class="formPart flex">
                     <label for="dueDate">Due Date<span class="requiredStar">*</span></label>
                     <input type="date" id="date">
                     <br>
                     <label for="prio">Prio</label>
                     <section id="prio" class="flex">
-                        <button onclick="setPriority('urgent', -1, 'prio')" value="urgent" id="prioUrgentEdit" type="button">Urgent<img id="prioUrgentImgEdit" src="../assets/icons/prioUrgent.svg"></button>
-                        <button onclick="setPriority('medium', -1, 'prio')" value="medium" id="prioMediumEdit" type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit" src="../assets/icons/prioMediumSelected.svg"></button>
-                        <button onclick="setPriority('low', -1, 'prio')" value="low" id="prioLowEdit" type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
+                        <button onclick="setPriority('urgent', -1, 'prio')" value="urgent" id="prioUrgentEdit"
+                            type="button">Urgent<img id="prioUrgentImgEdit"
+                                src="../assets/icons/prioUrgent.svg"></button>
+                        <button onclick="setPriority('medium', -1, 'prio')" value="medium" id="prioMediumEdit"
+                            type="button" class="prioMediumActive">Medium<img id="prioMediumImgEdit"
+                                src="../assets/icons/prioMediumSelected.svg"></button>
+                        <button onclick="setPriority('low', -1, 'prio')" value="low" id="prioLowEdit"
+                            type="button">Low<img id="prioLowImgEdit" src="../assets/icons/prioLow.svg"></button>
                     </section>
                     <br>
                     <label for="category">Category<span class="requiredStar">*</span></label>
@@ -59,7 +65,7 @@
                         <option value="" disabled selected hidden>Select Task Category</option>
                         <option value="Technical Task">Technical Task</option>
                         <option value="User Story">User Story</option>
-                      </select>
+                    </select>
                     <br>
                     <label for="subtask">Subtasks</label>
                     <div id="addSubTask" class="flex">
@@ -73,17 +79,22 @@
             <div class="taskFormButtons flex">
                 <p><span class="requiredStar">*</span>This field is required</p>
                 <div class="flex">
-                    <button onclick="resetAddTask()" type="reset" class="button clearBtn">Clear <img src="../assets/icons/cancel.svg"
-                            alt="Icon clear task"></button>
+                    <button onclick="resetAddTask()" type="reset" class="button clearBtn">Clear <img
+                            src="../assets/icons/cancel.svg" alt="Icon clear task"></button>
                     <button type="submit" class="button">Create Task<img src="../assets/icons/create.svg"
                             alt="Icon create task"></button>
                 </div>
             </div>
         </form>
     </div>
-    <footer>
-        
-    </footer>
+    <!-- Pop up Task added to board -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div id="popupContactSuccessAddedTask">
+            <p>Task added to board
+                <img src="../assets/icons/board.svg">
+            </p>
+        </div>
+    </div>
     <script src="../js/firebase.js"></script>
     <script src="../js/add_task.js"></script>
     <script src="../js/generateHTML.js"></script>

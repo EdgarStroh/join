@@ -156,11 +156,37 @@ addTaskForm.addEventListener("submit", async (event) => {
   let data = collectFormData();
   try {
     await postDataBoards("", data);
-    window.location.href = "board.html";
+  
+    
   } catch (error) {
     console.error("Error posting data to Firebase:", error);
   }
+  showPopupTask();
+  setTimeout(function () {
+    window.location.href = "board.html";
+  }, 1250)
 });
+
+function showPopupTask() {
+  const overlay = document.getElementById("popupOverlay");
+  const success = document.getElementById("popupContactSuccessAddedTask");
+
+  overlay.style.display = "flex";
+  success.style.display = "flex";
+  success.style.opacity = "0";
+
+  setTimeout(() => {
+    success.style.opacity = "1";
+  }, 1);
+
+  setTimeout(function () {
+    closePopupContactSuccessAddedTask();
+  }, 1250);
+}
+function closePopupContactSuccessAddedTask() {
+  document.getElementById("popupOverlay").style.display = "none";
+  document.getElementById("popupContactSuccess").style.display = "none";
+}
 
 function collectFormData() {
   return {

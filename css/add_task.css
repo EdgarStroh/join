@@ -279,6 +279,7 @@ textarea {
     max-height: 140px;
     max-width: 495px;
 }
+
 #seperationLine {
     border: 1px solid #D1D1D1;
 }
@@ -443,6 +444,42 @@ input[type="checkbox"]:checked {
     border-radius: 20px;
 }
 
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    align-content: center;
+    text-align: center;
+}
+
+#popupContactSuccessAddedTask {
+    display: none;
+    /* Standardmäßig versteckt */
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+#popupContactSuccessAddedTask p {
+    height: 50px;
+    width: 280px;
+    color: white;
+    background-color: #2A3647;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    border-radius: 20px;
+    padding: 6px 8px;
+}
+
 /*Responsive*/
 @media screen and (max-width: 2000px) {
     #contactList {
@@ -524,6 +561,7 @@ input[type="checkbox"]:checked {
     .formParts {
         gap: 25px;
     }
+
     textarea {
 
         max-width: 460px;
@@ -542,9 +580,11 @@ input[type="checkbox"]:checked {
         padding: 150px 0 85px 20px;
         /* height: 0px; */
     }
+
     #contactList {
         top: 682px;
     }
+
     .text_contentTask {
         height: auto;
     }
@@ -570,8 +610,9 @@ input[type="checkbox"]:checked {
         display: none;
     }
 }
+
 @media screen and (max-width: 600px) {
-    .h1Div{
+    .h1Div {
         justify-content: left;
     }
 }
@@ -598,6 +639,7 @@ input[type="checkbox"]:checked {
         zoom: 80%;
         padding-bottom: 120px;
     }
+
     #contactList {
         top: 685px;
     }
@@ -613,6 +655,7 @@ input[type="checkbox"]:checked {
     .h1Div {
         padding-top: 50px;
     }
+
     #contactList {
         top: 731px;
     }
