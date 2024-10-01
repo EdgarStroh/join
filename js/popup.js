@@ -3,7 +3,7 @@ function openPopupAddTask(status = "toDo") {
   const popupModal = document.getElementById("popupModal");
 
   resetAddTask(status);
-
+  document.body.classList.add('no-scroll');
   popupOverlay.style.display = "flex";
   popupModal.style.display = "block";
 
@@ -19,7 +19,7 @@ function openPopupCard(index) {
 
   popupOverlay.style.display = "flex";
   popupModal.style.display = "block";
-
+  document.body.classList.add('no-scroll');
   popupModal.classList.remove("hide");
   popupModal.classList.add("show");
 }
@@ -47,12 +47,13 @@ function openPopupMobile() {
   popupModal.classList.add("show");
 }
 
-function closePopup() {
+function closePopupAddTask() {
   const popupOverlay = document.getElementById("popupOverlay");
   const popupModal = document.getElementById("popupModal");
   popupOverlay.style.display = "none";
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
+  document.body.classList.add('no-scroll');
 
   setTimeout(() => {
     popupModal.style.display = "none";
@@ -65,7 +66,7 @@ function closePopupCard() {
 
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
-
+  document.body.classList.remove('no-scroll');
   setTimeout(() => {
     popupModal.style.display = "none";
     popupOverlay.style.display = "none";

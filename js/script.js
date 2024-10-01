@@ -66,3 +66,17 @@ function closePopup() {
      window.location.href = "index.html";
    }
  }
+
+//  function checkOrientation() {
+//   if (window.matchMedia("(orientation: landscape)").matches) {
+//       alert("Bitte wechsle in den Hochformatmodus für eine bessere Benutzererfahrung.");
+//       // Hier kannst du auch eine Umleitung zu einer anderen Seite hinzufügen, wenn du möchtest
+//       // window.location.href = "deine-seite.html";
+//   }
+// }
+
+// // Überwache die Änderung der Bildschirmorientierung
+// window.addEventListener("orientationchange", checkOrientation);
+
+// // Überprüfe die aktuelle Orientierung beim Laden der Seite
+// checkOrientation();

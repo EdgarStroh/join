@@ -7,6 +7,9 @@
 body {
     background-color: #F6F7F8;
 }
+body.no-scroll {
+    overflow: hidden; /* Verhindert das Scrollen */
+}
 a {
     text-decoration: none;
 }
