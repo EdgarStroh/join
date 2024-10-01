@@ -465,24 +465,49 @@ function getSubtaskDisplay(subtasks) {
 }
 
 // SEARCH FUNCTION
-
-//Für die Suche verwendete Variablen
 let titlesDOM = document.getElementsByClassName("bc2");
 let descriptionsDOM = document.getElementsByClassName("bc3");
 let searchBar = document.getElementsByClassName("searchBar")[0];
 let boardCardDOM = document.getElementsByClassName("boardCard");
 
-//Suchfunktion
-searchBar.addEventListener("keyup", () => {
+// Funktion für die Suche per Klick
+document.querySelector(".search-icon-container").addEventListener("click", () => {
+  searchTasks();
+});
+
+// Funktion für live Suche bei Keyup, um alle Aufgaben anzuzeigen, wenn das Eingabefeld leer ist
+searchBar.addEventListener("input", () => {
+  if (searchBar.value === "") {
+    showAllTasks(); // Zeige alle Aufgaben, wenn das Eingabefeld leer ist
+  }
+});
+
+// Funktion, um alle Aufgaben anzuzeigen
+function showAllTasks() {
+  for (let i = 0; i < boardCardDOM.length; i++) {
+    boardCardDOM[i].style.display = ""; // Zeige alle Aufgaben
+  }
+}
+
+// Funktion für die Suche
+function searchTasks() {
   updateBoard().then(() => {
-    let searchQuery = searchBar.value.toLowerCase();
-    for (i = 0; i < titlesDOM.length; i++) {
-      let title = titlesDOM[i].innerHTML.toLowerCase();
-      let description = descriptionsDOM[i].innerHTML.toLowerCase();
-      if (!(title.includes(searchQuery) || description.includes(searchQuery))) {
-        boardCardDOM[i].style.display = "none";
+    let searchQuery = searchBar.value.toLowerCase(); // holt den Suchtext aus dem Eingabefeld
+    
+    // Wenn das Suchfeld leer ist, zeige alle Aufgaben
+    if (searchQuery === "") {
+      showAllTasks(); // Ruft die Funktion auf, um alle Aufgaben anzuzeigen
+    } else {
+      // Verstecke nicht passende Aufgaben
+      for (let i = 0; i < titlesDOM.length; i++) {
+        let title = titlesDOM[i].innerHTML.toLowerCase();
+        let description = descriptionsDOM[i].innerHTML.toLowerCase();
+        if (!(title.includes(searchQuery) || description.includes(searchQuery))) {
+          boardCardDOM[i].style.display = "none"; // Verstecke Aufgaben, die nicht passen
+        } else {
+          boardCardDOM[i].style.display = ""; // Zeige passende Aufgaben
+        }
       }
     }
   });
-});
-
+}
