@@ -454,17 +454,9 @@ input[type="checkbox"]:checked {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 4;
     align-content: center;
     text-align: center;
-}
-
-#popupContactSuccessAddedTask {
-    display: none;
-    /* Standardmäßig versteckt */
-    z-index: 200;
-    opacity: 0;
-    transition: opacity 0.2s ease;
 }
 
 #popupContactSuccessAddedTask p {

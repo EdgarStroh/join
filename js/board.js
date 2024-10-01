@@ -389,6 +389,27 @@ function toggleContactListViewAddTask(event) {
   // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
   event.stopPropagation();
 }
+function showPopupTask() {
+  const overlay = document.getElementById("popupOverlay1");
+  const success = document.getElementById("popupContactSuccessAddedTaskButton");
+
+  overlay.style.display = "flex";
+  success.style.display = "flex";
+  success.style.opacity = "0";
+
+  setTimeout(() => {
+    success.style.opacity = "1";
+  }, 1);
+
+  setTimeout(function () {
+    closePopupContactSuccessAddedTask();
+  }, 1250);
+}
+function closePopupContactSuccessAddedTask() {
+  document.getElementById("popupOverlay1").style.display = "none";
+  document.getElementById("popupContactSuccessButton").style.display = "none";
+}
+
 
 function generateAssignedHTML(assignedContacts) {
   let assignedHTML = "";
