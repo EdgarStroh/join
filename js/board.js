@@ -387,7 +387,7 @@ function toggleContactListViewAddTask(event) {
   }
 
   // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
-  event.stopPropagation();
+  // event.stopPropagation();
 }
 function showPopupTask() {
   const overlay = document.getElementById("popupOverlay1");

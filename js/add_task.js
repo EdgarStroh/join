@@ -50,7 +50,7 @@ function toggleContactListViewAddTask(event) {
   }
 
   // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
-  event.stopPropagation();
+  // event.stopPropagation();
 }
 
 
