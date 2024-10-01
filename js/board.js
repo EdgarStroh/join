@@ -389,6 +389,20 @@ function toggleContactListViewAddTask(event) {
   // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
   // event.stopPropagation();
 }
+addTaskForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  let data = collectFormData();
+  try {
+    await postDataBoards("", data);
+  
+    
+  } catch (error) {
+    console.error("Error posting data to Firebase:", error);
+  }
+  showPopupTask();
+  closePopup();
+});
 function showPopupTask() {
   const overlay = document.getElementById("popupOverlay1");
   const success = document.getElementById("popupContactSuccessAddedTaskButton");
@@ -407,7 +421,7 @@ function showPopupTask() {
 }
 function closePopupContactSuccessAddedTask() {
   document.getElementById("popupOverlay1").style.display = "none";
-  document.getElementById("popupContactSuccessButton").style.display = "none";
+  document.getElementById("popupContactSuccessAddedTaskButton").style.display = "none";
 }
 
 

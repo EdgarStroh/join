@@ -150,7 +150,7 @@ function addSubtask() {
   }
 }
 
-addTaskForm.addEventListener("submit", async (event) => {
+addTaskFormTask.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   let data = collectFormData();
