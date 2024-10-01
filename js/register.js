@@ -24,16 +24,20 @@ function checkPasswords() {
   const passwordError = document.getElementById("passwordError");
 
   if (password !== confirmPassword) {
-    passwordError.innerHTML = "Your passwords don't match. Please try again."; 
-    document.getElementById("signupPassword").classList.add("input-error");
-    document.getElementById("signupConfirmPassword").classList.add("input-error");
-    return false;
+    passwordError.innerHTML = "Your passwords don't match. Please try again.";
+    setInputError(true);
   } else {
-    passwordError.innerHTML = ""; 
-    document.getElementById("signupPassword").classList.remove("input-error");
-    document.getElementById("signupConfirmPassword").classList.remove("input-error");
-    return true; 
+    passwordError.innerHTML = "";
+    setInputError(false);
   }
+  return password === confirmPassword;
+}
+
+function setInputError(hasError) {
+  const action = hasError ? "add" : "remove";
+
+  document.getElementById("signupPassword").classList[action]("input-error");
+  document.getElementById("signupConfirmPassword").classList[action]("input-error");
 }
 
 function areFieldsFilled() {
