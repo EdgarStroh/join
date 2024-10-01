@@ -832,7 +832,7 @@ input:focus {
 
     .contact_list {
         position: absolute;
-        height: calc(100svh - 192px);
+        height: calc(100svh - 188px);
     }
 }
 
@@ -980,7 +980,7 @@ input:focus {
 
     .contact_list {
         width: 100%;
-        height: calc(100svh - 89px);
+        height: calc(100svh - 93px);
     }
 
     .contact_content {
@@ -1091,7 +1091,7 @@ input:focus {
 @media screen and (max-width: 350px) {
     .single_contact {
         /* padding: 15px 5px; */
-        width: 320px;
+        /* width: 320px; */
     }
 
     .contact_content {
@@ -1100,7 +1100,7 @@ input:focus {
 
     }
     .contact_list{
-        height: calc(84% - 2%);
+        height: calc(83.5% - 2%);
     }
 
 }
