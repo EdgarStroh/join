@@ -60,12 +60,11 @@ textarea {
     padding-top: 20px;
 }
 
-select {
-    height: 48px;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    line-height: 24px;
-    padding-left: 12px;
+
+
+/* Optional: Style für den geöffneten Zustand */
+select:active {
+    background-image: url("../assets/icons/arrow_drop_up.svg");
 }
 
 input:focus,
@@ -275,6 +274,11 @@ textarea {
     cursor: pointer;
 }
 
+textarea {
+    min-height: 140px;
+    max-height: 140px;
+    max-width: 495px;
+}
 #seperationLine {
     border: 1px solid #D1D1D1;
 }
@@ -514,6 +518,10 @@ input[type="checkbox"]:checked {
 @media screen and (max-width: 1310px) {
     .formParts {
         gap: 25px;
+    }
+    textarea {
+
+        max-width: 460px;
     }
 }
 

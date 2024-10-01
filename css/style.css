@@ -134,6 +134,25 @@ footer {
     flex-direction: column!important;
     min-height: 100vh !important;
 }
+select {
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    line-height: 24px;
+    padding-left: 12px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("../assets/icons/arrow_drop_down.svg");
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 17px) center;
+    transition: background-image 0.15s linear; /* Animation hinzufügen */
+}
+
+/* Wenn das Select-Element aktiv ist oder der Benutzer es fokussiert */
+select:focus {
+    background-image: url("../assets/icons/arrow_drop_up.svg");
+}
 
 @media screen and (max-width: 1020px) {
 

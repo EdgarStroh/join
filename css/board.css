@@ -311,6 +311,9 @@
 .popup-modal-card-edit.hide {
     opacity: 0;
 }
+textarea::placeholder{
+    padding-top: 0px !important;
+}
 
 .popup-modal-card.show {
     display: block;
@@ -798,7 +801,7 @@ input[type="checkbox"]:checked {
 
 @media screen and (max-width: 2000px) {
     #contactList {
-        top: 620px !important;
+        top: 628px !important;
         width: 340px!important;
     }
 }
@@ -820,6 +823,7 @@ input[type="checkbox"]:checked {
 
     .boardContent {
         flex-direction: column;
+        overflow-x: auto;
     }
 
     .boardCard {
@@ -842,7 +846,7 @@ input[type="checkbox"]:checked {
     }
 
     .boardContent {
-        /* padding-left: 20px; */
+        padding-left: 10px;
         padding-bottom: 100px;
     }
 }
@@ -860,7 +864,7 @@ input[type="checkbox"]:checked {
         display: none;
     }
     #contactList{
-        bottom: 852px !important;
+        top: 620px !important;
         width: 439px !important;
     }
 }
@@ -877,6 +881,10 @@ input[type="checkbox"]:checked {
     }
     h1{
         font-size: 41px;
+    }
+    #contactList{
+        top: 603px !important;
+     
     }
 }
 
