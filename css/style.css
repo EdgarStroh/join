@@ -145,7 +145,7 @@ select {
     background-image: url("../assets/icons/arrow_drop_down.svg");
     background-size: 10px;
     background-repeat: no-repeat;
-    background-position: calc(100% - 17px) center;
+    background-position: calc(100% - 18px) center;
     transition: background-image 0.15s linear; /* Animation hinzufügen */
 }
 

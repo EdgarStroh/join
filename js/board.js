@@ -372,18 +372,22 @@ function createDropdown(index) {
   document.addEventListener("click", closeDropdownOnClickOutside);
 }
 
-function closeDropdownOnClickOutside(event) {
-  const dropdown = document.getElementById("contactListEdit");
-  const contactSelection = document.getElementById("contactSelectionEdit");
+function toggleContactListViewAddTask(event) {
+  let contactList = document.getElementById("contactList");
 
-  if (
-    dropdown &&
-    !dropdown.contains(event.target) &&
-    !contactSelection.contains(event.target)
-  ) {
-    dropdown.remove();
+  // Toggle die hidden Klasse
+  contactList.classList.toggle("hidden");
+
+  if (!contactList.classList.contains("hidden")) {
+    // Listener hinzufügen, wenn das Dropdown geöffnet wird
+    document.addEventListener("click", closeDropdownOnClickOutside);
+  } else {
+    // Listener entfernen, wenn das Dropdown geschlossen wird
     document.removeEventListener("click", closeDropdownOnClickOutside);
   }
+
+  // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
+  event.stopPropagation();
 }
 
 function generateAssignedHTML(assignedContacts) {

@@ -35,16 +35,24 @@ async function renderContactList() {
   }
 }
 
-function toggleContactListViewAddTask() {
+function toggleContactListViewAddTask(event) {
   let contactList = document.getElementById("contactList");
+
+  // Toggle die hidden Klasse
   contactList.classList.toggle("hidden");
 
   if (!contactList.classList.contains("hidden")) {
-    document.addEventListener("click", closeDropdownOnClickOutside); 
+    // Listener hinzufügen, wenn das Dropdown geöffnet wird
+    document.addEventListener("click", closeDropdownOnClickOutside);
   } else {
-    document.removeEventListener("click", closeDropdownOnClickOutside); 
+    // Listener entfernen, wenn das Dropdown geschlossen wird
+    document.removeEventListener("click", closeDropdownOnClickOutside);
   }
+
+  // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
+  event.stopPropagation();
 }
+
 
 function toggleContactCheckbox(event) {
   if (event.target.type !== "checkbox") {

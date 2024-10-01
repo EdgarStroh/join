@@ -134,7 +134,7 @@ input {
 #date {
     outline: none !important;
     padding-right: 30px;
-    background: url(../assets/icons/date.svg) no-repeat right 10px center;
+    background: url(../assets/icons/date.svg) no-repeat right 13px center;
     background-size: 20px 20px;
     background-color: white;
     position: relative;
