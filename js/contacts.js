@@ -129,15 +129,7 @@ function toggleMenuMobile() {
     contactTools1.innerHTML = contactTools.innerHTML;
     // contactTools1.classList.add("hidden");
     contactTools1.classList.toggle("hidden");
-
-
-    // contactTools.classList.add("hidden");
-    // contactTools1.classList.toggle("hidden");
-    // contactTools1.style.display ="flex"
-  }else {
-    
   }
-
 }
 
 async function deleteDataContact(uid) {

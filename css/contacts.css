@@ -167,11 +167,15 @@ h4 {
     /* width: 100%; */
     /* min-width: -webkit-fill-available; */
 }
+
 .extended_contact {
     /* will-change: transform; */
 }
-html, body {
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+
+html,
+body {
+    overflow-x: hidden;
+    /* Verhindert horizontales Scrollen */
 }
 
 
@@ -722,7 +726,8 @@ input:focus {
     color: #2A3647;
 
 }
-.contact_tools1{
+
+.contact_tools1 {
     /* cursor: pointer;
     position: absolute;
     height: 56px;
@@ -856,10 +861,12 @@ input:focus {
         position: absolute;
         height: calc(100svh - 188px);
     }
-    .contact_content_extended{
+
+    .contact_content_extended {
         flex-direction: column;
     }
-    .headline_contacts{
+
+    .headline_contacts {
         align-items: center;
     }
 }
@@ -1017,28 +1024,29 @@ input:focus {
     }
 
     .contact_tools1 {
+        animation: slideIn 0.4s ease-out forwards;
+        animation-fill-mode: forwards;
         width: 102px;
         height: 80px;
-        /* display: none; */
         position: fixed;
-        /* bottom: -192px;
-        right: -276px; */
         right: 0%;
-        /* margin-bottom: 150px; */
         flex-direction: column;
         box-shadow: -3px 2px 4px 0px #00000040;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
-        /* padding: 23px; */
         color: #2A3647;
         z-index: 100;
         margin-bottom: 175px;
         bottom: 0;
         gap: 23px;
-    display: flex;
-    padding: 10px;
+        display: flex;
+        padding: 10px;
     }
-    
+
+    .contact_tools1.hidden {
+        animation: slideOut 0.4s ease-out forwards;
+    }
+
 
     .contact_content_extended {
         flex-direction: row;
@@ -1050,7 +1058,7 @@ input:focus {
         align-items: baseline;
         padding-left: 15px;
         gap: 50px;
-       
+
     }
 
     .headline_contacts_extended {
@@ -1062,6 +1070,7 @@ input:focus {
     .slideIn.show {
         /* animation: none; */
     }
+
     .contact_content_extended {
         margin-top: 20%;
     }
@@ -1090,6 +1099,7 @@ input:focus {
     .popup-edit-modal {
         zoom: 75%;
     }
+
     .extended_contact {
         margin-right: auto;
     }
@@ -1106,10 +1116,12 @@ input:focus {
     .popup-modal-mobile {
         zoom: 63%
     }
-    .profileImg{
+
+    .profileImg {
         margin-bottom: 5px;
     }
-    .popup-Right-Side{
+
+    .popup-Right-Side {
         zoom: 100%;
     }
 
@@ -1130,7 +1142,8 @@ input:focus {
         /* height: calc(100svh - 57px)!important; */
 
     }
-    .contact_list{
+
+    .contact_list {
         /* height: calc(80.5% - 17px); */
     }
 
