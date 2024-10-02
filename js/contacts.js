@@ -18,13 +18,13 @@ function addContact(isMobile = false) {
   updateContacts();
 }
 function closePopup() {
-  
+
   const popupOverlay = document.getElementById("popupOverlay");
   const popupModal = document.getElementById("popupModal");
   popupOverlay.style.display = "none";
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
- 
+
 
   setTimeout(() => {
     popupModal.style.display = "none";
@@ -60,10 +60,13 @@ function renderExtendedContact(id) {
     allContacts[id].Uid,
     id
   );
-
-  setTimeout(() => {
-    extendedContact.classList.add("slideIn", "show");
-  }, 10);
+  // Verwende requestAnimationFrame, um sicherzustellen, dass die Klasse entfernt wird, bevor sie erneut hinzugefügt wird
+  requestAnimationFrame(() => {
+    extendedContact.classList.add("slideIn");
+    requestAnimationFrame(() => {
+      extendedContact.classList.add("show");
+    });
+  });
 }
 
 function renderContactList() {
@@ -85,7 +88,7 @@ function renderContactList() {
       html += generateLetterSectionHTML(currentLetter);
     }
 
-    html += generateContactContent(contact.name, contact.email, id,contact.color);
+    html += generateContactContent(contact.name, contact.email, id, contact.color);
   });
 
   contactsContainer.innerHTML = html;

@@ -156,16 +156,22 @@ h4 {
 }
 
 .slideIn.show {
-    animation: slideIn.12s ease-out forwards;
+    animation: slideIn 0.4s ease-out forwards;
     animation-fill-mode: forwards;
+    /* max-height: 500px; */
     /* Halte das Endergebnis
     display: flex;
     flex-direction: column;
     gap: 54px; 
     /* width: 100%; */
-    min-width: -webkit-fill-available;
+    /* min-width: -webkit-fill-available; */
 }
-
+.extended_contact {
+    /* will-change: transform; */
+}
+html, body {
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+}
 
 
 @keyframes slideIn {
@@ -783,7 +789,7 @@ input:focus {
 
 @media screen and (max-width: 1150px) {
     .contact_content_extended {
-        flex-direction: column;
+        /* flex-direction: column; */
     }
 
     .popup-modal,
@@ -792,7 +798,7 @@ input:focus {
     }
 
     .contact_headline {
-        align-items: center;
+        /* align-items: center; */
     }
 
     .headline_contacts_extended {
@@ -834,6 +840,12 @@ input:focus {
     .contact_list {
         position: absolute;
         height: calc(100svh - 188px);
+    }
+    .contact_content_extended{
+        flex-direction: column;
+    }
+    .headline_contacts{
+        align-items: center;
     }
 }
 
