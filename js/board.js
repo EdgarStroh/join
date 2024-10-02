@@ -400,6 +400,7 @@ addTaskForm.addEventListener("submit", async (event) => {
   } catch (error) {
     console.error("Error posting data to Firebase:", error);
   }
+  updateBoard();
   showPopupTask();
   closePopup();
   document.body.classList.remove('no-scroll');
