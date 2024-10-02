@@ -378,7 +378,7 @@ function generatePopupBoardCardEdit(index, assignedHTML) {
       </section>
       <label for="contactSelectionEdit">Assigned to</label>
       <div id="contactSelectionEdit" onclick="toggleContactListView(${index})" tabindex="0"> Select contacts to assign</div>
-      <div class="profileBadges">${assignedHTML}</div>
+      <div id="profileBadgesEdit" class="profileBadges">${assignedHTML}</div>
       <label for="subtask">Subtasks</label>
       <div id="addSubTaskEdit" class="flex">
         <input id="subtaskEdit" class="addSubTask" placeholder="Add new subtask" type="text">

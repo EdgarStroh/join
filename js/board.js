@@ -279,28 +279,16 @@ function editTask(uid) {
   const description = document.getElementById("inputEditDescription").value;
   const date = document.getElementById("inputEditDate").value;
 
-  const originalTask = allBoardContent.find((task) => task.Uid === uid);
   const originalIndex = allBoardContent.findIndex((task) => task.Uid === uid);
 
-  if (!originalTask) {
+  if (originalIndex == -1) {
     console.error("Task mit ID", uid, "nicht gefunden!");
     return;
   }
-  let contactNames = originalTask.asigned;
-
-  let selectedContacts = document.querySelectorAll(
-    '#contactListEdit .contactEdit input[type="checkbox"]:checked'
-  );
-  if (selectedContacts.length > 0){
-    contactNames = [];
-    for (let i = 0; i < selectedContacts.length; i++) {
-      let name = selectedContacts[i].value;
-      contactNames.push(name);
-    }
-  }
+  let contactNames = collectSelectedContacts(originalIndex);
 
   const updatedTask = {
-    ...originalTask,
+    ...allBoardContent[originalIndex],
     title: title,
     description: description,
     date: date,
@@ -311,6 +299,23 @@ function editTask(uid) {
   updateTask(uid, updatedTask);
   closePopupCardEdit();
   openPopupCard(originalIndex);
+}
+
+function collectSelectedContacts(index) {
+  const originalTask = allBoardContent[index];
+  let contactNames = originalTask.asigned;
+
+  let selectedContacts = document.querySelectorAll(
+    '#contactListEdit .contactEdit input[type="checkbox"]:checked'
+  );
+  if (selectedContacts.length > 0) {
+    contactNames = [];
+    for (let i = 0; i < selectedContacts.length; i++) {
+      let name = selectedContacts[i].value;
+      contactNames.push(name);
+    }
+  }
+  return contactNames;
 }
 
 function renderContactSelectionBoard(index) {
@@ -354,6 +359,9 @@ function toggleContactListView(index) {
   const existingDropdown = document.getElementById("contactListEdit");
 
   if (existingDropdown) {
+    allBoardContent[index].asigned = collectSelectedContacts(index);
+    const badges = document.getElementById("profileBadgesEdit");
+    badges.innerHTML = generateAssignedHTML(allBoardContent[index].asigned);
     existingDropdown.remove();
   } else {
     createDropdown(index);
@@ -433,7 +441,7 @@ function generateAssignedHTML(assignedContacts) {
   if (Array.isArray(assignedContacts)) {
     assignedContacts.forEach((person) => {
       const initials = getInitials(person).toUpperCase() || "";
-      const color = contactColors[person] || "";
+      const color = allContacts.find((contact) => contact.name === person).color || "";
       assignedHTML += `
         <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
           ${initials}
