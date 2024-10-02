@@ -4,6 +4,7 @@ function openPopup() {
 }
 
 function closePopup() {
+  
   document.getElementById("popupModal").style.display = "none";
   document.getElementById("sign_up_button_div").classList.remove("displayNone");
 }
