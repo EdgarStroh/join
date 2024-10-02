@@ -97,6 +97,7 @@ function renderContactList() {
 function mobileShowContact() {
   if (window.innerWidth < 800) {
     document.getElementById("contact_list").style.display = "none";
+    // document.getElementById("contact_list1").style.display = "none";
     document.getElementById("headline_contacts").style.display = "flex";
     document.getElementById("arrow_left_contact").style.display = "flex";
     document.getElementById("headline_contacts").style.left = "auto";
@@ -104,12 +105,14 @@ function mobileShowContact() {
     document.getElementById("headline_contacts").style.height = "auto";
     document.getElementById("mobileAddButton").style.display = "none";
     document.getElementById("renderEditDelete").style.display = "flow";
-    document.getElementById("contact_tools").classList.add("hidden")
+    document.getElementById("contact_tools").classList.add("hidden");
+    document.getElementById("contact_tools1").classList.add("hidden");
   }
 }
 
 function mobileShowContactReverse() {
   document.getElementById("contact_list").style.display = "flex";
+  document.getElementById("contact_tools1").classList.add("hidden");
   document.getElementById("headline_contacts").style.display = "none";
   document.getElementById("arrow_left_contact").style.display = "none";
   document.getElementById("mobileAddButton").style.display = "flow";
@@ -118,6 +121,23 @@ function mobileShowContactReverse() {
   if (menu && !menu.classList.contains("hidden")) {
     menu.classList.add("hidden");
   }
+}
+function toggleMenuMobile() {
+  if (window.innerWidth < 800) {
+    const contactTools = document.getElementById("contact_tools");
+    const contactTools1 = document.getElementById("contact_tools1");
+    contactTools1.innerHTML = contactTools.innerHTML;
+    // contactTools1.classList.add("hidden");
+    contactTools1.classList.toggle("hidden");
+
+
+    // contactTools.classList.add("hidden");
+    // contactTools1.classList.toggle("hidden");
+    // contactTools1.style.display ="flex"
+  }else {
+    
+  }
+
 }
 
 async function deleteDataContact(uid) {
@@ -239,8 +259,3 @@ function closeEditContact() {
   togglePopup("popupEditOverlay", "popupEditModal", false);
 }
 
-function toggleMenuMobile() {
-  if (window.innerWidth < 800) {
-    document.getElementById("contact_tools").classList.toggle("hidden")
-  }
-}
