@@ -82,7 +82,8 @@ function closePopupCardEdit() {
   popupModal.classList.add("hide");
 
   popupModal.style.display = "none";
-  popupOverlay.style.display = "none";
+  // Ist nur ein Test weil sich der gesamte inhalt des content leicht verschiebt
+  // popupOverlay.style.display = "none";
 }
 
 function closePopupMobile() {
