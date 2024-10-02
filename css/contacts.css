@@ -880,15 +880,6 @@ input:focus {
         flex-direction: column;
     }
 
-    .profileImg {
-        /* height: 180px;
-        width: 180px; */
-    }
-
-    .popup-bg h1 {
-        /* font-size: 61px; */
-    }
-
     .popup-modal,
     .popup-edit-modal {
         zoom: 100%;
@@ -970,13 +961,6 @@ input:focus {
         margin-top: 45px;
     }
 
-    /* Anpassung von Inhalten, wenn nötig */
-    .popup-modal h1,
-    .popup-edit-modal h1 {
-
-        /* weitere Anpassungen */
-    }
-
     .popup-bg {
         height: 100%;
         padding: 0px 0px;
@@ -1017,17 +1001,21 @@ input:focus {
     }
 
     .contact_tools {
+       
         /* display: none; */
         position: fixed;
-        bottom: 211px;
-        right: 4px;
+        /* bottom: -192px;
+        right: -276px; */
+        right: 10%;
+        margin-bottom: 150px;
         flex-direction: column;
         box-shadow: -3px 2px 4px 0px #00000040;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
-        padding: 13px;
+        padding: 23px;
         color: #2A3647;
     }
+    
 
     .contact_content_extended {
         flex-direction: row;
@@ -1038,7 +1026,8 @@ input:focus {
     .contact_headline {
         align-items: baseline;
         padding-left: 15px;
-        gap: 25px;
+        gap: 50px;
+       
     }
 
     .headline_contacts_extended {
@@ -1048,7 +1037,10 @@ input:focus {
     }
 
     .slideIn.show {
-        animation: none;
+        /* animation: none; */
+    }
+    .contact_content_extended {
+        margin-top: 20%;
     }
 
 }
@@ -1074,6 +1066,9 @@ input:focus {
     .popup-modal,
     .popup-edit-modal {
         zoom: 75%;
+    }
+    .extended_contact {
+        margin-right: auto;
     }
 }
 
