@@ -48,13 +48,12 @@ function openPopupMobile() {
 }
 
 function closePopupAddTask() {
-  document.body.classList.remove('no-scroll');
   const popupOverlay = document.getElementById("popupOverlay");
   const popupModal = document.getElementById("popupModal");
   popupOverlay.style.display = "none";
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
- 
+  document.body.classList.remove('no-scroll');
 
   setTimeout(() => {
     popupModal.style.display = "none";

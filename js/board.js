@@ -402,6 +402,7 @@ addTaskForm.addEventListener("submit", async (event) => {
   }
   showPopupTask();
   closePopup();
+  document.body.classList.remove('no-scroll');
 });
 function showPopupTask() {
   const overlay = document.getElementById("popupOverlay1");
