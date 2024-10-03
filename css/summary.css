@@ -310,9 +310,13 @@ footer {
     .text_container_summary {
         zoom: 80%;
     }
-
+    .morning-text {
+        bottom: 109px;
+        top: 127px;
+    }
 
 }
+
 
 @media screen and (max-width: 700px) {
     .text_container_summary {
@@ -329,6 +333,10 @@ footer {
        display: flex;
       
     }
+    .morning-text {
+        bottom: 125px;
+        top: 146px;
+    }
    
     .headline_summary {
         flex-direction: column;
@@ -343,13 +351,22 @@ footer {
         zoom: 60%;
         padding: 190px 0 55px 20px;
     }
+    .morning-text {
+        bottom: 145px;
+        top: 168px;
 
+    }
 
 }
 
 @media screen and (max-width: 500px) {
     .text_container_summary {
         zoom: 55%;
+    }
+    .morning-text {
+        bottom: 159px;
+        top: 186px;
+
     }
 
     .headline_summary{
