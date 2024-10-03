@@ -765,9 +765,13 @@ input:focus {
         position: absolute;
         height: calc(100svh - 188px);
     }
+    .contact_headline {
+        gap: 14px;
+    }
 
     .contact_content_extended {
         flex-direction: column;
+        gap: 28px;
     }
 
     .headline_contacts {
