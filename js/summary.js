@@ -118,3 +118,32 @@ function formatDate(dateString) {
   return date.toLocaleDateString("en-US", options);
 }
 
+window.addEventListener('resize', checkScreenWidth);
+window.addEventListener('load', checkScreenWidth);
+
+function checkScreenWidth() {
+  // Check if the morningText element already exists
+  let morningText = document.getElementById('morningText');
+
+  // If it doesn't exist, create it
+  if (!morningText) {
+    morningText = document.createElement('div');
+    morningText.id = 'morningText';
+    morningText.classList.add('morning-text', 'hidden');
+  
+    document.body.appendChild(morningText);
+  }
+
+  // Show the text when the screen width is below 1020px
+  if (window.innerWidth <= 1020) {
+    morningText.classList.remove('hidden');
+    morningText.classList.add('show');
+    morningText.innerHTML = '<h1>Good morning!</h1>';
+    setTimeout(() => {
+      morningText.classList.remove('show');
+      setTimeout(() => {
+        morningText.classList.add('hidden'); 
+      }, 2000); // Match the 2s opacity transition duration
+    }, 1500); // Keep the text visible for 3 seconds before fading out
+  }
+}

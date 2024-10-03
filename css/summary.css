@@ -247,7 +247,49 @@ footer {
 .forMobileText h2{
     font-weight: 500;
 }
+.morning-text {
+    position: fixed;
+    top: 113px;
+    left: 0;
+    right: 0;
+    bottom: 97px;
+    width: -webkit-fill-available;
+    /* height: calc(81% - 7%); */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    transition: opacity 2s ease-in-out;
+    opacity: 0;
+    /* background-color: #29ABE2; */
+}
 
+.morning-text h1 {
+    font-size: 3rem;
+    color: black;
+    animation: fadeInText 3s forwards;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.morning-text.show {
+    opacity: 1;
+}
+
+.morning-text.hidden {
+    opacity: 0; /* Fade out */
+    display: none; /* Hide completely after fade-out */
+}
 @media screen and (max-width: 1020px) {
     .text_container_summary {
         padding: 139px 0 15px 20px;

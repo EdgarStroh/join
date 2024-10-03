@@ -63,7 +63,8 @@
     top: 100px;
     border-radius: 20px 0px 20px 20px;
     background: #2A3647;
-    text-align: center;
+    /* text-align: center; */
+    text-align-last: left;
 }
 
 #headerSubMenu a {

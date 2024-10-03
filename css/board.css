@@ -838,7 +838,7 @@ input[type="checkbox"]:checked {
 
 @media screen and (max-width: 2000px) {
     #contactList {
-        top: 628px !important;
+        top: 630px !important;
         width: 340px!important;
     }
 }
@@ -901,7 +901,7 @@ input[type="checkbox"]:checked {
         display: none;
     }
     #contactList{
-        top: 620px !important;
+        top: 625px !important;
         width: 439px !important;
     }
 }
@@ -920,7 +920,7 @@ input[type="checkbox"]:checked {
         font-size: 41px;
     }
     #contactList{
-        top: 603px !important;
+        top: 608px !important;
      
     }
 }
