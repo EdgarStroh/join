@@ -4,18 +4,13 @@
     align-items: center;
     text-decoration: none;
     color: white;
-    /* width: auto; */
-    /* width: 30px; */
-    /* height: 87px; */
     border-radius: 8px;
     gap: 12px;
     place-content: center;
-    /* padding:15px 0 15px 0; */
 }
 
 .mobile:hover {
     background-color: #405173;
-    /* Farbe ändern beim Hover */
 }
 
 .mobileImg {
@@ -36,21 +31,25 @@
     color: #CDCDCD;
     width: 105px;
     height: 87px;
-    padding-top:4px ;  
+    padding-top: 4px;
     border-radius: 12px;
-} 
+}
+
 .mobileSideBar a.activeMobileNavigationPoint {
-    background-color: #091931; /* Farbe für aktiven Link */
+    background-color: #091931;
+    /* Farbe für aktiven Link */
 }
 
 .mobileSideBar a:hover {
-    background-color: #405173; /* Farbe für Hover */
+    background-color: #405173;
+    /* Farbe für Hover */
 }
 
 /* Priorisiere den aktiven Zustand auch bei Hover */
 .mobileSideBar a.activeMobileNavigationPoint:hover {
-    background-color: #091931; /* Aktive Farbe bleibt */
-    
+    background-color: #091931;
+    /* Aktive Farbe bleibt */
+
 }
 
 

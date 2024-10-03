@@ -63,11 +63,8 @@
     height: 23px;
     cursor: pointer;
     display: flex;
-    /* Verwende Flexbox */
     align-items: center;
-    /* Vertikal zentrieren */
     justify-content: center;
-    /* Horizontal zentrieren */
 }
 
 .search-icon-container:hover {
@@ -102,9 +99,6 @@
 }
 
 .headlineBoardSmall {
-    /* display: flex;
-    justify-content: space-between; */
-    /* Padding: 0px 64px 0px 64px; */
     width: 200px;
 }
 
@@ -132,18 +126,13 @@
 }
 
 .plusButton:hover img {
-
     opacity: 0;
-    /* visibility: hidden; Bild verstecken */
 }
 
 .plusButton:hover {
     background-image: url('../assets/icons/plus button-hover.svg');
     background-size: contain;
-
-    /* Bildgröße an den Container anpassen */
     background-position: center;
-    /* Bild mittig positionieren */
 }
 
 .dragAndDropContent {
@@ -165,18 +154,12 @@
 .drag-area {
     height: 100%;
     width: 220px;
-    /* background-color: rgba(0, 0, 0, 0.1); */
-    /* border: 1px dashed black; */
-    /* margin-bottom: 50px; */
     display: flex;
     align-items: flex-start;
     display: flex;
     flex-flow: column;
 }
 
-/* .drag-area-highlight {
-    background-color: rgba(0, 0, 0, 0.2);
-} */
 .highlight {
     border: 1px dashed #A8A8A8;
     border-radius: 10px;
@@ -185,7 +168,6 @@
 
 .drop-target {
     border: 1px dashed #A8A8A8;
-    /* background-color: rgba(41, 171, 226, 0.1);  */
     height: 220px;
     width: 100%;
     margin: 10px auto;
@@ -205,7 +187,6 @@
     margin-top: 10px;
 }
 
-
 .todo {
     background-color: white;
     border: 1px solid black;
@@ -214,7 +195,6 @@
     margin: 10px;
 }
 
-/* Popup Overlay */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -223,11 +203,11 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     display: none;
-    /* Versteckt standardmäßig */
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
+
 .popup-overlay1 {
     position: fixed;
     top: 0;
@@ -242,13 +222,13 @@
     align-content: center;
     text-align: center;
 }
+
 #popupContactSuccessAddedTaskButton {
     display: none;
-    /* Standardmäßig versteckt */
-    z-index: 1200!important;
+    z-index: 1200 !important;
     opacity: 0;
-    /* transition: opacity 0.2s ease; */
 }
+
 #popupContactSuccessAddedTaskButton p {
     height: 50px;
     width: 280px;
@@ -262,7 +242,6 @@
     padding: 6px 8px;
 }
 
-/* Popup Modal */
 .popup-modal {
     width: 1050px;
     height: 800px;
@@ -276,7 +255,6 @@
     transform: translate(-50%, -50%);
     z-index: 5;
     display: none;
-    /* Versteckt standardmäßig */
     opacity: 0;
     overflow: auto;
     scrollbar-width: none;
@@ -289,7 +267,8 @@
     align-items: flex-end;
     gap: 4px;
 }
-.puSubtask{
+
+.puSubtask {
     min-height: 50px;
 }
 
@@ -308,7 +287,6 @@
     transform: translate(-50%, -50%);
     z-index: 1001;
     display: none;
-    /* Versteckt standardmäßig */
     opacity: 0;
     scrollbar-width: none;
     min-width: 400px;
@@ -316,7 +294,6 @@
 }
 
 .popup-modal-card-edit {
-    /* width: fit-content; */
     overflow: auto;
     height: 80vh;
     background-color: white;
@@ -329,8 +306,6 @@
     transform: translate(-50%, -50%);
     z-index: 1001;
     display: none;
-    /* Versteckt standardmäßig */
-    /* opacity: 1; */
     scrollbar-width: none;
 }
 
@@ -347,7 +322,8 @@
 .popup-modal-card-edit.hide {
     opacity: 0;
 }
-textarea::placeholder{
+
+textarea::placeholder {
     padding-top: 0px !important;
 }
 
@@ -399,8 +375,6 @@ textarea::placeholder{
 .boardCard {
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    /* height: 263px; */
-    /* min-height: 220px; */
     padding: 16px 16px 16px 16px;
     gap: 10px;
     border-radius: 24px;
@@ -522,10 +496,7 @@ input[type="checkbox"] {
     background-size: cover;
     cursor: pointer;
     -webkit-appearance: none;
-    /* Entfernt die Standard-Styling für Webkit-Browser */
     appearance: none;
-    /* Entfernt die Standard-Styling für andere Browser */
-    /* Weitere Stile können hier hinzugefügt werden */
     border-radius: 0px;
 }
 
@@ -536,11 +507,8 @@ input[type="checkbox"]:checked {
 .deleteEditPopUp {
     display: flex;
     align-items: center;
-    /* gap: 6px;  */
     justify-content: right;
     color: #2A3647;
-    /* margin-top: 135px; */
-
 }
 
 .deleteEditPopUp img {
@@ -559,7 +527,6 @@ input[type="checkbox"]:checked {
 .deleteEditPopUp img {
     width: 21px;
     height: 21px;
-    /* transition: transform 0.3s ease, filter 0.3s ease; Weiche Übergänge für Hover-Effekte */
 }
 
 .delete:hover img,
@@ -570,22 +537,12 @@ input[type="checkbox"]:checked {
 .delete:hover,
 .edit:hover {
     color: #007CEE;
-    /* Ändert die Textfarbe beim Hover */
 }
 
 .formPartsPopUp {
     width: 100%;
     gap: 75px;
     padding-top: 50px;
-}
-
-.close {
-    /* position: fixed;
-    top: 53px;
-    right: 37px; */
-
-    /* height: 15px;
-    width: 15px; */
 }
 
 .closeContainer {
@@ -597,31 +554,22 @@ input[type="checkbox"]:checked {
     margin-left: auto;
 }
 
-
-
 .closeContainer:hover {
     background-color: #EEEEEE;
     border-radius: 50%;
 }
 
-
 #subtask {
     flex-grow: 1;
-    /* Eingabefeld nimmt den verfügbaren Platz ein */
     border: none;
-    /* Entfernt den Standardrahmen */
     outline: none;
-    /* Entfernt den Standardfokus */
     font-size: 16px;
-    /* Schriftgröße */
     border-radius: 10px 0 0 10px;
-    /* Abgerundete Ecken nur links */
     padding: 0;
 }
 
 #subtask::placeholder {
     color: #ccc;
-    /* Platzhalterfarbe */
     font-size: 20px;
     font-weight: 400;
 }
@@ -630,21 +578,15 @@ input[type="checkbox"]:checked {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    /* Rahmenfarbe */
     border-radius: 10px;
-    /* Abgerundete Ecken */
     padding: 0 10px;
-    /* Innenabstand */
     width: 100%;
-    /* Vollbreite */
     box-sizing: border-box;
-    /* Padding und Border einbeziehen */
     background-color: white;
 }
 
 #addSubTaskEdit img {
     margin-left: 10px;
-    /* Abstand zum Eingabefeld */
     cursor: pointer;
 }
 
@@ -657,8 +599,6 @@ input[type="checkbox"]:checked {
     border: none;
     padding: 0;
 }
-
-
 
 #subTasksList,
 #subTasksListEdit {
@@ -730,16 +670,10 @@ input[type="checkbox"]:checked {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Sorgt dafür, dass alle Elemente linksbündig sind */
     gap: 15px;
-    /* Abstand zwischen den Elementen */
     padding: 20px;
-    /* Innenabstand für den Container */
-    /* height: fit-content; */
     overflow: scroll;
-
 }
-
 
 /* Profilbadges */
 .profileBadges {
@@ -799,8 +733,9 @@ input[type="checkbox"]:checked {
     width: 0%;
     transition: width 0.3s ease;
 }
-#contactList{
-    top: 629px!important;
+
+#contactList {
+    top: 629px !important;
     width: 339px !important;
 }
 
@@ -814,7 +749,6 @@ input[type="checkbox"]:checked {
 
 .close {
     display: table;
-    /* margin-left: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -839,7 +773,7 @@ input[type="checkbox"]:checked {
 @media screen and (max-width: 2000px) {
     #contactList {
         top: 630px !important;
-        width: 340px!important;
+        width: 340px !important;
     }
 }
 
@@ -871,7 +805,6 @@ input[type="checkbox"]:checked {
         height: 300px;
         flex-wrap: wrap;
         width: 100vw;
-        /* width: 700px; */
         overflow-x: auto;
         margin-bottom: 0px;
     }
@@ -893,6 +826,7 @@ input[type="checkbox"]:checked {
         flex-direction: column;
         align-items: center;
     }
+
     .popup-modal {
         border-radius: 0px;
     }
@@ -900,7 +834,8 @@ input[type="checkbox"]:checked {
     #seperationLinePopUp {
         display: none;
     }
-    #contactList{
+
+    #contactList {
         top: 625px !important;
         width: 439px !important;
     }
@@ -913,15 +848,18 @@ input[type="checkbox"]:checked {
         padding-left: 10px;
         gap: 8px;
     }
-    .addTaskButton span{
+
+    .addTaskButton span {
         display: none;
     }
-    h1{
+
+    h1 {
         font-size: 41px;
     }
-    #contactList{
+
+    #contactList {
         top: 608px !important;
-     
+
     }
 }
 

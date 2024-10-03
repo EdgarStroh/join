@@ -63,7 +63,6 @@
     top: 100px;
     border-radius: 20px 0px 20px 20px;
     background: #2A3647;
-    /* text-align: center; */
     text-align-last: left;
 }
 
@@ -75,7 +74,6 @@
 
 #headerSubMenu a:hover {
     background-color: #2A3D59;
-    /* border-radius: 20px 0px 20px 20px; */
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -100,24 +98,29 @@
     #kanbanFont {
         display: none;
     }
+
     .helpHeader {
         display: flow;
     }
+
     .header {
         padding: 20px 20px 20px 10px;
     }
+
     .logoheader {
         display: flex;
         position: absolute;
         left: 20px;
         top: 28px;
     }
+
     #headerSubMenu a {
         padding: 4px 0px 11px 12px;
         text-align: center;
     }
+
     .headerHelp img {
         display: none !important;
     }
 
-}    
+}

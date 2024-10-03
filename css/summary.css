@@ -1,7 +1,6 @@
 .text_container_summary {
     padding: 206px 0 96px 330px;
     width: 100%;
-    /* height: 100vh; */
     flex-direction: column;
     background-color: #F6F7F8;
 }
@@ -236,7 +235,8 @@ footer {
     align-items: center;
     gap: 18px;
 }
-.vectorUnderline{
+
+.vectorUnderline {
     display: none;
     background-image: url('../assets/icons/vector_login.svg');
     width: 150px;
@@ -244,9 +244,11 @@ footer {
     margin-right: auto;
     margin-top: 13px;
 }
-.forMobileText h2{
+
+.forMobileText h2 {
     font-weight: 500;
 }
+
 .morning-text {
     position: fixed;
     top: 113px;
@@ -254,7 +256,6 @@ footer {
     right: 0;
     bottom: 97px;
     width: -webkit-fill-available;
-    /* height: calc(81% - 7%); */
     background-color: white;
     display: flex;
     justify-content: center;
@@ -262,7 +263,6 @@ footer {
     z-index: 15;
     transition: opacity 2s ease-in-out;
     opacity: 0;
-    /* background-color: #29ABE2; */
 }
 
 .morning-text h1 {
@@ -276,6 +276,7 @@ footer {
         opacity: 0;
         transform: translateY(50px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -287,9 +288,12 @@ footer {
 }
 
 .morning-text.hidden {
-    opacity: 0; /* Fade out */
-    display: none; /* Hide completely after fade-out */
+    opacity: 0;
+    /* Fade out */
+    display: none;
+    /* Hide completely after fade-out */
 }
+
 @media screen and (max-width: 1020px) {
     .text_container_summary {
         padding: 139px 0 15px 20px;
@@ -310,6 +314,7 @@ footer {
     .text_container_summary {
         zoom: 80%;
     }
+
     .morning-text {
         bottom: 109px;
         top: 127px;
@@ -322,27 +327,31 @@ footer {
     .text_container_summary {
         zoom: 70%;
     }
-    .forMobileText{
+
+    .forMobileText {
         flex-flow: column-reverse;
-        gap:0;
+        gap: 0;
     }
-    .forMobileText svg{
-      display: none;
+
+    .forMobileText svg {
+        display: none;
     }
-    .vectorUnderline{
-       display: flex;
-      
+
+    .vectorUnderline {
+        display: flex;
+
     }
+
     .morning-text {
         bottom: 125px;
         top: 146px;
     }
-   
+
     .headline_summary {
         flex-direction: column;
         float: left;
         align-items: baseline;
-        gap:15px;
+        gap: 15px;
     }
 }
 
@@ -351,6 +360,7 @@ footer {
         zoom: 60%;
         padding: 190px 0 55px 20px;
     }
+
     .morning-text {
         bottom: 145px;
         top: 168px;
@@ -363,15 +373,17 @@ footer {
     .text_container_summary {
         zoom: 55%;
     }
+
     .morning-text {
         bottom: 159px;
         top: 186px;
 
     }
 
-    .headline_summary{
+    .headline_summary {
         zoom: 110%;
     }
+
     .amount {
         font-size: 45px;
     }

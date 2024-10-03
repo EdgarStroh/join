@@ -1,22 +1,14 @@
-/* @media screen and (max-height: 1040px){
-    .sign_up_container {
-        padding: 10%;
-    }
-} */
-/* @media screen and (max-height: 900px){
-    .animation_logo {
-       height: ;
-       width: ;
-    }
-} */
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
+
     .log_in_container,
     .popup-modal {
         width: 90% !important;
     }
+
     body {
         flex-direction: column-reverse;
     }
+
     .sign_up_container {
         width: 100%;
         justify-content: center;
@@ -24,96 +16,112 @@
         position: fixed;
     }
 }
+
 @media screen and (max-width: 576px) {
     .input_login.password-container {
-        width:50%;
+        width: 50%;
     }
+
     .zoom {
-        /* display: flex;
-        justify-content: center;
-        align-items: center; */
-        overflow:hidden;
+        overflow: hidden;
         transform-origin: 0 0;
         transform: scale(0.75);
     }
 }
+
 @media screen and (max-width: 465px) {
     .underline {
         width: 88px;
         height: 2px;
         color: #29ABE2;
     }
+
     .arrow_left_signup {
         top: 11%;
         left: 3%;
     }
+
     .log_in_container_signup {
         gap: 16px;
     }
+
     .log_in_container h1,
     .log_in_container_signup h1 {
         font-size: 47px;
         font-weight: 700;
     }
+
     .button_login {
         flex-direction: column;
         align-items: center;
         gap: 12px;
         padding: 0;
     }
+
     .button_login button {
         width: 150px;
         font-size: 16px;
         font-weight: 700;
         justify-content: center;
     }
+
     .login_error p {
         font-size: 11px;
         font-weight: 400;
     }
+
     .input_login {
         gap: 16px;
     }
+
     .input_login .checkbox_login {
         padding: 12px 0;
     }
+
     .form_signup .button_login {
         padding: 32px 0;
     }
+
     .sign_up_container {
         padding-bottom: 98px;
     }
+
     .sign_up_button {
         gap: 8px;
         width: 100%;
     }
+
     .sign_up_button h3 {
         font-weight: 400;
         font-size: 16px;
     }
+
     .sign_up_button button {
         font-size: 16px;
     }
+
     .animation_bg {
-        position: fixed; 
+        position: fixed;
         inset: 0;
-        background-color: #2A3647; 
+        background-color: #2A3647;
         z-index: 1;
-        animation: fadeBackground 1.5s forwards; 
+        animation: fadeBackground 1.5s forwards;
     }
+
     .animation_logo {
-        background-image: url('../assets/icons/logo_black.svg'); 
+        background-image: url('../assets/icons/logo_black.svg');
         height: 78px;
         width: 64px;
-        position: absolute; 
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         background-size: contain;
         background-repeat: no-repeat;
         z-index: 2;
-        animation: moveLogoSmall 1.5s forwards; 
+        animation: moveLogoSmall 1.5s forwards;
     }
+
     @keyframes moveLogoSmall {
         0% {
             top: 50%;
@@ -121,16 +129,18 @@
             transform: translate(-50%, -50%);
             width: 274px;
             height: 335px;
-            background-image: url('../assets/img/logo.svg'); 
+            background-image: url('../assets/img/logo.svg');
         }
+
         40% {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 274px;
             height: 335px;
-            background-image: url('../assets/img/logo.svg'); 
+            background-image: url('../assets/img/logo.svg');
         }
+
         100% {
             top: 16px;
             left: 16px;
@@ -140,17 +150,20 @@
             background-image: url('../assets/icons/logo_black.svg');
         }
     }
+
     @keyframes fadeBackground {
         0% {
             background-color: #2A3647;
             opacity: 1;
         }
+
         40% {
             background-color: #2A3647;
             opacity: 1;
         }
+
         100% {
-            background-color: transparent; 
+            background-color: transparent;
             opacity: 0;
             pointer-events: none;
         }

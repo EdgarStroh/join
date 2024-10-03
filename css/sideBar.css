@@ -1,77 +1,89 @@
 .flex {
-    display:flex;
+    display: flex;
 }
+
 .sideBar {
     position: fixed;
     z-index: 3;
     background: #2A3647;
-    height:100%;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:center;
-    padding:64px 0;
-    color: #CDCDCD;
-}
-.sideBarList {
-    justify-content:center;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    flex-direction:column;
+    padding: 64px 0;
+    color: #CDCDCD;
 }
-.sideBarList a{
-    width:235px;
-    gap:20px;
-    padding:8px 53px;
+
+.sideBarList {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sideBarList a {
+    width: 235px;
+    gap: 20px;
+    padding: 8px 53px;
     text-align: center;
     place-items: center;
     text-decoration: none;
     color: #CDCDCD;
 }
-.policyAndNotice a{
-    width:235px;
-    gap:20px;
-    padding:8px 53px;
+
+.policyAndNotice a {
+    width: 235px;
+    gap: 20px;
+    padding: 8px 53px;
     text-align: center;
     place-items: center;
     text-decoration: none;
     color: #CDCDCD;
 }
+
 .sideBarList a:hover {
     background-color: #2A3D59;
 }
+
 .sideBarList a.activeNavigationPoint {
     background-color: #091931;
 }
+
 .sideBarList a.activeNavigationPoint:hover {
     background-color: #091931;
-    
+
 }
+
 .sideBar .icon {
-    height:30px;
-    width:30px;
+    height: 30px;
+    width: 30px;
 }
+
 .policyAndNotice {
-    flex-direction:column;
+    flex-direction: column;
     text-align-last: left;
 }
+
 .policyAndNotice span {
     cursor: pointer;
-    width:100%;
+    width: 100%;
     padding: 8px;
     text-align: left;
     font-weight: 400;
     color: #A8A8A8;
     text-align: left;
-} 
-.policyAndNotice span:hover {
-    color:  #29ABE2;
-    font-weight: 700;
-}
-.activeNavigationPoint{
-    background:#091931;
 }
 
-@media screen and (max-width: 1020px){
-    .sideBar{
+.policyAndNotice span:hover {
+    color: #29ABE2;
+    font-weight: 700;
+}
+
+.activeNavigationPoint {
+    background: #091931;
+}
+
+@media screen and (max-width: 1020px) {
+    .sideBar {
         display: none;
     }
 }

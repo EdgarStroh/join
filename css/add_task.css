@@ -10,7 +10,6 @@ body {
 }
 
 .text_contentTask {
-    /* border-radius: 10px; */
     width: 100%;
     display: flex;
     align-items: center;
@@ -329,7 +328,6 @@ textarea {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    /* position: relative; */
 }
 
 .circle {
@@ -480,73 +478,9 @@ input[type="checkbox"]:checked {
 }
 
 @media screen and (max-width: 1400px) {
-
-    /* aside div div{
-        display:flex;
-        flex-direction: column;
-    }
-    header{
-        padding:0;
-        top:0;
-        z-index:-999;
-    }
-    #kanbanFont{
-        position:fixed;
-        display:none;
-    }
-    body{
-        justify-content:center;
-        align-items:center;
-    }
-    .text_container{
-        padding:0;
-        display:flex;
-        align-items: center;
-    }
-    #h1Div{
-        display:inline-flex;
-        justify-content: center;
-        align-items:center;
-        position: sticky;
-    }
-    form{
-        margin:0;
-    }
-    form .formParts{
-        flex-direction:column;
-    }
-    form hr{
-        display:none;
-    }
-    .sideBar{
-        display: none;
-    } */
-    /* .formParts {
-        width: 100%;
-        gap: 40px;
-        padding-top: 50px;
-        flex-flow: column;
-    } */
-    /* #seperationLine {
-        display: none;
-    } */
-
     form {
         margin: 0;
     }
-
-    .h1Div {
-        /* margin-right: auto; */
-    }
-
-    /* .taskFormButtons {
-        padding: 20px 0;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        gap: 24px;
-        flex-direction: column;
-    } */
 }
 
 @media screen and (max-width: 1310px) {
@@ -570,7 +504,6 @@ input[type="checkbox"]:checked {
 @media screen and (max-width: 1020px) {
     .text_contentTask {
         padding: 150px 0 85px 20px;
-        /* height: 0px; */
     }
 
     #contactList {
@@ -591,7 +524,6 @@ input[type="checkbox"]:checked {
 }
 
 @media screen and (max-width: 850px) {
-
     .popup-modal {
         zoom: 60%;
     }
@@ -640,8 +572,6 @@ input[type="checkbox"]:checked {
 @media screen and (max-width: 400px) {
     .text_contentTask {
         zoom: 65%;
-        /* height: 100%; */
-        /* padding: 150px 0 150px 20px; */
     }
 
     .h1Div {
