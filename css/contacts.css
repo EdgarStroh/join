@@ -1103,6 +1103,10 @@ input:focus {
     .extended_contact {
         margin-right: auto;
     }
+    .contact_headline{
+        margin-top: -44px;
+    }
+
 }
 
 @media screen and (max-height: 750px) {
