@@ -11,7 +11,7 @@ function openContact(id) {
 
 function addContact(isMobile = false) {
   let contactData = collectContactInputData(isMobile);
-  updateContacts("", contactData);
+  postDataContacts("", contactData);
   resetContactForm(isMobile);
   closePopup();
   showPopupContact();
