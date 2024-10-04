@@ -1,4 +1,8 @@
 window.addEventListener("load", () => {
+  /**
+   * Initializes the profile name and sets up the click event for the profile name element.
+   * Displays the user's initials and toggles the visibility of the header submenu.
+   */
   let profileName = document.getElementById("profileName");
   let headerSubMenu = document.getElementById("headerSubMenu");
 
@@ -14,6 +18,9 @@ window.addEventListener("load", () => {
   }
 });
 
+/**
+ * Toggles the visibility of the header submenu.
+ */
 function toggleMenu() {
   let menu = document.getElementById("headerSubMenu");
   if (menu) {
