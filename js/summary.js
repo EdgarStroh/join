@@ -118,32 +118,74 @@ function formatDate(dateString) {
   return date.toLocaleDateString("en-US", options);
 }
 
-window.addEventListener('resize', checkScreenWidth);
-window.addEventListener('load', checkScreenWidth);
 
+// Event listeners for window resize and load events
+window.addEventListener("resize", checkScreenWidth);
+window.addEventListener("load", checkScreenWidth);
+
+/**
+ * Checks the screen width and displays a greeting message if the width is less than or equal to 1020 pixels.
+ */
 function checkScreenWidth() {
-  // Check if the morningText element already exists
-  let morningText = document.getElementById('morningText');
+  let morningText = getOrCreateMorningTextElement();
 
-  // If it doesn't exist, create it
+  if (window.innerWidth <= 1020) {
+    displayGreeting(morningText);
+  }
+}
+
+/**
+ * Gets or creates the morning greeting text element in the DOM.
+ * 
+ * @returns {HTMLElement} The morning text element.
+ */
+function getOrCreateMorningTextElement() {
+  let morningText = document.getElementById("morningText");
+
   if (!morningText) {
-    morningText = document.createElement('div');
-    morningText.id = 'morningText';
-    morningText.classList.add('morning-text', 'hidden');
-  
+    morningText = document.createElement("div");
+    morningText.id = "morningText";
+    morningText.classList.add("morning-text", "hidden");
     document.body.appendChild(morningText);
   }
 
-  // Show the text when the screen width is below 1020px
-  if (window.innerWidth <= 1020) {
-    morningText.classList.remove('hidden');
-    morningText.classList.add('show');
-    morningText.innerHTML = '<h1>Good morning!</h1>';
-    setTimeout(() => {
-      morningText.classList.remove('show');
-      setTimeout(() => {
-        morningText.classList.add('hidden'); 
-      }, 2000); // Match the 2s opacity transition duration
-    }, 1500); // Keep the text visible for 3 seconds before fading out
-  }
+  return morningText;
 }
+
+/**
+ * Displays the greeting message in the morning text element.
+ * 
+ * @param {HTMLElement} morningText - The element where the greeting will be displayed.
+ */
+function displayGreeting(morningText) {
+  let timeBasedGreeting = getGreetingBasedOnTime();
+  let loggedInUser = localStorage.getItem("loggedInUser");
+
+  morningText.innerHTML = `
+    <div style="text-align:center">
+      <h1>${timeBasedGreeting}</h1>
+      <br>
+      <h1 style="color:#29ABE2">${loggedInUser}</h1>
+    </div>`;
+  toggleVisibility(morningText); 
+}
+
+/**
+ * Toggles the visibility of the morning greeting text element.
+ * The element is shown for a brief period before being hidden again.
+ * 
+ * @param {HTMLElement} morningText - The element whose visibility will be toggled.
+ */
+function toggleVisibility(morningText) {
+  morningText.classList.remove("hidden");
+  morningText.classList.add("show");
+
+  setTimeout(() => {
+    morningText.classList.remove("show");
+    setTimeout(() => {
+      morningText.classList.add("hidden");
+    }, 2000);
+  }, 1500);
+}
+
+
