@@ -641,7 +641,6 @@ input[type="checkbox"]:checked {
     padding: 12px 16px;
     cursor: pointer;
     z-index: 2;
-    /* Höher als die Profilbadges */
     max-height: 200px;
     overflow-y: auto;
 }
@@ -665,7 +664,6 @@ input[type="checkbox"]:checked {
     margin-bottom: -70px;
 }
 
-/* Container für das gesamte Formular */
 .containerEdit {
     display: flex;
     flex-direction: column;
@@ -675,7 +673,6 @@ input[type="checkbox"]:checked {
     overflow: scroll;
 }
 
-/* Profilbadges */
 .profileBadges {
     display: flex;
     gap: 8px;
@@ -718,7 +715,6 @@ input[type="checkbox"]:checked {
     -webkit-line-clamp: 2;
 }
 
-/* Progressbar */
 .progress-bar-container {
     width: 55%;
     background-color: #F4F4F4;
