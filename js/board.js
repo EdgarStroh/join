@@ -172,66 +172,66 @@ function htmlTemplatePopUpBoardCardEdit(index) {
   return generatePopupBoardCardEdit(index, assignedHTML);
 }
 
-function addSubtaskEdit(index) {
-  if(!allBoardContent[index].subtasks){
-    allBoardContent[index].subtasks = [];
-  }
-  if (subtaskEdit.value != "") {
-    allBoardContent[index].subtasks.push({
-      description: subtaskEdit.value,
-      completed: false, 
-    });
-    renderSubtaskListEdit(index);
-    subtaskEdit.value = ""; 
-  }
-}
+// function addSubtaskEdit(index) {
+//   if(!allBoardContent[index].subtasks){
+//     allBoardContent[index].subtasks = [];
+//   }
+//   if (subtaskEdit.value != "") {
+//     allBoardContent[index].subtasks.push({
+//       description: subtaskEdit.value,
+//       completed: false, 
+//     });
+//     renderSubtaskListEdit(index);
+//     subtaskEdit.value = ""; 
+//   }
+// }
 
-function renderSubtaskListEdit(index) {
-  let subtasksListEdit = document.getElementById("subTasksListEdit");
-  subtasksListEdit.innerHTML = renderSubtasks(index);
-}
+// function renderSubtaskListEdit(index) {
+//   let subtasksListEdit = document.getElementById("subTasksListEdit");
+//   subtasksListEdit.innerHTML = renderSubtasks(index);
+// }
 
-function editSubtaskEdit(taskIndex, subtaskIndex) {
-  const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
-  const subtaskText = subtaskItem.querySelector(".subtask-text");
-  const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
-  const editIcon = subtaskItem.querySelector(".edit-icon");
-  const saveIcon = subtaskItem.querySelector(".save-icon");
+// function editSubtaskEdit(taskIndex, subtaskIndex) {
+//   const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
+//   const subtaskText = subtaskItem.querySelector(".subtask-text");
+//   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
+//   const editIcon = subtaskItem.querySelector(".edit-icon");
+//   const saveIcon = subtaskItem.querySelector(".save-icon");
 
-  subtaskItem.classList.add("editing");
-  subtaskText.style.display = "none";
-  subtaskInput.style.display = "block";
-  subtaskInput.focus();
+//   subtaskItem.classList.add("editing");
+//   subtaskText.style.display = "none";
+//   subtaskInput.style.display = "block";
+//   subtaskInput.focus();
 
-  const length = subtaskInput.value.length;
-  subtaskInput.setSelectionRange(length, length);
+//   const length = subtaskInput.value.length;
+//   subtaskInput.setSelectionRange(length, length);
 
-  editIcon.style.display = "none";
-  saveIcon.style.display = "block";
-}
+//   editIcon.style.display = "none";
+//   saveIcon.style.display = "block";
+// }
 
-function saveSubtaskEdit(taskIndex, subtaskIndex) {
-  const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
-  const subtaskText = subtaskItem.querySelector(".subtask-text");
-  const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
-  const editIcon = subtaskItem.querySelector(".edit-icon");
-  const saveIcon = subtaskItem.querySelector(".save-icon");
+// function saveSubtaskEdit(taskIndex, subtaskIndex) {
+//   const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
+//   const subtaskText = subtaskItem.querySelector(".subtask-text");
+//   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
+//   const editIcon = subtaskItem.querySelector(".edit-icon");
+//   const saveIcon = subtaskItem.querySelector(".save-icon");
 
-  allBoardContent[taskIndex].subtasks[subtaskIndex].description = subtaskInput.value;
+//   allBoardContent[taskIndex].subtasks[subtaskIndex].description = subtaskInput.value;
 
-  subtaskText.textContent = subtaskInput.value;
-  subtaskText.style.display = "block";
-  subtaskInput.style.display = "none";
-  subtaskItem.classList.remove("editing");
+//   subtaskText.textContent = subtaskInput.value;
+//   subtaskText.style.display = "block";
+//   subtaskInput.style.display = "none";
+//   subtaskItem.classList.remove("editing");
 
-  editIcon.style.display = "block";
-  saveIcon.style.display = "none";
-}
+//   editIcon.style.display = "block";
+//   saveIcon.style.display = "none";
+// }
 
-function deleteSubtaskEdit(taskIndex, subtaskIndex) {
-  allBoardContent[taskIndex].subtasks.splice(subtaskIndex, 1);
-  renderSubtaskListEdit(taskIndex); 
-}
+// function deleteSubtaskEdit(taskIndex, subtaskIndex) {
+//   allBoardContent[taskIndex].subtasks.splice(subtaskIndex, 1);
+//   renderSubtaskListEdit(taskIndex); 
+// }
 
 function showActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "flex";
@@ -413,6 +413,7 @@ addTaskForm.addEventListener("submit", async (event) => {
   closePopup();
   document.body.classList.remove('no-scroll');
 });
+
 function showPopupTask() {
   const overlay = document.getElementById("popupOverlay1");
   const success = document.getElementById("popupContactSuccessAddedTaskButton");
@@ -433,7 +434,6 @@ function closePopupContactSuccessAddedTask() {
   document.getElementById("popupOverlay1").style.display = "none";
   document.getElementById("popupContactSuccessAddedTaskButton").style.display = "none";
 }
-
 
 function generateAssignedHTML(assignedContacts) {
   let assignedHTML = "";
@@ -460,53 +460,53 @@ function editTaskContact(event) {
   }
 }
 
-function renderSubtasks(index) {
-  let returnList = "";
+// function renderSubtasks(index) {
+//   let returnList = "";
 
-  if (allBoardContent[index].subtasks){
-    for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
-      returnList += generateSubtasks(i, index);
-    }
-  }
-  return returnList;
-}
+//   if (allBoardContent[index].subtasks){
+//     for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
+//       returnList += generateSubtasks(i, index);
+//     }
+//   }
+//   return returnList;
+// }
 
-async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
-  try {
-    updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted);
-    await updateSubtaskInFirebase(taskIndex, subtaskIndex);
-    await updateBoard();
-  } catch (error) {
-    console.error("Fehler beim Aktualisieren des Subtasks:", error);
-  }
-}
+// async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
+//   try {
+//     updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted);
+//     await updateSubtaskInFirebase(taskIndex, subtaskIndex);
+//     await updateBoard();
+//   } catch (error) {
+//     console.error("Fehler beim Aktualisieren des Subtasks:", error);
+//   }
+// }
 
-function updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
-  allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
-}
+// function updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
+//   allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
+// }
 
-function getSubtaskDisplay(subtasks) {
-  if (!subtasks || subtasks.length === 0) {
-    return "";
-  }
+// function getSubtaskDisplay(subtasks) {
+//   if (!subtasks || subtasks.length === 0) {
+//     return "";
+//   }
 
-  let subtaskCount = subtasks.length;
-  let completedSubtasks = 0;
+//   let subtaskCount = subtasks.length;
+//   let completedSubtasks = 0;
 
-  for (let i = 0; i < subtaskCount; i++) {
-    if (subtasks[i].completed) {
-      completedSubtasks++;
-    }
-  }
+//   for (let i = 0; i < subtaskCount; i++) {
+//     if (subtasks[i].completed) {
+//       completedSubtasks++;
+//     }
+//   }
 
-  let progressPercentage = (completedSubtasks / subtaskCount) * 100;
+//   let progressPercentage = (completedSubtasks / subtaskCount) * 100;
 
-  return `
-    <div class="progress-bar-container">
-      <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
-    </div>
-    <div>${completedSubtasks}/${subtaskCount} Subtasks</div>
-  `;
-}
+//   return `
+//     <div class="progress-bar-container">
+//       <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
+//     </div>
+//     <div>${completedSubtasks}/${subtaskCount} Subtasks</div>
+//   `;
+// }
 
 

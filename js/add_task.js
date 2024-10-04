@@ -76,79 +76,90 @@ function closeDropdownOnClickOutside(event) {
   }
 }
 
-function renderSubtaskList() {
-  let subtasksList = document.getElementById("subTasksList");
+// function renderSubtaskList() {
+//   let subtasksList = document.getElementById("subTasksList");
 
-  subtasksList.innerHTML = "";
+//   subtasksList.innerHTML = "";
 
-  for (let i = 0; i < subtasks.length; i++) {
-    subtasksList.innerHTML += generateSubtaskList(i);
-  }
-}
+//   for (let i = 0; i < subtasks.length; i++) {
+//     subtasksList.innerHTML += generateSubtaskList(i);
+//   }
+// }
 
-function editSubtask(index) {
-  const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
-  const subtaskText = subtaskItem.querySelector(".subtask-text");
-  const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
-  const editIcon = subtaskItem.querySelector(".edit-icon");
-  const saveIcon = subtaskItem.querySelector(".save-icon");
+// function editSubtask(index) {
+//   const subtaskItem = getSubtaskItem(index);
+//   toggleEditingState(subtaskItem, true);
+//   focusOnInput(subtaskItem);
+// }
 
-  subtaskItem.classList.add("editing");
-  subtaskText.style.display = "none";
-  subtaskInput.style.display = "block";
-  subtaskInput.focus();
+// function saveSubtask(index) {
+//   const subtaskItem = getSubtaskItem(index);
+//   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
 
-  const length = subtaskInput.value.length;
-  subtaskInput.setSelectionRange(length, length);
+//   subtasks[index].description = subtaskInput.value; // Update der Beschreibung direkt hier
+//   displayUpdatedText(subtaskItem, subtaskInput.value);
+//   toggleEditingState(subtaskItem, false);
+// }
 
-  editIcon.style.display = "none";
-  saveIcon.style.display = "block";
-}
+// function getSubtaskItem(index) {
+//   return document.querySelector(`.subtask[data-index='${index}']`);
+// }
 
-function saveSubtask(index) {
-  const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
-  const subtaskText = subtaskItem.querySelector(".subtask-text");
-  const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
-  const editIcon = subtaskItem.querySelector(".edit-icon");
-  const saveIcon = subtaskItem.querySelector(".save-icon");
+// function toggleEditingState(subtaskItem, isEditing) {
+//   const elements = {
+//     subtaskText: subtaskItem.querySelector(".subtask-text"),
+//     subtaskInput: subtaskItem.querySelector(".subtask-edit-input"),
+//     editIcon: subtaskItem.querySelector(".edit-icon"),
+//     saveIcon: subtaskItem.querySelector(".save-icon"),
+//   };
 
-  subtasks[index].description = subtaskInput.value;
-  subtaskText.textContent = subtaskInput.value;
-  subtaskText.style.display = "block";
-  subtaskInput.style.display = "none";
+//   subtaskItem.classList.toggle("editing", isEditing);
+//   elements.subtaskText.style.display = isEditing ? "none" : "block";
+//   elements.subtaskInput.style.display = isEditing ? "block" : "none";
+//   elements.editIcon.style.display = isEditing ? "none" : "block";
+//   elements.saveIcon.style.display = isEditing ? "block" : "none";
+// }
 
-  subtaskItem.classList.remove("editing");
-  editIcon.style.display = "block";
-  saveIcon.style.display = "none";
-}
+// function focusOnInput(subtaskItem) {
+//   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
+//   subtaskInput.focus();
+//   const length = subtaskInput.value.length;
+//   subtaskInput.setSelectionRange(length, length);
+// }
 
-function clearSubtasks() {
-  subtasks = [];
-  renderSubtaskList();
-}
+// function displayUpdatedText(subtaskItem, newText) {
+//   const subtaskText = subtaskItem.querySelector(".subtask-text");
+//   subtaskText.textContent = newText;
+//   subtaskText.style.display = "block";
+// }
 
-function deleteSubtask(index) {
-  subtasks.splice(index, 1);
-  renderSubtaskList();
-}
+// function clearSubtasks() {
+//   subtasks = [];
+//   renderSubtaskList();
+// }
 
-subtask.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    addSubtask();
-  }
-});
+// function deleteSubtask(index) {
+//   subtasks.splice(index, 1);
+//   renderSubtaskList();
+// }
 
-function addSubtask() {
-  if (subtask.value != "") {
-    subtasks.push({
-      description: subtask.value,
-      completed: false,
-    });
-    renderSubtaskList();
-    subtask.value = "";
-  }
-}
+// subtask.addEventListener("keydown", function (event) {
+//   if (event.key === "Enter") {
+//     event.preventDefault();
+//     addSubtask();
+//   }
+// });
+
+// function addSubtask() {
+//   if (subtask.value != "") {
+//     subtasks.push({
+//       description: subtask.value,
+//       completed: false,
+//     });
+//     renderSubtaskList();
+//     subtask.value = "";
+//   }
+// }
 
 addTaskFormTask.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -157,7 +168,6 @@ addTaskFormTask.addEventListener("submit", async (event) => {
   try {
     await postDataBoards("", data);
   
-    
   } catch (error) {
     console.error("Error posting data to Firebase:", error);
   }
@@ -183,6 +193,7 @@ function showPopupTask() {
     closePopupContactSuccessAddedTask();
   }, 1250);
 }
+
 function closePopupContactSuccessAddedTask() {
   document.getElementById("popupOverlay").style.display = "none";
   document.getElementById("popupContactSuccess").style.display = "none";
