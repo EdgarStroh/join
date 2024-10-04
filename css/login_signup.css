@@ -328,14 +328,11 @@ input[type="checkbox"]:checked {
 
 .input-error {
     border: 1px solid #FF001F !important;
-    /* Red border to indicate an error */
 }
 
 .input-error:focus {
     border: 1px solid #FF001F !important;
-    /* Red border when focused */
     outline: none;
-    /* Removes the blue outline */
 }
 
 .margin-width-auto {
@@ -366,7 +363,7 @@ input[type="checkbox"]:checked {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    animation: slideIn 0.5s forwards;
+    animation: SlideInLogin 0.5s forwards;
 }
 
 .popup-overlay {
@@ -379,20 +376,6 @@ input[type="checkbox"]:checked {
     display: none;
     z-index: 1;
 }
-
-@keyframes slideIn {
-    from {
-        transform: translate(-50%, 100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-    }
-}
-
-/*   LOGO ANIMATION    */
 
 .animation_logo {
     background-image: url(../assets/icons/logo_black.svg);
@@ -414,57 +397,4 @@ input[type="checkbox"]:checked {
     z-index: 1;
     background-color: #f6f7f8;
     animation: fadeOut 1.75s forwards, changeZIndex 0s 1.5s forwards;
-}
-
-@keyframes moveLogo {
-    0% {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 274px;
-        height: 335px;
-    }
-
-    40% {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 274px;
-        height: 335px;
-    }
-
-    100% {
-        top: 64px;
-        left: 64px;
-        transform: translate(0, 0);
-        width: 100px;
-        height: 122px;
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        background-color: #f6f7f8;
-        opacity: 1;
-    }
-
-    40% {
-        background-color: #f6f7f8;
-        opacity: 1;
-    }
-
-    100% {
-        background-color: transparent;
-        opacity: 0;
-    }
-}
-
-@keyframes changeZIndex {
-    0% {
-        z-index: 1;
-    }
-
-    100% {
-        z-index: -1;
-    }
 }

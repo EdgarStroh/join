@@ -3,6 +3,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter';
+    scrollbar-width: thin;
+    scrollbar-color: #a8a8a8 #ffffff;
+}
+
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+    border-radius: 15px;
 }
 
 body {
@@ -11,7 +28,6 @@ body {
 
 body.no-scroll {
     overflow: hidden;
-    /* Verhindert das Scrollen */
 }
 
 a {
@@ -38,6 +54,19 @@ h4 {
     font-weight: 400;
 }
 
+p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #CDCDCD !important;
+    z-index: 2;
+}
+
 .bc1 {
     font-size: 16px;
     font-weight: 400;
@@ -54,45 +83,6 @@ h4 {
     font-size: 16px;
     font-weight: 400;
     color: #A8A8A8;
-}
-
-p {
-    font-size: 16px;
-    font-weight: 400;
-}
-
-footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: #CDCDCD !important;
-    z-index: 2;
-}
-
-/* ===== Scrollbar CSS ===== */
-
-/* Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #a8a8a8 #ffffff;
-
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-    width: 16px;
-
-}
-
-*::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-    background-color: #a8a8a8;
-    border-radius: 10px;
-    border: 3px solid #ffffff;
-    border-radius: 15px;
 }
 
 .hidden {
@@ -150,10 +140,8 @@ select {
     background-repeat: no-repeat;
     background-position: calc(100% - 18px) center;
     transition: background-image 0.15s linear;
-    /* Animation hinzufügen */
 }
 
-/* Wenn das Select-Element aktiv ist oder der Benutzer es fokussiert */
 select:focus {
     background-image: url("../assets/icons/arrow_drop_up.svg");
 }
@@ -166,6 +154,18 @@ select:focus {
 
     100% {
         transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLogin {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, -50%);
         opacity: 1;
     }
 }
@@ -206,7 +206,58 @@ select:focus {
     }
 }
 
+@keyframes moveLogo {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 274px;
+        height: 335px;
+    }
 
+    40% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 274px;
+        height: 335px;
+    }
+
+    100% {
+        top: 64px;
+        left: 64px;
+        transform: translate(0, 0);
+        width: 100px;
+        height: 122px;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        background-color: #f6f7f8;
+        opacity: 1;
+    }
+
+    40% {
+        background-color: #f6f7f8;
+        opacity: 1;
+    }
+
+    100% {
+        background-color: transparent;
+        opacity: 0;
+    }
+}
+
+@keyframes changeZIndex {
+    0% {
+        z-index: 1;
+    }
+
+    100% {
+        z-index: -1;
+    }
+}
 
 @media screen and (max-width: 1020px) {
 
