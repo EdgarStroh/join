@@ -227,7 +227,6 @@
 
 footer {
     margin-top: auto;
-
 }
 
 .forMobileText {
@@ -289,9 +288,7 @@ footer {
 
 .morning-text.hidden {
     opacity: 0;
-    /* Fade out */
     display: none;
-    /* Hide completely after fade-out */
 }
 
 @media screen and (max-width: 1020px) {
@@ -307,7 +304,6 @@ footer {
     .overview {
         width: 97.6%;
     }
-
 }
 
 @media screen and (max-width: 800px) {
@@ -319,7 +315,6 @@ footer {
         bottom: 109px;
         top: 127px;
     }
-
 }
 
 
@@ -339,7 +334,6 @@ footer {
 
     .vectorUnderline {
         display: flex;
-
     }
 
     .morning-text {
@@ -364,9 +358,7 @@ footer {
     .morning-text {
         bottom: 145px;
         top: 168px;
-
     }
-
 }
 
 @media screen and (max-width: 500px) {
@@ -377,7 +369,6 @@ footer {
     .morning-text {
         bottom: 159px;
         top: 186px;
-
     }
 
     .headline_summary {
@@ -387,5 +378,4 @@ footer {
     .amount {
         font-size: 45px;
     }
-
 }
