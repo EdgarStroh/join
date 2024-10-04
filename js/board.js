@@ -243,9 +243,7 @@ function hideActions(index) {
 
 async function updateTask(uid, data) {
   try {
-    let response = await updateTaskFirebase(uid, data);
-
-    console.log("Task erfolgreich aktualisiert:", await response.json());
+    await updateTaskFirebase(uid, data);
 
     const index = allBoardContent.findIndex((task) => task.Uid === uid);
     if (index !== -1) {
@@ -273,8 +271,6 @@ async function deleteDataBoard(uid) {
 }
 
 function editTask(uid) {
-  console.log(`editTask aufgerufen mit ID: ${uid}`);
-
   const title = document.getElementById("inputEditTitle").value;
   const description = document.getElementById("inputEditDescription").value;
   const date = document.getElementById("inputEditDate").value;
