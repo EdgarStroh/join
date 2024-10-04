@@ -347,7 +347,7 @@ textarea::placeholder {
     opacity: 0;
 }
 
-@keyframes slideInFromRight {
+/* @keyframes slideInFromRight {
     0% {
         transform: translateX(100%) translateY(-50%);
         opacity: 0;
@@ -369,7 +369,7 @@ textarea::placeholder {
         transform: translateX(100%) translateY(-50%);
         opacity: 0;
     }
-}
+} */
 
 /* Board Card stuff Start*/
 .boardCard {
@@ -767,131 +767,4 @@ input[type="checkbox"]:checked {
     align-items: center;
     border-radius: 50%;
     background-color: #F0F0F0;
-}
-
-
-@media screen and (max-width: 2000px) {
-    #contactList {
-        top: 630px !important;
-        width: 340px !important;
-    }
-}
-
-@media screen and (max-width: 1340px) {
-    .text_containerBoard {
-        padding: 206px 5px 96px 245px;
-    }
-}
-
-@media screen and (max-width: 1150px) {
-    .text_containerBoard {
-        padding: 206px 5px 96px 245px;
-    }
-
-    .emptyColumnMessage {
-        width: fit-content;
-    }
-
-    .boardContent {
-        flex-direction: column;
-        overflow-x: auto;
-    }
-
-    .boardCard {
-        margin-right: 5px;
-    }
-
-    .drag-area {
-        height: 300px;
-        flex-wrap: wrap;
-        width: 100vw;
-        overflow-x: auto;
-        margin-bottom: 0px;
-    }
-}
-
-@media screen and (max-width: 1020px) {
-    .text_containerBoard {
-        padding: 109px 5px 81px 0px;
-    }
-
-    .boardContent {
-        padding-left: 10px;
-        padding-bottom: 100px;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .formPartsPopUp {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .popup-modal {
-        border-radius: 0px;
-    }
-
-    #seperationLinePopUp {
-        display: none;
-    }
-
-    #contactList {
-        top: 625px !important;
-        width: 439px !important;
-    }
-}
-
-@media screen and (max-width: 630px) {
-    .headlineBoard {
-        flex-direction: column;
-        align-items: baseline;
-        padding-left: 10px;
-        gap: 8px;
-    }
-
-    .addTaskButton span {
-        display: none;
-    }
-
-    h1 {
-        font-size: 41px;
-    }
-
-    #contactList {
-        top: 608px !important;
-
-    }
-}
-
-@media screen and (max-width: 630px) {
-    .searchButtonContainer {
-        flex-direction: column;
-        align-items: baseline;
-    }
-}
-
-@media screen and (max-width: 530px) {
-    .containerEdit {
-        zoom: 78%;
-    }
-}
-
-@media screen and (max-width: 410px) {
-    .popup-modal-card {
-        zoom: 90%;
-    }
-
-    .containerEdit {
-        zoom: 68%;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .popup-modal-card {
-        zoom: 78%;
-    }
-
-    .containerEdit {
-        zoom: 59%;
-    }
 }

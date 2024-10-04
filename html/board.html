@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/board_media.css">
     <link rel="stylesheet" href="../css/pop_up.css">
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../css/mobileSideBar.css">
@@ -55,7 +56,6 @@
                     ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
-            <!-- <img id="drag1" src="../assets/icons/contacts.svg" draggable="true" ondragstart="drag(event)" width="336" height="69"> -->
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">In progress
                     <button class="plusButton" onclick="openPopupAddTask('in progress')">
@@ -90,7 +90,7 @@
                 </div>
 
                 <h1>Add Task</h1>
-                <!-- Start Kopie von Proton -->
+                <!-- Pop up -->
                 <form id="addTaskForm" method="post">
                     <div class="flex formPartsPopUp">
                         <section class="formPart flex">
@@ -151,7 +151,6 @@
                         </div>
                     </div>
                 </form>
-                <!-- Ende Kopie von Proton -->
             </div>
             <!-- Pop up for boardCards-->
             <div id="popupOverlayCard" class="popup-overlay" onclick="closePopupCard()"></div>
