@@ -46,22 +46,24 @@ textarea,
 #prioEdit button,
 select {
     font-size: 20px;
+    cursor: pointer;
 }
 
 input,
 textarea {
     padding-left: 20px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 textarea {
     border: 1px solid #D1D1D1;
     padding-top: 20px;
+    min-height: 140px;
+    max-height: 140px;
+    max-width: 495px;
 }
 
-
-
-/* Optional: Style für den geöffneten Zustand */
 select:active {
     background-image: url("../assets/icons/arrow_drop_up.svg");
 }
@@ -207,7 +209,6 @@ input[type="date"]:focus {
 }
 
 .button {
-    display: flex;
     align-items: center;
     border-radius: 10px;
     padding: 10px 16px;
@@ -266,19 +267,6 @@ input[type="date"]:focus {
     gap: 16px;
 }
 
-input,
-.addSubTask,
-select,
-textarea {
-    cursor: pointer;
-}
-
-textarea {
-    min-height: 140px;
-    max-height: 140px;
-    max-width: 495px;
-}
-
 #seperationLine {
     border: 1px solid #D1D1D1;
 }
@@ -314,7 +302,6 @@ textarea {
     margin-top: -10px;
     background-color: white;
     position: absolute;
-    /* width: 100%; */
     width: inherit;
     top: 745px;
     z-index: 1;
@@ -338,8 +325,6 @@ textarea {
     align-items: center;
     color: white;
 }
-
-
 
 .contact:hover {
     background: #D1D1D1;
@@ -384,7 +369,6 @@ textarea {
     border-radius: 0;
     height: auto;
     appearance: none;
-
     &:focus {
         outline: none !important;
         box-shadow: none !important;
@@ -468,125 +452,4 @@ input[type="checkbox"]:checked {
     gap: 24px;
     border-radius: 20px;
     padding: 6px 8px;
-}
-
-/*Responsive*/
-@media screen and (max-width: 2000px) {
-    #contactList {
-        top: 745px;
-    }
-}
-
-@media screen and (max-width: 1400px) {
-    form {
-        margin: 0;
-    }
-}
-
-@media screen and (max-width: 1310px) {
-    .formParts {
-        gap: 25px;
-    }
-
-    textarea {
-
-        max-width: 460px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .formParts {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 1020px) {
-    .text_contentTask {
-        padding: 150px 0 85px 20px;
-    }
-
-    #contactList {
-        top: 682px;
-    }
-
-    .text_contentTask {
-        height: auto;
-    }
-
-    .popup-modal {
-        zoom: 80%;
-    }
-
-    .h1Div {
-        justify-content: center;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    .popup-modal {
-        zoom: 60%;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .clearBtn {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .h1Div {
-        justify-content: left;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .popup-modal {
-        height: 100%;
-        width: 100%;
-    }
-
-    .formParts {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .taskFormButtons {
-        place-content: center;
-        gap: 96px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .text_contentTask {
-        zoom: 80%;
-        padding-bottom: 120px;
-    }
-
-    #contactList {
-        top: 685px;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .text_contentTask {
-        zoom: 65%;
-    }
-
-    .h1Div {
-        padding-top: 50px;
-    }
-
-    #contactList {
-        top: 731px;
-    }
-}
-
-@media screen and (max-width: 340px) {
-    .taskFormButtons {
-        place-content: center;
-        gap: 75px;
-    }
-
 }
