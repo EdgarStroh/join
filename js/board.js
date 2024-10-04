@@ -8,7 +8,6 @@ async function updateBoard() {
   renderBoardList();
 }
 
-// Funktion, die das HTML-Template generiert
 function htmlTemplateGenerateBoardContent(index) {
   let showContacts = allBoardContent[index].asigned || []; 
   let contactsHTML = "";
@@ -172,67 +171,6 @@ function htmlTemplatePopUpBoardCardEdit(index) {
   return generatePopupBoardCardEdit(index, assignedHTML);
 }
 
-// function addSubtaskEdit(index) {
-//   if(!allBoardContent[index].subtasks){
-//     allBoardContent[index].subtasks = [];
-//   }
-//   if (subtaskEdit.value != "") {
-//     allBoardContent[index].subtasks.push({
-//       description: subtaskEdit.value,
-//       completed: false, 
-//     });
-//     renderSubtaskListEdit(index);
-//     subtaskEdit.value = ""; 
-//   }
-// }
-
-// function renderSubtaskListEdit(index) {
-//   let subtasksListEdit = document.getElementById("subTasksListEdit");
-//   subtasksListEdit.innerHTML = renderSubtasks(index);
-// }
-
-// function editSubtaskEdit(taskIndex, subtaskIndex) {
-//   const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
-//   const subtaskText = subtaskItem.querySelector(".subtask-text");
-//   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
-//   const editIcon = subtaskItem.querySelector(".edit-icon");
-//   const saveIcon = subtaskItem.querySelector(".save-icon");
-
-//   subtaskItem.classList.add("editing");
-//   subtaskText.style.display = "none";
-//   subtaskInput.style.display = "block";
-//   subtaskInput.focus();
-
-//   const length = subtaskInput.value.length;
-//   subtaskInput.setSelectionRange(length, length);
-
-//   editIcon.style.display = "none";
-//   saveIcon.style.display = "block";
-// }
-
-// function saveSubtaskEdit(taskIndex, subtaskIndex) {
-//   const subtaskItem = document.querySelector(`.subtask[data-index='${subtaskIndex}']`);
-//   const subtaskText = subtaskItem.querySelector(".subtask-text");
-//   const subtaskInput = subtaskItem.querySelector(".subtask-edit-input");
-//   const editIcon = subtaskItem.querySelector(".edit-icon");
-//   const saveIcon = subtaskItem.querySelector(".save-icon");
-
-//   allBoardContent[taskIndex].subtasks[subtaskIndex].description = subtaskInput.value;
-
-//   subtaskText.textContent = subtaskInput.value;
-//   subtaskText.style.display = "block";
-//   subtaskInput.style.display = "none";
-//   subtaskItem.classList.remove("editing");
-
-//   editIcon.style.display = "block";
-//   saveIcon.style.display = "none";
-// }
-
-// function deleteSubtaskEdit(taskIndex, subtaskIndex) {
-//   allBoardContent[taskIndex].subtasks.splice(subtaskIndex, 1);
-//   renderSubtaskListEdit(taskIndex); 
-// }
-
 function showActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "flex";
 }
@@ -249,7 +187,6 @@ async function updateTask(uid, data) {
     if (index !== -1) {
       allBoardContent[index] = { ...allBoardContent[index], ...data };
     }
-
     renderBoardList();
 
   } catch (error) {
@@ -264,6 +201,7 @@ async function deleteDataBoard(uid) {
 
     closePopupCard();
     updateBoard();
+
   } catch (error) {
     console.error("Fehler beim Löschen der Task:", error);
     alert("Es gab ein Problem beim Löschen der Task.");
@@ -274,7 +212,6 @@ function editTask(uid) {
   const title = document.getElementById("inputEditTitle").value;
   const description = document.getElementById("inputEditDescription").value;
   const date = document.getElementById("inputEditDate").value;
-
   const originalIndex = allBoardContent.findIndex((task) => task.Uid === uid);
 
   if (originalIndex == -1) {
@@ -300,10 +237,8 @@ function editTask(uid) {
 function collectSelectedContacts(index) {
   const originalTask = allBoardContent[index];
   let contactNames = originalTask.asigned;
+  let selectedContacts = document.querySelectorAll('#contactListEdit .contactEdit input[type="checkbox"]:checked');
 
-  let selectedContacts = document.querySelectorAll(
-    '#contactListEdit .contactEdit input[type="checkbox"]:checked'
-  );
   if (selectedContacts.length > 0) {
     contactNames = [];
     for (let i = 0; i < selectedContacts.length; i++) {
@@ -365,42 +300,35 @@ function toggleContactListView(index) {
 }
 
 function createDropdown(index) {
-
   const contactList = document.createElement("div");
+
   contactList.id = "contactListEdit";
   contactList.classList.add("flex");
   contactList.innerHTML = renderContactSelectionBoard(index); 
 
   const container = document.getElementById("contactSelectionEdit");
+
   container.parentElement.insertBefore(contactList, container.nextSibling); 
   document.addEventListener("click", closeDropdownOnClickOutside);
 }
 
 function toggleContactListViewAddTask(event) {
   let contactList = document.getElementById("contactList");
-
-  // Toggle die hidden Klasse
   contactList.classList.toggle("hidden");
 
   if (!contactList.classList.contains("hidden")) {
-    // Listener hinzufügen, wenn das Dropdown geöffnet wird
     document.addEventListener("click", closeDropdownOnClickOutside);
   } else {
-    // Listener entfernen, wenn das Dropdown geschlossen wird
     document.removeEventListener("click", closeDropdownOnClickOutside);
   }
-
-  // Stoppt den Click-Event, damit es nicht sofort wieder geschlossen wird
-  // event.stopPropagation();
 }
+
 addTaskForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   let data = collectFormData();
   try {
     await postDataBoards("", data);
-  
-    
   } catch (error) {
     console.error("Error posting data to Firebase:", error);
   }
@@ -426,6 +354,7 @@ function showPopupTask() {
     closePopupContactSuccessAddedTask();
   }, 1250);
 }
+
 function closePopupContactSuccessAddedTask() {
   document.getElementById("popupOverlay1").style.display = "none";
   document.getElementById("popupContactSuccessAddedTaskButton").style.display = "none";
@@ -444,7 +373,6 @@ function generateAssignedHTML(assignedContacts) {
         </div>`;
     });
   }
-
   return assignedHTML;
 }
 
@@ -455,54 +383,3 @@ function editTaskContact(event) {
     event.currentTarget.classList.toggle("selectedContact");
   }
 }
-
-// function renderSubtasks(index) {
-//   let returnList = "";
-
-//   if (allBoardContent[index].subtasks){
-//     for (let i = 0; i < allBoardContent[index].subtasks.length; i++) {
-//       returnList += generateSubtasks(i, index);
-//     }
-//   }
-//   return returnList;
-// }
-
-// async function toggleSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
-//   try {
-//     updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted);
-//     await updateSubtaskInFirebase(taskIndex, subtaskIndex);
-//     await updateBoard();
-//   } catch (error) {
-//     console.error("Fehler beim Aktualisieren des Subtasks:", error);
-//   }
-// }
-
-// function updateLocalSubtaskCompletion(taskIndex, subtaskIndex, isCompleted) {
-//   allBoardContent[taskIndex].subtasks[subtaskIndex].completed = isCompleted;
-// }
-
-// function getSubtaskDisplay(subtasks) {
-//   if (!subtasks || subtasks.length === 0) {
-//     return "";
-//   }
-
-//   let subtaskCount = subtasks.length;
-//   let completedSubtasks = 0;
-
-//   for (let i = 0; i < subtaskCount; i++) {
-//     if (subtasks[i].completed) {
-//       completedSubtasks++;
-//     }
-//   }
-
-//   let progressPercentage = (completedSubtasks / subtaskCount) * 100;
-
-//   return `
-//     <div class="progress-bar-container">
-//       <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
-//     </div>
-//     <div>${completedSubtasks}/${subtaskCount} Subtasks</div>
-//   `;
-// }
-
-
