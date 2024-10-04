@@ -1,25 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-    w3.includeHTML(function () {
-        let currentSite = window.location.pathname;
-        // console.log(`Current site: ${currentSite}`);
+document.addEventListener("DOMContentLoaded", function () {
+  w3.includeHTML(function () {
+    const currentSite = window.location.pathname;
+    const allLinks = document.querySelectorAll(".sideBar a, .mobileSideBar a");
 
-        // Select all sidebar links (both normal and mobile)
-        let allLinks = document.querySelectorAll('.sideBar a, .mobileSideBar a');
-
-        for (let i = 0; i < allLinks.length; i++) {
-            let link = allLinks[i];
-            let linkPath = new URL(link.href).pathname;
-            // console.log(`Checking link: ${linkPath}`);
-
-            if (linkPath === currentSite) {
-                if (link.closest('.sideBar')) {
-                    link.classList.add('activeNavigationPoint');
-                    // console.log(`Active Navigation Point added to: ${link.href}`);
-                } else if (link.closest('.mobileSideBar')) {
-                    link.classList.add('activeMobileNavigationPoint');
-                    // console.log(`Active Mobile Navigation Point added to: ${link.href}`);
-                }
-            }
-        }
+    allLinks.forEach((link) => {
+      const linkPath = new URL(link.href).pathname;
+      if (linkPath === currentSite) {
+        addActiveClass(link);
+      }
     });
+  });
 });
+
+/**
+ * Adds an active class to the specified link based on its parent sidebar.
+ *
+ * @param {HTMLElement} link - The link element to which the active class will be added.
+ */
+function addActiveClass(link) {
+  if (link.closest(".sideBar")) {
+    link.classList.add("activeNavigationPoint");
+  } else if (link.closest(".mobileSideBar")) {
+    link.classList.add("activeMobileNavigationPoint");
+  }
+}
