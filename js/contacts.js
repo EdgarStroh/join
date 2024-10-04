@@ -11,20 +11,19 @@ function openContact(id) {
 
 function addContact(isMobile = false) {
   let contactData = collectContactInputData(isMobile);
-  postDataContacts("", contactData);
+  updateContacts("", contactData);
   resetContactForm(isMobile);
   closePopup();
   showPopupContact();
   updateContacts();
 }
-function closePopup() {
 
+function closePopup() {
   const popupOverlay = document.getElementById("popupOverlay");
   const popupModal = document.getElementById("popupModal");
   popupOverlay.style.display = "none";
   popupModal.classList.remove("show");
   popupModal.classList.add("hide");
-
 
   setTimeout(() => {
     popupModal.style.display = "none";
@@ -47,11 +46,19 @@ function resetContactForm(isMobile) {
 }
 
 function renderExtendedContact(id) {
-  let extendedContact = document.getElementById("extended_contact");
+  const extendedContact = document.getElementById("extended_contact");
 
+  resetContact(extendedContact); 
+  renderContactDetails(extendedContact, id); 
+  animateContact(extendedContact);
+}
+
+function resetContact(extendedContact) {
   extendedContact.innerHTML = "";
   extendedContact.classList.remove("slideIn", "show");
+}
 
+function renderContactDetails(extendedContact, id) {
   extendedContact.innerHTML += generateExtendedContact(
     allContacts[id].name,
     allContacts[id].email,
@@ -60,7 +67,9 @@ function renderExtendedContact(id) {
     allContacts[id].Uid,
     id
   );
-  // Verwende requestAnimationFrame, um sicherzustellen, dass die Klasse entfernt wird, bevor sie erneut hinzugefügt wird
+}
+
+function animateContact(extendedContact) {
   requestAnimationFrame(() => {
     extendedContact.classList.add("slideIn");
     requestAnimationFrame(() => {
@@ -68,6 +77,7 @@ function renderExtendedContact(id) {
     });
   });
 }
+
 
 function renderContactList() {
   let contactsContainer = document.getElementById("contacts");
@@ -87,7 +97,6 @@ function renderContactList() {
       currentLetter = firstLetter;
       html += generateLetterSectionHTML(currentLetter);
     }
-
     html += generateContactContent(contact.name, contact.email, id, contact.color);
   });
 
@@ -97,7 +106,6 @@ function renderContactList() {
 function mobileShowContact() {
   if (window.innerWidth < 800) {
     document.getElementById("contact_list").style.display = "none";
-    // document.getElementById("contact_list1").style.display = "none";
     document.getElementById("headline_contacts").style.display = "flex";
     document.getElementById("arrow_left_contact").style.display = "flex";
     document.getElementById("headline_contacts").style.left = "auto";
@@ -127,7 +135,6 @@ function toggleMenuMobile() {
     const contactTools = document.getElementById("contact_tools");
     const contactTools1 = document.getElementById("contact_tools1");
     contactTools1.innerHTML = contactTools.innerHTML;
-    // contactTools1.classList.add("hidden");
     contactTools1.classList.toggle("hidden");
   }
 }
