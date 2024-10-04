@@ -34,6 +34,11 @@ textarea::placeholder {
     padding-top: 20px;
 }
 
+textarea:focus {
+    outline: none !important;
+    border: 1px solid #29ABE2;
+}
+
 select {
     height: 48px;
     border-radius: 10px;
@@ -42,12 +47,14 @@ select {
     padding-left: 12px;
 }
 
-input:focus {
-    outline: none !important;
-    border: 1px solid #29ABE2;
+input {
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    line-height: 24px;
 }
 
-textarea:focus {
+input:focus {
     outline: none !important;
     border: 1px solid #29ABE2;
 }
@@ -60,13 +67,6 @@ textarea:focus {
 
 .requiredStar {
     color: #FF8190;
-}
-
-input {
-    height: 48px;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    line-height: 24px;
 }
 
 #prio {
