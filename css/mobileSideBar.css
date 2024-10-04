@@ -37,21 +37,15 @@
 
 .mobileSideBar a.activeMobileNavigationPoint {
     background-color: #091931;
-    /* Farbe für aktiven Link */
 }
 
 .mobileSideBar a:hover {
     background-color: #405173;
-    /* Farbe für Hover */
 }
 
-/* Priorisiere den aktiven Zustand auch bei Hover */
 .mobileSideBar a.activeMobileNavigationPoint:hover {
     background-color: #091931;
-    /* Aktive Farbe bleibt */
-
 }
-
 
 @media screen and (max-width: 1020px) {
     .mobileSideBar {
