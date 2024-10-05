@@ -20,7 +20,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     /* display: none; */
-    z-index: 10; /* Ensures it's above other content */
+    z-index: 1; /* Ensures it's above other content */
     width: 170px; /* Adjust the width as needed */
     /* background-color: red; */
     border-radius: 5px;
