@@ -14,43 +14,47 @@
 
 .submenu {
     position: absolute;
-    top: 50%; /* This places the submenu directly below the board card */
+    top: 50%;
     left: 5%;
-    background-color: white;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    /* display: none; */
-    z-index: 1; /* Ensures it's above other content */
-    width: 170px; /* Adjust the width as needed */
-    /* background-color: red; */
-    border-radius: 5px;
-  }
-  .toggleSubmenu{
+    border-radius: 15px;
+    z-index: 1;
+    width: 170px;
+    border-radius: 20px;
+    background: #2A3647;
+    color: rgb(205, 205, 205);
+}
+
+.toggleSubmenu {
     margin-left: 95px;
     cursor: pointer;
     display: none;
 }
-  
-  .submenu ul {
+
+.updown {
+    width: 25px;
+}
+
+.submenu ul {
     list-style: none;
     margin: 0;
     padding: 10px;
-  }
-  
-  .submenu ul li {
+}
+
+.submenu ul li {
     padding: 7px;
     cursor: pointer;
     display: flex;
     align-items: center;
-  }
-  
-  .submenu ul li:hover {
+}
+
+.submenu ul li:hover {
     background-color: #f0f0f0;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     display: none;
-  }
+}
 
 .flex {
     gap: 4px;
