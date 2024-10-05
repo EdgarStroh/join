@@ -233,6 +233,14 @@ function generateSubtaskList(i) {
   `;
 }
 
+/**
+ * Generates the HTML content for a subtask in a popup window.
+ *
+ * @param {Object} subtask - The subtask object containing details like description and completion status.
+ * @param {number} boardIndex - The index of the board to which the subtask belongs.
+ * @param {number} subtaskIndex - The index of the subtask within the board.
+ * @returns {string} - The generated HTML string for the subtask content in the popup.
+ */
 function generateSubtaskPopupContent(subtask, boardIndex, subtaskIndex) {
   return `
         <div class="subtaskCardPopUpContent"> 
@@ -262,6 +270,14 @@ function generateContactList(index) {
   `;
 }
 
+/**
+ * Generates the HTML for editing a contact in a task.
+ *
+ * @param {Object} contact - The contact object containing details like name and color.
+ * @param {string} initials - The initials of the contact to display in the UI.
+ * @param {string} checkedContact - Indicates whether the contact's checkbox should be checked (e.g., 'checked').
+ * @returns {string} - The generated HTML string for the contact edit section.
+ */
 function generateContactEdit(contact, initials, checkedContact) {
   return `
     <div class='contactEdit flex' onclick='editTaskContact(event)'>
@@ -277,7 +293,6 @@ function generateContactEdit(contact, initials, checkedContact) {
     </div>
   `;
 }
-
 
 /**
  * Gets the initials from a given name.
