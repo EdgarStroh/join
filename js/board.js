@@ -456,7 +456,7 @@ function stopPropagationHandler(event) {
 }
 
 // Berechnet die Position des Submenüs relativ zur Board-Karte
-function calculateSubmenuPosition(index, additionalOffsetTop = 33, additionalOffsetLeft = 30) {
+function calculateSubmenuPosition(index, additionalOffsetTop = 25, additionalOffsetLeft = 30) {
   const boardCard = document.getElementById(`board-${index}`);
   const submenu = document.getElementById(`submenu-${index}`);
 

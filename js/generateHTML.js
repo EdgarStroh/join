@@ -291,7 +291,7 @@ function generateBoardCard(index, categoryColor, contactsHTML, statusImage) {
       </div>
     </div>
     <div id="toggleSubmenu" class="toggleSubmenu" onclick="toggleSubmenu(event, ${index})">
-      <img class="updown"src="../assets/icons/updown.svg">
+      <img class="updown"src="../assets/icons/updown2.svg">
     </div>
     <div id="submenu-${index}" class="submenu hidden">
       <ul> Move to:
