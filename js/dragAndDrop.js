@@ -84,7 +84,7 @@ function dropAwait(event) {
 }
 
 function dropInProgress(event) {
-  handleDrop(event, "in progress");
+  handleDrop(event, "inProgress");
 }
 
 function dropToDo(event) {

@@ -55,7 +55,7 @@ function updateTaskCounts() {
 
   document.getElementById("toDoCount").innerText = countTasksByStatus("toDo");
   document.getElementById("inProgressCount").innerText =
-    countTasksByStatus("in progress");
+    countTasksByStatus("inProgress");
   document.getElementById("awaitFeedbackCount").innerText =
     countTasksByStatus("await");
   document.getElementById("doneCount").innerText = countTasksByStatus("done");

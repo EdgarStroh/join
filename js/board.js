@@ -75,7 +75,7 @@ function renderTaskToContainer(task, index) {
       container = document.getElementById("toDo");
       container.innerHTML += generateBoardContent(index);
       return false;
-    case "in progress":
+    case "inProgress":
       container = document.getElementById("inProgress");
       container.innerHTML += generateBoardContent(index);
       return false;
@@ -122,7 +122,7 @@ function renderBoardList() {
 
     if (emptyStatus) return;
     if (task.status === "toDo") isToDoEmpty = false;
-    if (task.status === "in progress") isProgressEmpty = false;
+    if (task.status === "inProgress") isProgressEmpty = false;
     if (task.status === "await") isAwaitEmpty = false;
     if (task.status === "done") isDoneEmpty = false;
   });
@@ -431,3 +431,68 @@ function editTaskContact(event) {
     event.currentTarget.classList.toggle("selectedContact");
   }
 }
+
+
+function moveTask(index, newStatus) {
+  const card = document.getElementById(`board-${index}`);
+  
+  // Aktualisiere den Status der Aufgabe in deiner Datenstruktur
+  let currentTask = allBoardContent[index];
+  currentTask.status = newStatus;
+
+  // Verschiebe die Karte in die neue Spalte
+  const dropArea = document.querySelector(`.drag-area[data-status="${newStatus}"]`);
+
+  // Überprüfen, ob die Drop-Area existiert
+  if (dropArea) {
+    dropArea.appendChild(card);
+    updateTask(currentTask.Uid, currentTask); // Aktualisiere die Aufgabe in der Datenbank
+  }
+}
+
+// Verhindert die Weitergabe des Klickereignisses
+function stopPropagationHandler(event) {
+  event.stopPropagation();
+}
+
+// Berechnet die Position des Submenüs relativ zur Board-Karte
+function calculateSubmenuPosition(index, additionalOffsetTop = 33, additionalOffsetLeft = 30) {
+  const boardCard = document.getElementById(`board-${index}`);
+  const submenu = document.getElementById(`submenu-${index}`);
+
+  const rect = boardCard.getBoundingClientRect();
+  
+  // Berechnet die Position mit den zusätzlichen Offsets
+  const top = rect.bottom + window.scrollY + additionalOffsetTop;
+  const left = rect.left + additionalOffsetLeft;
+  
+  submenu.style.top = `${top}px`;
+  submenu.style.left = `${left}px`;
+}
+
+// Schaltet die Sichtbarkeit des Submenüs um
+function toggleVisibility(submenu) {
+  const isVisible = !submenu.classList.contains('hidden');
+  
+  if (!isVisible) {
+    submenu.classList.remove('hidden');
+  } else {
+    submenu.classList.add('hidden');
+  }
+}
+
+// Hauptfunktion zum Aufruf der Teilfunktionen
+function toggleSubmenu(event, index) {
+  stopPropagationHandler(event);
+
+  const submenu = document.getElementById(`submenu-${index}`);
+  
+  calculateSubmenuPosition(index);
+  toggleVisibility(submenu);
+}
+//Schließe das Submenü, wenn irgendwo außerhalb geklickt wird
+document.addEventListener('click', () => {
+  document.querySelectorAll('.submenu').forEach((sub) => {
+    sub.classList.add('hidden');
+  });
+});

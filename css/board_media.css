@@ -15,6 +15,9 @@
     .text_containerBoard {
         padding: 206px 5px 96px 245px;
     }
+    .toggleSubmenu{
+        display: flex;
+    }
 
     .emptyColumnMessage {
         width: fit-content;

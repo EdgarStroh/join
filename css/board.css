@@ -20,24 +20,28 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     /* display: none; */
-    z-index: 40; /* Ensures it's above other content */
-    width: 125px; /* Adjust the width as needed */
+    z-index: 10; /* Ensures it's above other content */
+    width: 170px; /* Adjust the width as needed */
     /* background-color: red; */
     border-radius: 5px;
   }
-  .asd{
+  .toggleSubmenu{
     margin-left: 95px;
+    cursor: pointer;
+    display: none;
 }
   
   .submenu ul {
     list-style: none;
     margin: 0;
-    padding: 4px;
+    padding: 10px;
   }
   
   .submenu ul li {
     padding: 7px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
   
   .submenu ul li:hover {
