@@ -12,7 +12,6 @@ function getCategoryColor(category) {
   return category === "Technical Task" ? "#1FD7C1" : "#0038FF";
 }
 
-// Function to generate contacts HTML
 function generateContactsHTML(assignedContacts) {
   let contactsHTML = "";
   if (Array.isArray(assignedContacts)) {
@@ -31,7 +30,6 @@ function generateContactsHTML(assignedContacts) {
   return contactsHTML;
 }
 
-// Function to get priority image based on task priority
 function getPriorityImage(priority) {
   switch (priority) {
     case "urgent":
@@ -45,7 +43,6 @@ function getPriorityImage(priority) {
   }
 }
 
-// Main function to generate board content
 function htmlTemplateGenerateBoardContent(index) {
   let task = allBoardContent[index];
   let categoryColor = getCategoryColor(task.category);
@@ -59,7 +56,6 @@ function generateBoardContent(index) {
   return htmlTemplateGenerateBoardContent(index);
 }
 
-// Function to clear the containers
 function clearContainers() {
   document.getElementById("toDo").innerHTML = "";
   document.getElementById("inProgress").innerHTML = "";
@@ -67,7 +63,6 @@ function clearContainers() {
   document.getElementById("done").innerHTML = "";
 }
 
-// Function to render tasks into containers based on status
 function renderTaskToContainer(task, index) {
   let container;
   switch (task.status) {
@@ -92,7 +87,6 @@ function renderTaskToContainer(task, index) {
   }
 }
 
-// Function to show empty column messages
 function displayEmptyColumnMessages(isToDoEmpty, isProgressEmpty, isAwaitEmpty, isDoneEmpty) {
   if (isToDoEmpty) {
     document.getElementById("toDo").innerHTML = `<div class="emptyColumnMessage">No tasks in To-Do</div>`;
@@ -108,7 +102,6 @@ function displayEmptyColumnMessages(isToDoEmpty, isProgressEmpty, isAwaitEmpty, 
   }
 }
 
-// Main function to render the board list
 function renderBoardList() {
   clearContainers();
 
@@ -134,34 +127,23 @@ function getCategoryColor(category) {
   return category === "Technical Task" ? "#1FD7C1" : "#0038FF";
 }
 
-function generatePersonHTML(person) {
-  const initials = getInitials(person).toUpperCase();
-  const color = contactColors[person];
-
-  if (color) {
-    return `
-      <div style="display: flex; align-items: center;">
-        <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
-          ${initials}
-        </span>
-        ${person}
-      </div><br>
-    `;
-  }
-  return '';
-}
-
-// Function to generate the full HTML for assigned people
-function generateAssignedHTML(assignedPeople) {
+function generateAssignedHTML(assignedContacts) {
   let assignedHTML = "";
-  if (Array.isArray(assignedPeople)) {
-    assignedPeople.forEach((person) => {
-      assignedHTML += generatePersonHTML(person);
+
+  if (Array.isArray(assignedContacts)) {
+    assignedContacts.forEach((person) => {
+      const initials = getInitials(person).toUpperCase() || "";
+      const color =
+        allContacts.find((contact) => contact.name === person).color || "";
+      assignedHTML += `
+        <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
+          ${initials}
+        </div>`;
     });
   }
   return assignedHTML;
 }
-// Funktion zur Ermittlung des Status-Bildes basierend auf der Priorität
+
 function getStatusImage(priority) {
   switch (priority) {
     case "urgent":
@@ -406,22 +388,6 @@ function showPopupTask() {
 function closePopupContactSuccessAddedTask() {
   document.getElementById("popupOverlay1").style.display = "none";
   document.getElementById("popupContactSuccessAddedTaskButton").style.display = "none";
-}
-
-function generateAssignedHTML(assignedContacts) {
-  let assignedHTML = "";
-
-  if (Array.isArray(assignedContacts)) {
-    assignedContacts.forEach((person) => {
-      const initials = getInitials(person).toUpperCase() || "";
-      const color = allContacts.find((contact) => contact.name === person).color || "";
-      assignedHTML += `
-        <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
-          ${initials}
-        </div>`;
-    });
-  }
-  return assignedHTML;
 }
 
 function editTaskContact(event) {
