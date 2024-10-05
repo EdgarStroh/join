@@ -27,3 +27,12 @@ function toggleMenu() {
     menu.classList.toggle("hidden");
   }
 }
+
+/**
+ * Logs the user out by clearing local storage and redirecting to the login page.
+ */
+function logout() {
+  localStorage.clear(); // Clears all data from local storage
+  window.location.href = "index.html"; // Redirects the user to the login page
+}
+
