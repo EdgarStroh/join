@@ -3,6 +3,11 @@ let descriptionsDOM = document.getElementsByClassName("bc3");
 let searchBar = document.getElementsByClassName("searchBar")[0];
 let boardCardDOM = document.getElementsByClassName("boardCard");
 
+searchBar.addEventListener('keyup', function() {
+  if (searchBar.value === "") {
+    showAllTasks(); // Show all tasks when the search bar is cleared
+  }
+});
 /**
  * Displays all tasks by setting their display style to the default.
  */
