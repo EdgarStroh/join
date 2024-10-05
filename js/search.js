@@ -2,13 +2,17 @@ let titlesDOM = document.getElementsByClassName("bc2");
 let descriptionsDOM = document.getElementsByClassName("bc3");
 let searchBar = document.getElementsByClassName("searchBar")[0];
 let boardCardDOM = document.getElementsByClassName("boardCard");
+let previousValue = ""; 
 
 searchBar.addEventListener('keyup', function(event) {
   if (searchBar.value === "") {
     showAllTasks(); 
   } else if (event.key === "Enter") {
+    searchTasks();
+  } else if (searchBar.value.length < previousValue.length) { 
     searchTasks(); 
   }
+  previousValue = searchBar.value; 
 });
 /**
  * Displays all tasks by setting their display style to the default.
