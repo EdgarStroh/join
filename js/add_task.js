@@ -13,6 +13,7 @@ function resetAddTask(status = 'toDo'){
   document.getElementById("description").value = "";
   document.getElementById("category").value = "";
 
+  renderContactList(); 
   clearSubtasks();
   setPriority("medium", -1, "prio");
   contactList.classList.add("hidden");
