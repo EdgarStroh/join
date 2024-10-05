@@ -144,12 +144,12 @@ function copyContactToolsContent() {
 function hideContactTools(contactTools1) {
   setTimeout(() => {
     contactTools1.classList.add("slideOff");
-  }, 100);
+  }, 1);
   
   setTimeout(() => {
     contactTools1.classList.add("hidden");
     contactTools1.classList.remove("slideOff");
-  }, 500);
+  }, 400);
 }
 
 function showContactTools(contactTools1) {
