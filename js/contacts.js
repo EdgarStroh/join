@@ -9,13 +9,18 @@ function openContact(id) {
   toggleMenuMobile(id);
 }
 
-function addContact(isMobile = false) {
+async function addContact(isMobile = false) {
   let contactData = collectContactInputData(isMobile);
-  postDataContacts("", contactData);
-  resetContactForm(isMobile);
-  closePopup();
-  showPopupContact();
-  updateContacts();
+  try {
+    await postDataContacts("", contactData);
+    resetContactForm(isMobile);
+    closePopup();
+    await updateContacts();
+    showPopupContact();
+  } catch (error) {
+    console.error("Fehler beim Hinzufügen des Kontakts:", error);
+    alert("Es gab ein Problem beim Hinzufügen des Kontakts.");
+  }
 }
 
 function closePopup() {
