@@ -79,9 +79,9 @@ function displayEmptyColumnMessages() {
  */
 function isColumnEmpty(columnId) {
   let column = document.getElementById(columnId);
+  
   return (
-    column.querySelectorAll('.boardCard[style*="display: none"]').length ===
-    column.children.length
+    column.querySelectorAll('.boardCard[style*="display: none"]').length === column.children.length/3
   );
 }
 
@@ -94,8 +94,6 @@ function isColumnEmpty(columnId) {
  */
 function showEmptyMessageIfNeeded(isEmpty, columnId, message) {
   if (isEmpty) {
-    document.getElementById(
-      columnId
-    ).innerHTML = `<div class="emptyColumnMessage">${message}</div>`;
+    document.getElementById(columnId).innerHTML = `<div class="emptyColumnMessage">${message}</div>`;
   }
 }
