@@ -245,10 +245,19 @@
         padding: 10px;
     }
 
-    .contact_tools1.hidden {
-        animation: slideOut 0.4s ease-out forwards;
+.slideOff{
+    animation: slideOut 0.4s ease-out forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes slideOut {
+    from {
+      transform: translateX(0);
     }
-
+    to {
+      transform: translateX(100%);
+    }
+  }
+  
 
     .contact_content_extended {
         flex-direction: row;

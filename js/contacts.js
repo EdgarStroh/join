@@ -135,12 +135,37 @@ function mobileShowContactReverse() {
     menu.classList.add("hidden");
   }
 }
+function copyContactToolsContent() {
+  const contactTools = document.getElementById("contact_tools");
+  const contactTools1 = document.getElementById("contact_tools1");
+  contactTools1.innerHTML = contactTools.innerHTML;
+}
+
+function hideContactTools(contactTools1) {
+  setTimeout(() => {
+    contactTools1.classList.add("slideOff");
+  }, 100);
+  
+  setTimeout(() => {
+    contactTools1.classList.add("hidden");
+    contactTools1.classList.remove("slideOff");
+  }, 500);
+}
+
+function showContactTools(contactTools1) {
+  contactTools1.classList.remove("hidden");
+}
+
 function toggleMenuMobile() {
   if (window.innerWidth < 800) {
-    const contactTools = document.getElementById("contact_tools");
     const contactTools1 = document.getElementById("contact_tools1");
-    contactTools1.innerHTML = contactTools.innerHTML;
-    contactTools1.classList.toggle("hidden");
+    copyContactToolsContent();
+    
+    if (!contactTools1.classList.contains("hidden")) {
+      hideContactTools(contactTools1);
+    } else {
+      showContactTools(contactTools1);
+    }
   }
 }
 
