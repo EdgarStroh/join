@@ -233,6 +233,15 @@ function generateSubtaskList(i) {
   `;
 }
 
+function generateSubtaskPopupContent(subtask, boardIndex, subtaskIndex) {
+  return `
+        <div class="subtaskCardPopUpContent"> 
+          <input type="checkbox" ${subtask.completed ? "checked" : ""}
+              onchange="toggleSubtaskCompletion(${boardIndex}, ${subtaskIndex}, this.checked)">
+          ${subtask.description}
+        </div>`;
+}
+
 /**
  * Generates the HTML for a list of contacts.
  * 
@@ -252,6 +261,23 @@ function generateContactList(index) {
     </div>
   `;
 }
+
+function generateContactEdit(contact, initials, checkedContact) {
+  return `
+    <div class='contactEdit flex' onclick='editTaskContact(event)'>
+        <div class='flex'>
+            <span class='circleEdit flex' style='background:${contact.color}'>
+              ${initials}
+            </span>
+            <span>
+              ${contact.name}
+            </span>
+        </div>
+        <input type="checkbox" ${checkedContact} value="${contact.name}">
+    </div>
+  `;
+}
+
 
 /**
  * Gets the initials from a given name.

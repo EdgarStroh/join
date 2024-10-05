@@ -144,49 +144,14 @@ function generateAssignedHTML(assignedContacts) {
   return assignedHTML;
 }
 
-function getStatusImage(priority) {
-  switch (priority) {
-    case "urgent":
-      return '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
-    case "medium":
-      return '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
-    case "low":
-      return '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
-    default:
-      return "";
-  }
-}
-
-// Funktion zur Generierung des HTML für die Unteraufgaben (Subtasks)
 function generateSubtasksHTML(subtasks, boardIndex) {
   let subtasksHTML = "";
   if (Array.isArray(subtasks)) {
     subtasks.forEach((subtask, subtaskIndex) => {
-      subtasksHTML += `
-        <div class="subtaskCardPopUpContent"> 
-          <input type="checkbox" ${subtask.completed ? "checked" : ""}
-              onchange="toggleSubtaskCompletion(${boardIndex}, ${subtaskIndex}, this.checked)">
-          ${subtask.description}
-        </div>`;
+      subtasksHTML += generateSubtaskPopupContent(subtask, boardIndex, subtaskIndex);
     });
   }
   return subtasksHTML;
-}
-
-// Hauptfunktion zur Erstellung des HTML-Templates für das Popup der Board-Karte
-function htmlTemplatePopUpBoardCard(index) {
-  const categoryColor = getCategoryColor(allBoardContent[index].category);
-  const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
-  const statusImage = getStatusImage(allBoardContent[index].prio);
-  const subtasksHTML = generateSubtasksHTML(allBoardContent[index].subtasks, index);
-
-  return generatePopupBoardCard(categoryColor, index, statusImage, assignedHTML, subtasksHTML);
-}
-
-function htmlTemplatePopUpBoardCardEdit(index) {
-  const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
-
-  return generatePopupBoardCardEdit(index, assignedHTML);
 }
 
 function showActions(index) {
@@ -267,7 +232,6 @@ function collectSelectedContacts(index) {
   return contactNames;
 }
 
-// Funktion zum Sortieren der Kontakte nach Namen
 function getSortedContacts(contacts) {
   return [...contacts].sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
@@ -276,31 +240,16 @@ function getSortedContacts(contacts) {
   });
 }
 
-// Funktion zum Überprüfen, ob ein Kontakt zugewiesen ist
 function isContactAssigned(contactName, assignedContacts) {
   return assignedContacts && assignedContacts.find((name) => name === contactName);
 }
 
-// Funktion zum Erstellen des HTML für einen einzelnen Kontakt
 function createContactEditHTML(contact, initials, isChecked) {
   const checkedContact = isChecked ? "checked" : "";
   
-  return `
-    <div class='contactEdit flex' onclick='editTaskContact(event)'>
-        <div class='flex'>
-            <span class='circleEdit flex' style='background:${contact.color}'>
-              ${initials}
-            </span>
-            <span>
-              ${contact.name}
-            </span>
-        </div>
-        <input type="checkbox" ${checkedContact} value="${contact.name}">
-    </div>
-  `;
+  return generateContactEdit(contact, initials, checkedContact);
 }
 
-// Hauptfunktion zum Erstellen der Kontaktliste für das Board
 function renderContactSelectionBoard(index) {
   let contactListEdit = "";
   
@@ -342,7 +291,7 @@ function createDropdown(index) {
   document.addEventListener("click", closeDropdownOnClickOutside);
 }
 
-function toggleContactListViewAddTask(event) {
+function toggleContactListViewAddTask() {
   let contactList = document.getElementById("contactList");
   contactList.classList.toggle("hidden");
 
@@ -368,28 +317,6 @@ addTaskForm.addEventListener("submit", async (event) => {
   document.body.classList.remove('no-scroll');
 });
 
-function showPopupTask() {
-  const overlay = document.getElementById("popupOverlay1");
-  const success = document.getElementById("popupContactSuccessAddedTaskButton");
-
-  overlay.style.display = "flex";
-  success.style.display = "flex";
-  success.style.opacity = "0";
-
-  setTimeout(() => {
-    success.style.opacity = "1";
-  }, 1);
-
-  setTimeout(function () {
-    closePopupContactSuccessAddedTask();
-  }, 1250);
-}
-
-function closePopupContactSuccessAddedTask() {
-  document.getElementById("popupOverlay1").style.display = "none";
-  document.getElementById("popupContactSuccessAddedTaskButton").style.display = "none";
-}
-
 function editTaskContact(event) {
   if (event.target.type !== "checkbox") {
     let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
@@ -398,37 +325,28 @@ function editTaskContact(event) {
   }
 }
 
-
 function moveTask(index, newStatus) {
   const card = document.getElementById(`board-${index}`);
-  
-  // Aktualisiere den Status der Aufgabe in deiner Datenstruktur
   let currentTask = allBoardContent[index];
+
   currentTask.status = newStatus;
 
-  // Verschiebe die Karte in die neue Spalte
   const dropArea = document.querySelector(`.drag-area[data-status="${newStatus}"]`);
 
-  // Überprüfen, ob die Drop-Area existiert
   if (dropArea) {
     dropArea.appendChild(card);
-    updateTask(currentTask.Uid, currentTask); // Aktualisiere die Aufgabe in der Datenbank
+    updateTask(currentTask.Uid, currentTask);
   }
 }
 
-// Verhindert die Weitergabe des Klickereignisses
 function stopPropagationHandler(event) {
   event.stopPropagation();
 }
 
-// Berechnet die Position des Submenüs relativ zur Board-Karte
 function calculateSubmenuPosition(index, additionalOffsetTop = 25, additionalOffsetLeft = 30) {
   const boardCard = document.getElementById(`board-${index}`);
   const submenu = document.getElementById(`submenu-${index}`);
-
   const rect = boardCard.getBoundingClientRect();
-  
-  // Berechnet die Position mit den zusätzlichen Offsets
   const top = rect.bottom + window.scrollY + additionalOffsetTop;
   const left = rect.left + additionalOffsetLeft;
   
@@ -436,7 +354,6 @@ function calculateSubmenuPosition(index, additionalOffsetTop = 25, additionalOff
   submenu.style.left = `${left}px`;
 }
 
-// Schaltet die Sichtbarkeit des Submenüs um
 function toggleVisibility(submenu) {
   const isVisible = !submenu.classList.contains('hidden');
   
@@ -447,7 +364,6 @@ function toggleVisibility(submenu) {
   }
 }
 
-// Hauptfunktion zum Aufruf der Teilfunktionen
 function toggleSubmenu(event, index) {
   stopPropagationHandler(event);
 
@@ -456,7 +372,7 @@ function toggleSubmenu(event, index) {
   calculateSubmenuPosition(index);
   toggleVisibility(submenu);
 }
-//Schließe das Submenü, wenn irgendwo außerhalb geklickt wird
+
 document.addEventListener('click', () => {
   document.querySelectorAll('.submenu').forEach((sub) => {
     sub.classList.add('hidden');
