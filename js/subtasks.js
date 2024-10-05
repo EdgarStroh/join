@@ -1,14 +1,15 @@
 function addSubtaskEdit(index) {
+  let subtaskEdit = document.getElementById('subtaskEdit');
   if (!allBoardContent[index].subtasks) {
     allBoardContent[index].subtasks = [];
   }
-  if (addSubtaskEdit.value != "") {
+  if (subtaskEdit.value != "") {
     allBoardContent[index].subtasks.push({
-      description: addSubtaskEdit.value,
+      description: subtaskEdit.value,
       completed: false,
     });
     renderSubtaskListEdit(index);
-    addSubtaskEdit.value = "";
+    subtaskEdit.value = "";
   }
 }
 
