@@ -121,8 +121,6 @@ function renderBoardList() {
     const emptyStatus = renderTaskToContainer(task, index);
 
     if (emptyStatus) return;
-
-    // Track if columns are not empty
     if (task.status === "toDo") isToDoEmpty = false;
     if (task.status === "in progress") isProgressEmpty = false;
     if (task.status === "await") isAwaitEmpty = false;
@@ -132,12 +130,10 @@ function renderBoardList() {
   displayEmptyColumnMessages(isToDoEmpty, isProgressEmpty, isAwaitEmpty, isDoneEmpty);
 }
 
-// Funktion zur Ermittlung der Kategorie-Farbe
 function getCategoryColor(category) {
   return category === "Technical Task" ? "#1FD7C1" : "#0038FF";
 }
 
-// Funktion zur Generierung des HTML für zugewiesene Personen
 function generatePersonHTML(person) {
   const initials = getInitials(person).toUpperCase();
   const color = contactColors[person];

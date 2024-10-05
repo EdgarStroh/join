@@ -52,7 +52,7 @@
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="toDo" ondrop="dropToDo(event)" ondragover="allowDrop(event);"
+                <div class="drag-area" data-status="toDo" id="toDo" ondrop="dropToDo(event)" ondragover="allowDrop(event);"
                     ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
@@ -62,7 +62,7 @@
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="inProgress" ondrop="dropInProgress(event)" ondragover="allowDrop(event);"
+                <div class="drag-area" data-status="in progress" id="inProgress" ondrop="dropInProgress(event)" ondragover="allowDrop(event);"
                     ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
@@ -72,13 +72,13 @@
                         <img src="../assets/icons/plus button.svg">
                     </button>
                 </div>
-                <div class="drag-area" id="awaitFeedback" ondrop="dropAwait(event)" ondragover="allowDrop(event);"
+                <div class="drag-area" id="awaitFeedback" data-status="await" ondrop="dropAwait(event)" ondragover="allowDrop(event);"
                     ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>
             <div class="headlineBoardSmall">
                 <div class="headlineAndPlusButton">Done</div>
-                <div class="drag-area" id="done" ondrop="dropDone(event)" ondragover="allowDrop(event);"
+                <div class="drag-area" id="done" data-status="done" ondrop="dropDone(event)" ondragover="allowDrop(event);"
                     ondragleave="dragLeave(event)"></div>
                 <div class="drop-target"></div>
             </div>

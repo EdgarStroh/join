@@ -260,7 +260,7 @@ function generateContactList(index) {
  * @returns {string} The initials extracted from the name.
  */
 function getInitials(name) {
-    return name.split(" ").map((n) => n[0]).join("");
+  return name.split(" ").map((n) => n[0]).join("");
 }
 
 /**
@@ -274,24 +274,89 @@ function getInitials(name) {
  */
 function generateBoardCard(index, categoryColor, contactsHTML, statusImage) {
   return `
-  <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
-    <span class="boardCategory bc1" style="background-color: ${categoryColor};">
-      ${allBoardContent[index].category}
-    </span>
-    <div class="boardText flex">
-      <span class="bc2">${allBoardContent[index].title}</span>
-      <span class="bc3">${allBoardContent[index].description}</span>
+    <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
+      <span class="boardCategory bc1" style="background-color: ${categoryColor};">
+        ${allBoardContent[index].category}
+      </span>
+      <div class="boardText flex">
+        <span class="bc2">${allBoardContent[index].title}</span>
+        <span class="bc3">${allBoardContent[index].description}</span>
+      </div>
+      <div class="progressSubTask flex">
+        ${getSubtaskDisplay(allBoardContent[index].subtasks)}
+      </div>
+      <div class="contactsAndPrio">
+        <div>${contactsHTML}</div>
+        <div class="prioBoardCard">${statusImage}</div>
+      </div>
     </div>
-    <div class="progressSubTask flex">
-      ${getSubtaskDisplay(allBoardContent[index].subtasks)}
+    <div class="asd" onclick="toggleSubmenu(event, ${index})">
+      <img src="../assets/icons/up-and-down-arrows.png">
     </div>
-    <div class="contactsAndPrio">
-      <div>${contactsHTML}</div>
-      <div class="prioBoardCard">${statusImage}</div>
+    <div id="submenu-${index}" class="submenu hidden">
+      <ul> Move to:
+        <li onclick="moveTask(${index}, 'toDo')">- To do</li>
+        <li onclick="moveTask(${index}, 'inProgress')">- In progress</li>
+        <li onclick="moveTask(${index}, 'await')">- Await feedback</li>
+        <li onclick="moveTask(${index}, 'done')">- Done</li>
+      </ul>
     </div>
-  </div>
-`;
+  `;
 }
+function moveTask(index, newStatus) {
+  const card = document.getElementById(`board-${index}`);
+  
+  // Aktualisiere den Status der Aufgabe in deiner Datenstruktur
+  let currentTask = allBoardContent[index];
+  currentTask.status = newStatus;
+
+  // Verschiebe die Karte in die neue Spalte
+  const dropArea = document.querySelector(`.drag-area[data-status="${newStatus}"]`);
+
+  // Überprüfen, ob die Drop-Area existiert
+  if (dropArea) {
+    dropArea.appendChild(card);
+    updateTask(currentTask.Uid, currentTask); // Aktualisiere die Aufgabe in der Datenbank
+  }
+}
+
+function toggleSubmenu(event, index) {
+  event.stopPropagation(); // Verhindert die Weitergabe des Klickereignisses
+
+  const submenu = document.getElementById(`submenu-${index}`);
+  
+  // Überprüfen, ob das Submenü bereits sichtbar ist
+  const isVisible = !submenu.classList.contains('hidden');
+
+  // Alle Submenüs verstecken
+  document.querySelectorAll('.submenu').forEach((sub) => {
+    sub.classList.add('hidden');
+  });
+  const boardCard = document.getElementById(`board-${index}`);
+  const rect = boardCard.getBoundingClientRect();
+
+  const additionalOffsetTop = 33;  // Zusätzlicher Offset nach unten
+  const additionalOffsetLeft = 30;   // Zusätzlicher Offset nach rechts
+  
+  // Setzt die obere Position des Submenüs mit dem zusätzlichen Offset
+  submenu.style.top = `${rect.bottom + window.scrollY + additionalOffsetTop}px`;
+  
+  // Setzt die linke Position des Submenüs mit dem zusätzlichen Offset
+  submenu.style.left = `${rect.left + additionalOffsetLeft}px`;
+  // Submenü anzeigen oder ausblenden
+  if (!isVisible) {
+    submenu.classList.remove('hidden');
+  } else {
+    submenu.classList.add('hidden');
+  }
+}
+
+// Optional: Schließe das Submenü, wenn irgendwo außerhalb geklickt wird
+document.addEventListener('click', () => {
+  document.querySelectorAll('.submenu').forEach((sub) => {
+    sub.classList.add('hidden');
+  });
+});
 
 /**
  * Generates a popup card for displaying detailed task information.
