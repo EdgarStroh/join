@@ -1,18 +1,35 @@
+/**
+ * Updates the board by loading contacts, boards, and users,
+ * then rendering the board list and checking the login status.
+ *
+ * @returns {Promise<void>} - A promise that resolves when the board is updated.
+ */
 async function updateBoard() {
   await loadDataContacts("");
   await loadDataBoards("");
   await loadDataUsers("");
 
   checkLogin();
-  sanitizeAssignedContacts();  
+  sanitizeAssignedContacts();
   renderBoardList();
 }
 
+/**
+ * Gets the color associated with a task category.
+ *
+ * @param {string} category - The category of the task.
+ * @returns {string} - The color code associated with the category.
+ */
 function getCategoryColor(category) {
   return category === "Technical Task" ? "#1FD7C1" : "#0038FF";
 }
 
-// Function to generate contacts HTML
+/**
+ * Generates the HTML for assigned contacts.
+ *
+ * @param {string[]} assignedContacts - An array of assigned contact names.
+ * @returns {string} - The generated HTML for the assigned contacts.
+ */
 function generateContactsHTML(assignedContacts) {
   let contactsHTML = "";
   if (Array.isArray(assignedContacts)) {
@@ -21,7 +38,9 @@ function generateContactsHTML(assignedContacts) {
         if (contact.name === contactName) {
           contactColors[contactName] = contact.color;
           contactsHTML += `
-            <span class="contactCard" style="background-color: ${contact.color}">
+            <span class="contactCard" style="background-color: ${
+              contact.color
+            }">
               ${getInitials(contact.name).toUpperCase()}
             </span>`;
         }
@@ -31,7 +50,12 @@ function generateContactsHTML(assignedContacts) {
   return contactsHTML;
 }
 
-// Function to get priority image based on task priority
+/**
+ * Returns the HTML image tag for the given task priority.
+ *
+ * @param {string} priority - The priority level of the task.
+ * @returns {string} - The HTML image tag for the priority.
+ */
 function getPriorityImage(priority) {
   switch (priority) {
     case "urgent":
@@ -45,21 +69,34 @@ function getPriorityImage(priority) {
   }
 }
 
-// Main function to generate board content
+/**
+ * Generates the HTML template for the board content at the specified index.
+ *
+ * @param {number} index - The index of the task in the board content array.
+ * @returns {string} - The generated HTML for the task's board card.
+ */
 function htmlTemplateGenerateBoardContent(index) {
   let task = allBoardContent[index];
   let categoryColor = getCategoryColor(task.category);
   let contactsHTML = generateContactsHTML(task.asigned || []);
   let statusImage = getPriorityImage(task.prio);
-  
+
   return generateBoardCard(index, categoryColor, contactsHTML, statusImage);
 }
 
+/**
+ * Generates board content for the specified index.
+ *
+ * @param {number} index - The index of the task in the board content array.
+ * @returns {string} - The generated HTML for the task's board card.
+ */
 function generateBoardContent(index) {
   return htmlTemplateGenerateBoardContent(index);
 }
 
-// Function to clear the containers
+/**
+ * Clears the content of the task containers on the board.
+ */
 function clearContainers() {
   document.getElementById("toDo").innerHTML = "";
   document.getElementById("inProgress").innerHTML = "";
@@ -67,7 +104,13 @@ function clearContainers() {
   document.getElementById("done").innerHTML = "";
 }
 
-// Function to render tasks into containers based on status
+/**
+ * Renders a task to the appropriate container based on its status.
+ *
+ * @param {Object} task - The task object to render.
+ * @param {number} index - The index of the task in the board content array.
+ * @returns {boolean} - Returns true if the task's status is unrecognized; otherwise false.
+ */
 function renderTaskToContainer(task, index) {
   let container;
   switch (task.status) {
@@ -92,23 +135,45 @@ function renderTaskToContainer(task, index) {
   }
 }
 
-// Function to show empty column messages
-function displayEmptyColumnMessages(isToDoEmpty, isProgressEmpty, isAwaitEmpty, isDoneEmpty) {
+/**
+ * Displays messages in empty columns of the board.
+ *
+ * @param {boolean} isToDoEmpty - Indicates if the To-Do column is empty.
+ * @param {boolean} isProgressEmpty - Indicates if the In-Progress column is empty.
+ * @param {boolean} isAwaitEmpty - Indicates if the Awaiting Feedback column is empty.
+ * @param {boolean} isDoneEmpty - Indicates if the Done column is empty.
+ */
+function displayEmptyColumnMessages(
+  isToDoEmpty,
+  isProgressEmpty,
+  isAwaitEmpty,
+  isDoneEmpty
+) {
   if (isToDoEmpty) {
-    document.getElementById("toDo").innerHTML = `<div class="emptyColumnMessage">No tasks in To-Do</div>`;
+    document.getElementById(
+      "toDo"
+    ).innerHTML = `<div class="emptyColumnMessage">No tasks in To-Do</div>`;
   }
   if (isProgressEmpty) {
-    document.getElementById("inProgress").innerHTML = `<div class="emptyColumnMessage">No tasks in Progress</div>`;
+    document.getElementById(
+      "inProgress"
+    ).innerHTML = `<div class="emptyColumnMessage">No tasks in Progress</div>`;
   }
   if (isAwaitEmpty) {
-    document.getElementById("awaitFeedback").innerHTML = `<div class="emptyColumnMessage">No tasks awaiting feedback</div>`;
+    document.getElementById(
+      "awaitFeedback"
+    ).innerHTML = `<div class="emptyColumnMessage">No tasks awaiting feedback</div>`;
   }
   if (isDoneEmpty) {
-    document.getElementById("done").innerHTML = `<div class="emptyColumnMessage">No tasks completed</div>`;
+    document.getElementById(
+      "done"
+    ).innerHTML = `<div class="emptyColumnMessage">No tasks completed</div>`;
   }
 }
 
-// Main function to render the board list
+/**
+ * Renders the board list by clearing containers and populating tasks.
+ */
 function renderBoardList() {
   clearContainers();
 
@@ -127,94 +192,83 @@ function renderBoardList() {
     if (task.status === "done") isDoneEmpty = false;
   });
 
-  displayEmptyColumnMessages(isToDoEmpty, isProgressEmpty, isAwaitEmpty, isDoneEmpty);
+  displayEmptyColumnMessages(
+    isToDoEmpty,
+    isProgressEmpty,
+    isAwaitEmpty,
+    isDoneEmpty
+  );
 }
 
-function getCategoryColor(category) {
-  return category === "Technical Task" ? "#1FD7C1" : "#0038FF";
-}
-
-function generatePersonHTML(person) {
-  const initials = getInitials(person).toUpperCase();
-  const color = contactColors[person];
-
-  if (color) {
-    return `
-      <div style="display: flex; align-items: center;">
-        <span class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
-          ${initials}
-        </span>
-        ${person}
-      </div><br>
-    `;
-  }
-  return '';
-}
-
-// Function to generate the full HTML for assigned people
-function generateAssignedHTML(assignedPeople) {
+/**
+ * Generates the HTML for assigned contacts with their initials.
+ *
+ * @param {string[]} assignedContacts - An array of assigned contact names.
+ * @returns {string} - The generated HTML for the assigned contacts.
+ */
+function generateAssignedHTML(assignedContacts) {
   let assignedHTML = "";
-  if (Array.isArray(assignedPeople)) {
-    assignedPeople.forEach((person) => {
-      assignedHTML += generatePersonHTML(person);
+
+  if (Array.isArray(assignedContacts)) {
+    assignedContacts.forEach((person) => {
+      const initials = getInitials(person).toUpperCase() || "";
+      const color =
+        allContacts.find((contact) => contact.name === person).color || "";
+      assignedHTML += `
+        <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
+          ${initials}
+        </div>`;
     });
   }
   return assignedHTML;
 }
-// Funktion zur Ermittlung des Status-Bildes basierend auf der Priorität
-function getStatusImage(priority) {
-  switch (priority) {
-    case "urgent":
-      return '<img src="../assets/icons/prioUrgent.svg" alt="Urgent Priority">';
-    case "medium":
-      return '<img src="../assets/icons/prioMedium.svg" alt="Medium Priority">';
-    case "low":
-      return '<img src="../assets/icons/prioLow.svg" alt="Low Priority">';
-    default:
-      return "";
-  }
-}
 
-// Funktion zur Generierung des HTML für die Unteraufgaben (Subtasks)
+/**
+ * Generates the HTML for subtasks in a board.
+ *
+ * @param {Array} subtasks - An array of subtasks.
+ * @param {number} boardIndex - The index of the main task in the board content.
+ * @returns {string} - The generated HTML for the subtasks.
+ */
 function generateSubtasksHTML(subtasks, boardIndex) {
   let subtasksHTML = "";
   if (Array.isArray(subtasks)) {
     subtasks.forEach((subtask, subtaskIndex) => {
-      subtasksHTML += `
-        <div class="subtaskCardPopUpContent"> 
-          <input type="checkbox" ${subtask.completed ? "checked" : ""}
-              onchange="toggleSubtaskCompletion(${boardIndex}, ${subtaskIndex}, this.checked)">
-          ${subtask.description}
-        </div>`;
+      subtasksHTML += generateSubtaskPopupContent(
+        subtask,
+        boardIndex,
+        subtaskIndex
+      );
     });
   }
   return subtasksHTML;
 }
 
-// Hauptfunktion zur Erstellung des HTML-Templates für das Popup der Board-Karte
-function htmlTemplatePopUpBoardCard(index) {
-  const categoryColor = getCategoryColor(allBoardContent[index].category);
-  const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
-  const statusImage = getStatusImage(allBoardContent[index].prio);
-  const subtasksHTML = generateSubtasksHTML(allBoardContent[index].subtasks, index);
-
-  return generatePopupBoardCard(categoryColor, index, statusImage, assignedHTML, subtasksHTML);
-}
-
-function htmlTemplatePopUpBoardCardEdit(index) {
-  const assignedHTML = generateAssignedHTML(allBoardContent[index].asigned);
-
-  return generatePopupBoardCardEdit(index, assignedHTML);
-}
-
+/**
+ * Shows the actions associated with a subtask at the specified index.
+ *
+ * @param {number} index - The index of the subtask.
+ */
 function showActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "flex";
 }
 
+/**
+ * Hides the actions associated with a subtask at the specified index.
+ *
+ * @param {number} index - The index of the subtask.
+ */
 function hideActions(index) {
   document.getElementById(`subtask-actions-${index}`).style.display = "none";
 }
 
+/**
+ * Updates a task in the Firebase database and the local board content.
+ *
+ * @param {string} uid - The unique identifier of the task.
+ * @param {Object} data - The data to update in the task.
+ * @returns {Promise<void>} - A promise that resolves when the task is updated.
+ */
 async function updateTask(uid, data) {
   try {
     await updateTaskFirebase(uid, data);
@@ -224,26 +278,35 @@ async function updateTask(uid, data) {
       allBoardContent[index] = { ...allBoardContent[index], ...data };
     }
     renderBoardList();
-
   } catch (error) {
     console.error("Fehler beim Aktualisieren der Task:", error);
     alert("Es gab ein Problem beim Aktualisieren der Task.");
   }
 }
 
+/**
+ * Deletes a task from the Firebase database and updates the board.
+ *
+ * @param {string} uid - The unique identifier of the task to delete.
+ * @returns {Promise<void>} - A promise that resolves when the task is deleted.
+ */
 async function deleteDataBoard(uid) {
   try {
     await handleDeleteTaskRequest(uid);
 
     closePopupCard();
     updateBoard();
-
   } catch (error) {
     console.error("Fehler beim Löschen der Task:", error);
     alert("Es gab ein Problem beim Löschen der Task.");
   }
 }
 
+/**
+ * Edits a task with new data and updates the board.
+ *
+ * @param {string} uid - The unique identifier of the task to edit.
+ */
 function editTask(uid) {
   const title = document.getElementById("inputEditTitle").value;
   const description = document.getElementById("inputEditDescription").value;
@@ -270,10 +333,18 @@ function editTask(uid) {
   openPopupCard(originalIndex);
 }
 
+/**
+ * Collects the selected contacts for a task based on checkboxes.
+ *
+ * @param {number} index - The index of the task in the board content array.
+ * @returns {string[]} - An array of selected contact names.
+ */
 function collectSelectedContacts(index) {
   const originalTask = allBoardContent[index];
   let contactNames = originalTask.asigned;
-  let selectedContacts = document.querySelectorAll('#contactListEdit .contactEdit input[type="checkbox"]:checked');
+  let selectedContacts = document.querySelectorAll(
+    '#contactListEdit .contactEdit input[type="checkbox"]:checked'
+  );
 
   if (selectedContacts.length > 0) {
     contactNames = [];
@@ -285,7 +356,12 @@ function collectSelectedContacts(index) {
   return contactNames;
 }
 
-// Funktion zum Sortieren der Kontakte nach Namen
+/**
+ * Sorts the contacts array alphabetically by name.
+ *
+ * @param {Array} contacts - An array of contact objects to sort.
+ * @returns {Array} - A new array of contacts sorted by name.
+ */
 function getSortedContacts(contacts) {
   return [...contacts].sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
@@ -294,46 +370,66 @@ function getSortedContacts(contacts) {
   });
 }
 
-// Funktion zum Überprüfen, ob ein Kontakt zugewiesen ist
+/**
+ * Checks if a contact is assigned to a task.
+ *
+ * @param {string} contactName - The name of the contact.
+ * @param {string[]} assignedContacts - An array of assigned contact names.
+ * @returns {boolean} - Returns true if the contact is assigned; otherwise false.
+ */
 function isContactAssigned(contactName, assignedContacts) {
-  return assignedContacts && assignedContacts.find((name) => name === contactName);
+  return (
+    assignedContacts && assignedContacts.find((name) => name === contactName)
+  );
 }
 
-// Funktion zum Erstellen des HTML für einen einzelnen Kontakt
+/**
+ * Creates the HTML for a contact edit element.
+ *
+ * @param {Object} contact - The contact object.
+ * @param {string} initials - The initials of the contact.
+ * @param {boolean} isChecked - Indicates if the checkbox should be checked.
+ * @returns {string} - The generated HTML for the contact edit.
+ */
 function createContactEditHTML(contact, initials, isChecked) {
   const checkedContact = isChecked ? "checked" : "";
-  
-  return `
-    <div class='contactEdit flex' onclick='editTaskContact(event)'>
-        <div class='flex'>
-            <span class='circleEdit flex' style='background:${contact.color}'>
-              ${initials}
-            </span>
-            <span>
-              ${contact.name}
-            </span>
-        </div>
-        <input type="checkbox" ${checkedContact} value="${contact.name}">
-    </div>
-  `;
+
+  return generateContactEdit(contact, initials, checkedContact);
 }
 
-// Hauptfunktion zum Erstellen der Kontaktliste für das Board
+/**
+ * Renders the contact selection for editing a task.
+ *
+ * @param {number} index - The index of the task in the board content array.
+ * @returns {string} - The generated HTML for the contact selection.
+ */
 function renderContactSelectionBoard(index) {
   let contactListEdit = "";
-  
+
   const sortedContacts = getSortedContacts(allContacts);
-  
+
   for (let i = 0; i < sortedContacts.length; i++) {
     const initials = getInitials(sortedContacts[i].name).toUpperCase();
-    const isChecked = isContactAssigned(sortedContacts[i].name, allBoardContent[index].asigned);
-    
-    contactListEdit += createContactEditHTML(sortedContacts[i], initials, isChecked);
+    const isChecked = isContactAssigned(
+      sortedContacts[i].name,
+      allBoardContent[index].asigned
+    );
+
+    contactListEdit += createContactEditHTML(
+      sortedContacts[i],
+      initials,
+      isChecked
+    );
   }
-  
+
   return contactListEdit;
 }
 
+/**
+ * Toggles the visibility of the contact list for editing a task.
+ *
+ * @param {number} index - The index of the task in the board content array.
+ */
 function toggleContactListView(index) {
   const existingDropdown = document.getElementById("contactListEdit");
 
@@ -347,20 +443,28 @@ function toggleContactListView(index) {
   }
 }
 
+/**
+ * Creates a dropdown for contact selection.
+ *
+ * @param {number} index - The index of the task in the board content array.
+ */
 function createDropdown(index) {
   const contactList = document.createElement("div");
 
   contactList.id = "contactListEdit";
   contactList.classList.add("flex");
-  contactList.innerHTML = renderContactSelectionBoard(index); 
+  contactList.innerHTML = renderContactSelectionBoard(index);
 
   const container = document.getElementById("contactSelectionEdit");
 
-  container.parentElement.insertBefore(contactList, container.nextSibling); 
+  container.parentElement.insertBefore(contactList, container.nextSibling);
   document.addEventListener("click", closeDropdownOnClickOutside);
 }
 
-function toggleContactListViewAddTask(event) {
+/**
+ * Toggles the visibility of the contact list for adding a task.
+ */
+function toggleContactListViewAddTask() {
   let contactList = document.getElementById("contactList");
   contactList.classList.toggle("hidden");
 
@@ -371,6 +475,7 @@ function toggleContactListViewAddTask(event) {
   }
 }
 
+// Event listener for adding a new task
 addTaskForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -383,47 +488,14 @@ addTaskForm.addEventListener("submit", async (event) => {
   updateBoard();
   showPopupTask();
   closePopup();
-  document.body.classList.remove('no-scroll');
+  document.body.classList.remove("no-scroll");
 });
 
-function showPopupTask() {
-  const overlay = document.getElementById("popupOverlay1");
-  const success = document.getElementById("popupContactSuccessAddedTaskButton");
-
-  overlay.style.display = "flex";
-  success.style.display = "flex";
-  success.style.opacity = "0";
-
-  setTimeout(() => {
-    success.style.opacity = "1";
-  }, 1);
-
-  setTimeout(function () {
-    closePopupContactSuccessAddedTask();
-  }, 1250);
-}
-
-function closePopupContactSuccessAddedTask() {
-  document.getElementById("popupOverlay1").style.display = "none";
-  document.getElementById("popupContactSuccessAddedTaskButton").style.display = "none";
-}
-
-function generateAssignedHTML(assignedContacts) {
-  let assignedHTML = "";
-
-  if (Array.isArray(assignedContacts)) {
-    assignedContacts.forEach((person) => {
-      const initials = getInitials(person).toUpperCase() || "";
-      const color = allContacts.find((contact) => contact.name === person).color || "";
-      assignedHTML += `
-        <div class="contactCard" style="background-color: ${color}; color: white; padding: 4px 8px; border-radius: 50%; margin-right: 8px;">
-          ${initials}
-        </div>`;
-    });
-  }
-  return assignedHTML;
-}
-
+/**
+ * Edits a contact in the task based on user interaction.
+ *
+ * @param {Event} event - The event triggered by the user's action.
+ */
 function editTaskContact(event) {
   if (event.target.type !== "checkbox") {
     let checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
@@ -431,68 +503,3 @@ function editTaskContact(event) {
     event.currentTarget.classList.toggle("selectedContact");
   }
 }
-
-
-function moveTask(index, newStatus) {
-  const card = document.getElementById(`board-${index}`);
-  
-  // Aktualisiere den Status der Aufgabe in deiner Datenstruktur
-  let currentTask = allBoardContent[index];
-  currentTask.status = newStatus;
-
-  // Verschiebe die Karte in die neue Spalte
-  const dropArea = document.querySelector(`.drag-area[data-status="${newStatus}"]`);
-
-  // Überprüfen, ob die Drop-Area existiert
-  if (dropArea) {
-    dropArea.appendChild(card);
-    updateTask(currentTask.Uid, currentTask); // Aktualisiere die Aufgabe in der Datenbank
-  }
-}
-
-// Verhindert die Weitergabe des Klickereignisses
-function stopPropagationHandler(event) {
-  event.stopPropagation();
-}
-
-// Berechnet die Position des Submenüs relativ zur Board-Karte
-function calculateSubmenuPosition(index, additionalOffsetTop = 25, additionalOffsetLeft = 30) {
-  const boardCard = document.getElementById(`board-${index}`);
-  const submenu = document.getElementById(`submenu-${index}`);
-
-  const rect = boardCard.getBoundingClientRect();
-  
-  // Berechnet die Position mit den zusätzlichen Offsets
-  const top = rect.bottom + window.scrollY + additionalOffsetTop;
-  const left = rect.left + additionalOffsetLeft;
-  
-  submenu.style.top = `${top}px`;
-  submenu.style.left = `${left}px`;
-}
-
-// Schaltet die Sichtbarkeit des Submenüs um
-function toggleVisibility(submenu) {
-  const isVisible = !submenu.classList.contains('hidden');
-  
-  if (!isVisible) {
-    submenu.classList.remove('hidden');
-  } else {
-    submenu.classList.add('hidden');
-  }
-}
-
-// Hauptfunktion zum Aufruf der Teilfunktionen
-function toggleSubmenu(event, index) {
-  stopPropagationHandler(event);
-
-  const submenu = document.getElementById(`submenu-${index}`);
-  
-  calculateSubmenuPosition(index);
-  toggleVisibility(submenu);
-}
-//Schließe das Submenü, wenn irgendwo außerhalb geklickt wird
-document.addEventListener('click', () => {
-  document.querySelectorAll('.submenu').forEach((sub) => {
-    sub.classList.add('hidden');
-  });
-});

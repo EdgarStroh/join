@@ -51,7 +51,7 @@
                             </g>
                         </svg>
                         <div class="info flex">
-                            <span class="amount" id="toDoCount"></span> <!-- ID hinzugefügt -->
+                            <span class="amount" id="toDoCount"></span>
                             <span class="title">To-do</span>
                         </div>
                     </a>
@@ -63,7 +63,7 @@
                         </svg>
 
                         <div class="info flex">
-                            <span class="amount" id="doneCount"></span> <!-- ID hinzugefügt -->
+                            <span class="amount" id="doneCount"></span>
                             <span class="title">Done</span>
                         </div>
                     </a>
@@ -74,13 +74,13 @@
                         <div class="urgent flex">
                             <img src="../assets/icons/urgent.svg" alt="Icon Urgent">
                             <div class="info flex">
-                                <span class="amount" id="urgentCount"></span> <!-- ID hinzugefügt -->
+                                <span class="amount" id="urgentCount"></span>
                                 <span class="title">Urgent</span>
                             </div>
                         </div>
                         <img src="../assets/icons/seperator_urgent.svg" alt="seperator">
                         <div class="date flex">
-                            <div id="date"><!-- hier wird das Deadline-Datum reingerendert --></div>
+                            <div id="date"></div>
                             <span>Upcoming Deadline</span>
                         </div>
                     </a>
@@ -89,19 +89,19 @@
                 <div class="summary_container_small flex">
                     <a class="small_box flex" href="board.html">
                         <div class="info flex">
-                            <span class="amount" id="totalTasksCount"></span> <!-- ID hinzugefügt -->
+                            <span class="amount" id="totalTasksCount"></span> 
                             <span class="title">Tasks <br> in Board</span>
                         </div>
                     </a>
                     <a class="small_box flex" href="board.html">
                         <div class="info flex">
-                            <span class="amount" id="inProgressCount"></span> <!-- ID hinzugefügt -->
+                            <span class="amount" id="inProgressCount"></span> 
                             <span class="title">Tasks <br> in Progress</span>
                         </div>
                     </a>
                     <a class="small_box flex" href="board.html">
                         <div class="info flex">
-                            <span class="amount" id="awaitFeedbackCount"></span> <!-- ID hinzugefügt -->
+                            <span class="amount" id="awaitFeedbackCount"></span> 
                             <span class="title">Awaiting <br> Feedback</span>
                         </div>
                     </a>
@@ -110,12 +110,9 @@
             <div id="greetings" class="greetings flex">
                 <span></span>
                 <h2></h2>
-
             </div>
         </div>
-        <!-- Greeting -->
         <div id="morningText" class="morning-text hidden"></div>
-            <!-- <h1>Good Morning</h1> -->
     </div>
     <script src="../js/firebase.js"></script>
     <script src="../js/summary.js"></script>
