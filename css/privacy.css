@@ -23,6 +23,7 @@ ul {
 .text_container_privacy {
     padding: 206px 114px 96px 330px;
     width: 100%;
+    max-width: 1920px;
     height: 100vh;
     flex-direction: column;
     background-color: #F6F7F8;

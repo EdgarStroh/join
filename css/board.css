@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1920px;
 }
 
 .text_containerBoard {
@@ -193,6 +194,7 @@
 .boardContent {
     display: flex;
     justify-content: space-between;
+    max-width: 1920px;
 }
 
 .drag-area {
@@ -391,31 +393,6 @@ textarea::placeholder {
     opacity: 0;
 }
 
-/* @keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%) translateY(-50%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(-50%) translateY(-50%);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOutToRight {
-    0% {
-        transform: translateX(-50%) translateY(-50%);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateX(100%) translateY(-50%);
-        opacity: 0;
-    }
-} */
-
-/* Board Card stuff Start*/
 .boardCard {
     position: relative;
     background-color: white;

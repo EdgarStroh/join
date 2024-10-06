@@ -20,6 +20,7 @@ ul {
 .text_container_legal {
     padding: 206px 114px 96px 330px;
     width: 100%;
+    max-width: 1920px;
     height: 100vh;
     flex-direction: column;
     background-color: #F6F7F8;
@@ -28,7 +29,7 @@ ul {
 
 @media screen and (max-width: 1020px) {
     .text_container_legal {
-        padding: 115px 5px 10px 10px;
+        padding: 115px 25px;
         height: auto !important;
     }
 
