@@ -177,7 +177,7 @@ function renderSubtaskList() {
  * @param {number} index - The index of the subtask to edit.
  */
 function editSubtask(index) {
-  const subtaskItem = getSubtaskItem(index);
+  const subtaskItem = document.querySelector(`.subtask[data-index='${index}']`);
   toggleEditingState(subtaskItem, true);
   focusOnInput(subtaskItem);
 }
