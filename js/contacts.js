@@ -177,6 +177,7 @@ function renderContactList() {
  */
 function mobileShowContact() {
   if (window.innerWidth < 800) {
+    document.getElementById("contact_content").style.width = "0px";
     document.getElementById("contact_list").style.display = "none";
     document.getElementById("headline_contacts").style.display = "flex";
     document.getElementById("arrow_left_contact").style.display = "flex";

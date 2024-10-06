@@ -111,6 +111,12 @@
         display: none;
 
     }
+    .headline_contacts {
+        width: fit-content;
+    }
+    .extended_contact{
+        width: max-content;
+    }
 
     .popup-edit-modal .flex {
         flex-direction: column;
@@ -321,7 +327,12 @@
         margin-bottom: 30px;
     }
 }
+@media screen and (max-width: 450px) {
+    .extended_contact {
+        width: fit-content;
 
+    }
+}
 @media screen and (max-width: 400px) {
     .popup-modal-mobile {
         zoom: 63%
