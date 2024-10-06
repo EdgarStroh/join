@@ -18,8 +18,29 @@ function signUpUser(event) {
 }
 
 /**
+ * Validates if the email has the correct format.
+ *
+ * @returns {boolean} True if the email format is valid; otherwise, false.
+ */
+function isEmailValid() {
+  const email = document.getElementById("inputEmail").value.trim();
+  const emailError = document.getElementById("emailError");
+
+  // Simple regex pattern to validate email
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;    
+
+  if (!emailPattern.test(email)) {
+    emailError.innerHTML = "Please enter a valid email address.";
+    return false;
+  } else {
+    emailError.innerHTML = "";
+    return true;
+  }
+}
+
+/**
  * Validates the signup form by checking if the checkbox is checked,
- * passwords match, and all fields are filled.
+ * passwords match, all fields are filled, and the email is valid.
  *
  * @returns {boolean} True if the form is valid; otherwise, false.
  */
@@ -27,8 +48,9 @@ function isFormValid() {
   const isChecked = document.getElementById("checkboxLogin1").checked;
   const passwordsMatch = checkPasswords();
   const fieldsFilled = areFieldsFilled();
+  const emailValid = isEmailValid();
 
-  return isChecked && passwordsMatch && fieldsFilled;
+  return isChecked && passwordsMatch && fieldsFilled && emailValid;
 }
 
 /**
@@ -198,14 +220,21 @@ function addInputEventListeners() {
   document
     .getElementById("inputName")
     .addEventListener("input", enableSignupButton);
+  
+  // Add the email validation event listener here
   document
     .getElementById("inputEmail")
-    .addEventListener("input", enableSignupButton);
+    .addEventListener("input", () => {
+      isEmailValid(); // Validate email format on input
+      enableSignupButton();
+    });
+  
   document.getElementById("signupPassword").addEventListener("input", () => {
     checkPasswords();
     enableSignupButton();
     toggleIcon("signupPassword", "toggleSignupPasswordIcon");
   });
+  
   document
     .getElementById("signupConfirmPassword")
     .addEventListener("input", () => {
@@ -213,6 +242,7 @@ function addInputEventListeners() {
       enableSignupButton();
       toggleIcon("signupConfirmPassword", "toggleSignupConfirmPasswordIcon");
     });
+  
   document
     .getElementById("checkboxLogin1")
     .addEventListener("change", enableSignupButton);

@@ -65,6 +65,7 @@
                 <div class="input_login flex">
                     <input class="name" type="text" id="inputName" placeholder="Name" required>
                     <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                    <div id="emailError" class="signup_error flex"></div> 
                     <div class="password-container">
                         <input id="signupPassword" class="password" type="password" placeholder="Password" required oninput="checkPasswords(); toggleIcon('signupPassword', 'toggleSignupPasswordIcon')">
                         <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility('signupPassword', 'toggleSignupPasswordIcon')">
@@ -73,7 +74,6 @@
                         <input id="signupConfirmPassword" class="password" type="password" placeholder="Confirm Password" required oninput="checkPasswords(); toggleIcon('signupConfirmPassword', 'toggleSignupConfirmPasswordIcon')">
                         <img id="toggleSignupConfirmPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock" onclick="togglePasswordVisibility('signupConfirmPassword', 'toggleSignupConfirmPasswordIcon')">
                     </div>
-                    <!-- Error message container for password mismatch -->
                     <div id="passwordError" class="login_error flex"></div>
                     <div class="checkbox_login flex margin-width-auto">
                         <input type="checkbox" id="checkboxLogin1" for="checkboxSubmit" name="checkboxPrivacyPolicy"

@@ -106,6 +106,14 @@ form {
     height: 20px;
 }
 
+.signup_error {
+    justify-content: center;
+    color: red;
+    font-size: 12px;
+    margin: -25px;
+    height: 20px;
+}
+
 .log_in_container h1 {
     margin-bottom: -20px;
 }
