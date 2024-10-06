@@ -129,8 +129,8 @@ h4 {
     font-size: 47px;
     text-align: center;
     overflow: hidden;
-    min-height: 80px;
-    min-width: 80px;
+    min-height: 100px;
+    min-width: 100px;
 }
 
 .headline_contacts {
