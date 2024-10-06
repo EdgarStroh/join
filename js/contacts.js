@@ -313,8 +313,6 @@ function clearExtendedContact() {
  * @param {number} id - The ID of the contact to edit.
  */
 function editContact(id) {
-  console.log(`editContact aufgerufen mit ID: ${id}`);
-
   const updatedContact = getUpdatedContact(id);
   if (!updatedContact) {
     console.error(`Kontakt mit ID ${id} nicht gefunden!`);
