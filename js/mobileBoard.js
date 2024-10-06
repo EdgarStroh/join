@@ -39,7 +39,7 @@ function stopPropagationHandler(event) {
 function calculateSubmenuPosition(
   index,
   additionalOffsetTop = 25,
-  additionalOffsetLeft = 30
+  additionalOffsetLeft = 22
 ) {
   const boardCard = document.getElementById(`board-${index}`);
   const submenu = document.getElementById(`submenu-${index}`);
