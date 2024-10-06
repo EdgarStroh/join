@@ -25,18 +25,27 @@ function openContact(id) {
  * @param {boolean} [isMobile=false] - Indicates if the action is on mobile.
  * @returns {Promise<void>} - A promise that resolves when the contact is added.
  */
+async function handleSubmit(event) {
+  event.preventDefault(); // Prevent the default form submission
+  await addContact(); // Call the modified addContact function
+}
+
 async function addContact(isMobile = false) {
   let contactData = collectContactInputData(isMobile);
   try {
-    await postDataContacts("", contactData);
-    resetContactForm(isMobile);
-    closePopup();
-    await updateContacts();
-    showPopupContact();
+      await postDataContacts("", contactData);
+      resetContactForm(isMobile);
+      closePopup();
+      await updateContacts();
+      showPopupContact();
   } catch (error) {
-    console.error("Fehler beim Hinzufügen des Kontakts:", error);
-    alert("Es gab ein Problem beim Hinzufügen des Kontakts.");
+      console.error("Fehler beim Hinzufügen des Kontakts:", error);
+      alert("Es gab ein Problem beim Hinzufügen des Kontakts.");
   }
+}
+function validatePhoneInput(input) {
+  // Remove all non-numeric characters
+  input.value = input.value.replace(/\D/g, '');
 }
 
 /**

@@ -22,7 +22,7 @@
         <div w3-include-html="../assets/templates/mobileSideBar.html"></div>
         <div w3-include-html="../assets/templates/sideBar.html"></div>
         <script>w3.includeHTML();</script>
-         <script src="..//js/header.js"></script>
+        <script src="..//js/header.js"></script>
     </aside>
     <div id="contact_content" class="contact_content flex">
         <div class="contact_list flex flex-column" id="contact_list">
@@ -60,16 +60,16 @@
                 </div>
                 <img class="profileImg" src="../assets/img/profileImg.svg">
                 <div class="popup-Right-Side">
-                    <form>
+                    <form onsubmit="return handleSubmit(event)">
                         <div class="input_login flex flex-column">
                             <input class="name" type="text" id="inputName" placeholder="Name" required>
-                            <input class="email" type="email" id="inputEmail" placeholder="Email" required>
-                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required>
+                            <input class="email" type="email" id="inputEmail" placeholder="Email" required pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+">
+                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required pattern="[0-9]*" oninput="validatePhoneInput(this)">
                         </div>
                         <div class="button-line flex">
                             <button class="button-white" onclick="closePopup()">Cancel <img
                                     src="../assets/icons/cancel.svg" alt="Icon cancel"></button>
-                            <button class="button-DB" onclick="addContact()">Create contact <img
+                            <button class="button-DB">Create contact <img
                                     src="../assets/icons/create.svg" alt="Icon create"></button>
                         </div>
                     </form>
@@ -128,7 +128,7 @@
     <script src="../js/firebase.js"></script>
     <script src="../js/popup.js"></script>
     <script src="../js/sideBar.js"></script>
-   
+
 </body>
 
 </html>
