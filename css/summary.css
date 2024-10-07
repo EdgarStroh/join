@@ -30,7 +30,7 @@
     justify-content: flex-start;
     gap: 5%;
     align-items: center;
-    padding-top: 50px;
+    padding: 50px 10px 0;
     width: 100%;
     max-width: 1920px;
 }
