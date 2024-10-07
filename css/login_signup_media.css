@@ -2,6 +2,7 @@
    
     .log_in_container_signup {
         padding: 5px;
+        width: 90% !important;
     }
     
 }
@@ -33,7 +34,7 @@
         padding: 0;
     }
     .arrow_left_signup {
-        margin-left: 200px;
+        margin-left: 160px;
     }
 
     .zoom {
@@ -169,7 +170,7 @@
             left: 16px;
             transform: translate(0, 0);
             width: 45px;
-            height: 55px;
+            height: 45px;
             background-image: url('../assets/icons/logo_black.svg');
         }
     }

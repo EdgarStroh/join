@@ -224,11 +224,11 @@ select:focus {
     }
 
     100% {
-        top: 64px;
-        left: 64px;
+        top: 32px;
+        left: 32px;
         transform: translate(0, 0);
         width: 100px;
-        height: 122px;
+        height: 100px;
     }
 }
 
