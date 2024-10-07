@@ -14,7 +14,7 @@ function signUpUser(event) {
   postDataUsers("", userData);
   addUserToContacts(userData);
   handleSignUpSuccess();
-  updateContacts();
+  // updateContacts();
 }
 
 /**
@@ -138,7 +138,7 @@ function addUserToContacts(userData) {
  */
 function handleSignUpSuccess() {
   clearForm();
-  closePopup();
+  // closePopup();
   showPopupRegister();
 }
 
