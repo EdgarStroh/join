@@ -39,5 +39,5 @@ function toggleMenu() {
  */
 function logout() {
   localStorage.clear(); // Clears all data from local storage
-  window.location.href = "index.html"; // Redirects the user to the login page
+  window.location.href = "login.html"; // Redirects the user to the login page
 }
