@@ -1,3 +1,11 @@
+@media screen and (max-width: 1000px) {
+   
+    .log_in_container_signup {
+        padding: 5px;
+    }
+    
+}
+
 @media screen and (max-width: 768px) {
 
     .log_in_container,
@@ -21,6 +29,12 @@
     .input_login.password-container {
         width: 50%;
     }
+    .log_in_container_signup {
+        padding: 0;
+    }
+    .arrow_left_signup {
+        margin-left: 200px;
+    }
 
     .zoom {
         overflow: hidden;
@@ -35,14 +49,19 @@
         height: 2px;
         color: #29ABE2;
     }
+    .arrow_left_signup {
+        margin-left: 125px;
+    }
+    .footer{
+        height: 25px;
+    }
     .log_in_container {
-        padding: 0;
-        margin: 50% auto
+        padding: 5px;
+        /* margin: 50% auto */
     }
 
     .arrow_left_signup {
-        top: 11%;
-        left: 3%;
+        margin-top: 32px;
     }
 
     .log_in_container_signup {
@@ -87,7 +106,7 @@
     }
 
     .sign_up_container {
-        padding-bottom: 98px;
+        padding: 0px 0px 45px 0px;
     }
 
     .sign_up_button {

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="shortcut icon" href="../assets/icons/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/sideBar.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/guest.css">
+    <link rel="stylesheet" href="../css/login_signup.css">
+    <link rel="stylesheet" href="../css/login_signup_media.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+</head>
+
+<body onload="loadDataUsers()">
+    <div id="animationBg" class="animation_bg"></div>
+    <div id="animatedLogo animation_end" class="animation_logo"></div>
+    <div class="sign_up_container flex">
+    </div>
+
+    <div class="log_in_container_signup flex no_shadow">
+        <a href="login.html">
+            <img class="arrow_left_signup" src="../assets/icons/arrow_left.svg" alt="Icon arrow left">
+        </a>
+        <div>
+            <h1>Sign up</h1>
+        </div>
+        <img class="underline" src="../assets/icons/vector_login.svg" alt="Underline">
+        <form class="form_signup" onsubmit="return signUpUser(event);">
+            <div class="input_login flex">
+                <input class="name" type="text" id="inputName" placeholder="Name" required>
+                <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                <div id="emailError" class="signup_error flex"></div>
+                <div class="password-container">
+                    <input id="signupPassword" class="password" type="password" placeholder="Password" required
+                        oninput="checkPasswords(); toggleIcon('signupPassword', 'toggleSignupPasswordIcon')">
+                    <img id="toggleSignupPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock"
+                        onclick="togglePasswordVisibility('signupPassword', 'toggleSignupPasswordIcon')">
+                </div>
+                <div class="password-container">
+                    <input id="signupConfirmPassword" class="password" type="password" placeholder="Confirm Password"
+                        required
+                        oninput="checkPasswords(); toggleIcon('signupConfirmPassword', 'toggleSignupConfirmPasswordIcon')">
+                    <img id="toggleSignupConfirmPasswordIcon" src="../assets/icons/lock.svg" alt="Icon lock"
+                        onclick="togglePasswordVisibility('signupConfirmPassword', 'toggleSignupConfirmPasswordIcon')">
+                </div>
+                <div id="passwordError" class="login_error flex"></div>
+                <div class="checkbox_login flex margin-width-auto">
+                    <input type="checkbox" id="checkboxLogin1" for="checkboxSubmit" name="checkboxPrivacyPolicy"
+                        required>
+                    <label class="checkbox_label loginText" for="checkboxSubmit">
+                        I accept the
+                        <a href="privacy.html">Privacy Policy</a>
+                    </label>
+                </div>
+            </div>
+            <div class="button_login flex">
+                <button type="submit" class="button" id="signUpButton" disabled>Sign up</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div class="footer">
+        <a href="privacyGuest.html">Privacy Policy</a>
+        <a href="legalNoticeGuest.html">Legal notice</a>
+    </div>
+    <div id="popupOverlay" class="popup-overlay flex"></div>
+    <!-- Success Message -->
+    <div id="popupSuccess" class="success flex">
+        <p>You Signed Up successfully</p>
+    </div>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/generateHTML.js"></script>
+    <script src="../js/contacts.js"></script>
+</body>
+
+</html>

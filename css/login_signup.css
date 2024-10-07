@@ -289,9 +289,11 @@ input:focus {
     cursor: pointer;
     width: 32px;
     height: 32px;
-    position: absolute;
-    top: 9%;
-    left: 7%;
+    position: fixed;
+    /* top: 24%;
+    left: 69%; */
+    margin-left: 230px;
+    margin-top: 20px;
 }
 
 .arrow_left_signup:hover {
