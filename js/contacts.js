@@ -326,6 +326,17 @@ function editContact(id) {
 }
 
 /**
+ * Handles the edit form submission and updates the contact.
+ *
+ * @param {Event} event - The form submission event.
+ */
+function handleEditContact(event) {
+  event.preventDefault(); // Prevent the default form submission
+  const contactId = event.target.querySelector('button[type="submit"]').dataset.contactId;
+  editContact(contactId); // Call the function to edit the contact
+}
+
+/**
  * Retrieves the updated contact information from the edit form.
  *
  * @param {number} id - The ID of the contact to update.
