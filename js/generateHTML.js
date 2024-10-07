@@ -116,10 +116,12 @@ function generateEditContact(contact) {
             }" required>
             <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${
               contact.email
-            }" required pattern="b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b">
+            }" required>
+            <span id="emailError" class="error-message"></span>
             <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${
               contact.phone
-            }" required pattern="^\+(?:[0-9]⋅?){6,14}[0-9]$">
+            }" required>
+            <span id="phoneError" class="error-message"></span>
           </div>
           <div class="button-line flex">
             <button type="button" class="button-white" onclick="deleteDataContact('${

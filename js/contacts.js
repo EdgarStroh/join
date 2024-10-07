@@ -326,14 +326,62 @@ function editContact(id) {
 }
 
 /**
+ * Validates if the email in the edit form has the correct format.
+ *
+ * @returns {boolean} True if the email format is valid; otherwise, false.
+ */
+function isEditEmailValid() {
+  const email = document.getElementById("inputEditEmail").value.trim();
+  const emailError = document.getElementById("emailError");
+
+  // Simple regex pattern to validate email
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(email)) {
+    emailError.innerHTML = "Please enter a valid email address.";
+    return false;
+  } else {
+    emailError.innerHTML = "";
+    return true;
+  }
+}
+
+/**
+ * Validates if the phone number in the edit form has the correct format.
+ *
+ * @returns {boolean} True if the phone number format is valid; otherwise, false.
+ */
+function isEditPhoneValid() {
+  const phone = document.getElementById("inputEditPhone").value.trim();
+  const phoneError = document.getElementById("phoneError");
+
+  // Regular expression to validate phone numbers
+  const phonePattern = /^\+?[0-9\s]{6,15}$/;
+
+  if (!phonePattern.test(phone)) {
+    phoneError.innerHTML = "Please enter a valid phone number.";
+    return false;
+  } else {
+    phoneError.innerHTML = "";
+    return true;
+  }
+}
+
+/**
  * Handles the edit form submission and updates the contact.
  *
  * @param {Event} event - The form submission event.
  */
-function handleEditContact(event) {
+async function handleEditContact(event) {
   event.preventDefault(); // Prevent the default form submission
+  
+  // Validierung der E-Mail und Telefonnummer
+  if (!isEditEmailValid() || !isEditPhoneValid()) {
+    return; // Verlasse die Funktion, wenn eine der Eingaben ungültig ist
+  }
+  
   const contactId = event.target.querySelector('button[type="submit"]').dataset.contactId;
-  editContact(contactId); // Call the function to edit the contact
+  await editContact(contactId); // Call the function to edit the contact
 }
 
 /**

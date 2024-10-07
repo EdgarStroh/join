@@ -641,3 +641,12 @@ input:focus {
     right: 3%;
     display: none;
 }
+
+.error-message {
+    justify-content: center;
+    color: red;
+    font-size: 12px;
+    margin: -20px;
+    /* height: 20px; */
+    text-align: center;
+}
