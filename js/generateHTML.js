@@ -329,6 +329,7 @@ function getInitials(name) {
  */
 function generateBoardCard(index, categoryColor, contactsHTML, statusImage) {
   return `
+  <div class="boardCardWithSubmenu">
     <div id="board-${index}" class="boardCard flex" draggable="true" ondragstart="drag(event)" onclick="openPopupCard(${index}, '${categoryColor}')">
       <span class="boardCategory bc1" style="background-color: ${categoryColor};">
         ${allBoardContent[index].category}
@@ -360,6 +361,7 @@ function generateBoardCard(index, categoryColor, contactsHTML, statusImage) {
         <img src="../assets/icons/dot.png">Done</li>
       </ul>
     </div>
+  </div>
   `;
 }
 

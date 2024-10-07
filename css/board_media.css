@@ -38,6 +38,14 @@
         width: 100vw;
         overflow-x: auto;
         margin-bottom: 0px;
+        flex-flow: row;
+        gap: 10px;
+    }
+
+    .boardCardWithSubmenu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
 
