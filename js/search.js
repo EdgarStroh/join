@@ -90,10 +90,9 @@ function displayEmptyColumnMessages() {
  */
 function isColumnEmpty(columnId) {
   let column = document.getElementById(columnId);
-  
-  return (
-    column.querySelectorAll('.boardCard[style*="display: none"]').length === column.children.length/3
-  );
+  let visibleCards = column.querySelectorAll('.boardCard:not([style*="display: none"])');
+
+  return visibleCards.length === 0; // Column is empty if no cards are visible
 }
 
 /**
@@ -104,7 +103,15 @@ function isColumnEmpty(columnId) {
  * @param {string} message - The message to display if the column is empty.
  */
 function showEmptyMessageIfNeeded(isEmpty, columnId, message) {
+  let column = document.getElementById(columnId);
+  let existingMessage = column.querySelector('.emptyColumnMessage');
+
   if (isEmpty) {
-    document.getElementById(columnId).innerHTML = `<div class="emptyColumnMessage">${message}</div>`;
+    if (!existingMessage) {
+      column.innerHTML += `<div class="emptyColumnMessage">${message}</div>`;
+    }
+  } else if (existingMessage) {
+    existingMessage.remove();
   }
 }
+
