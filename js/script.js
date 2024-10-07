@@ -100,7 +100,7 @@ function goBack() {
   if (referrer) {
     window.location.href = referrer;
   } else {
-    window.location.href = "index.html";
+    window.location.href = "login.html";
   }
 }
 
@@ -110,6 +110,6 @@ function goBack() {
  */
 function checkLogin() {
   if (!localStorage.getItem("loggedInUser")) {
-    window.location.href = "index.html";
+    window.location.href = "login.html";
   }
 }
