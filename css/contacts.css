@@ -647,6 +647,6 @@ input:focus {
     color: red;
     font-size: 12px;
     margin: -20px;
-    /* height: 20px; */
+    height: 12px;
     text-align: center;
 }
