@@ -63,8 +63,10 @@
                     <form onsubmit="return handleSubmit(event)">
                         <div class="input_login flex flex-column">
                             <input class="name" type="text" id="inputName" placeholder="Name" required>
-                            <input class="email" type="email" id="inputEmail" placeholder="Email" required pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+">
-                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required pattern="[0-9]*" oninput="validatePhoneInput(this)">
+                            <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                            <span id="emailError" class="error-message"></span>
+                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required oninput="validatePhoneInput(this)">
+                            <span id="phoneError" class="error-message"></span>
                         </div>
                         <div class="button-line flex">
                             <button class="button-white" onclick="closePopup()">Cancel <img

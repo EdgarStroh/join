@@ -25,10 +25,7 @@ function openContact(id) {
  * @param {boolean} [isMobile=false] - Indicates if the action is on mobile.
  * @returns {Promise<void>} - A promise that resolves when the contact is added.
  */
-async function handleSubmit(event) {
-  event.preventDefault(); // Prevent the default form submission
-  await addContact(); // Call the modified addContact function
-}
+
 
 async function addContact(isMobile = false) {
   let contactData = collectContactInputData(isMobile);
@@ -331,7 +328,10 @@ function editContact(id) {
  * @returns {boolean} True if the email format is valid; otherwise, false.
  */
 function isEditEmailValid() {
-  const email = document.getElementById("inputEditEmail").value.trim();
+  const email = document.getElementById("inputEmail") 
+              ? document.getElementById("inputEmail").value.trim()
+              : document.getElementById("inputEditEmail").value.trim(); // Handle both IDs
+
   const emailError = document.getElementById("emailError");
 
   // Simple regex pattern to validate email
@@ -352,7 +352,10 @@ function isEditEmailValid() {
  * @returns {boolean} True if the phone number format is valid; otherwise, false.
  */
 function isEditPhoneValid() {
-  const phone = document.getElementById("inputEditPhone").value.trim();
+  const phone = document.getElementById("inputPhone") 
+              ? document.getElementById("inputPhone").value.trim()
+              : document.getElementById("inputEditPhone").value.trim(); // Handle both IDs
+
   const phoneError = document.getElementById("phoneError");
 
   // Regular expression to validate phone numbers
@@ -365,6 +368,16 @@ function isEditPhoneValid() {
     phoneError.innerHTML = "";
     return true;
   }
+}
+async function handleSubmit(event) {
+  event.preventDefault(); // Prevent the default form submission
+  
+  // Validate email and phone number
+  if (!isEditEmailValid() || !isEditPhoneValid()) {
+    return; // Exit the function if email or phone number is invalid
+  }
+
+  await addContact(); // Call the function to add the contact if validation passes
 }
 
 /**
