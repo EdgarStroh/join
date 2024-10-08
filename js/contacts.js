@@ -341,7 +341,7 @@ function isNameValid() {
 
   // Validate regular name
   if (name && !namePattern.test(name)) {
-    if (nameError) nameError.innerHTML = "Please enter at least one letter in the name.";
+    if (nameError) nameError.innerHTML = "Please enter a name.";
     if (nameErrorEdit) nameErrorEdit.innerHTML = "";
     return false;
   } else {
