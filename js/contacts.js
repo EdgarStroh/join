@@ -328,22 +328,33 @@ function editContact(id) {
  * @returns {boolean} True if the email format is valid; otherwise, false.
  */
 function isEditEmailValid() {
-  const email = document.getElementById("inputEmail") 
-              ? document.getElementById("inputEmail").value.trim()
-              : document.getElementById("inputEditEmail").value.trim(); // Handle both IDs
+  const email = document.getElementById("inputEmail") ? document.getElementById("inputEmail").value.trim() : null; // Value for regular email
+  const emailEdit = document.getElementById("inputEditEmail") ? document.getElementById("inputEditEmail").value.trim() : null; // Value for edit email
 
   const emailError = document.getElementById("emailError");
+  const emailErrorEdit = document.getElementById("emailErrorEdit");
 
   // Simple regex pattern to validate email
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if (!emailPattern.test(email)) {
-    emailError.innerHTML = "Please enter a valid email address.";
+  // Validate regular email
+  if (email && !emailPattern.test(email)) {
+    if (emailError) emailError.innerHTML = "Please enter a valid email address.";
+    if (emailErrorEdit) emailErrorEdit.innerHTML = "";
     return false;
   } else {
-    emailError.innerHTML = "";
-    return true;
+    if (emailError) emailError.innerHTML = "";
   }
+
+  // Validate edit email
+  if (emailEdit && !emailPattern.test(emailEdit)) {
+    if (emailErrorEdit) emailErrorEdit.innerHTML = "Please enter a valid email address.";
+    return false;
+  } else {
+    if (emailErrorEdit) emailErrorEdit.innerHTML = "";
+  }
+
+  return true; // Return true if both emails are valid or not present
 }
 
 /**
@@ -352,22 +363,33 @@ function isEditEmailValid() {
  * @returns {boolean} True if the phone number format is valid; otherwise, false.
  */
 function isEditPhoneValid() {
-  const phone = document.getElementById("inputPhone") 
-              ? document.getElementById("inputPhone").value.trim()
-              : document.getElementById("inputEditPhone").value.trim(); // Handle both IDs
+  const phone = document.getElementById("inputPhone") ? document.getElementById("inputPhone").value.trim() : null; // Value for regular phone
+  const phoneEdit = document.getElementById("inputEditPhone") ? document.getElementById("inputEditPhone").value.trim() : null; // Value for edit phone
 
   const phoneError = document.getElementById("phoneError");
+  const phoneErrorEdit = document.getElementById("phoneErrorEdit");
 
   // Regular expression to validate phone numbers
   const phonePattern = /^\+?[0-9\s]{6,15}$/;
 
-  if (!phonePattern.test(phone)) {
-    phoneError.innerHTML = "Please enter a valid phone number.";
+  // Validate regular phone
+  if (phone && !phonePattern.test(phone)) {
+    if (phoneError) phoneError.innerHTML = "Please enter a valid phone number.";
+    if (phoneErrorEdit) phoneErrorEdit.innerHTML = "";
     return false;
   } else {
-    phoneError.innerHTML = "";
-    return true;
+    if (phoneError) phoneError.innerHTML = "";
   }
+
+  // Validate edit phone
+  if (phoneEdit && !phonePattern.test(phoneEdit)) {
+    if (phoneErrorEdit) phoneErrorEdit.innerHTML = "Please enter a valid phone number.";
+    return false;
+  } else {
+    if (phoneErrorEdit) phoneErrorEdit.innerHTML = "";
+  }
+
+  return true; // Return true if both phone numbers are valid or not present
 }
 async function handleSubmit(event) {
   event.preventDefault(); // Prevent the default form submission

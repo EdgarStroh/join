@@ -60,12 +60,12 @@
                 </div>
                 <img class="profileImg" src="../assets/img/profileImg.svg">
                 <div class="popup-Right-Side">
-                    <form onsubmit="return handleSubmit(event)">
+                    <form onsubmit="return handleSubmit(event)" novalidate>
                         <div class="input_login flex flex-column">
                             <input class="name" type="text" id="inputName" placeholder="Name" required>
-                            <input class="email" type="email" id="inputEmail" placeholder="Email" required>
+                            <input class="email" type="email" id="inputEmail" placeholder="Email" >
                             <span id="emailError" class="error-message"></span>
-                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" required oninput="validatePhoneInput(this)">
+                            <input class="phone" type="tel" id="inputPhone" placeholder="Phone" oninput="validatePhoneInput(this)">
                             <span id="phoneError" class="error-message"></span>
                         </div>
                         <div class="button-line flex">

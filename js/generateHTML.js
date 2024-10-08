@@ -109,19 +109,19 @@ function generateEditContact(contact) {
         contact.color
       }">${getInitials(contact.name).toUpperCase()}</span>
       <div class="popup-Right-Side flex-column">
-        <form onsubmit="handleEditContact(event)">
+        <form onsubmit="handleEditContact(event)" novalidate>
           <div class="input_login flex flex-column">
             <input class="name" type="text" id="inputEditName" placeholder="Name" value="${
               contact.name
             }" required>
             <input class="email" type="email" id="inputEditEmail" placeholder="Email" value="${
               contact.email
-            }" required>
-            <span id="emailError" class="error-message"></span>
+            }" >
+            <span id="emailErrorEdit" class="error-message"></span>
             <input class="phone" type="tel" id="inputEditPhone" placeholder="Phone" value="${
               contact.phone
-            }" required>
-            <span id="phoneError" class="error-message"></span>
+            }" >
+            <span id="phoneErrorEdit" class="error-message"></span>
           </div>
           <div class="button-line flex">
             <button type="button" class="button-white" onclick="deleteDataContact('${
