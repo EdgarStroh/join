@@ -109,7 +109,7 @@ function generateEditContact(contact) {
         contact.color
       }">${getInitials(contact.name).toUpperCase()}</span>
       <div class="popup-Right-Side flex-column">
-        <form onsubmit="handleEditContact(event)" >
+        <form onsubmit="handleEditContact(event)" novalidate>
           <div class="input_login flex flex-column">
             <input class="name" type="text" id="inputEditName" placeholder="Name" value="${
               contact.name
