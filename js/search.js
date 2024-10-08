@@ -50,11 +50,14 @@ function filterTasksByQuery(searchQuery) {
   for (let i = 0; i < titlesDOM.length; i++) {
     let title = titlesDOM[i].innerHTML.toLowerCase();
     let description = descriptionsDOM[i].innerHTML.toLowerCase();
+    let toggleSubmenu = document.querySelector(`#board-${i}`).parentNode.querySelector('.toggleSubmenu');
 
     if (title.includes(searchQuery) || description.includes(searchQuery)) {
-      boardCardDOM[i].style.display = "";
+      boardCardDOM[i].style.display = ""; 
+      toggleSubmenu.style.display = ""; // Das zugehörige Submenü sichtbar machen
     } else {
-      boardCardDOM[i].style.display = "none";
+      boardCardDOM[i].style.display = "none"; 
+      toggleSubmenu.style.display = "none"; // Das zugehörige Submenü verbergen
     }
   }
 }
