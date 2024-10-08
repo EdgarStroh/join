@@ -30,14 +30,14 @@ function openContact(id) {
 async function addContact(isMobile = false) {
   let contactData = collectContactInputData(isMobile);
   try {
-      await postDataContacts("", contactData);
-      resetContactForm(isMobile);
-      closePopup();
-      await updateContacts();
-      showPopupContact();
+    await postDataContacts("", contactData);
+    resetContactForm(isMobile);
+    closePopup();
+    await updateContacts();
+    showPopupContact();
   } catch (error) {
-      console.error("Fehler beim Hinzufügen des Kontakts:", error);
-      alert("Es gab ein Problem beim Hinzufügen des Kontakts.");
+    console.error("Fehler beim Hinzufügen des Kontakts:", error);
+    alert("Es gab ein Problem beim Hinzufügen des Kontakts.");
   }
 }
 function validatePhoneInput(input) {
@@ -322,6 +322,43 @@ function editContact(id) {
   renderUpdatedContact(id);
 }
 
+function isNameValid() {
+  const name = document.getElementById("inputName") ? document.getElementById("inputName").value.trim() : null; // Value for regular name
+  const nameEdit = document.getElementById("inputEditName") ? document.getElementById("inputEditName").value.trim() : null; // Value for edit name
+
+  const nameError = document.getElementById("nameError");
+  const nameErrorEdit = document.getElementById("nameErrorEdit");
+
+  // Regular expression to check for at least one letter (case insensitive)
+  const namePattern = /[a-zA-Z]/;
+
+  // Check if both inputs are empty or don't contain any letters
+  if (!name && !nameEdit) {
+    if (nameError) nameError.innerHTML = "Name cannot be empty.";
+    if (nameErrorEdit) nameErrorEdit.innerHTML = "Name cannot be empty.";
+    return false;
+  }
+
+  // Validate regular name
+  if (name && !namePattern.test(name)) {
+    if (nameError) nameError.innerHTML = "Please enter at least one letter in the name.";
+    if (nameErrorEdit) nameErrorEdit.innerHTML = "";
+    return false;
+  } else {
+    if (nameError) nameError.innerHTML = "";
+  }
+
+  // Validate edit name
+  if (nameEdit && !namePattern.test(nameEdit)) {
+    if (nameErrorEdit) nameErrorEdit.innerHTML = "Please enter at least one letter in the name.";
+    return false;
+  } else {
+    if (nameErrorEdit) nameErrorEdit.innerHTML = "";
+  }
+
+  return true; // Return true if both names are valid or not present
+}
+
 /**
  * Validates if the email in the edit form has the correct format.
  *
@@ -336,6 +373,13 @@ function isEditEmailValid() {
 
   // Simple regex pattern to validate email
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Check if both inputs are empty
+  if (!email && !emailEdit) {
+    if (emailError) emailError.innerHTML = "Email cannot be empty.";
+    if (emailErrorEdit) emailErrorEdit.innerHTML = "Email cannot be empty.";
+    return false;
+  }
 
   // Validate regular email
   if (email && !emailPattern.test(email)) {
@@ -372,6 +416,13 @@ function isEditPhoneValid() {
   // Regular expression to validate phone numbers
   const phonePattern = /^\+?[0-9\s]{6,15}$/;
 
+  // Check if both inputs are empty
+  if (!phone && !phoneEdit) {
+    if (phoneError) phoneError.innerHTML = "Phone number cannot be empty.";
+    if (phoneErrorEdit) phoneErrorEdit.innerHTML = "Phone number cannot be empty.";
+    return false;
+  }
+
   // Validate regular phone
   if (phone && !phonePattern.test(phone)) {
     if (phoneError) phoneError.innerHTML = "Please enter a valid phone number.";
@@ -391,12 +442,14 @@ function isEditPhoneValid() {
 
   return true; // Return true if both phone numbers are valid or not present
 }
+
+
 async function handleSubmit(event) {
   event.preventDefault(); // Prevent the default form submission
-  
-  // Validate email and phone number
-  if (!isEditEmailValid() || !isEditPhoneValid()) {
-    return; // Exit the function if email or phone number is invalid
+
+  // Validate email, phone number, and name
+  if (!isNameValid() || !isEditEmailValid() || !isEditPhoneValid()) {
+    return; // Exit the function if any of the validations fail
   }
 
   await addContact(); // Call the function to add the contact if validation passes
@@ -409,12 +462,12 @@ async function handleSubmit(event) {
  */
 async function handleEditContact(event) {
   event.preventDefault(); // Prevent the default form submission
-  
-  // Validierung der E-Mail und Telefonnummer
-  if (!isEditEmailValid() || !isEditPhoneValid()) {
-    return; // Verlasse die Funktion, wenn eine der Eingaben ungültig ist
+
+  // Validate email, phone number, and name
+  if (!isNameValid() || !isEditEmailValid() || !isEditPhoneValid()) {
+    return; // Exit the function if any of the validations fail
   }
-  
+
   const contactId = event.target.querySelector('button[type="submit"]').dataset.contactId;
   await editContact(contactId); // Call the function to edit the contact
 }
