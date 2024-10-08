@@ -246,7 +246,7 @@ async function handleSubmit(event) {
 function phoneValidation(isFormValid) {
   const phoneInput = document.getElementById("inputPhone");
   const phoneError = document.getElementById("phoneError");
-  const phonePattern = /^\+?[0-9\s]{6,15}$/;
+  const phonePattern = /^\+?[0-9]{1,3}[\s]?[0-9\s]{6,15}$/;
   
   if (!phoneInput.value.trim()) {
     phoneError.innerHTML = "Phone number cannot be empty.";
