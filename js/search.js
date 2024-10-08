@@ -50,7 +50,8 @@ function filterTasksByQuery(searchQuery) {
   for (let i = 0; i < titlesDOM.length; i++) {
     let title = titlesDOM[i].innerHTML.toLowerCase();
     let description = descriptionsDOM[i].innerHTML.toLowerCase();
-    let toggleSubmenu = document.querySelector(`#board-${i}`).parentNode.querySelector('.toggleSubmenu');
+    let boardCardContainer = boardCardDOM[i].closest('.boardCardWithSubmenu'); // Elterncontainer der Karte mit Submenü
+    let toggleSubmenu = boardCardContainer.querySelector('.toggleSubmenu'); // Zugehöriges Submenü
 
     if (title.includes(searchQuery) || description.includes(searchQuery)) {
       boardCardDOM[i].style.display = ""; 
