@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1920px;
+    /* padding: 0 10px 0 10px; */
 }
 
 .text_containerBoard {
@@ -195,6 +196,7 @@
     display: flex;
     justify-content: space-between;
     max-width: 1920px;
+    padding-left: 30px;
 }
 
 .drag-area {

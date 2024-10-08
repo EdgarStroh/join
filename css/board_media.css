@@ -5,13 +5,13 @@
     }
 }
 
-@media screen and (max-width: 1340px) {
+@media screen and (max-width: 1365px) {
     .text_containerBoard {
-        padding: 206px 5px 96px 245px;
+        padding: 206px 10px 96px 245px;
     }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1180px) {
     .text_containerBoard {
         padding: 206px 5px 96px 245px;
     }
@@ -35,11 +35,12 @@
     .drag-area {
         height: 300px;
         flex-wrap: wrap;
-        width: 100vw;
+        width: 96vw;
         overflow-x: auto;
         margin-bottom: 0px;
         flex-flow: row;
         gap: 10px;
+        padding-left: 5px;
     }
 
     .boardCardWithSubmenu {
