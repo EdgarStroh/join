@@ -31,12 +31,7 @@ ul {
 
 @media screen and (max-width: 1020px) {
     .text_container_privacy {
-        padding: 115px 5px 10px 10px;
-    }
-}
-
-@media screen and (max-width: 370px) {
-    .text_container_privacy {
+        padding: 115px 5px 100px 10px;
         height: auto !important;
     }
 }

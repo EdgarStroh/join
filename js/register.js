@@ -12,9 +12,8 @@ function signUpUser(event) {
 
   const userData = collectUserData();
   postDataUsers("", userData);
-  addUserToContacts(userData);
+  // addUserToContacts(userData); // ❌ Nicht mehr aufrufen
   handleSignUpSuccess();
-  // updateContacts();
 }
 
 /**
@@ -115,21 +114,6 @@ function collectUserData() {
     password: document.getElementById("signupPassword").value.trim(),
     color: getRandomColor(),
   };
-}
-
-/**
- * Adds the newly signed-up user to the contacts.
- *
- * @param {Object} userData - The user data object containing name, email, and color.
- */
-function addUserToContacts(userData) {
-  const contactData = {
-    name: userData.name,
-    email: userData.email,
-    phone: "", // No phone number in the form
-    color: userData.color,
-  };
-  postDataContacts("", contactData);
 }
 
 /**

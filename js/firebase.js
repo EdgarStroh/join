@@ -15,7 +15,7 @@ async function onloadFunctionData() {
 
 // Base URL for contacts
 const BASE_URL_Contact =
-  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/contacts";
+  "https://join-c06f0-default-rtdb.europe-west1.firebasedatabase.app/contacts";
 
 /**
  * Loads contacts data from the database.
@@ -76,7 +76,7 @@ async function updateContactInFirebase(id, data) {
 
 // Base URL for boards
 const BASE_URL_Board =
-  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/tasks";
+  "https://join-c06f0-default-rtdb.europe-west1.firebasedatabase.app/tasks";
 
 /**
  * Loads board data from the database.
@@ -195,7 +195,7 @@ async function updateSubtaskInFirebase(taskIndex, subtaskIndex) {
 
 // Base URL for users
 const BASE_URL_USERS =
-  "https://join-b197b-default-rtdb.europe-west1.firebasedatabase.app/users";
+  "https://join-c06f0-default-rtdb.europe-west1.firebasedatabase.app/users";
 
 /**
  * Loads user data from the database.

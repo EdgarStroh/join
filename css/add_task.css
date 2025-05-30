@@ -272,7 +272,7 @@ input[type="date"]:focus {
 }
 
 #contactSelection {
-    background-image: url("../assets/icons/arrow_drop_down.svg");
+    background-image: url("/join/assets/icons/arrow_drop_down.svg");
     background-size: 10px;
     background-repeat: no-repeat;
     background-position: calc(100% - 17px) center;
@@ -369,6 +369,7 @@ input[type="date"]:focus {
     border-radius: 0;
     height: auto;
     appearance: none;
+
     &:focus {
         outline: none !important;
         box-shadow: none !important;

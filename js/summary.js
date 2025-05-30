@@ -5,8 +5,8 @@
  * @returns {Promise<void>} A promise that resolves when the summary has been updated.
  */
 async function updateSummary() {
-  await loadDataBoards();
   greetUser();
+  await loadDataBoards();
   updateTaskCounts();
   checkLogin();
 
@@ -17,6 +17,8 @@ async function updateSummary() {
     document.getElementById("date").innerText = "No upcoming urgent tasks";
   }
 }
+
+
 
 /**
  * Greets the user based on the current time and updates the greeting text in the DOM.
@@ -167,7 +169,7 @@ function displayGreeting(morningText) {
       <br>
       <h1 style="color:#29ABE2">${loggedInUser}</h1>
     </div>`;
-  toggleVisibility(morningText); 
+  toggleVisibility(morningText);
 }
 
 /**
